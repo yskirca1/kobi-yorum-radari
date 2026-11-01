@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KOBİ Yorum Radarı</title>
+<meta name="description" content="Satmak istediğin ürünün kategorisini ara, müşterilerin en çok neden şikâyet ettiğini gör.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <a class="logo" href="#/" aria-label="KOBİ Yorum Radarı ana sayfa"><span class="logo-dot" aria-hidden="true"></span>KOBİ <b>Yorum Radarı</b></a>
+    <form class="search" id="search" role="search" autocomplete="off">
+      <input id="q" type="search" placeholder="Ne satmak istiyorsun? Örn. termos" aria-label="Kategori ara">
+      <button type="submit">Ara</button>
+      <ul class="suggest" id="suggest" hidden></ul>
+    </form>
+  </div>
+</header>
+<main id="app" class="wrap"></main>
+<div class="cmpbar" id="cmpbar" hidden>
+  <div class="cmpbar-in">
+    <div class="cmpbar-items" id="cmpbar-items"></div>
+    <button type="button" class="btn ghost" id="cmp-clear">Temizle</button>
+    <a class="btn" id="cmp-go" href="#/karsilastir">Karşılaştır</a>
+  </div>
+</div>
+<footer class="foot wrap">
+  <p>Hamilik Okulu Vakfı pazarlama projesi. Ürün görselleri, puanlar ve yorumlar Trendyol'daki herkese açık ürün sayfalarından alınmıştır. Şikâyet oranları anahtar kelime eşleşmesiyle hesaplanmıştır ve yaklaşıktır.</p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>

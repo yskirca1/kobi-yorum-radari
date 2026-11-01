@@ -1,0 +1,766 @@
+{
+ "id": "termos",
+ "ad": "Termos bardak",
+ "ust": "Mutfak ve outdoor",
+ "esanlam": [
+  "termos",
+  "termos bardak",
+  "matara",
+  "kahve bardağı",
+  "mug",
+  "thermos",
+  "seyahat kupası",
+  "termos kupa"
+ ],
+ "toplama": "2 Kasım 2026",
+ "kaynak": "Trendyol",
+ "temalar": [
+  {
+   "id": "isi",
+   "ad": "Isıyı tutmuyor",
+   "unlem": "Isıyı tutmuyor!"
+  },
+  {
+   "id": "sizdirma",
+   "ad": "Sızdırma / akıtma",
+   "unlem": "Sızdırıyor, akıtıyor!"
+  },
+  {
+   "id": "kapak",
+   "ad": "Kapak ve mekanizma",
+   "unlem": "Kapağı bozuluyor, tam kapanmıyor!"
+  },
+  {
+   "id": "zamanla",
+   "ad": "Zamanla bozulma",
+   "unlem": "Kısa sürede bozuluyor!"
+  },
+  {
+   "id": "orijinal",
+   "ad": "Orijinallik / garanti",
+   "unlem": "Orijinal mi, şüpheli!"
+  },
+  {
+   "id": "hasar",
+   "ad": "Hasarlı / defolu geldi",
+   "unlem": "Hasarlı ya da defolu geliyor!"
+  },
+  {
+   "id": "kaplama",
+   "ad": "Boya soyulması / pas",
+   "unlem": "Boyası soyuluyor, paslanıyor!"
+  },
+  {
+   "id": "koku",
+   "ad": "Koku / tat",
+   "unlem": "Koku ve tat yapıyor!"
+  },
+  {
+   "id": "fiyat",
+   "ad": "Fiyat / değmez",
+   "unlem": "Fiyatına değmiyor!"
+  },
+  {
+   "id": "vaat",
+   "ad": "Yazılan süre tutmuyor",
+   "unlem": "Yazılan süreyi tutmuyor!"
+  },
+  {
+   "id": "paketSoz",
+   "ad": "Paket / hediye sözü",
+   "unlem": "Paket ve hediye sözü tutulmuyor!"
+  },
+  {
+   "id": "gosterge",
+   "ad": "Dijital gösterge arızası",
+   "unlem": "Dijital göstergesi bozuluyor!"
+  }
+ ],
+ "olumlu_konular": [
+  {
+   "id": "isi",
+   "ad": "Isıyı iyi tutuyor"
+  },
+  {
+   "id": "sizdirmaz",
+   "ad": "Sızdırmıyor"
+  },
+  {
+   "id": "kargo",
+   "ad": "Kargo ve paketleme"
+  },
+  {
+   "id": "hediye",
+   "ad": "Hediye olarak alınmış"
+  },
+  {
+   "id": "tasarim",
+   "ad": "Renk ve tasarım"
+  },
+  {
+   "id": "boyut",
+   "ad": "Boyut, çantaya sığıyor"
+  },
+  {
+   "id": "baglam",
+   "ad": "Okul, iş, yolda kullanım"
+  },
+  {
+   "id": "bebek",
+   "ad": "Bebek / mama suyu"
+  },
+  {
+   "id": "orijinal",
+   "ad": "Orijinal, garantili"
+  }
+ ],
+ "oneriler": [
+  {
+   "baslik": "Isı iddiasını küçült, kanıtla",
+   "metin": "Olumsuz yorumların en büyük kısmı ısıyı tutmamaktan. \"8 saat\" gibi koşulsuz iddialar yerine \"kaynar su, kapak kapalı, oda sıcaklığında 6 saat sonra 60°C\" gibi test edilmiş bir iddia ve kısa bir test videosu güven verir. Ön ısıtma ipucunu kullanım kartına yaz."
+  },
+  {
+   "baslik": "Farkı kapakta yarat",
+   "metin": "KOBİ ürünlerinde sızdırma ve kapak şikâyeti büyük markaların yaklaşık iki katı. Ters çevirme testi, yedek conta ve kapak arızasına değişim sözü rakip KOBİ'lerin en zayıf noktasını hedefler."
+  },
+  {
+   "baslik": "Güveni sat",
+   "metin": "Büyük markada sahtelik, QR kod ve garanti kaydı şikâyetleri öne çıkıyor. Kutulu, faturalı, garanti kartlı gönderim ve \"üreticiden doğrudan\" mesajı pahalı markadan kaçan müşteriyi yakalar."
+  },
+  {
+   "baslik": "Dayanıklılığı garanti et",
+   "metin": "\"Birkaç ay sonra soğutmaya başladı\" yorumu lider ürünlerde bile sık. Uzun süreli ısı garantisi güçlü bir ayrışma noktası."
+  },
+  {
+   "baslik": "Hediye deneyimini kullan, sözünü tut",
+   "metin": "Hediye paketi ve not olumlu yorumların önemli bir kısmını getiriyor. Ama söz verilen hediye eksik gelince 1 yıldıza dönüyor."
+  },
+  {
+   "baslik": "Bebek ve mama segmentini ayrı konumlandır",
+   "metin": "Mama suyu için termos alanlar ayrı ve büyük bir kitle. Bu kullanım için güvenilir, sıcaklığı belli bir ürün boşluğu var."
+  }
+ ],
+ "urunler": [
+  {
+   "id": "780345921",
+   "kisa": "Stanley",
+   "marka": "Stanley",
+   "ad": "Stanley Aerolight Seyahat Kupası 0,47 L",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1664/prod/QC/20250416/14/0bcd18b5-6ffa-3db7-b56f-09b3d1b0b82e/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/stanley/aerolight-seyahat-kupasi-0-47-l-pembe-kuvars-p-780345921",
+   "yazili": 1909,
+   "yildiz": [
+    117,
+    42,
+    55,
+    151,
+    1544
+   ],
+   "ort": 4.55,
+   "onerilen_ort": 4.96,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "isi": 0.29,
+    "sizdirma": 0.11,
+    "kapak": 0.11,
+    "zamanla": 0.02,
+    "orijinal": 0.26,
+    "hasar": 0.17,
+    "kaplama": 0.07,
+    "koku": 0.06,
+    "fiyat": 0.09,
+    "vaat": 0.03,
+    "paketSoz": 0.07,
+    "gosterge": 0.0
+   },
+   "olumlu": {
+    "isi": 0.16,
+    "sizdirmaz": 0.03,
+    "kargo": 0.35,
+    "hediye": 0.13,
+    "tasarim": 0.22,
+    "boyut": 0.17,
+    "baglam": 0.06,
+    "bebek": 0.01,
+    "orijinal": 0.19
+   },
+   "dikkat": [
+    "Orijinallik şüphesi sık. Teslimde kutuyu, QR kodu ve garanti kaydının çalıştığını kontrol et.",
+    "Kutusuz, ince kâğıda sarılı gelen ve göçük ya da çizik çıkan ürün şikâyeti var. Gövdeyi teslimde incele.",
+    "Bazı alıcılar ısı performansını fiyatına göre yetersiz buluyor. Uzun süre bekleyecekse önce termosu sıcak suyla ısıt."
+   ],
+   "ders": [
+    "Premium fiyatta müşteri kusursuz kutu ve doğrulanabilir garanti bekliyor. Buradaki tek aksaklık doğrudan 1 yıldız getiriyor.",
+    "Hata veren bir garanti formu, ürün iyi olsa bile puanı düşürüyor. Satış sonrası süreç ürünün parçası."
+   ],
+   "alinti": [
+    {
+     "konu": "Orijinallik / garanti",
+     "yildiz": 1,
+     "metin": "Ürün sahte"
+    },
+    {
+     "konu": "Orijinallik / garanti",
+     "yildiz": 1,
+     "metin": "Garanti işlem formu hata veriyor"
+    },
+    {
+     "konu": "Paket / hediye sözü",
+     "yildiz": 1,
+     "metin": "Kutusuz ince kağıda sarılı özensiz geldi orijinalliğinden şüpheliyim iade edeceğim"
+    },
+    {
+     "konu": "Yazılan süre tutmuyor",
+     "yildiz": 2,
+     "metin": "asla 12 saat sicak tutmuyor. 5 saat ancak giidyor ve su kaynar yine olmuyor. 12 saati nerden cikariyorsunuz."
+    },
+    {
+     "konu": "Olumlu: kullanım ipucu",
+     "yildiz": 5,
+     "metin": "termosa öncesinde sıcak su koyup kapağı kapalı bekletirseniz performansı baya artıyor"
+    }
+   ]
+  },
+  {
+   "id": "764617800",
+   "kisa": "Karaca Rainbow",
+   "marka": "Karaca",
+   "ad": "Karaca Rainbow Paslanmaz Çelik Termos 500 ml",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1496/product/media/images/prod/QC/20240822/12/b0cefd1d-3849-319f-a531-d13938aff7d6/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/karaca/rainbow-krem-paslanmaz-celik-termos-500ml-8-saate-kadar-sicak-soguk-tutma-p-764617800",
+   "yazili": 1427,
+   "yildiz": [
+    246,
+    64,
+    76,
+    172,
+    869
+   ],
+   "ort": 3.95,
+   "onerilen_ort": 4.91,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "isi": 0.65,
+    "sizdirma": 0.13,
+    "kapak": 0.18,
+    "zamanla": 0.04,
+    "orijinal": 0.05,
+    "hasar": 0.03,
+    "kaplama": 0.01,
+    "koku": 0.05,
+    "fiyat": 0.08,
+    "vaat": 0.07,
+    "paketSoz": 0.01,
+    "gosterge": 0.0
+   },
+   "olumlu": {
+    "isi": 0.28,
+    "sizdirmaz": 0.02,
+    "kargo": 0.18,
+    "hediye": 0.07,
+    "tasarim": 0.15,
+    "boyut": 0.12,
+    "baglam": 0.1,
+    "bebek": 0.11,
+    "orijinal": 0.0
+   },
+   "dikkat": [
+    "Başlıktaki \"8 saat\" iddiası şikâyetlerin odağında. Pek çok alıcı 1-3 saatte soğuduğunu yazıyor.",
+    "Dış yüzey ısınıyorsa yalıtım arızalı olabilir. İlk gün kaynar suyla dene, iade süresini kaçırma.",
+    "Kapak tam oturmayınca akıtma ve çatlak kapak şikâyetleri var."
+   ],
+   "ders": [
+    "Puanı en çok düşüren şey, vaat edilen süre ile yaşanan arasındaki fark.",
+    "İki adet alıp birinin iyi, diğerinin kötü çıktığını yazanlar var. Tutarsız kalite marka güvenini zedeliyor."
+   ],
+   "alinti": [
+    {
+     "konu": "Yazılan süre tutmuyor",
+     "yildiz": 2,
+     "metin": "2 saat sonra soğuyo asla 8 saate kadar tutmuyo"
+    },
+    {
+     "konu": "Isıyı tutmuyor",
+     "yildiz": 1,
+     "metin": "ürünü beğenmedim. Dışı sıcak oluyor tutamıyorsunuz. Hemen ılıklaştı su. İade edeceğim."
+    },
+    {
+     "konu": "Isıyı tutmuyor",
+     "yildiz": 1,
+     "metin": "bebeğimiz için mama suyu taşımak amacıyla aldık fakat 2 saat bile dayanmadan soğutuyor hiç tavsiye etmiyorum"
+    },
+    {
+     "konu": "Sızdırma / akıtma",
+     "yildiz": 1,
+     "metin": "Kapak kısmı kapanmıyor çantama döküldü. telefonum bozuldu bu ürün yüzünden"
+    }
+   ]
+  },
+  {
+   "id": "772111095",
+   "kisa": "Karaca Skyfall",
+   "marka": "Karaca",
+   "ad": "Karaca Skyfall Çelik Sızdırmaz Termos 350 ml",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1654/product/media/images/prod/PIM/20250326/10/b30279de-3188-405f-a31c-0c330abc1cd5/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/karaca/skyfall-celik-sizdirmaz-termos-350-ml-siyah-p-772111095",
+   "yazili": 806,
+   "yildiz": [
+    36,
+    19,
+    37,
+    86,
+    628
+   ],
+   "ort": 4.55,
+   "onerilen_ort": 4.97,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 55,
+   "sikayet": {
+    "isi": 0.51,
+    "sizdirma": 0.04,
+    "kapak": 0.15,
+    "zamanla": 0.33,
+    "orijinal": 0.05,
+    "hasar": 0.07,
+    "kaplama": 0.11,
+    "koku": 0.04,
+    "fiyat": 0.02,
+    "vaat": 0.05,
+    "paketSoz": 0.0,
+    "gosterge": 0.0
+   },
+   "olumlu": {
+    "isi": 0.48,
+    "sizdirmaz": 0.1,
+    "kargo": 0.19,
+    "hediye": 0.03,
+    "tasarim": 0.11,
+    "boyut": 0.2,
+    "baglam": 0.15,
+    "bebek": 0.03,
+    "orijinal": 0.0
+   },
+   "dikkat": [
+    "İlk haftalarda memnun olan alıcıların bir kısmı birkaç ay sonra soğutmaya başladığını yazıyor.",
+    "Boya çiziliyor ve soyulabiliyor. Bulaşık makinesinde yıkama şikâyet konusu.",
+    "Bazı ürünlerde Karaca logosu olmaması alıcıları tedirgin etmiş."
+   ],
+   "ders": [
+    "Kategori lideri bile zamanla bozulmaktan kaybediyor. Uzun süreli ısı garantisi güçlü bir fark yaratır.",
+    "Logo gibi küçük bir eksik \"sahte mi?\" sorusunu doğuruyor. Ürün üzerinde marka kimliği net olmalı."
+   ],
+   "alinti": [
+    {
+     "konu": "Zamanla bozulma",
+     "yildiz": 1,
+     "metin": "Daha 1 ay oldu kullanalı soğutmaya başladı"
+    },
+    {
+     "konu": "Orijinallik / garanti",
+     "yildiz": 1,
+     "metin": "Bana gelen üründe Karaca amblemi yok sahte falan mı anlamadım herkese o şekilde gitmiş"
+    },
+    {
+     "konu": "Boya soyulması / pas",
+     "yildiz": 1,
+     "metin": "Makinede yıkadım bir kere soyuldu hemen"
+    },
+    {
+     "konu": "Olumlu: ısı",
+     "yildiz": 5,
+     "metin": "sabah 7 de kahve koyup okula götürüyorum akşamüstü 5 gibi yeni soğumaya başlıyor.. çok çok iyi bir ürün alın bence"
+    }
+   ]
+  },
+  {
+   "id": "257539628",
+   "kisa": "Espressolab",
+   "marka": "Espressolab",
+   "ad": "Espressolab No:36 Paslanmaz Çelik Termos 500 ml",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1780/prod/QC_ENRICHMENT/20251027/15/ee1fc3b4-1a3d-37c3-81ef-1759ef8024b3/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/espressolab/beyaz-tutacakli-paslanmaz-celik-termos-no-36-500-ml-vakumlu-sizdirmaz-termos-p-257539628",
+   "yazili": 870,
+   "yildiz": [
+    67,
+    22,
+    47,
+    123,
+    611
+   ],
+   "ort": 4.37,
+   "onerilen_ort": 4.97,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 89,
+   "sikayet": {
+    "isi": 0.22,
+    "sizdirma": 0.34,
+    "kapak": 0.2,
+    "zamanla": 0.13,
+    "orijinal": 0.02,
+    "hasar": 0.06,
+    "kaplama": 0.1,
+    "koku": 0.12,
+    "fiyat": 0.01,
+    "vaat": 0.04,
+    "paketSoz": 0.08,
+    "gosterge": 0.01
+   },
+   "olumlu": {
+    "isi": 0.28,
+    "sizdirmaz": 0.09,
+    "kargo": 0.34,
+    "hediye": 0.29,
+    "tasarim": 0.15,
+    "boyut": 0.08,
+    "baglam": 0.05,
+    "bebek": 0.07,
+    "orijinal": 0.0
+   },
+   "dikkat": [
+    "En sık sorun sızdırma. Çantaya koymadan önce ters çevirip dene.",
+    "Kapak contasında ve vida kısmında paslanma şikâyetleri var.",
+    "Plastik koku ve tat şikâyeti diğer ürünlere göre daha sık."
+   ],
+   "ders": [
+    "Söz verilen hediye kahve, not ya da hediye paketi eksik gelince olumlu deneyim şikâyete dönüyor.",
+    "Bilinen marka beklentiyi yükseltiyor. Sızdırma bu beklentiyle sert cezalandırılıyor."
+   ],
+   "alinti": [
+    {
+     "konu": "Paket / hediye sözü",
+     "yildiz": 1,
+     "metin": "Paket yırtık içinde ikram olan kavfe yoktu"
+    },
+    {
+     "konu": "Boya soyulması / pas",
+     "yildiz": 1,
+     "metin": "Termosu alalı bir ay oldu kapağı paslandı"
+    },
+    {
+     "konu": "Paket / hediye sözü",
+     "yildiz": 1,
+     "metin": "4 Termos sipariş verdim. Sadece 1 tane hediye kahve gönderilmiş."
+    },
+    {
+     "konu": "Koku / tat",
+     "yildiz": 1,
+     "metin": "Plastik kokuyor sıcak içecek koyduğunuzda asla içilmiyor almayın."
+    }
+   ]
+  },
+  {
+   "id": "748758153",
+   "kisa": "Vivien Home",
+   "marka": "Vivien Home",
+   "ad": "Vivien Home Dijital Sıcaklık Göstergeli Termos 500 ml",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1776/prod/QC_ENRICHMENT/20251022/00/231d0053-2e3b-3917-82ab-cb6d071e2ef6/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/vivien-home/siyah-dijital-sicaklik-gostergeli-termos-500ml-p-748758153",
+   "yazili": 1153,
+   "yildiz": [
+    280,
+    80,
+    115,
+    132,
+    546
+   ],
+   "ort": 3.51,
+   "onerilen_ort": 4.91,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "isi": 0.42,
+    "sizdirma": 0.05,
+    "kapak": 0.09,
+    "zamanla": 0.13,
+    "orijinal": 0.01,
+    "hasar": 0.1,
+    "kaplama": 0.15,
+    "koku": 0.08,
+    "fiyat": 0.05,
+    "vaat": 0.02,
+    "paketSoz": 0.01,
+    "gosterge": 0.19
+   },
+   "olumlu": {
+    "isi": 0.29,
+    "sizdirmaz": 0.01,
+    "kargo": 0.23,
+    "hediye": 0.03,
+    "tasarim": 0.05,
+    "boyut": 0.03,
+    "baglam": 0.07,
+    "bebek": 0.19,
+    "orijinal": 0.0
+   },
+   "dikkat": [
+    "Dijital sıcaklık göstergesinin çalışmadığı ya da kısa sürede bozulduğu sık yazılıyor. Teslimde ekranı kontrol et.",
+    "İç yüzeyde paslanma, küf ve kalıcı koku şikâyetleri var.",
+    "Isı tutma süresi kısa. Uzun saat beklentisine uygun değil."
+   ],
+   "ders": [
+    "Fark yaratan özellik arızalanınca en çok şikâyet edilen şey oluyor. Ek özellik ana işlevden önce test edilmeli.",
+    "Bebek maması için alanlar büyük bir kitle. Bu segmente özel, güvenilir bir ürün için boşluk var."
+   ],
+   "alinti": [
+    {
+     "konu": "Dijital gösterge arızası",
+     "yildiz": 1,
+     "metin": "‼️dijital ekran çalışmıyor bozuk geldi sakın almayın ‼️"
+    },
+    {
+     "konu": "Boya soyulması / pas",
+     "yildiz": 1,
+     "metin": "paslandı.yazık günah çocuğa okul için almıştım"
+    },
+    {
+     "konu": "Dijital gösterge arızası",
+     "yildiz": 2,
+     "metin": "termos sıcaklığı koruyor ama dijital göstergesi çalışmıyor."
+    },
+    {
+     "konu": "Boya soyulması / pas",
+     "yildiz": 1,
+     "metin": "bebek maması için kullanıyorum sıcaklıgı iyi ama küflendi kenarlarları iki ay olmadı alalı"
+    }
+   ]
+  },
+  {
+   "id": "127482743",
+   "kisa": "Sedef Silver",
+   "marka": "Sedef Silver",
+   "ad": "Sedef Silver 304 Çelik Termos Bardak 500 ml",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1618/prod/QC/20241226/18/b1160709-4937-3a26-87db-47080a16772f/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/sedef-silver/304-pazlanmaz-celik-500-ml-kaydirmaz-lastikli-termos-bardak-mug-arac-kahve-cay-thermos-549-p-127482743",
+   "yazili": 1103,
+   "yildiz": [
+    129,
+    54,
+    91,
+    129,
+    700
+   ],
+   "ort": 4.1,
+   "onerilen_ort": 4.96,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "isi": 0.44,
+    "sizdirma": 0.3,
+    "kapak": 0.33,
+    "zamanla": 0.11,
+    "orijinal": 0.0,
+    "hasar": 0.02,
+    "kaplama": 0.03,
+    "koku": 0.09,
+    "fiyat": 0.09,
+    "vaat": 0.06,
+    "paketSoz": 0.01,
+    "gosterge": 0.0
+   },
+   "olumlu": {
+    "isi": 0.24,
+    "sizdirmaz": 0.06,
+    "kargo": 0.43,
+    "hediye": 0.35,
+    "tasarim": 0.15,
+    "boyut": 0.03,
+    "baglam": 0.07,
+    "bebek": 0.0,
+    "orijinal": 0.0
+   },
+   "dikkat": [
+    "Kapak sorunları baskın: kendiliğinden açılıyor, yalama oluyor, sıcak içecekle basınçla fırlayabiliyor.",
+    "Sızdırma şikâyeti yüksek. Çantada dik taşı.",
+    "Plastik koku şikâyeti var."
+   ],
+   "ders": [
+    "Hediye paketi ve not, olumlu yorumların önemli kısmını getiriyor. Düşük maliyetli, güçlü bir taktik.",
+    "Kapağın basınçla fırlaması kalite değil güvenlik sorunu. Kullanım talimatında ve sayfada ele alınmalı."
+   ],
+   "alinti": [
+    {
+     "konu": "Kapak ve mekanizma",
+     "yildiz": 1,
+     "metin": "YÜZÜME PATLADI ÜRÜN KALİTELİ DEĞİL"
+    },
+    {
+     "konu": "Kapak ve mekanizma",
+     "yildiz": 2,
+     "metin": "Ürünü alalı 15 gün oldu 1 kez kullandım kapağı yalama olmuş boşa dönüyor"
+    },
+    {
+     "konu": "Kapak ve mekanizma",
+     "yildiz": 1,
+     "metin": "çok kötü iki kere patladı birinde ayağım yandı."
+    },
+    {
+     "konu": "Kapak ve mekanizma",
+     "yildiz": 2,
+     "metin": "Kapağı sürekli açılıyor."
+    }
+   ]
+  },
+  {
+   "id": "81878270",
+   "kisa": "WarmShield",
+   "marka": "WarmShield",
+   "ad": "WarmShield Çift Katmanlı Termos Bardak 400 ml",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty755/product/media/images/20230228/8/291509116/138453915/1/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/warmshield/mat-siyah-cift-katmanli-paslanmaz-celik-termos-bardak-400-ml-kahve-cay-termosu-p-81878270",
+   "yazili": 905,
+   "yildiz": [
+    121,
+    58,
+    86,
+    146,
+    494
+   ],
+   "ort": 3.92,
+   "onerilen_ort": 4.92,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "isi": 0.34,
+    "sizdirma": 0.47,
+    "kapak": 0.26,
+    "zamanla": 0.09,
+    "orijinal": 0.01,
+    "hasar": 0.06,
+    "kaplama": 0.11,
+    "koku": 0.05,
+    "fiyat": 0.08,
+    "vaat": 0.07,
+    "paketSoz": 0.0,
+    "gosterge": 0.01
+   },
+   "olumlu": {
+    "isi": 0.28,
+    "sizdirmaz": 0.07,
+    "kargo": 0.24,
+    "hediye": 0.11,
+    "tasarim": 0.07,
+    "boyut": 0.03,
+    "baglam": 0.09,
+    "bebek": 0.01,
+    "orijinal": 0.0
+   },
+   "dikkat": [
+    "En büyük sorun sızdırma. \"Sızdırmaz\" yazısına rağmen ağızdan ve kapaktan akıtma sık.",
+    "Dış kaplamanın soyulduğu yazılıyor.",
+    "Kapak çok sert, tek elle açmak zor."
+   ],
+   "ders": [
+    "Kesin bir iddia tutmazsa alaycı yorumlar geliyor. İddiayı test etmeden yazma.",
+    "Fiyat-performans algısı olumlu, ama kapak kalitesi bu avantajı siliyor."
+   ],
+   "alinti": [
+    {
+     "konu": "Sızdırma / akıtma",
+     "yildiz": 1,
+     "metin": "Sızdırmaz kapak sızdırıyor 👍"
+    },
+    {
+     "konu": "Yazılan süre tutmuyor",
+     "yildiz": 1,
+     "metin": "üstünde 6 saat yazıyor 2 saatte soğudu çayım"
+    },
+    {
+     "konu": "Kapak ve mekanizma",
+     "yildiz": 1,
+     "metin": "Tek elle kullanıma uygun değil. Kapak çok sert, tek elle açılamaz."
+    },
+    {
+     "konu": "Boya soyulması / pas",
+     "yildiz": 1,
+     "metin": "2 hafta olmadan soyulmaya başladı"
+    }
+   ]
+  },
+  {
+   "id": "112084901",
+   "kisa": "MissCafe",
+   "marka": "MissCafe",
+   "ad": "MissCafe Snape Filtreli Termos Bardak 380 ml",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1909/prod/QC_ENRICHMENT/20260621/12/c18e61b2-f649-3a20-9b54-afb887012c3f/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/misscafe/snape-380ml-filtreli-cift-katmanli-mug-termos-bardak-mat-siyah-p-112084901",
+   "yazili": 927,
+   "yildiz": [
+    112,
+    40,
+    79,
+    141,
+    555
+   ],
+   "ort": 4.06,
+   "onerilen_ort": 4.94,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "isi": 0.33,
+    "sizdirma": 0.42,
+    "kapak": 0.3,
+    "zamanla": 0.18,
+    "orijinal": 0.02,
+    "hasar": 0.02,
+    "kaplama": 0.06,
+    "koku": 0.04,
+    "fiyat": 0.06,
+    "vaat": 0.02,
+    "paketSoz": 0.04,
+    "gosterge": 0.0
+   },
+   "olumlu": {
+    "isi": 0.34,
+    "sizdirmaz": 0.07,
+    "kargo": 0.25,
+    "hediye": 0.16,
+    "tasarim": 0.1,
+    "boyut": 0.14,
+    "baglam": 0.15,
+    "bebek": 0.02,
+    "orijinal": 0.0
+   },
+   "dikkat": [
+    "Kapak menteşesi, yayı ve düğmesi kısa sürede bozulabiliyor.",
+    "Sızdırma ve \"çantama döküldü\" şikâyeti sık.",
+    "Filtre ve süzgeçte paslanma şikâyeti var."
+   ],
+   "ders": [
+    "Satıcının ilgisi ve hediye notu olumlu karşılanıyor, ama mekanik parçalardaki zayıflık bunu boşa çıkarıyor.",
+    "Sayfadaki görselle gelen ürün uyuşmazsa (filtre sayısı, baskı) güven kayboluyor."
+   ],
+   "alinti": [
+    {
+     "konu": "Sızdırma / akıtma",
+     "yildiz": 1,
+     "metin": "akıtıyor tüm çantamı mahvetti"
+    },
+    {
+     "konu": "Kapak ve mekanizma",
+     "yildiz": 2,
+     "metin": "Kapağını iyice sıkmam lazım yoksa kaçırıyor. Bayanlar tam kapatamaz kuvvet gerek"
+    },
+    {
+     "konu": "Kapak ve mekanizma",
+     "yildiz": 2,
+     "metin": "kapak yayı 20 günde kırildı."
+    },
+    {
+     "konu": "Boya soyulması / pas",
+     "yildiz": 1,
+     "metin": "paslanmaz çelik süzgeç diyor bi ayı dolmadi süzgeç komple pas tuttu"
+    }
+   ]
+  }
+ ]
+}

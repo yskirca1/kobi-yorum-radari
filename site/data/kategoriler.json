@@ -1,0 +1,98 @@
+[
+ {
+  "id": "termos",
+  "ad": "Termos bardak",
+  "ust": "Mutfak ve outdoor",
+  "durum": "hazir",
+  "urun": 8,
+  "yorum": 1544,
+  "esanlam": [
+   "termos",
+   "termos bardak",
+   "matara",
+   "kahve bardağı",
+   "mug",
+   "thermos",
+   "seyahat kupası",
+   "termos kupa"
+  ],
+  "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1618/prod/QC/20241226/18/b1160709-4937-3a26-87db-47080a16772f/1_org_zoom.jpg"
+ },
+ {
+  "id": "bebek-arabasi",
+  "ad": "Bebek arabası",
+  "ust": "Anne ve bebek",
+  "durum": "yakinda",
+  "esanlam": [
+   "bebek arabası",
+   "puset",
+   "travel sistem"
+  ]
+ },
+ {
+  "id": "telefon-kilifi",
+  "ad": "Telefon kılıfı",
+  "ust": "Elektronik aksesuar",
+  "durum": "yakinda",
+  "esanlam": [
+   "telefon kılıfı",
+   "kılıf",
+   "iphone kılıf"
+  ]
+ },
+ {
+  "id": "dogal-sabun",
+  "ad": "Doğal sabun",
+  "ust": "Kozmetik",
+  "durum": "yakinda",
+  "esanlam": [
+   "doğal sabun",
+   "sabun",
+   "el yapımı sabun"
+  ]
+ },
+ {
+  "id": "kedi-tirmalama",
+  "ad": "Kedi tırmalama tahtası",
+  "ust": "Evcil hayvan",
+  "durum": "yakinda",
+  "esanlam": [
+   "kedi tırmalama",
+   "tırmalama tahtası",
+   "kedi"
+  ]
+ },
+ {
+  "id": "spor-tayt",
+  "ad": "Spor tayt",
+  "ust": "Giyim",
+  "durum": "yakinda",
+  "esanlam": [
+   "tayt",
+   "spor tayt",
+   "yoga taytı"
+  ]
+ },
+ {
+  "id": "filtre-kahve",
+  "ad": "Filtre kahve",
+  "ust": "Gıda",
+  "durum": "yakinda",
+  "esanlam": [
+   "filtre kahve",
+   "kahve",
+   "çekirdek kahve"
+  ]
+ },
+ {
+  "id": "kamp-sandalyesi",
+  "ad": "Kamp sandalyesi",
+  "ust": "Outdoor",
+  "durum": "yakinda",
+  "esanlam": [
+   "kamp sandalyesi",
+   "katlanır sandalye",
+   "kamp"
+  ]
+ }
+]
