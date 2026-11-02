@@ -1,0 +1,1055 @@
+{
+ "id": "kedi-tirmalama",
+ "ad": "Kedi tırmalama tahtası",
+ "ust": "Evcil hayvan",
+ "toplama": "2 Kasım 2026",
+ "kaynak": "Trendyol",
+ "esanlam": [
+  "kedi tırmalama",
+  "tırmalama tahtası",
+  "kedi tırmalama tahtası",
+  "tırmalama",
+  "kedi",
+  "tırmalama ağacı",
+  "kedi oyuncağı",
+  "karton tırmalama"
+ ],
+ "temalar": [
+  {
+   "id": "devrilme",
+   "ad": "Devriliyor, sallanıyor, hafif",
+   "unlem": "Kedi tırmalarken devriliyor!"
+  },
+  {
+   "id": "kurulum",
+   "ad": "Vida oturmuyor, kurulamıyor",
+   "unlem": "Vidası oturmuyor, kurulmuyor!"
+  },
+  {
+   "id": "dayaniksiz",
+   "ad": "Çabuk dağılıyor, ipi kopuyor",
+   "unlem": "Kısa sürede dağılıyor!"
+  },
+  {
+   "id": "malzeme",
+   "ad": "Kalitesiz malzeme, karton, çamaşır ipi",
+   "unlem": "Malzemesi kalitesiz!"
+  },
+  {
+   "id": "ilgisiz",
+   "ad": "Kedi kullanmadı, ilgilenmedi",
+   "unlem": "Kedi yüzüne bakmıyor!"
+  },
+  {
+   "id": "gorsel",
+   "ad": "Renk / görsel farklı geldi",
+   "unlem": "Görseldeki gibi gelmiyor!"
+  },
+  {
+   "id": "eksik",
+   "ad": "Vida / parça eksik geldi",
+   "unlem": "Parçası eksik geliyor!"
+  },
+  {
+   "id": "kirik",
+   "ad": "Kırık, ezik, hasarlı geldi",
+   "unlem": "Kırık ya da ezik geliyor!"
+  },
+  {
+   "id": "kucuk",
+   "ad": "Küçük geldi",
+   "unlem": "Göründüğünden küçük!"
+  },
+  {
+   "id": "koku",
+   "ad": "Kimyasal / yapıştırıcı kokusu",
+   "unlem": "Ağır kimyasal kokusu var!"
+  },
+  {
+   "id": "paket",
+   "ad": "Paketleme özensiz",
+   "unlem": "Paketleme özensiz!"
+  },
+  {
+   "id": "kargo",
+   "ad": "Kargo ve teslimat sorunu",
+   "unlem": "Kargo ulaşmıyor!"
+  },
+  {
+   "id": "fiyat",
+   "ad": "Fiyatına değmez",
+   "unlem": "Fiyatına değmiyor!"
+  }
+ ],
+ "olumlu_konular": [
+  {
+   "id": "kedi_sevdi",
+   "ad": "Kedi hemen sevdi, kullanıyor"
+  },
+  {
+   "id": "saglam",
+   "ad": "Sağlam, kaliteli"
+  },
+  {
+   "id": "fiyat",
+   "ad": "Fiyatı uygun"
+  },
+  {
+   "id": "catnip",
+   "ad": "Kedi otu (catnip) işe yaradı"
+  },
+  {
+   "id": "koltuk",
+   "ad": "Koltuğu, mobilyayı kurtardı"
+  },
+  {
+   "id": "kurulum",
+   "ad": "Kurulumu kolay"
+  },
+  {
+   "id": "gorsel",
+   "ad": "Görseldeki gibi"
+  },
+  {
+   "id": "boyut",
+   "ad": "Büyük, uzun"
+  },
+  {
+   "id": "tasarim",
+   "ad": "Görünüşü, rengi şık"
+  },
+  {
+   "id": "paket",
+   "ad": "Özenli paket, hızlı kargo"
+  },
+  {
+   "id": "tekrar",
+   "ad": "Bir tane daha aldı"
+  }
+ ],
+ "oneriler": [
+  {
+   "baslik": "Tabanı ağırlaştır, devrilmesin",
+   "metin": "Devrilme ve sallanma olumsuz yorumlarda %17 ile 1 numaralı sorun; 82-90 cm uzun modellerde %32'ye çıkıyor (en yüksek üründe %41). Kedi devrilen tahtadan korkup bir daha yanaşmıyor. Daha geniş ve ağır taban, ya da duvara sabitleme aparatı en net ayrışma."
+  },
+  {
+   "baslik": "Vidayı ve kurulumu sağlama al",
+   "metin": "Vidanın oturmaması, boş dönmesi ve kurulamama şikâyeti %16, uzun modellerde %26. Göndermeden önce bir adet kurup denemek, vida deliğine metal somun koymak ve resimli kurulum kâğıdı eklemek bu şikâyeti büyük ölçüde bitirir."
+  },
+  {
+   "baslik": "Paketten eksik parça çıkmasın",
+   "metin": "Vida ya da parça eksik gelme oranı %8; yavru kedi modelinde %20. Eksik vida yüzünden ürün kurulmadan kalıyor ve müşteri 1 yıldız veriyor. Paketleme sırasında parça kontrol listesi ve yedek vida koymak ucuz bir çözüm."
+  },
+  {
+   "baslik": "İpi ve malzemeyi sağlam seç",
+   "metin": "Çabuk dağılma ve ipin kopması %13, kalitesiz malzeme şikâyeti %13. En ucuz modellerde 1-2 yıldız oranı %24-29'a çıkıyor; \"çamaşır ipi gibi\" ve \"kartondan yapılmış\" yorumları sık. Sisal ip kalınlığını ve malzemeyi ilanda yazmak, kalitesizlik algısını önler."
+  },
+  {
+   "baslik": "Görseldeki ürünü gönder, ölçüyü göster",
+   "metin": "Renk ve görsel farkı %9, küçük gelme %7. \"Karışık renk\" gönderimi ve fotoğraftaki topun gelmemesi en sık örnekler. Ölçüyü bir kediyle birlikte fotoğraflamak ve rengi müşteriye seçtirmek bu şikâyetleri azaltır."
+  },
+  {
+   "baslik": "Kedinin ilgisini çek",
+   "metin": "Olumsuz yorumların %11'i \"kedim kullanmadı\". Kedi otu (catnip) ve oyuncak top ürünle birlikte geliyor ama yorumlarda neredeyse hiç anılmıyor; kullanım ipucu (kedi otunu sürün, kedinin dinlendiği yere koyun) eklemek bu hayal kırıklığını azaltır."
+  },
+  {
+   "baslik": "Bu pazar tamamen KOBİ'lerin",
+   "metin": "Trendyol'da en çok değerlendirilen tırmalama tahtalarının tamamı KOBİ ürünü; Trixie, Karlie gibi büyük markaların ürünlerinde neredeyse hiç yorum yok. Ağır tabanlı, eksiksiz ve sağlam bir ürünle kısa sürede öne çıkmak mümkün."
+  }
+ ],
+ "urunler": [
+  {
+   "id": "37656674",
+   "kisa": "Genel Markalar Karışık Renk",
+   "marka": "Genel Markalar",
+   "ad": "Kedi Tırmalama Tahtası, karışık renk",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1851/prod/QC_ENRICHMENT/20260410/22/8edaed33-abd5-3eea-95ad-e345e1a1f158/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/genel-markalar/kedi-tirmalama-tahtasi-karisik-renk-p-37656674",
+   "yazili": 2175,
+   "yildiz": [
+    412,
+    148,
+    223,
+    278,
+    1114
+   ],
+   "ort": 3.71,
+   "onerilen_ort": 4.96,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "devrilme": 0.05,
+    "kurulum": 0.11,
+    "dayaniksiz": 0.17,
+    "malzeme": 0.1,
+    "ilgisiz": 0.16,
+    "gorsel": 0.1,
+    "eksik": 0,
+    "kirik": 0.07,
+    "kucuk": 0.04,
+    "koku": 0.01,
+    "paket": 0.05,
+    "kargo": 0,
+    "fiyat": 0.01
+   },
+   "olumlu": {
+    "kedi_sevdi": 0.34,
+    "saglam": 0.39,
+    "fiyat": 0.26,
+    "catnip": 0,
+    "koltuk": 0.07,
+    "kurulum": 0.01,
+    "gorsel": 0.01,
+    "boyut": 0.06,
+    "tasarim": 0.12,
+    "paket": 0.27,
+    "tekrar": 0.03
+   },
+   "dikkat": [
+    "1-2 yıldız oranı %25,7: kategorinin en çok satan ama en çok şikâyet alan ürünlerinden.",
+    "İplerin birkaç kullanımda kopması ya da gevşemesi en sık şikâyet (%17).",
+    "\"Karışık renk\" gönderim yüzünden istediği rengi alamayanlar var (%10)."
+   ],
+   "ders": [
+    "En ucuz ve en çok satan model: hacim fiyatla geliyor ama dayanıksız ip ve rastgele renk 1 yıldız oranını kategorinin en üstüne taşıyor."
+   ],
+   "alinti": [
+    {
+     "konu": "dayaniksiz",
+     "yildiz": 2,
+     "metin": "aldığımıda da yamuk geldi,üç gün sonra kırıldı içinde ki şey,kedim şimdi koltuk tırmalıyor, teşekkür ederim satıcıya"
+    },
+    {
+     "konu": "ilgisiz",
+     "yildiz": 2,
+     "metin": "Güzel bence ama benim kedim bozuk sanırım kullanmıyo"
+    },
+    {
+     "konu": "kurulum",
+     "yildiz": 2,
+     "metin": "Üstünde delik yok kendim delip taktım kedimin de zerre ilgisini çekmedi"
+    }
+   ]
+  },
+  {
+   "id": "376392025",
+   "kisa": "Pugalo 82 cm Krem",
+   "marka": "Pugalo",
+   "ad": "Pugalo 82 cm İki Katlı Catnipli Tırmalama Tahtası, krem",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1498/product/media/images/prod/QC/20240823/19/18f711bb-e721-3141-b426-ea280b0c7b33/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/pugalo/82-cm-krem-iki-katli-kedi-tirmalama-tahtasi-catnipli-tirmalama-tahtasi-minder-yuzey-minder-yuzey-p-376392025",
+   "yazili": 1854,
+   "yildiz": [
+    102,
+    46,
+    86,
+    208,
+    1412
+   ],
+   "ort": 4.5,
+   "onerilen_ort": 4.96,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "devrilme": 0.41,
+    "kurulum": 0.25,
+    "dayaniksiz": 0.07,
+    "malzeme": 0.06,
+    "ilgisiz": 0.12,
+    "gorsel": 0.02,
+    "eksik": 0.14,
+    "kirik": 0.07,
+    "kucuk": 0.04,
+    "koku": 0.08,
+    "paket": 0.04,
+    "kargo": 0.02,
+    "fiyat": 0.01
+   },
+   "olumlu": {
+    "kedi_sevdi": 0.62,
+    "saglam": 0.43,
+    "fiyat": 0.12,
+    "catnip": 0,
+    "koltuk": 0,
+    "kurulum": 0.23,
+    "gorsel": 0.04,
+    "boyut": 0.04,
+    "tasarim": 0.07,
+    "paket": 0.29,
+    "tekrar": 0.01
+   },
+   "dikkat": [
+    "Olumsuz yorumların %41'i devrilmeden: hafif taban yüzünden kedi atlayınca devriliyor.",
+    "Vida yerinin bol olması ve sallanma (%25), eksik vida ya da parça (%14) sık yazılıyor.",
+    "Kimyasal ya da yapıştırıcı kokusu şikâyeti var (%8)."
+   ],
+   "ders": [
+    "Kategorinin en sevilen ürünü (önerilen yorumların %62'si \"kedim hemen sevdi\"); daha ağır bir taban tek başına en büyük şikâyeti çözerdi."
+   ],
+   "alinti": [
+    {
+     "konu": "devrilme",
+     "yildiz": 1,
+     "metin": "biraz hafif kedimiz üstüne atlayınca devriliyor o yüzden pek sevmedi"
+    },
+    {
+     "konu": "kurulum",
+     "yildiz": 2,
+     "metin": "Alt tarafın vida yeri çok bol ne kadar sıkarsak sıkalım sallanıyor"
+    },
+    {
+     "konu": "eksik",
+     "yildiz": 1,
+     "metin": "Eksik olan parçayıda gönderirmisiniz bugün bi an önce kurayım lütfen bi ilgilenirmisiniz artık iademi yapayım."
+    }
+   ]
+  },
+  {
+   "id": "376388992",
+   "kisa": "Pugalo 82 cm Gri",
+   "marka": "Pugalo",
+   "ad": "Pugalo 82 cm İki Katlı Catnipli Tırmalama Tahtası, gri",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1536/product/media/images/prod/QC/20240827/21/f1962f14-2e98-3c03-950b-a051e18138c3/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/pugalo/82-cm-gri-iki-katli-kedi-tirmalama-tahtasi-catnipli-tirmalama-tahtasi-minder-yuzey-p-376388992",
+   "yazili": 1549,
+   "yildiz": [
+    52,
+    35,
+    68,
+    142,
+    1252
+   ],
+   "ort": 4.62,
+   "onerilen_ort": 4.96,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 87,
+   "sikayet": {
+    "devrilme": 0.32,
+    "kurulum": 0.34,
+    "dayaniksiz": 0.06,
+    "malzeme": 0.07,
+    "ilgisiz": 0.07,
+    "gorsel": 0.06,
+    "eksik": 0.13,
+    "kirik": 0.06,
+    "kucuk": 0.05,
+    "koku": 0.09,
+    "paket": 0.06,
+    "kargo": 0.01,
+    "fiyat": 0.01
+   },
+   "olumlu": {
+    "kedi_sevdi": 0.43,
+    "saglam": 0.49,
+    "fiyat": 0.06,
+    "catnip": 0.01,
+    "koltuk": 0,
+    "kurulum": 0.25,
+    "gorsel": 0.02,
+    "boyut": 0.05,
+    "tasarim": 0.07,
+    "paket": 0.3,
+    "tekrar": 0.02
+   },
+   "dikkat": [
+    "Kurulum şikâyeti oranı %34, kategorinin en yükseği: vidalar boş dönüyor, ayaklar tablaya oturmuyor.",
+    "Devrilme oranı %32; tek taraflı tasarımda kedi en üstteyken devriliyor.",
+    "Eksik parça ya da vida %13."
+   ],
+   "ders": [
+    "Aynı ürünün farklı rengi, aynı şikâyetler: sorun renkte değil, tabanın ağırlığında ve vida kalitesinde."
+   ],
+   "alinti": [
+    {
+     "konu": "kurulum",
+     "yildiz": 1,
+     "metin": "Malesef alttaki tablaya ayaklar oturmadı. Vidalar boş döndü. Oysaki çok beğenmiştim. İade etmek zorunda kalıyorum"
+    },
+    {
+     "konu": "devrilme",
+     "yildiz": 2,
+     "metin": "Kedi tırmalarken devriliyor sabit durmuyor... Enazından en alta gelecek olan tahta daha ağır ve kaliteli olabilir di.."
+    },
+    {
+     "konu": "eksik",
+     "yildiz": 1,
+     "metin": "Ürünü değişim yada eksik parça göndermenizi istiyorum"
+    }
+   ]
+  },
+  {
+   "id": "133155220",
+   "kisa": "PETiTOYS 42 cm",
+   "marka": "PETiTOYS",
+   "ad": "PETiTOYS Gri Kedi Tırmalama Tahtası 42 cm",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1486/product/media/images/prod/QC/20240817/02/4f63651f-c2bc-35ae-a717-12eb5e33222d/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/petitoys/gri-kedi-tirmalama-tahtasi-42cm-p-133155220",
+   "yazili": 950,
+   "yildiz": [
+    199,
+    74,
+    119,
+    129,
+    429
+   ],
+   "ort": 3.54,
+   "onerilen_ort": 4.92,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "devrilme": 0.1,
+    "kurulum": 0.04,
+    "dayaniksiz": 0.19,
+    "malzeme": 0.14,
+    "ilgisiz": 0.1,
+    "gorsel": 0.03,
+    "eksik": 0.03,
+    "kirik": 0.04,
+    "kucuk": 0.07,
+    "koku": 0.02,
+    "paket": 0.01,
+    "kargo": 0.01,
+    "fiyat": 0
+   },
+   "olumlu": {
+    "kedi_sevdi": 0.34,
+    "saglam": 0.2,
+    "fiyat": 0.25,
+    "catnip": 0,
+    "koltuk": 0.04,
+    "kurulum": 0.02,
+    "gorsel": 0.03,
+    "boyut": 0.1,
+    "tasarim": 0.01,
+    "paket": 0.22,
+    "tekrar": 0
+   },
+   "dikkat": [
+    "1-2 yıldız oranı %28,7 ile en yüksek.",
+    "Çabuk yıpranma, ipin açılıp dökülmesi en sık şikâyet (%19).",
+    "Alt tablası basit ve hafif: kedi tırmalarken düşüyor (%10)."
+   ],
+   "ders": [
+    "Düşük fiyat beklentiyi düşürmüyor: kedi birkaç günde parçalıyorsa müşteri \"ucuza kaçmışım\" diye yazıyor."
+   ],
+   "alinti": [
+    {
+     "konu": "dayaniksiz",
+     "yildiz": 1,
+     "metin": "Ürün göründüğü gibi yalnız kullandıkça çok çabuk yıpranma var"
+    },
+    {
+     "konu": "malzeme",
+     "yildiz": 2,
+     "metin": "merhaba,kenari yırtık geldi. Alt kısmı çok basit .Yinede teşekkürler"
+    },
+    {
+     "konu": "devrilme",
+     "yildiz": 1,
+     "metin": "Çok kalitesi kedimiz tırmalama yaparken düşüyor"
+    }
+   ]
+  },
+  {
+   "id": "113482045",
+   "kisa": "Genel Markalar Katlı Yavru",
+   "marka": "Genel Markalar",
+   "ad": "Katlı Yavru Kedi Tırmalama Tahtası, karışık renk",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1741/prod/QC_ENRICHMENT/20250901/10/7117f8db-4c94-375c-bba6-429f259c47eb/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/genel-markalar/katli-yavru-kedi-tirmalama-tahtasi-karisik-renk-sevk-edilecektir-p-113482045",
+   "yazili": 989,
+   "yildiz": [
+    134,
+    71,
+    91,
+    142,
+    551
+   ],
+   "ort": 3.92,
+   "onerilen_ort": 4.97,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "devrilme": 0.04,
+    "kurulum": 0.19,
+    "dayaniksiz": 0.09,
+    "malzeme": 0.13,
+    "ilgisiz": 0.07,
+    "gorsel": 0.15,
+    "eksik": 0.2,
+    "kirik": 0.08,
+    "kucuk": 0.2,
+    "koku": 0,
+    "paket": 0.04,
+    "kargo": 0.03,
+    "fiyat": 0
+   },
+   "olumlu": {
+    "kedi_sevdi": 0.49,
+    "saglam": 0.29,
+    "fiyat": 0.12,
+    "catnip": 0,
+    "koltuk": 0,
+    "kurulum": 0.21,
+    "gorsel": 0.03,
+    "boyut": 0.09,
+    "tasarim": 0.06,
+    "paket": 0.27,
+    "tekrar": 0
+   },
+   "dikkat": [
+    "Göründüğünden küçük olduğu, yetişkin kediye yetmediği yazılıyor (%20).",
+    "Vida ve parça eksik gelme oranı %20, kurulum sorunu %19.",
+    "Fotoğraftaki top ve renklerin farklı geldiği yazılıyor (%15)."
+   ],
+   "ders": [
+    "\"Yavru kedi için\" bilgisi ilanda net değilse yetişkin kedi sahibi küçük bulup 1 yıldız veriyor."
+   ],
+   "alinti": [
+    {
+     "konu": "gorsel",
+     "yildiz": 2,
+     "metin": "Kurulumu kolay. Yavru kediler için ideal. Ama bizimkinin bir topu fotoğraftan farklı geldi. Diğer topu ise eksik."
+    },
+    {
+     "konu": "kucuk",
+     "yildiz": 1,
+     "metin": "beklediğimden küçük ve kısa...yavru kediler için ideal"
+    },
+    {
+     "konu": "eksik",
+     "yildiz": 1,
+     "metin": "yani ne vidası var ne başka birşeyi eksik gelmiş ürün sağolun gercekten o kadar bekledik bide"
+    }
+   ]
+  },
+  {
+   "id": "791934603",
+   "kisa": "Rotipet Karton Koltuk",
+   "marka": "Rotipet",
+   "ad": "Rotipet Karton Kedi Tırmalama Koltuk, ceviz 59x30x25 cm",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1109/product/media/images/prod/SPM/PIM/20231225/08/9aaea5aa-2f97-39fd-bc7c-7fda9a676583/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/rotipet/karton-kedi-tirmalama-desenli-koltuk-ceviz-59x30x25cm-p-791934603",
+   "yazili": 1247,
+   "yildiz": [
+    24,
+    11,
+    33,
+    80,
+    1099
+   ],
+   "ort": 4.78,
+   "onerilen_ort": 4.99,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 35,
+   "sikayet": {
+    "devrilme": 0.03,
+    "kurulum": 0.14,
+    "dayaniksiz": 0.26,
+    "malzeme": 0.49,
+    "ilgisiz": 0.14,
+    "gorsel": 0.06,
+    "eksik": 0,
+    "kirik": 0.09,
+    "kucuk": 0.03,
+    "koku": 0.06,
+    "paket": 0,
+    "kargo": 0,
+    "fiyat": 0.06
+   },
+   "olumlu": {
+    "kedi_sevdi": 0.49,
+    "saglam": 0.16,
+    "fiyat": 0.01,
+    "catnip": 0.03,
+    "koltuk": 0.06,
+    "kurulum": 0.14,
+    "gorsel": 0,
+    "boyut": 0.06,
+    "tasarim": 0.15,
+    "paket": 0.29,
+    "tekrar": 0.07
+   },
+   "dikkat": [
+    "Olumsuz yorum az (35); bunların yarısı malzemeden: \"tırmalama kısmı kartondan\" (%49).",
+    "Kartonun kısa sürede parçalanıp evi kirlettiği yazılıyor (%26)."
+   ],
+   "ders": [
+    "Karton tırmalama 1-2 yıldız oranı en düşük ürün (%2,8): kedi seviyor, ama \"karton olduğunu bilmiyordum\" diyen müşteri için malzeme ilanda net yazılmalı."
+   ],
+   "alinti": [
+    {
+     "konu": "malzeme",
+     "yildiz": 2,
+     "metin": "tırmalama kısmı kartondan yapılmış. Bana çok sağlam gelmedi."
+    },
+    {
+     "konu": "dayaniksiz",
+     "yildiz": 1,
+     "metin": "aşırı kalitesiz sakın almayın kedimiz 5 dk da paramparça etti"
+    },
+    {
+     "konu": "kirik",
+     "yildiz": 1,
+     "metin": "Kesinlikle alınmıycak birşey monte ederken elimde kaldı kırık gelmiş ayrıca"
+    }
+   ]
+  },
+  {
+   "id": "181848325",
+   "kisa": "Pugalo 90 cm Büyük",
+   "marka": "Pugalo",
+   "ad": "Pugalo 90 cm Büyük Catnipli Tırmalama Tahtası, lacivert",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1404/product/media/images/prod/QC/20240707/08/a7249145-763d-3e21-bb16-ccd1f1ee0f03/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/pugalo/90-cm-buyuk-kedi-tirmalama-tahtasi-catnipli-uzun-tirmalama-tahtasi-minder-yuzey-lacivert-p-181848325",
+   "yazili": 978,
+   "yildiz": [
+    49,
+    23,
+    50,
+    85,
+    771
+   ],
+   "ort": 4.54,
+   "onerilen_ort": 4.98,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 72,
+   "sikayet": {
+    "devrilme": 0.19,
+    "kurulum": 0.22,
+    "dayaniksiz": 0.24,
+    "malzeme": 0.14,
+    "ilgisiz": 0.13,
+    "gorsel": 0.03,
+    "eksik": 0.07,
+    "kirik": 0.1,
+    "kucuk": 0.04,
+    "koku": 0.08,
+    "paket": 0.01,
+    "kargo": 0,
+    "fiyat": 0
+   },
+   "olumlu": {
+    "kedi_sevdi": 0.39,
+    "saglam": 0.45,
+    "fiyat": 0.05,
+    "catnip": 0,
+    "koltuk": 0.01,
+    "kurulum": 0.07,
+    "gorsel": 0.01,
+    "boyut": 0.27,
+    "tasarim": 0.02,
+    "paket": 0.34,
+    "tekrar": 0.04
+   },
+   "dikkat": [
+    "Uzun kullanımda kırılma ve ipin açılması (%24) ile kurulum ve sallanma (%22) öne çıkıyor.",
+    "Kokusu ağır bulunuyor (%8)."
+   ],
+   "ders": [
+    "Uzun model sağlamlığıyla övülüyor (%45) ve boyu seviliyor (%27); şikâyetler aylar sonra gelen yıpranmada."
+   ],
+   "alinti": [
+    {
+     "konu": "dayaniksiz",
+     "yildiz": 1,
+     "metin": "25 aralıkta aldığım ürün kırıldı. hiç memnun kalmadım. 5 yildiz verdim ki görülsün."
+    },
+    {
+     "konu": "eksik",
+     "yildiz": 1,
+     "metin": "tabelaya bağlantı vidası eksik geldi"
+    },
+    {
+     "konu": "devrilme",
+     "yildiz": 2,
+     "metin": "Ürün hemen sallanmaya başladı destek olursanız sevinirim"
+    }
+   ]
+  },
+  {
+   "id": "797262704",
+   "kisa": "Nursoft Stepli",
+   "marka": "Nursoft",
+   "ad": "Nursoft Stepli Kedi Tırmalama Tahtası",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1533/product/media/images/prod/QC/20240910/09/d40c25a3-0794-3aa8-9992-5a085261edf3/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/nursoft/stepli-kedi-tirmalama-tahtasi-p-797262704",
+   "yazili": 648,
+   "yildiz": [
+    39,
+    21,
+    43,
+    65,
+    480
+   ],
+   "ort": 4.43,
+   "onerilen_ort": 5,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 60,
+   "sikayet": {
+    "devrilme": 0.15,
+    "kurulum": 0.12,
+    "dayaniksiz": 0.05,
+    "malzeme": 0.1,
+    "ilgisiz": 0.13,
+    "gorsel": 0.13,
+    "eksik": 0.02,
+    "kirik": 0.05,
+    "kucuk": 0.1,
+    "koku": 0.03,
+    "paket": 0.02,
+    "kargo": 0.03,
+    "fiyat": 0
+   },
+   "olumlu": {
+    "kedi_sevdi": 0.33,
+    "saglam": 0.28,
+    "fiyat": 0.08,
+    "catnip": 0,
+    "koltuk": 0.02,
+    "kurulum": 0.1,
+    "gorsel": 0.08,
+    "boyut": 0.04,
+    "tasarim": 0.06,
+    "paket": 0.31,
+    "tekrar": 0.01
+   },
+   "dikkat": [
+    "Hafif olduğu için kedi patisini uzatınca devrildiği yazılıyor (%15).",
+    "Görselden küçük geldiği ve farklı göründüğü şikâyeti var (%13)."
+   ],
+   "ders": [
+    "Basamaklı tasarım görselde büyük duruyor; gerçek ölçüyü fotoğrafta bir referansla göstermek \"ufacık geldi\" yorumunu önler."
+   ],
+   "alinti": [
+    {
+     "konu": "devrilme",
+     "yildiz": 1,
+     "metin": "Ağır değil , hafif olduğu için tırmalayamıyor kediler"
+    },
+    {
+     "konu": "kucuk",
+     "yildiz": 2,
+     "metin": "Çok ufacık birşey geldi resimde daha büyük görünüyordu"
+    },
+    {
+     "konu": "devrilme",
+     "yildiz": 2,
+     "metin": "kedim tırmalamk icin patisini uzatır uzatmaz hemen devriliyor daha güç bile vermiyor oysa ki büyük birumutla almıştım"
+    }
+   ]
+  },
+  {
+   "id": "692136308",
+   "kisa": "Genel Markalar 42 cm",
+   "marka": "Genel Markalar",
+   "ad": "42 cm Kedi Tırmalama Tahtası",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1713/prod/QC_ENRICHMENT/20250719/16/2f665771-21ae-3907-bae5-9b628f84f477/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/genel-markalar/42-cm-kedi-tirmalama-tahtasi-ust-kalite-p-692136308",
+   "yazili": 449,
+   "yildiz": [
+    73,
+    36,
+    47,
+    62,
+    231
+   ],
+   "ort": 3.76,
+   "onerilen_ort": 4.93,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "devrilme": 0.16,
+    "kurulum": 0.07,
+    "dayaniksiz": 0.11,
+    "malzeme": 0.16,
+    "ilgisiz": 0.14,
+    "gorsel": 0.23,
+    "eksik": 0.05,
+    "kirik": 0.07,
+    "kucuk": 0.02,
+    "koku": 0,
+    "paket": 0.04,
+    "kargo": 0.01,
+    "fiyat": 0.02
+   },
+   "olumlu": {
+    "kedi_sevdi": 0.45,
+    "saglam": 0.34,
+    "fiyat": 0.04,
+    "catnip": 0,
+    "koltuk": 0.03,
+    "kurulum": 0.03,
+    "gorsel": 0.07,
+    "boyut": 0.06,
+    "tasarim": 0.16,
+    "paket": 0.23,
+    "tekrar": 0.03
+   },
+   "dikkat": [
+    "Görseldeki top ya da renk farklı gelme şikâyeti en yüksek (%23).",
+    "1-2 yıldız oranı %24,3; kalitesiz malzeme (%16) ve devrilme (%16) sık."
+   ],
+   "ders": [
+    "Aynı ürünü 18 satıcı satıyor; görseldeki top ve renk her satıcıda aynı gelmeyince şikâyet satıcıdan bağımsız ürüne yazılıyor."
+   ],
+   "alinti": [
+    {
+     "konu": "gorsel",
+     "yildiz": 2,
+     "metin": "fotoğrafta görünen top yoktu ve rengi farklı geldi umarım en azından kedim beğenir de kullanır.."
+    },
+    {
+     "konu": "devrilme",
+     "yildiz": 1,
+     "metin": "Ürün güzel kaliteli duruyor ama tırmalarken devriliyor kedim kullanmadı bile korkuyor devrilince"
+    },
+    {
+     "konu": "malzeme",
+     "yildiz": 1,
+     "metin": "Zayıf bir ürün, monte edildiğinde sallanıyır, kaltesiz."
+    }
+   ]
+  },
+  {
+   "id": "239272578",
+   "kisa": "Lena Pet 82 cm",
+   "marka": "Lena Pet",
+   "ad": "Lena Pet 82 cm Kedi Tırmalama Tahtası, ekru",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty677/product/media/images/20230107/22/254304897/384352442/1/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/lena-pet/82-cm-kedi-tirmalama-tahtasi-ekru-p-239272578",
+   "yazili": 259,
+   "yildiz": [
+    14,
+    4,
+    12,
+    12,
+    217
+   ],
+   "ort": 4.6,
+   "onerilen_ort": 4.96,
+   "onerilen_dusuk": 1,
+   "onerilen_n": 100,
+   "ornek_dusuk": 18,
+   "sikayet": {
+    "devrilme": 0.28,
+    "kurulum": 0.11,
+    "dayaniksiz": 0.06,
+    "malzeme": 0,
+    "ilgisiz": 0.11,
+    "gorsel": 0,
+    "eksik": 0,
+    "kirik": 0.17,
+    "kucuk": 0.06,
+    "koku": 0.06,
+    "paket": 0.06,
+    "kargo": 0.11,
+    "fiyat": 0
+   },
+   "olumlu": {
+    "kedi_sevdi": 0.34,
+    "saglam": 0.4,
+    "fiyat": 0.06,
+    "catnip": 0,
+    "koltuk": 0.01,
+    "kurulum": 0,
+    "gorsel": 0.05,
+    "boyut": 0.35,
+    "tasarim": 0.05,
+    "paket": 0.28,
+    "tekrar": 0.05
+   },
+   "dikkat": [
+    "Az olumsuz yorum (18) var; bunların %28'i devrilmeden.",
+    "Kırık gelen ürün şikâyeti var."
+   ],
+   "ders": [
+    "Az şikâyet, yüksek puan; ama uzun modellerin ortak sorunu olan devrilme burada da başı çekiyor."
+   ],
+   "alinti": [
+    {
+     "konu": "devrilme",
+     "yildiz": 1,
+     "metin": "Kedilerim tırmalamak için uzandığında malesef üstlerine devriliyor."
+    },
+    {
+     "konu": "kirik",
+     "yildiz": 1,
+     "metin": "Hediye almıştım ,Kırık çıktı kurduktan sonra anladık"
+    },
+    {
+     "konu": "devrilme",
+     "yildiz": 2,
+     "metin": "Kedim tırmalamaya çalıştığında tırmalama tahtası devriliyor kedim korkup kaçıyor."
+    }
+   ]
+  },
+  {
+   "id": "948343549",
+   "kisa": "Pugalo Kedi Yüzlü Platform",
+   "marka": "Pugalo",
+   "ad": "Pugalo Stepli Kedi Yüzlü Platform Tırmalama Tahtası",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1698/prod/QC_PREP/20250624/15/171b0af1-2844-38f9-9450-5c59cede34a5/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/pugalo/stepli-kedi-yuzlu-platform-tirmalama-tahtasi-p-948343549",
+   "yazili": 234,
+   "yildiz": [
+    16,
+    4,
+    15,
+    25,
+    174
+   ],
+   "ort": 4.44,
+   "onerilen_ort": 4.99,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 20,
+   "sikayet": {
+    "devrilme": 0.15,
+    "kurulum": 0.15,
+    "dayaniksiz": 0.2,
+    "malzeme": 0.1,
+    "ilgisiz": 0.05,
+    "gorsel": 0,
+    "eksik": 0.15,
+    "kirik": 0.1,
+    "kucuk": 0,
+    "koku": 0.05,
+    "paket": 0,
+    "kargo": 0,
+    "fiyat": 0
+   },
+   "olumlu": {
+    "kedi_sevdi": 0.35,
+    "saglam": 0.37,
+    "fiyat": 0.12,
+    "catnip": 0,
+    "koltuk": 0.04,
+    "kurulum": 0.02,
+    "gorsel": 0.11,
+    "boyut": 0.04,
+    "tasarim": 0.14,
+    "paket": 0.18,
+    "tekrar": 0
+   },
+   "dikkat": [
+    "Olumsuz yorum az (20); birkaç ayda sallanmaya başladığı ve altının koptuğu yazılıyor.",
+    "Birleştirme vidası eksik gönderimi ve görseldeki kedi yüzü yerine düz tabla gelmesi şikâyeti var."
+   ],
+   "ders": [
+    "Kedi yüzlü üst tabla görselde satışı getiriyor; gönderilen ürün görselden farklıysa en çok tepkiyi o çekiyor."
+   ],
+   "alinti": [
+    {
+     "konu": "dayaniksiz",
+     "yildiz": 1,
+     "metin": "çok sallanıyor sıkı olmasıan rağmen dik bile durmuyor artık ve 2 ay olmasına rağmen altı koptu"
+    },
+    {
+     "konu": "devrilme",
+     "yildiz": 2,
+     "metin": "hemen devrildi , kullanamadık"
+    },
+    {
+     "konu": "eksik",
+     "yildiz": 2,
+     "metin": "ürün elimize ulaştı anca birleştirici vidasını koymamış gönderici firma böyle duruyor evde"
+    }
+   ]
+  },
+  {
+   "id": "897642650",
+   "kisa": "Rotipet Karton XSmall",
+   "marka": "Rotipet",
+   "ad": "Rotipet Karton Kedi Tırmalama, kedi desenli XSmall 43x7x21 cm",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1633/prod/QC/20250205/13/fa0f734d-ebaf-32e9-92fd-2c2c5c682840/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/rotipet/karton-kedi-tirmalama-kedi-desenli-xsmall-43x7x21-cm-p-897642650",
+   "yazili": 349,
+   "yildiz": [
+    5,
+    4,
+    9,
+    20,
+    311
+   ],
+   "ort": 4.8,
+   "onerilen_ort": 4.97,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 9,
+   "sikayet": {
+    "devrilme": 0.11,
+    "kurulum": 0,
+    "dayaniksiz": 0.22,
+    "malzeme": 0.22,
+    "ilgisiz": 0.11,
+    "gorsel": 0,
+    "eksik": 0,
+    "kirik": 0,
+    "kucuk": 0.11,
+    "koku": 0,
+    "paket": 0.11,
+    "kargo": 0.11,
+    "fiyat": 0.11
+   },
+   "olumlu": {
+    "kedi_sevdi": 0.54,
+    "saglam": 0.18,
+    "fiyat": 0.04,
+    "catnip": 0.02,
+    "koltuk": 0.04,
+    "kurulum": 0,
+    "gorsel": 0,
+    "boyut": 0.05,
+    "tasarim": 0.08,
+    "paket": 0.27,
+    "tekrar": 0.05
+   },
+   "dikkat": [
+    "Yalnızca 9 olumsuz yorum var; \"kağıt gibi, iki tırmalamada dağıldı\" diyenler var.",
+    "Küçük boyu çok kedili evlerde yetersiz kalıyor."
+   ],
+   "ders": [
+    "Küçük karton tırmalama ucuz ve seviliyor; beklenti düşük olduğu için şikâyet de az."
+   ],
+   "alinti": [
+    {
+     "konu": "dayaniksiz",
+     "yildiz": 2,
+     "metin": "Kağıt gibi birşey geldi. İki tırmalama yaptı kedim ve dağıldı ürün"
+    },
+    {
+     "konu": "malzeme",
+     "yildiz": 2,
+     "metin": "Kucuk ve karton kullanisli degil bes kedim var cunku tek kediye uygun"
+    },
+    {
+     "konu": "ilgisiz",
+     "yildiz": 2,
+     "metin": "Benim kedim yüzüne bile bakmadı."
+    }
+   ]
+  }
+ ]
+}

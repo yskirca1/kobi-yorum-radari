@@ -114,6 +114,25 @@
   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1599/prod/QC/20241108/14/c480cd93-7f6d-3be4-90a6-cbbaa3d1391d/1_org_zoom.jpg"
  },
  {
+  "id": "kedi-tirmalama",
+  "ad": "Kedi tırmalama tahtası",
+  "ust": "Evcil hayvan",
+  "durum": "hazir",
+  "esanlam": [
+   "kedi tırmalama",
+   "tırmalama tahtası",
+   "kedi tırmalama tahtası",
+   "tırmalama",
+   "kedi",
+   "tırmalama ağacı",
+   "kedi oyuncağı",
+   "karton tırmalama"
+  ],
+  "urun": 12,
+  "yorum": 2001,
+  "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1498/product/media/images/prod/QC/20240823/19/18f711bb-e721-3141-b426-ea280b0c7b33/1_org_zoom.jpg"
+ },
+ {
   "id": "bebek-arabasi",
   "ad": "Bebek arabası",
   "ust": "Anne ve bebek",
@@ -122,17 +141,6 @@
    "bebek arabası",
    "puset",
    "travel sistem"
-  ]
- },
- {
-  "id": "kedi-tirmalama",
-  "ad": "Kedi tırmalama tahtası",
-  "ust": "Evcil hayvan",
-  "durum": "yakinda",
-  "esanlam": [
-   "kedi tırmalama",
-   "tırmalama tahtası",
-   "kedi"
   ]
  },
  {

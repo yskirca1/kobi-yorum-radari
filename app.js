@@ -144,6 +144,7 @@
     document.title = c.ad + ' · ReviewRadar';
     const top4 = c.tema.slice(0, 4), max = top4[0].tum;
     const seg = c.tema.filter((t) => t.id !== 'gosterge').slice(0, 5);
+    const segIki = new Set(c.urunler.map((p) => p.segment)).size > 1;
     const sort = sessionSort[id] || 'yorum';
     app.innerHTML = `
       <div class="crumbs"><a href="#/">Ana sayfa</a> / ${esc(c.ust)} / ${esc(c.ad)}</div>
@@ -173,9 +174,9 @@
       </div>
       <h2 class="sec-h">Kategori içgörüleri</h2>
       <div class="cgrid">
-        <section class="card"><h2>Müşteriler neyi seviyor?</h2><p class="muted">Olumlu yorumlarda en sık geçen konular.</p>${hbar(c.olk.slice(0, 6).map((k) => ({ ad: k.ad, v: k.tum })))}</section>
-        <section class="card"><h2>Büyük marka mı, KOBİ mi?</h2><p class="muted">Aynı sorunun iki gruptaki oranı.</p><div class="legend"><span><i style="background:var(--muted)"></i>Büyük marka</span><span><i style="background:var(--neg)"></i>KOBİ</span></div>
-          <div class="hbars">${seg.map((t) => { const m = Math.max(...seg.map((x) => Math.max(x.buyuk, x.kobi))); return `<div class="hb"><span>${esc(t.ad)}</span><span style="display:grid;gap:3px"><span class="tr"><i style="width:${(t.buyuk / m) * 100}%;background:var(--muted)"></i></span><span class="tr"><i style="width:${(t.kobi / m) * 100}%;background:var(--neg)"></i></span></span><span class="v">${pct(t.buyuk)}<br>${pct(t.kobi)}</span></div>`; }).join('')}</div></section>
+        <section class="card"${segIki ? '' : ' style="grid-column:1/-1"'}><h2>Müşteriler neyi seviyor?</h2><p class="muted">Olumlu yorumlarda en sık geçen konular.</p>${hbar(c.olk.slice(0, 6).map((k) => ({ ad: k.ad, v: k.tum })))}</section>
+        ${segIki ? `<section class="card"><h2>Büyük marka mı, KOBİ mi?</h2><p class="muted">Aynı sorunun iki gruptaki oranı.</p><div class="legend"><span><i style="background:var(--muted)"></i>Büyük marka</span><span><i style="background:var(--neg)"></i>KOBİ</span></div>
+          <div class="hbars">${seg.map((t) => { const m = Math.max(...seg.map((x) => Math.max(x.buyuk, x.kobi))); return `<div class="hb"><span>${esc(t.ad)}</span><span style="display:grid;gap:3px"><span class="tr"><i style="width:${(t.buyuk / m) * 100}%;background:var(--muted)"></i></span><span class="tr"><i style="width:${(t.kobi / m) * 100}%;background:var(--neg)"></i></span></span><span class="v">${pct(t.buyuk)}<br>${pct(t.kobi)}</span></div>`; }).join('')}</div></section>` : ''}
         <section class="card" style="grid-column:1/-1"><h2>Bu kategoriye girecek KOBİ için öneriler</h2><ol class="recs" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))">${c.oneriler.map((o) => `<li><b>${esc(o.baslik)}</b><span>${esc(o.metin)}</span></li>`).join('')}</ol></section>
       </div>`;
     const sel = document.getElementById('sort'); sel.value = sort;
@@ -240,7 +241,7 @@
     const markalar = [...new Set(P.map((p) => p.marka))].sort((a, b) => a.localeCompare(b, 'tr'));
     const tops = [...new Set(P.map((p) => p.sik[0]?.id).filter(Boolean))];
     return `<div class="f-head"><h2 style="font-size:1.1rem">Filtreler</h2><button type="button" class="linkbtn f-close" id="f-close">Kapat</button></div>`
-      + group('Satıcı tipi', 'segment', segs.map((s) => [s, s, count((p) => p.segment === s)]))
+      + (segs.length > 1 ? group('Satıcı tipi', 'segment', segs.map((s) => [s, s, count((p) => p.segment === s)])) : '')
       // Markaların çoğundan tek ürün varken marka filtresi ürün listesini tekrarlar; marka sayısı ürünlerin 3/4'ünü geçmiyorsa göster
       + (markalar.length <= P.length * 0.75 ? group('Marka', 'marka', markalar.map((m) => [m, m, count((p) => p.marka === m)])) : '')
       + group('En sık şikâyet', 'sikayet', tops.map((t) => [t, c.temaMap[t].ad, count((p) => p.sik[0]?.id === t)]))
