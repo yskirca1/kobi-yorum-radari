@@ -1,0 +1,1157 @@
+{
+ "id": "bluetooth-kulaklik",
+ "ad": "Bluetooth kulaklık",
+ "ust": "Elektronik aksesuar",
+ "esanlam": [
+  "bluetooth kulaklık",
+  "kablosuz kulaklık",
+  "kulaklık",
+  "tws",
+  "kulak içi kulaklık",
+  "airpods",
+  "earbuds",
+  "bluetooth"
+ ],
+ "toplama": "2 Kasım 2026",
+ "kaynak": "Trendyol",
+ "temalar": [
+  {
+   "id": "pil",
+   "ad": "Şarj çabuk bitiyor",
+   "unlem": "Şarjı çabuk bitiyor!"
+  },
+  {
+   "id": "sarj",
+   "ad": "Şarj olmuyor / şarj almıyor",
+   "unlem": "Şarj olmuyor, şarj almıyor!"
+  },
+  {
+   "id": "bozulma",
+   "ad": "Kısa sürede bozuldu",
+   "unlem": "Kısa sürede bozuluyor!"
+  },
+  {
+   "id": "tek",
+   "ad": "Tek taraf çalışmıyor",
+   "unlem": "Tek tarafı çalışmıyor!"
+  },
+  {
+   "id": "baglanti",
+   "ad": "Bağlantı kopuyor",
+   "unlem": "Bağlantı kopuyor, ses kesiliyor!"
+  },
+  {
+   "id": "ses",
+   "ad": "Ses az, boğuk, cızırtılı",
+   "unlem": "Sesi az, boğuk ya da cızırtılı!"
+  },
+  {
+   "id": "mikrofon",
+   "ad": "Mikrofon / telefon görüşmesi",
+   "unlem": "Görüşmede karşı taraf duymuyor!"
+  },
+  {
+   "id": "kulak",
+   "ad": "Kulağa oturmuyor, acıtıyor",
+   "unlem": "Kulağa oturmuyor, acıtıyor!"
+  },
+  {
+   "id": "vaat",
+   "ad": "Yazan özellik yok",
+   "unlem": "İlanda yazan özellik yok!"
+  },
+  {
+   "id": "farkli",
+   "ad": "Farklı / sahte ürün geldi",
+   "unlem": "Farklı ya da sahte ürün geliyor!"
+  },
+  {
+   "id": "eksik",
+   "ad": "Eksik parça / kablo yok",
+   "unlem": "Kutudan kablo ya da parça eksik çıkıyor!"
+  },
+  {
+   "id": "iade",
+   "ad": "İade ve garanti sorunu",
+   "unlem": "İade ve garanti zor!"
+  },
+  {
+   "id": "dokunmatik",
+   "ad": "Dokunmatik sorunlu",
+   "unlem": "Dokunmatiği sorunlu!"
+  },
+  {
+   "id": "yorum",
+   "ad": "Yönlendirilmiş yorum şüphesi",
+   "unlem": "Yorumlar hediyeyle yönlendiriliyor!"
+  },
+  {
+   "id": "fiyat",
+   "ad": "Fiyatına değmez",
+   "unlem": "Fiyatına değmiyor!"
+  },
+  {
+   "id": "kargo",
+   "ad": "Kargo gecikmesi / özensiz paket",
+   "unlem": "Kargo gecikiyor, paket özensiz!"
+  }
+ ],
+ "olumlu_konular": [
+  {
+   "id": "ses",
+   "ad": "Ses kalitesi iyi"
+  },
+  {
+   "id": "pil",
+   "ad": "Şarjı uzun gidiyor"
+  },
+  {
+   "id": "fp",
+   "ad": "Fiyat performans"
+  },
+  {
+   "id": "kargo",
+   "ad": "Hızlı kargo, özenli paket"
+  },
+  {
+   "id": "satici_hediye",
+   "ad": "Satıcının hediyesi (kılıf vb.)"
+  },
+  {
+   "id": "hediye_alim",
+   "ad": "Hediye / sevdiğine almış"
+  },
+  {
+   "id": "mikrofon",
+   "ad": "Görüşmede ses net"
+  },
+  {
+   "id": "baglanti",
+   "ad": "Kolay bağlanıyor, uyumlu"
+  },
+  {
+   "id": "rahat",
+   "ad": "Kulakta rahat"
+  },
+  {
+   "id": "dayaniklilik",
+   "ad": "Uzun süredir sorunsuz"
+  },
+  {
+   "id": "orijinal",
+   "ad": "\"Orijinaline benziyor\" diyor"
+  }
+ ],
+ "oneriler": [
+  {
+   "baslik": "Dayanıklılığı kanıtla, değişim garantisi ver",
+   "metin": "KOBİ ürünlerinde arıza (kısa sürede bozulma, tek tarafın susması, şarj almama) olumsuz yorumlarda %36 oranında; büyük markalarda %22. En sık cümle \"1 ay bile olmadı bozuldu\". Göndermeden önce her kulaklığı test et, 6-12 aylık değişim sözü ver: büyük markaya karşı en güçlü koz bu."
+  },
+  {
+   "baslik": "Şarj iddiasını gerçekçi yaz",
+   "metin": "Şarj sorunları (çabuk bitme, şarj almama) KOBİ'lerde %18, büyük markalarda %5. Kutulu ve kutusuz gerçek kullanım süresini test edip yaz; şarj göstergesi doğru yüzdeyi göstermiyorsa müşteri bunu hemen fark ediyor."
+  },
+  {
+   "baslik": "Büyük markanın açığından gir: ses ve oturma",
+   "metin": "Xiaomi ve Huawei'nin olumsuz yorumlarında \"ses az, boğuk, dışarı veriyor\" oranı %31 (KOBİ'de %10), \"kulağa oturmuyor, acıtıyor\" %11 (KOBİ'de %2). Yüksek ses seviyesi, farklı boy silikon uçlar ve görüşmede net mikrofonu öne çıkaran bir KOBİ ürünü burada rakipsiz kalır."
+  },
+  {
+   "baslik": "Kutuyu eksiksiz gönder",
+   "metin": "Büyük markaların olumsuz yorumlarında \"kutudan kablo ya da parça çıkmadı\" oranı %8. İlanda yazan her aksesuar (kablo, yedek uç, kılavuz) kutuda olmalı; yoksa ilanda açıkça yazılmalı."
+  },
+  {
+   "baslik": "Puanı hediyeyle değil, ürünle topla",
+   "metin": "KOBİ'lerin önerilen yorumlarında satıcının hediyesine (kılıf, kahve) teşekkür oranı %19, bir üründe %54; büyük markalarda yok denecek kadar az. Bazı olumsuz yorumlar \"hediye için güzel yorum yazdırıyorlar\" diyor. Hediye ilk puanı yükseltiyor ama arıza gelince 1 yıldıza dönüyor ve güveni zedeliyor."
+  },
+  {
+   "baslik": "Bağlantıyı test et, uyumluluğu net yaz",
+   "metin": "Bağlantı kopması iki grupta da olumsuz yorumlarda yaklaşık %12 oranında geçiyor. iPhone, Android ve bilgisayarla eşleştirmeyi kısa bir videoyla göster; menzili ve desteklenen cihazları açıkça yaz."
+  }
+ ],
+ "urunler": [
+  {
+   "id": "728117603",
+   "kisa": "Redmi Buds 4 Lite",
+   "marka": "Xiaomi",
+   "ad": "Xiaomi Redmi Buds 4 Lite Kablosuz Kulak İçi Kulaklık, siyah",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty988/product/media/images/jpim-outputs/assets/product/media/images/20230824/17/407044668/957480542/2/2_org_zoom.jpg",
+   "link": "https://www.trendyol.com/xiaomi/redmi-buds-4-lite-bluetooth-kulaklik-siyah-xiaomi-turkiye-garantili-p-728117603",
+   "yazili": 2883,
+   "yildiz": [
+    433,
+    128,
+    279,
+    439,
+    1604
+   ],
+   "ort": 3.92,
+   "onerilen_ort": 4.97,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "pil": 0.04,
+    "sarj": 0.0,
+    "bozulma": 0.12,
+    "tek": 0.02,
+    "baglanti": 0.08,
+    "ses": 0.48,
+    "mikrofon": 0.07,
+    "kulak": 0.13,
+    "vaat": 0.02,
+    "farkli": 0.01,
+    "eksik": 0.01,
+    "iade": 0.03,
+    "dokunmatik": 0.03,
+    "yorum": 0.0,
+    "fiyat": 0.07,
+    "kargo": 0.02
+   },
+   "olumlu": {
+    "ses": 0.63,
+    "pil": 0.18,
+    "fp": 0.23,
+    "kargo": 0.25,
+    "satici_hediye": 0.0,
+    "hediye_alim": 0.11,
+    "mikrofon": 0.14,
+    "baglanti": 0.02,
+    "rahat": 0.1,
+    "dayaniklilik": 0.11,
+    "orijinal": 0.01
+   },
+   "dikkat": [
+    "Ses seviyesi düşük bulunuyor; dış sesler rahatça duyuluyor ve müzik bastırılıyor.",
+    "Kulak içi parça büyük: küçük kulaktan düştüğü, oturmadığı yazılıyor.",
+    "Dokunmatiğin geç algıladığı ve görüşmede sesin karşıya iyi gitmediği söyleniyor."
+   ],
+   "ders": [
+    "Marka güveni ses beklentisini yükseltiyor; \"Xiaomi diye aldım\" diyen alıcı düşük sesi affetmiyor."
+   ],
+   "alinti": [
+    {
+     "konu": "Ses az, boğuk, cızırtılı",
+     "yildiz": 1,
+     "metin": "sesi çok kısık dışardaki sesler çok rahat duyuluyor"
+    },
+    {
+     "konu": "Kulağa oturmuyor, acıtıyor",
+     "yildiz": 2,
+     "metin": "şarkı dinlerken kulaklarımı sağır etmeyi seviyorum ve 1. gün 4defa kulağımdan fırladı."
+    },
+    {
+     "konu": "Kulağa oturmuyor, acıtıyor",
+     "yildiz": 2,
+     "metin": "Ses kalitesi iyi ama aşırı büyük kulağınız küçükse tercih edilmemeli"
+    },
+    {
+     "konu": "Olumlu: görüşme",
+     "yildiz": 5,
+     "metin": "ürün çok güzel ses kalitesi aşırı iyi aramalarda da sesi çok güzel iletiyor harikaaaa"
+    }
+   ]
+  },
+  {
+   "id": "855229283",
+   "kisa": "Redmi Buds 6 Play beyaz",
+   "marka": "Xiaomi",
+   "ad": "Xiaomi Redmi Buds 6 Play Kablosuz Kulak İçi Kulaklık, beyaz",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1930/prod/QC_ENRICHMENT/20260629/08/8d7388f1-c712-34e0-ab05-955231b66591/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/xiaomi/redmi-buds-6-play-beyaz-kulakici-kulaklik-gurultu-engelleme-bt-5-4-tws-xiaomi-tr-garantili-p-855229283",
+   "yazili": 4111,
+   "yildiz": [
+    489,
+    139,
+    254,
+    549,
+    2680
+   ],
+   "ort": 4.17,
+   "onerilen_ort": 5.0,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "pil": 0.01,
+    "sarj": 0.0,
+    "bozulma": 0.2,
+    "tek": 0.1,
+    "baglanti": 0.15,
+    "ses": 0.21,
+    "mikrofon": 0.04,
+    "kulak": 0.07,
+    "vaat": 0.06,
+    "farkli": 0.0,
+    "eksik": 0.18,
+    "iade": 0.04,
+    "dokunmatik": 0.03,
+    "yorum": 0.0,
+    "fiyat": 0.02,
+    "kargo": 0.06
+   },
+   "olumlu": {
+    "ses": 0.66,
+    "pil": 0.33,
+    "fp": 0.37,
+    "kargo": 0.22,
+    "satici_hediye": 0.0,
+    "hediye_alim": 0.11,
+    "mikrofon": 0.09,
+    "baglanti": 0.12,
+    "rahat": 0.05,
+    "dayaniklilik": 0.14,
+    "orijinal": 0.02
+   },
+   "dikkat": [
+    "Kutudan şarj kablosu çıkmadığını yazan çok yorum var; olumsuzların yaklaşık beşte biri bu.",
+    "Ses yükseğe açılınca dışarı veriyor; \"gürültü engelleme hikâye\" yorumu var.",
+    "Birkaç ay ile bir yıl içinde tek kulaklığın bozulduğu yazılıyor."
+   ],
+   "ders": [
+    "Kutudan beklenen bir parça çıkmayınca ürün iyi olsa da 1 yıldız geliyor. Kablo yoksa ilanda açıkça yazılmalı."
+   ],
+   "alinti": [
+    {
+     "konu": "Eksik parça / kablo yok",
+     "yildiz": 1,
+     "metin": "Şarj aleti koymamak nasıl bir düşünce yapısı acaba kutunun içine"
+    },
+    {
+     "konu": "Ses az, boğuk, cızırtılı",
+     "yildiz": 2,
+     "metin": "ses %50'den sonra dışarı çıkıyor ve ötle gürültü engelleme falan hikaye"
+    },
+    {
+     "konu": "Kısa sürede bozuldu",
+     "yildiz": 1,
+     "metin": "max 1 ay sonra 1 kulaklık baglanmiyo 4 tane aldık hepsi ayni"
+    },
+    {
+     "konu": "Olumlu: uyumluluk",
+     "yildiz": 5,
+     "metin": "İPhone 11 imde kullanıyorum fiyat ve performans olarak gayet güzel"
+    }
+   ]
+  },
+  {
+   "id": "855229295",
+   "kisa": "Redmi Buds 6 Play siyah",
+   "marka": "Xiaomi",
+   "ad": "Xiaomi Redmi Buds 6 Play Kablosuz Kulak İçi Kulaklık, siyah",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1797/prod/QC_PREP/20251207/22/be037857-44fe-369d-968e-6dc2f928f52b/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/xiaomi/redmi-buds-6-play-siyah-kulakici-kulaklik-gurultu-onleme-bt5-4-ios-android-xiaomi-tr-garantili-p-855229295",
+   "yazili": 9794,
+   "yildiz": [
+    1274,
+    319,
+    573,
+    1140,
+    6488
+   ],
+   "ort": 4.15,
+   "onerilen_ort": 4.94,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "pil": 0.09,
+    "sarj": 0.03,
+    "bozulma": 0.25,
+    "tek": 0.11,
+    "baglanti": 0.18,
+    "ses": 0.26,
+    "mikrofon": 0.04,
+    "kulak": 0.06,
+    "vaat": 0.02,
+    "farkli": 0.01,
+    "eksik": 0.14,
+    "iade": 0.05,
+    "dokunmatik": 0.0,
+    "yorum": 0.01,
+    "fiyat": 0.02,
+    "kargo": 0.01
+   },
+   "olumlu": {
+    "ses": 0.56,
+    "pil": 0.28,
+    "fp": 0.28,
+    "kargo": 0.27,
+    "satici_hediye": 0.0,
+    "hediye_alim": 0.17,
+    "mikrofon": 0.09,
+    "baglanti": 0.11,
+    "rahat": 0.1,
+    "dayaniklilik": 0.13,
+    "orijinal": 0.02
+   },
+   "dikkat": [
+    "\"Redmi diye aldım\" diyenler ses seviyesini ve kalitesini zayıf buluyor; boğuk ses şikâyeti var.",
+    "Birkaç ay içinde bağlantı kopması ve tek tarafın susması sık.",
+    "Kutudan şarj kablosu çıkmadığı yazılıyor; görüşmede ses karşıya boğuk gidiyor."
+   ],
+   "ders": [
+    "Aynı modelin iki rengi benzer şikâyet alıyor: sorun renkte değil, ses ve bağlantı tasarımında."
+   ],
+   "alinti": [
+    {
+     "konu": "Ses az, boğuk, cızırtılı",
+     "yildiz": 1,
+     "metin": "ürün redmi marka olduğu için aldım ancak ses kalitesi berbat bu fiyata daha iyilerini alabilirsiniz"
+    },
+    {
+     "konu": "Bağlantı kopuyor",
+     "yildiz": 1,
+     "metin": "Alalı 1 ay oldu ses kesiliyor hiç memnun değilim 200 tlye en ucuz kulaklığı almıştım o bile daha uzun gitti"
+    },
+    {
+     "konu": "Yönlendirilmiş yorum şüphesi",
+     "yildiz": 1,
+     "metin": "Sırf yorumum üst sıralar da görünmesi için 5 yıldız verdim!!!! Ben bu ürünü denemeden nasıl anlayacağım!!!! Siz kafayı mı yediniz ?!!!! Sakın almayın ses kalitesi çok kötü!!!"
+    },
+    {
+     "konu": "Olumlu: şarj",
+     "yildiz": 5,
+     "metin": "FP bir ürün tavsiye ederim. Çalışırken kullanıyorum şarjı iyi gidiyor hiç daha bitiremedim"
+    }
+   ]
+  },
+  {
+   "id": "761318970",
+   "kisa": "Huawei FreeBuds SE 2",
+   "marka": "Huawei",
+   "ad": "Huawei FreeBuds SE 2 Kablosuz Kulak İçi Kulaklık, beyaz",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1000/product/media/images/prod/SPM/PIM/20230911/11/d864bbde-90d7-3fdb-b718-156f5110ac22/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/huawei/freebuds-se-2-bluetooth-kablosuz-kulak-ici-kulaklik-beyaz-p-761318970",
+   "yazili": 4096,
+   "yildiz": [
+    229,
+    68,
+    154,
+    453,
+    3192
+   ],
+   "ort": 4.54,
+   "onerilen_ort": 4.96,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "pil": 0.04,
+    "sarj": 0.0,
+    "bozulma": 0.16,
+    "tek": 0.11,
+    "baglanti": 0.15,
+    "ses": 0.3,
+    "mikrofon": 0.1,
+    "kulak": 0.17,
+    "vaat": 0.01,
+    "farkli": 0.01,
+    "eksik": 0.01,
+    "iade": 0.07,
+    "dokunmatik": 0.01,
+    "yorum": 0.02,
+    "fiyat": 0.04,
+    "kargo": 0.01
+   },
+   "olumlu": {
+    "ses": 0.7,
+    "pil": 0.23,
+    "fp": 0.18,
+    "kargo": 0.25,
+    "satici_hediye": 0.01,
+    "hediye_alim": 0.2,
+    "mikrofon": 0.2,
+    "baglanti": 0.11,
+    "rahat": 0.06,
+    "dayaniklilik": 0.1,
+    "orijinal": 0.02
+   },
+   "dikkat": [
+    "Telefon görüşmesinde karşı tarafın duymadığı, dış sesleri ilettiği yazılıyor.",
+    "Kulağı acıttığı, uyuşturduğu ve kulaktan düştüğü söyleniyor.",
+    "Arızada garanti ve iade başvurusunun reddedildiğini yazanlar var."
+   ],
+   "ders": [
+    "Kategorinin en düşük 1-2 yıldız payı (%7). Şikâyetler arızadan çok konfor ve görüşme kalitesinde: sağlamlık kazanılmış, ergonomi kaybediliyor."
+   ],
+   "alinti": [
+    {
+     "konu": "Mikrofon / telefon görüşmesi",
+     "yildiz": 1,
+     "metin": "Ürünü benim gibi ortalama bir konuşma yapmak için alıyorsanız almayın çünkü karşı taraf sürekli efendim demek zorunda müzik dinlemek istiyorsanız bu müziği sadece sessiz alanda dinletir çünkü sesli yerlerde müzik karışıyor sesi çok az"
+    },
+    {
+     "konu": "Kulağa oturmuyor, acıtıyor",
+     "yildiz": 1,
+     "metin": "Kulağı acıtıyor ve ses kalitesi ortanın altında."
+    },
+    {
+     "konu": "İade ve garanti sorunu",
+     "yildiz": 1,
+     "metin": "kutudan çıktığı anda dokunmatiği bozuk ürün satıp iademi reddettiler tüketici hakem heyetine başvurucağım her yerden duyuracağım hakkımı bırakmıcam"
+    },
+    {
+     "konu": "Olumlu: hediye",
+     "yildiz": 4,
+     "metin": "Kız kardeşime hediye aldım sevdi beğenerek kullanıyor tavsiye ederiz"
+    }
+   ]
+  },
+  {
+   "id": "143889066",
+   "kisa": "Favors Dots E6s",
+   "marka": "Favors",
+   "ad": "Favors Dots E6s Bluetooth Kulaklık",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1676/prod/QC/20250507/18/34e58bc9-6cfd-3cd1-88eb-02659ae3eb19/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/favors/dots-e6s-bluetooth-kulaklik-hd-ses-extra-bass-yuksek-mikrofon-kalitesi-p-143889066",
+   "yazili": 4497,
+   "yildiz": [
+    1164,
+    285,
+    445,
+    548,
+    2055
+   ],
+   "ort": 3.45,
+   "onerilen_ort": 4.94,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "pil": 0.26,
+    "sarj": 0.06,
+    "bozulma": 0.2,
+    "tek": 0.04,
+    "baglanti": 0.03,
+    "ses": 0.11,
+    "mikrofon": 0.01,
+    "kulak": 0.02,
+    "vaat": 0.0,
+    "farkli": 0.0,
+    "eksik": 0.02,
+    "iade": 0.02,
+    "dokunmatik": 0.0,
+    "yorum": 0.01,
+    "fiyat": 0.0,
+    "kargo": 0.02
+   },
+   "olumlu": {
+    "ses": 0.53,
+    "pil": 0.14,
+    "fp": 0.19,
+    "kargo": 0.28,
+    "satici_hediye": 0.02,
+    "hediye_alim": 0.24,
+    "mikrofon": 0.02,
+    "baglanti": 0.05,
+    "rahat": 0.05,
+    "dayaniklilik": 0.17,
+    "orijinal": 0.0
+   },
+   "dikkat": [
+    "En sık şikâyet şarj, kategorideki en yüksek oranla: kutu kendi kendine boşalıyor, gösterge yanlış yüzde gösteriyor.",
+    "Bir iki ay içinde bozulma yaygın; aynı ürünü tekrar alıp yine bozuk çıkan var.",
+    "Görüşmede ses kötü ve cızırtı yapıyor; şarj kutusu dandik bulunuyor."
+   ],
+   "ders": [
+    "Bu fiyat bandında en zayıf halka şarj kutusu ve göstergesi; burada güvenilir bir ürün hemen ayrışır."
+   ],
+   "alinti": [
+    {
+     "konu": "Şarj çabuk bitiyor",
+     "yildiz": 1,
+     "metin": "doğru düzgün şarj olmuyor saatlerce şarjda kaldığı halde. yüzde 50 diyor kullanınca da 20 dk da bitiyor"
+    },
+    {
+     "konu": "Kısa sürede bozuldu",
+     "yildiz": 1,
+     "metin": "gerçekten berbat bir ürün 1 ay bile olmadı ve bozuldu kutusunu atmasam iade edicem sakın almayın"
+    },
+    {
+     "konu": "Ses az, boğuk, cızırtılı",
+     "yildiz": 2,
+     "metin": "Şarjı hemen bitiyo. Ses kalitesi okey ( fiyatına göre ) Cızırtı yapiyo. Teşekkürler"
+    },
+    {
+     "konu": "Olumlu: ses",
+     "yildiz": 5,
+     "metin": "Cok beğendim teşekkür ederim sesinde mükemmel cıkıyor rahat alabilirsiniz tavsiye ediyorum😍"
+    }
+   ]
+  },
+  {
+   "id": "314585747",
+   "kisa": "Favors Pro",
+   "marka": "Favors",
+   "ad": "Favors Pro Kablosuz Şarjlı Bluetooth Kulaklık, kılıf hediyeli",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1643/prod/QC/20250226/11/520604b4-5333-341f-acea-6c36935e24a1/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/favors/pro-ios-android-uyumlu-yeni-nesil-wireless-charge-bluetooth-kulaklik-kilif-hediyeli-p-314585747",
+   "yazili": 6023,
+   "yildiz": [
+    1322,
+    356,
+    548,
+    848,
+    2949
+   ],
+   "ort": 3.62,
+   "onerilen_ort": 4.93,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "pil": 0.04,
+    "sarj": 0.08,
+    "bozulma": 0.21,
+    "tek": 0.08,
+    "baglanti": 0.12,
+    "ses": 0.11,
+    "mikrofon": 0.05,
+    "kulak": 0.02,
+    "vaat": 0.05,
+    "farkli": 0.01,
+    "eksik": 0.04,
+    "iade": 0.04,
+    "dokunmatik": 0.01,
+    "yorum": 0.01,
+    "fiyat": 0.03,
+    "kargo": 0.0
+   },
+   "olumlu": {
+    "ses": 0.53,
+    "pil": 0.12,
+    "fp": 0.17,
+    "kargo": 0.29,
+    "satici_hediye": 0.34,
+    "hediye_alim": 0.09,
+    "mikrofon": 0.02,
+    "baglanti": 0.03,
+    "rahat": 0.01,
+    "dayaniklilik": 0.13,
+    "orijinal": 0.09
+   },
+   "dikkat": [
+    "Bir kısmı 10 dakika sonra bağlantının kendiliğinden kesildiğini yazıyor.",
+    "Tekrar alanlar ikinci aldıklarının sesinin daha kötü, boğuk olduğunu söylüyor.",
+    "Birkaç ay içinde bozulma ve tek taraftan ses gelmemesi sık."
+   ],
+   "ders": [
+    "Önerilen yorumların üçte biri kılıf hediyesine teşekkür ediyor. Tekrar alan müşteri ise kaliteyi önceki partiyle kıyaslıyor; ses düşerse sadık müşteri 1 yıldıza dönüyor."
+   ],
+   "alinti": [
+    {
+     "konu": "Yönlendirilmiş yorum şüphesi",
+     "yildiz": 1,
+     "metin": "yorumum üste gözüksün diye beş yıldız veriyorum. alalı iki ay oldu ve kulaklıktan ses gelmiyor. birisi bozuk. almayın"
+    },
+    {
+     "konu": "Ses az, boğuk, cızırtılı",
+     "yildiz": 1,
+     "metin": "ses kalitesi berrbatt geçen sene almıştım çok memnundum ama ikinci alışım korkunç sesi çok boğuk"
+    },
+    {
+     "konu": "Bağlantı kopuyor",
+     "yildiz": 1,
+     "metin": "içki kotu gerçekten verdıgım paraya yazık telefona bagladıktan 10 dk sonra kendı kendıne bağlantıyı kesiyor"
+    },
+    {
+     "konu": "Olumlu: orijinaline benzetme",
+     "yildiz": 5,
+     "metin": "Tek kelime bayıldım bu zamana kadar hic bir sorun yaşamadım orjinalini aratmıyor cok begendım 👏🏻❤️"
+    }
+   ]
+  },
+  {
+   "id": "233129679",
+   "kisa": "Abbruch Pro 5",
+   "marka": "Abbruch",
+   "ad": "Abbruch Pro 5 Dokunmatik Bluetooth Kulaklık",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1582/prod/QC/20241009/14/3f6fb3ef-e6b4-3ef4-a0d0-684b8dca3f49/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/abbruch/pro-5-ios-android-uyumlu-dokunmatik-bluetooth-kulaklik-8d-stereo-hd-ses-p-233129679",
+   "yazili": 17927,
+   "yildiz": [
+    4881,
+    1336,
+    2041,
+    2448,
+    7221
+   ],
+   "ort": 3.32,
+   "onerilen_ort": 4.95,
+   "onerilen_dusuk": 1,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "pil": 0.07,
+    "sarj": 0.08,
+    "bozulma": 0.17,
+    "tek": 0.04,
+    "baglanti": 0.06,
+    "ses": 0.07,
+    "mikrofon": 0.02,
+    "kulak": 0.0,
+    "vaat": 0.02,
+    "farkli": 0.01,
+    "eksik": 0.0,
+    "iade": 0.0,
+    "dokunmatik": 0.0,
+    "yorum": 0.01,
+    "fiyat": 0.02,
+    "kargo": 0.01
+   },
+   "olumlu": {
+    "ses": 0.4,
+    "pil": 0.15,
+    "fp": 0.3,
+    "kargo": 0.22,
+    "satici_hediye": 0.0,
+    "hediye_alim": 0.24,
+    "mikrofon": 0.02,
+    "baglanti": 0.01,
+    "rahat": 0.09,
+    "dayaniklilik": 0.19,
+    "orijinal": 0.01
+   },
+   "dikkat": [
+    "Mağaza Favors; ilk günlerde şarj almayan ya da hiç bağlanmayan ürün gelebiliyor.",
+    "Tek kulaklığın çalışmadığı, ışığın yanmadığı yazılıyor.",
+    "1-2 yıldızlı yorumların yaklaşık üçte birinin metni aslında olumlu; puan ile yorum uyuşmuyor."
+   ],
+   "ders": [
+    "Puan tek başına yanıltıcı: 1-2 yıldızlı yorumların önemli kısmı \"güzel ürün\" diyor. Metni okumadan karar verilmemeli."
+   ],
+   "alinti": [
+    {
+     "konu": "Şarj olmuyor / şarj almıyor",
+     "yildiz": 1,
+     "metin": "bir hafta kulanmadım bile şarj almıyor bozuk çıktı"
+    },
+    {
+     "konu": "Şarj olmuyor / şarj almıyor",
+     "yildiz": 1,
+     "metin": "Çok minik ve çok güzel fakat bana geldiğinde şarjı olmuyordu geri iade ettim"
+    },
+    {
+     "konu": "Şarj çabuk bitiyor",
+     "yildiz": 2,
+     "metin": "ses kalitesi çok düşük ve şarjı çok çabuk bitiyor 2 saat anca deyaniyor bence kullanışlı değil"
+    },
+    {
+     "konu": "Olumlu: uzun kullanım",
+     "yildiz": 4,
+     "metin": "kendime daha önceden almıştım hâlâ kullanıyorum şimdide kardeşime aldım gayet memnunuz"
+    }
+   ]
+  },
+  {
+   "id": "661738189",
+   "kisa": "Barbanti Air 2",
+   "marka": "Barbanti",
+   "ad": "Barbanti Air 2 Kablosuz Bluetooth Kulaklık, kılıf hediyeli",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1974/prod/QC_ENRICHMENT/20261011/21/bb7eed32-a51f-3c7a-a832-5538712091f1/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/barbanti-mobile/air-2-beyaz-2-nesil-ios-android-uyumlu-kablosuz-bluetooth-kulaklik-karisik-renk-kilif-hediyeli-pro-tum-telefon-tablet-bilgisayar-uyumlu-sarj-kablosu-dahil-p-661738189",
+   "yazili": 16381,
+   "yildiz": [
+    3132,
+    849,
+    1268,
+    2261,
+    8871
+   ],
+   "ort": 3.79,
+   "onerilen_ort": 4.95,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "pil": 0.05,
+    "sarj": 0.11,
+    "bozulma": 0.43,
+    "tek": 0.11,
+    "baglanti": 0.2,
+    "ses": 0.08,
+    "mikrofon": 0.03,
+    "kulak": 0.02,
+    "vaat": 0.0,
+    "farkli": 0.01,
+    "eksik": 0.0,
+    "iade": 0.01,
+    "dokunmatik": 0.0,
+    "yorum": 0.0,
+    "fiyat": 0.04,
+    "kargo": 0.0
+   },
+   "olumlu": {
+    "ses": 0.5,
+    "pil": 0.04,
+    "fp": 0.17,
+    "kargo": 0.24,
+    "satici_hediye": 0.54,
+    "hediye_alim": 0.12,
+    "mikrofon": 0.02,
+    "baglanti": 0.05,
+    "rahat": 0.04,
+    "dayaniklilik": 0.03,
+    "orijinal": 0.03
+   },
+   "dikkat": [
+    "Kısa sürede bozulma kategorinin en yüksek oranında: olumsuzların %43'ü bundan.",
+    "Telefon biraz uzaklaşınca ya da hareket edince bağlantı kopuyor.",
+    "Şarj kutusu şarj olmuyor; tek kulaklığın sustuğu yazılıyor."
+   ],
+   "ders": [
+    "Önerilen yorumların yarısından fazlası hediyeye teşekkür ediyor, olumsuzların %43'ü kısa sürede bozulmadan. Hediye ilk izlenimi kurtarıyor, ürün ömrünü kurtarmıyor."
+   ],
+   "alinti": [
+    {
+     "konu": "Kısa sürede bozuldu",
+     "yildiz": 1,
+     "metin": "Mayıs ayında aldım çok az kullanmama rağmen hemen bozuldu"
+    },
+    {
+     "konu": "Bağlantı kopuyor",
+     "yildiz": 1,
+     "metin": "müzik dinlerken bi anda bağlantı koptu ve birdaha bağlanmadı sıfırlamaya denedim olmadı 300 tl niz boşa gider ve hiç düşmedi"
+    },
+    {
+     "konu": "Şarj olmuyor / şarj almıyor",
+     "yildiz": 1,
+     "metin": "Kutusu şarj olmuyor. Kesinlikle almayın verdiğiniz paraya yazık günah. Bozuk ürün satıyor. Kesinlikle almayın"
+    },
+    {
+     "konu": "Olumlu: satıcının hediyesi",
+     "yildiz": 5,
+     "metin": "Bir tane almıştım çok memnunum bir tane daha aldım hediyeniz ıcın de çok teşekkür ederim"
+    }
+   ]
+  },
+  {
+   "id": "672471753",
+   "kisa": "Barbanti Pro",
+   "marka": "Barbanti",
+   "ad": "Barbanti Pro Kablosuz Bluetooth Kulaklık, kılıf hediyeli",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1634/prod/QC/20250207/15/4a24967a-bd8c-30d7-9d65-68ed42598ed8/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/barbanti-mobile/pro-ios-android-uyumlu-kablosuz-bluetooth-kulaklik-karisik-renk-kilif-hediyeli-p-672471753",
+   "yazili": 25147,
+   "yildiz": [
+    5338,
+    1397,
+    1999,
+    3141,
+    13272
+   ],
+   "ort": 3.7,
+   "onerilen_ort": 4.93,
+   "onerilen_dusuk": 1,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "pil": 0.08,
+    "sarj": 0.13,
+    "bozulma": 0.39,
+    "tek": 0.13,
+    "baglanti": 0.13,
+    "ses": 0.1,
+    "mikrofon": 0.03,
+    "kulak": 0.03,
+    "vaat": 0.0,
+    "farkli": 0.05,
+    "eksik": 0.02,
+    "iade": 0.04,
+    "dokunmatik": 0.02,
+    "yorum": 0.03,
+    "fiyat": 0.03,
+    "kargo": 0.0
+   },
+   "olumlu": {
+    "ses": 0.39,
+    "pil": 0.09,
+    "fp": 0.2,
+    "kargo": 0.31,
+    "satici_hediye": 0.41,
+    "hediye_alim": 0.15,
+    "mikrofon": 0.02,
+    "baglanti": 0.02,
+    "rahat": 0.03,
+    "dayaniklilik": 0.06,
+    "orijinal": 0.06
+   },
+   "dikkat": [
+    "Olumsuzların yaklaşık %40'ı kısa sürede bozulmadan söz ediyor; \"1 ay kullandım çöp oldu\" yorumu sık.",
+    "Şarj almayan ve tek tarafı çalışmayan ürün; kutuda kulaklığın biri eksik gelen sipariş var.",
+    "Yıllardır alanlar bu partinin öncekilerden kötü olduğunu yazıyor."
+   ],
+   "ders": [
+    "Kategorinin en çok yorum alan ürünü (25 bin). Sadık müşteri \"bu sefer hemen bozuldu\" diyor; parti kalitesindeki düşüş birikmiş güveni hızla eritiyor."
+   ],
+   "alinti": [
+    {
+     "konu": "Kısa sürede bozuldu",
+     "yildiz": 1,
+     "metin": "ürün elimize geldi 1 ay kullandım çöp oldu almayin tavsiye etmem👎"
+    },
+    {
+     "konu": "Tek taraf çalışmıyor",
+     "yildiz": 1,
+     "metin": "Bana gönderilen üründe airpodsun teki yoktu bu yüzden geri iade oluşturma kararı aldım."
+    },
+    {
+     "konu": "Şarj olmuyor / şarj almıyor",
+     "yildiz": 1,
+     "metin": "kesinlikle çok kötü şarj olmuyor hiçbir şekilde daha şarja takar takmaz bozuldu yanmıyor ışığı"
+    },
+    {
+     "konu": "Olumlu: satıcının hediyesi",
+     "yildiz": 5,
+     "metin": "Satıcıdan da üründen de çok memnun kaldım çok özenli paketlenmişti hediye kahve için de teşekkür ederim🙏"
+    }
+   ]
+  },
+  {
+   "id": "218495477",
+   "kisa": "Teknoloji Gelsin",
+   "marka": "Teknoloji Gelsin",
+   "ad": "Teknoloji Gelsin F9 Pro Powerbankli Bluetooth Kulaklık",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1413/product/media/images/prod/QC/20240712/00/dfa89cbc-39d6-301b-8088-c355690d45d8/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/teknoloji-gelsin/bluetooth-kulaklik-kulakici-powerbankli-cift-mikrofonlu-dokunmatik-kablosuz-earbuds-f9-pro-p-218495477",
+   "yazili": 9169,
+   "yildiz": [
+    2017,
+    620,
+    980,
+    1260,
+    4292
+   ],
+   "ort": 3.57,
+   "onerilen_ort": 4.95,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "pil": 0.12,
+    "sarj": 0.04,
+    "bozulma": 0.17,
+    "tek": 0.05,
+    "baglanti": 0.06,
+    "ses": 0.1,
+    "mikrofon": 0.04,
+    "kulak": 0.01,
+    "vaat": 0.03,
+    "farkli": 0.01,
+    "eksik": 0.02,
+    "iade": 0.04,
+    "dokunmatik": 0.01,
+    "yorum": 0.0,
+    "fiyat": 0.02,
+    "kargo": 0.01
+   },
+   "olumlu": {
+    "ses": 0.48,
+    "pil": 0.15,
+    "fp": 0.27,
+    "kargo": 0.36,
+    "satici_hediye": 0.02,
+    "hediye_alim": 0.11,
+    "mikrofon": 0.05,
+    "baglanti": 0.0,
+    "rahat": 0.07,
+    "dayaniklilik": 0.1,
+    "orijinal": 0.0
+   },
+   "dikkat": [
+    "Üç ile altı ay arasında bozulduğunu yazanlar var.",
+    "Şarj bir iki saatte bitiyor; şarj göstergesinin doğru çalışmadığı söyleniyor.",
+    "İlanda yazan yedek uçlar ve kılavuz kutudan çıkmayabiliyor; video izlerken gecikme var."
+   ],
+   "ders": [
+    "İlanda yazan aksesuar kutudan çıkmayınca müşteri ürünün geri kalanına da güvenmiyor."
+   ],
+   "alinti": [
+    {
+     "konu": "Kısa sürede bozuldu",
+     "yildiz": 2,
+     "metin": "ürünü ilk kullanmaya başladığımda hiçbir sorunu yoktu ama altıncı aydan sonra hiç çalışmadı almak isteyenler için önermiyorum."
+    },
+    {
+     "konu": "Şarj çabuk bitiyor",
+     "yildiz": 2,
+     "metin": "Fiyat performans ürünü ama şarjı 1 2 saatte bitiyor iş görür"
+    },
+    {
+     "konu": "Eksik parça / kablo yok",
+     "yildiz": 1,
+     "metin": "üründen 2 tane almıştık.Bahsedilen yedek pedler yok, kılavuz yok ve gelen kablo şarj etmiyor neyse tamam diyorum kargo paketi ise ezilmiş yırtılmış yine tamam diyorum kutuyu açıyorum kulaklıklar pis yine tamam diyorum şarjı doldurup özellikleri deniyorum.Powerbank özelliği çalışmıyor. Keşke biraz daha özen gösterseniz.İkisinde de aynı sorun var."
+    },
+    {
+     "konu": "Olumlu: hediye",
+     "yildiz": 5,
+     "metin": "Eşime hediye olarak aldım çok beğendi çok kullanışlı kargo özenli paketlenmisti çok teşekkür ederim 💓"
+    }
+   ]
+  },
+  {
+   "id": "666158167",
+   "kisa": "Trktech Pro 5 Plus",
+   "marka": "Trktech",
+   "ad": "Trktech Pro 5 Plus Kablosuz Bluetooth Kulaklık",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1910/prod/QC_ENRICHMENT/20260728/10/9ec2e259-2706-3ae9-874d-68678b5a420a/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/trktech/pro-5-plus-kablosuz-bluetooth-kulaklik-bluetooth-5-3-tws-ios-android-uyumlu-hd-stereo-ses-dokunmatik-kilif-hediyeli-sarj-kutulu-p-666158167",
+   "yazili": 15716,
+   "yildiz": [
+    3460,
+    924,
+    1432,
+    2271,
+    7629
+   ],
+   "ort": 3.62,
+   "onerilen_ort": 4.68,
+   "onerilen_dusuk": 7,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "pil": 0.05,
+    "sarj": 0.0,
+    "bozulma": 0.35,
+    "tek": 0.12,
+    "baglanti": 0.08,
+    "ses": 0.13,
+    "mikrofon": 0.0,
+    "kulak": 0.0,
+    "vaat": 0.02,
+    "farkli": 0.01,
+    "eksik": 0.0,
+    "iade": 0.04,
+    "dokunmatik": 0.01,
+    "yorum": 0.01,
+    "fiyat": 0.02,
+    "kargo": 0.01
+   },
+   "olumlu": {
+    "ses": 0.54,
+    "pil": 0.11,
+    "fp": 0.3,
+    "kargo": 0.24,
+    "satici_hediye": 0.02,
+    "hediye_alim": 0.16,
+    "mikrofon": 0.0,
+    "baglanti": 0.03,
+    "rahat": 0.05,
+    "dayaniklilik": 0.12,
+    "orijinal": 0.01
+   },
+   "dikkat": [
+    "Bir ile beş ay arasında tek taraftan ses azalıyor ya da tamamen kesiliyor.",
+    "Hafif bir düşüşte kırıldığı yazılıyor.",
+    "İade talebinin kabul edilmediğini ve paranın geri yatmadığını söyleyenler var."
+   ],
+   "ders": [
+    "\"Önerilen\" ilk 100 yorumda 7 tane 1-2 yıldız var, kategorinin en yüksek değeri: arıza şikâyetleri öne çıkan sıralamaya bile sızıyor."
+   ],
+   "alinti": [
+    {
+     "konu": "Tek taraf çalışmıyor",
+     "yildiz": 2,
+     "metin": "Üç ay olmadı ses azalmaya başladı gayet de düzgün kullandım,sol kulaklıktan ses daha da azaldı"
+    },
+    {
+     "konu": "Kısa sürede bozuldu",
+     "yildiz": 1,
+     "metin": "Daha alalı bir ay oldu sağ taraf çalışmıyor kendi kendine bozuldu sesi çıkmıyor sağ tarafın"
+    },
+    {
+     "konu": "Kısa sürede bozuldu",
+     "yildiz": 1,
+     "metin": "Güncelliyorum bir defa yere hafifce düstü ve direkt kırıldı tek kulaklık kablosu koptu içindeki"
+    },
+    {
+     "konu": "Olumlu: fiyat-kalite",
+     "yildiz": 5,
+     "metin": "sorunusuz elime ulaştı paketlenmesi gerçekten iyidi ürün göründüğü gibi bu fiyata bu kalite beğendim baya"
+    }
+   ]
+  },
+  {
+   "id": "819066262",
+   "kisa": "Tarçın Air Pro 2",
+   "marka": "Tarçın",
+   "ad": "Tarçın Air Pro 2 ANC Bluetooth Kulaklık",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1576/prod/QC/20241003/09/fdecdf1b-686c-3039-94c9-9f0b0d3dfc06/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/tarcin/air-pro-2-anc-gurultu-engelleyici-bluetooth-kulaklik-ios-android-tum-telefonlar-ile-uyumlu-kulaklik-p-819066262",
+   "yazili": 9709,
+   "yildiz": [
+    954,
+    236,
+    312,
+    401,
+    7806
+   ],
+   "ort": 4.43,
+   "onerilen_ort": 5.0,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "pil": 0.2,
+    "sarj": 0.11,
+    "bozulma": 0.34,
+    "tek": 0.1,
+    "baglanti": 0.22,
+    "ses": 0.13,
+    "mikrofon": 0.08,
+    "kulak": 0.03,
+    "vaat": 0.06,
+    "farkli": 0.01,
+    "eksik": 0.01,
+    "iade": 0.06,
+    "dokunmatik": 0.06,
+    "yorum": 0.1,
+    "fiyat": 0.05,
+    "kargo": 0.0
+   },
+   "olumlu": {
+    "ses": 0.5,
+    "pil": 0.09,
+    "fp": 0.17,
+    "kargo": 0.29,
+    "satici_hediye": 0.2,
+    "hediye_alim": 0.02,
+    "mikrofon": 0.06,
+    "baglanti": 0.03,
+    "rahat": 0.03,
+    "dayaniklilik": 0.06,
+    "orijinal": 0.07
+   },
+   "dikkat": [
+    "Şarj bir saat bile dayanmıyor; bağlantı sürekli kopuyor.",
+    "Olumsuz yorumların %10'u satıcının hediye karşılığı güzel yorum yazdırdığını söylüyor.",
+    "Dokunmatik kendi kendine durduruyor; ANC özelliğinin düzgün çalışmadığı yazılıyor."
+   ],
+   "ders": [
+    "KOBİ'ler içinde en düşük 1-2 yıldız payı (%12). Ama olumsuzların %10'u yorumların hediyeyle yönlendirildiğini söylüyor; düşük oranın bir kısmı buradan geliyor olabilir."
+   ],
+   "alinti": [
+    {
+     "konu": "Yönlendirilmiş yorum şüphesi",
+     "yildiz": 1,
+     "metin": "Satıcı size hediye verecem ve kurulumunu gösterecem yalanıyla güzel yorum yaptırıyor fakat kulaklık kötü. Öyle abartıldığı gibi felan değil sırf yorum yapın hediye gönderecez diye yazılıyor o yorumlar. Saçım bile değse kulaklığa şarkı kapanıyor. İki kulaklık eşit şarj almıyor."
+    },
+    {
+     "konu": "Şarj çabuk bitiyor",
+     "yildiz": 1,
+     "metin": "çok kötü almayın şarjı 10 dk dayanmıyor"
+    },
+    {
+     "konu": "Bağlantı kopuyor",
+     "yildiz": 1,
+     "metin": "Durmadan bağlantı sorunu yaşıyorum ve kuyusunun şarjı bitince kulakların şarjı olsa bile kullanıyorum"
+    },
+    {
+     "konu": "Olumlu: ses",
+     "yildiz": 5,
+     "metin": "Çok beğenerek aldığım ürün ses kalitesi çok güzel ikinci siparişim bu gerçekten on numara tavsiye ederim ☺️"
+    }
+   ]
+  }
+ ]
+}

@@ -148,7 +148,7 @@
     app.innerHTML = `
       <div class="crumbs"><a href="#/">Ana sayfa</a> / ${esc(c.ust)} / ${esc(c.ad)}</div>
       <div class="chead"><h1>${esc(c.ad)}</h1>
-        <p class="muted num">${c.urunler.length} ürün · ${int(c.top.yazili)} yazılı yorum · ${int(c.top.okunan)} yorum okundu · ${esc(c.kaynak)}, ${esc(c.toplama)}</p></div>
+        <p class="muted num">${c.urunler.length} ürün · ${int(c.top.yazili)} yazılı yorum · ${int(c.top.okunan)} yorum okundu · Kaynak: ${esc(c.kaynak)}</p></div>
       <section class="summary" aria-labelledby="sum-t">
         <div class="sum-main">
           <span class="label" id="sum-t">En sık şikâyetler</span>
@@ -157,7 +157,7 @@
         </div>
         <div class="sum-side">
           <div class="fact"><b class="neg">${pct(c.top.dusuk, 1)}</b><span>Yazılı yorumlarda 1-2 yıldız payı</span></div>
-          <div class="fact"><b>${c.top.onerilen}</b><span>Trendyol'un "Önerilen" sıralamasında ilk 100 yorumda görünen 1-2 yıldızlı yorum</span></div>
+          <div class="fact"><b>${c.top.onerilen}</b><span>Trendyol'un "Önerilen" sıralamasında ${c.urunler.length} ürünün ilk 100 yorumunda (toplam ${int(c.urunler.length * 100)}) görünen 1-2 yıldızlı yorum</span></div>
           <div class="fact"><b>${esc(c.tema[0].ad)}</b><span>Kategorinin 1 numaralı sorunu</span></div>
         </div>
       </section>

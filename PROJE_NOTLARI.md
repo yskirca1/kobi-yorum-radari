@@ -53,10 +53,19 @@
 - Renk varyantı bulgusu: aynı modelde Grimelange tüylenme vanilya %26, siyah %51; Tudors siyahı dar, hakisi bol, bordosu boya akıtıyor; 3'lü setlerde parçalar farklı kalıpta.
 - Madmext: olumsuz yorumların %40'ı ilandaki başka satıcılardan (önerilen ilk 100'de %1).
 
+### Temel bulgular (Bluetooth kulaklık, 2 Kasım 2026, 12 ürün)
+- Büyük marka: Xiaomi Redmi Buds 4 Lite, Buds 6 Play (beyaz, siyah), Huawei FreeBuds SE 2. KOBİ: Favors Dots E6s, Favors Pro, Abbruch Pro 5 (Favors mağazası), Barbanti Air 2 ve Pro (Deseja, NesCase satıyor), Teknoloji Gelsin, Trktech Pro 5 Plus, Tarçın Air Pro 2.
+- 125.453 yazılı yorum, 2.400 okundu. Yazılı yorumların **%25'i 1-2 yıldız** (en riskli kategori; büyük marka %14,7, KOBİ %27). "Önerilen" ilk 100'lerde 1.200 yorumdan yalnızca 9'u 1-2 yıldız (%0,75); 7'si Trktech'te.
+- En sık şikâyet kısa sürede bozulma %25. Arıza grubu (bozulma, tek taraf, şarj almama) KOBİ %36, büyük %22; şarj sorunları KOBİ %18, büyük %5.
+- Büyük markanın açığı: ses az/boğuk/dışarı veriyor %31 (KOBİ %10), kulağa oturmuyor %11 (KOBİ %2), kutudan kablo çıkmadı %8.
+- KOBİ önerilen yorumlarının %19'u satıcının hediyesine (kılıf, kahve) teşekkür ediyor (Barbanti Air 2 %54, büyük markada ~0). Tarçın'ın olumsuzlarının %10'u hediye karşılığı yorum yazdırıldığını söylüyor.
+- KOBİ ürünlerinde 1-2 yıldızlı yorumların önemli kısmının metni olumlu (Abbruch'ta yaklaşık üçte biri); puan tek başına yanıltıcı.
+
 ### Site
 - Dosyalar: `index.html`, `style.css`, `app.js`, `favicon.svg`, `data/kategoriler.json` (kategori listesi + eş anlamlılar), `data/termos.json` (kategori verisi), `logo/` (logo dosyaları).
 - Sayfalar (hash yönlendirme): `#/` ana sayfa, `#/kategori/<id>`, `#/urun/<kategori>/<urunId>`, `#/karsilastir`, `#/ara/<terim>`.
 - Özellikler: arama (eş anlamlılar), kategori özeti (en sık 4 şikâyet + 3 temel bilgi), sol filtre paneli (satıcı tipi, marka, en sık şikâyet, puan, 1-2 yıldız oranı), ürün kartları (Trendyol görselleri doğrudan bağlantıyla), ürün sayfası, 2-4 ürün karşılaştırma, açık/koyu tema.
+- Kategori başlığında toplama tarihi gösterilmiyor (kullanıcı isteği); tarih veri dosyasında `toplama` alanında duruyor.
 - Ana sayfada alan (üst kategori) filtresi var; arama sonuçları ana sayfayla aynı kartları kullanıyor (hazır olmayan kategoride görsel yerine yer tutucu). Marka filtresi yalnızca marka sayısı ürünlerin 3/4'ünü geçmiyorsa görünür.
 - **CSS ya da JS değişince `index.html` içindeki `?v=` numarası artırılmalı**, yoksa tarayıcılar eski dosyayı önbellekten okuyor. Veri dosyaları önbelleğe takılmadan çekiliyor.
 - Kategori görseli kartta kırpılmadan gösterilir; yine de ürünün ortada ve net olduğu bir fotoğraf seç.
@@ -76,7 +85,7 @@
 
 ## 5. Sıradaki adımlar
 
-0. **Sıradaki kategoriler:** termos ✓, sweatshirt ✓ (12 ürün). Hedef: her kategoride 12 ürün. Önerilen: Bluetooth kulaklık (elektronik) ve yüz serumu / doğal sabun (kozmetik): ETBİS'e göre en büyük alanlar.
+0. **Sıradaki kategoriler:** termos ✓, sweatshirt ✓ (12 ürün), Bluetooth kulaklık ✓ (12 ürün). Hedef: her kategoride 12 ürün. Önerilen: Bluetooth kulaklık (elektronik) ve yüz serumu / doğal sabun (kozmetik): ETBİS'e göre en büyük alanlar.
 1. **50 kategori listesi:** KOBİ'lerin rekabet ettiği, yorumu bol kategoriler. Taslak "yakında" listesi: bebek arabası, telefon kılıfı, doğal sabun, kedi tırmalama tahtası, spor tayt, filtre kahve, kamp sandalyesi. Liste kullanıcıyla netleştirilecek.
 2. **Veri toplama:** 5'erli partiler hâlinde, zamana yayarak. Her kategoride ortak konular (dayanıklılık, beden/ölçü, görselden farklı, kargo/paket, sahtelik, eksik parça, koku, fiyat) + kategoriye özel 2-4 konu.
 3. **Otomasyon (sunuma kadar "canlı MVP"):** bilgisayarda çalışan toplama programı (Python + Playwright), Claude API ile otomatik konu sınıflandırma ve not üretimi (kullanıcının Anthropic API anahtarı gerekir), sonuçların GitHub'a otomatik yüklenmesi, tarihli kayıtlarla zaman içinde değişim takibi.

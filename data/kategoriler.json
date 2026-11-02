@@ -38,6 +38,25 @@
   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1000428/product/media/images/prod/PIM/20260817/15/75c9e131-b7e1-4b86-ad31-e2a31ab6208d/1_org_zoom.jpg"
  },
  {
+  "id": "bluetooth-kulaklik",
+  "ad": "Bluetooth kulaklık",
+  "ust": "Elektronik aksesuar",
+  "durum": "hazir",
+  "urun": 12,
+  "yorum": 2400,
+  "esanlam": [
+   "bluetooth kulaklık",
+   "kablosuz kulaklık",
+   "kulaklık",
+   "tws",
+   "kulak içi kulaklık",
+   "airpods",
+   "earbuds",
+   "bluetooth"
+  ],
+  "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1930/prod/QC_ENRICHMENT/20260629/08/8d7388f1-c712-34e0-ab05-955231b66591/1_org_zoom.jpg"
+ },
+ {
   "id": "bebek-arabasi",
   "ad": "Bebek arabası",
   "ust": "Anne ve bebek",
