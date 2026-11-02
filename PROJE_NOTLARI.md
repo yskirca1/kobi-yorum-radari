@@ -91,6 +91,13 @@
 - Sitede: tek segment varsa "Satıcı tipi" filtresi ve "Büyük marka mı, KOBİ mi?" kartı gizleniyor (asset v=10).
 - Sözlük tarayıcıda `rv_sozluk_kedi`; araçlar `tools/kedi-tirmalama/`.
 
+### Temel bulgular (filtre kahve, 3 Kasım 2026, 13 ürün; hepsi Claude tarayıcısında toplandı)
+- Büyük marka: Tchibo (Gold Selection, Profesional), Kahve Dünyası (4'lü, Fındık Aromalı), Jacobs Selection, Starbucks Veranda. KOBİ: Moliendo, Bongardi, Addis Ababa, Anisah (4).
+- 11.131 yazılı yorum, 1-2 yıldız payı %7,7; büyük markaların payı %62,5.
+- En net ayrım: büyük markada şikâyet satıcı/lojistik kaynaklı (son kullanma tarihi yakın %30, Tchibo Profesional %59; patlak paket %17, Jacobs %32), KOBİ'de damak tadı (tat %44, büyük markada %13). KOBİ'de SKT ve paket şikâyeti %2.
+- KOBİ'lerde "yorumlara güvenip aldım" hayal kırıklığı %5. Deneme setlerinde hediye (klips, Türk kahvesi) %31-40 anılıyor.
+- Sözlük tarayıcıda `rv_sozluk_kahve`; araçlar `tools/filtre-kahve/`.
+
 ### Claude'un uygulama tarayıcısıyla toplama (kullanıcı istemezse dosya indirme YOK)
 - Kod `tools/toplama.js` sitedeki kopyasından (`https://yskirca1.github.io/kobi-yorum-radari/tools/toplama.js`) tarayıcının localStorage'ına `rvcode` olarak yüklenir, indirme satırı çıkarılır; her ürün `localStorage['rv_<id>']` içinde kalır. İndirme yapılınca uygulama kullanıcıdan izin istiyor; kullanıcı bunu istemedi.
 - Trendyol yeni yorumları ancak sayfada **gerçek bir kullanıcı kaydırması** olduktan sonra yüklüyor: her üründe sayfa açılınca küçük bir ekran görüntüsü (scale 0.1) + bir fare tekerleği kaydırması, sonra betik. Claude penceresi ekranda görünür olmalı.
@@ -121,7 +128,7 @@
 
 ## 5. Sıradaki adımlar
 
-0. **Sıradaki kategoriler:** termos ✓, sweatshirt ✓ (12 ürün), Bluetooth kulaklık ✓ (12 ürün), şal ✓ (12 ürün), telefon kılıfı ✓ (12 ürün), doğal sabun ✓ (11 ürün), kedi tırmalama ✓ (12 ürün). Sırada yakında listesi: kamp sandalyesi, filtre kahve, bebek arabası. Hedef: her kategoride 12 ürün. Spor tayt kullanıcı isteğiyle listeden çıkarıldı, siteye eklenmeyecek. Önerilen: Bluetooth kulaklık (elektronik) ve yüz serumu / doğal sabun (kozmetik): ETBİS'e göre en büyük alanlar.
+0. **Sıradaki kategoriler:** termos ✓, sweatshirt ✓ (12 ürün), Bluetooth kulaklık ✓ (12 ürün), şal ✓ (12 ürün), telefon kılıfı ✓ (12 ürün), doğal sabun ✓ (11 ürün), kedi tırmalama ✓ (12 ürün), filtre kahve ✓ (13 ürün). Sırada yakında listesi: kamp sandalyesi, bebek arabası. Hedef: her kategoride 12 ürün. Spor tayt kullanıcı isteğiyle listeden çıkarıldı, siteye eklenmeyecek. Önerilen: Bluetooth kulaklık (elektronik) ve yüz serumu / doğal sabun (kozmetik): ETBİS'e göre en büyük alanlar.
 1. **50 kategori listesi:** KOBİ'lerin rekabet ettiği, yorumu bol kategoriler. Taslak "yakında" listesi: bebek arabası, telefon kılıfı, doğal sabun, kedi tırmalama tahtası, filtre kahve, kamp sandalyesi. Liste kullanıcıyla netleştirilecek.
 2. **Veri toplama:** 5'erli partiler hâlinde, zamana yayarak. Her kategoride ortak konular (dayanıklılık, beden/ölçü, görselden farklı, kargo/paket, sahtelik, eksik parça, koku, fiyat) + kategoriye özel 2-4 konu.
 3. **Otomasyon (sunuma kadar "canlı MVP"):** bilgisayarda çalışan toplama programı (Python + Playwright), Claude API ile otomatik konu sınıflandırma ve not üretimi (kullanıcının Anthropic API anahtarı gerekir), sonuçların GitHub'a otomatik yüklenmesi, tarihli kayıtlarla zaman içinde değişim takibi.

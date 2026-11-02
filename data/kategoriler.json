@@ -133,6 +133,25 @@
   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1498/product/media/images/prod/QC/20240823/19/18f711bb-e721-3141-b426-ea280b0c7b33/1_org_zoom.jpg"
  },
  {
+  "id": "filtre-kahve",
+  "ad": "Filtre kahve",
+  "ust": "Gıda",
+  "durum": "hazir",
+  "esanlam": [
+   "filtre kahve",
+   "kahve",
+   "öğütülmüş kahve",
+   "çekirdek kahve",
+   "french press",
+   "kahve seti",
+   "aromalı kahve",
+   "yöresel kahve"
+  ],
+  "urun": 13,
+  "yorum": 2080,
+  "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1923/prod/QC_ENRICHMENT/20260513/11/86e1aacc-67b6-3d1d-80d4-29f6be480ac8/1_org_zoom.jpg"
+ },
+ {
   "id": "bebek-arabasi",
   "ad": "Bebek arabası",
   "ust": "Anne ve bebek",
@@ -141,17 +160,6 @@
    "bebek arabası",
    "puset",
    "travel sistem"
-  ]
- },
- {
-  "id": "filtre-kahve",
-  "ad": "Filtre kahve",
-  "ust": "Gıda",
-  "durum": "yakinda",
-  "esanlam": [
-   "filtre kahve",
-   "kahve",
-   "çekirdek kahve"
   ]
  },
  {

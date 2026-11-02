@@ -1,0 +1,47 @@
+# Filtre kahve konu sözlüğü. Ürünlerin tamamı Claude uygulama tarayıcısında toplandı; oranlar bu sözlükle tarayıcıda
+# hesaplandı (JS'de \w yerine [\p{L}\d_] ve 'u' bayrağı). Özetler: kahve_tarayici.json
+DOSYALAR = {  # urunId: (kisa, marka, segment)
+    '788858071': ('Tchibo Gold Selection 4x250', 'Tchibo', 'Büyük marka'),
+    '52915799': ('Tchibo Profesional 4x250', 'Tchibo', 'Büyük marka'),
+    '55413395': ('Kahve Dünyası 4\'lü Filtre', 'Kahve Dünyası', 'Büyük marka'),
+    '266883471': ('Kahve Dünyası Fındık Aromalı', 'Kahve Dünyası', 'Büyük marka'),
+    '37634572': ('Jacobs Selection 4x250', 'Jacobs', 'Büyük marka'),
+    '80275104': ('Starbucks Veranda Blend', 'Starbucks', 'Büyük marka'),
+    '111624445': ('Moliendo House Blend', 'Moliendo', 'KOBİ'),
+    '79828858': ('Bongardi Dünya Kahveleri Seti', 'Bongardi', 'KOBİ'),
+    '274717174': ('Addis Ababa Etiyopya Seti', 'Addis Ababa', 'KOBİ'),
+    '75552664': ('Anisah Bolivar Daily 2x500', 'Anisah', 'KOBİ'),
+    '46534796': ('Anisah Dünya Kahveleri Seti', 'Anisah', 'KOBİ'),
+    '151430407': ('Anisah Aromalı Set', 'Anisah', 'KOBİ'),
+    '825973627': ('Anisah Organik Decaf', 'Anisah', 'KOBİ'),
+}
+SIKAYET = {
+    'tat': ('Tadı kötü, aroması yok, ekşi', 'Tadı ve aroması beklentiyi karşılamıyor!',
+            r'tad\w* .{0,25}(kötü|yok|beğenme|güzel değil|sevme|uymad|alama|gelmiyor|değişik|vasat)|tat (yok|alamad)|tatsız|lezzetsiz|aroma\w* .{0,15}(yok|zayıf|hafif|gelmiyor|tadı gelmi|baskıla)|su gibi|duru|sıradan|vasat|ekşi|küf|çamur|kahve tadı (gelmiyor|yok)|kokusu? (bile )?(çok )?(hafif|yok)|posa|suni|yapay|metal|midemi|hiç beğenme|beğenmedi|sevmedim|damak'),
+    'skt': ('Son kullanma tarihi yakın geldi', 'Tarihi yaklaşmış ürün geliyor!',
+            r'son kullan|son tüketim|skt|sktt|tarih\w* .{0,25}(yakın|geçmiş|kalmış|kala|az|yaklaş|bitecek|dolmasına|yakin)|tariji geçmiş|\d+ ay kal|ay kala|tarihli'),
+    'paket_hasar': ('Paket patlak, vakumu kaçmış', 'Paketi patlak geliyor!',
+                    r'patla|patlak|vakum|delin|delik|yırtık|yirtik|dökül|ezik|açık (ve|şekilde)? ?geldi|ağzı açık|agzı açık|açılmış|hasar|poşete|poşet\w* (sar|koy|geçir|tepil)|naylon poşet|bantla'),
+    'bayat': ('Bayat, hava almış', 'Bayat geliyor!', r'bayat|hava (al|çek)|hava almış|havası kaçmış|nemlen|nem kap|nem al|eskimiş|ekşimiş|ekşniş'),
+    'kargo': ('Kargo ve teslimat sorunu', 'Kargo gecikiyor!', r'kargo\w* .{0,20}(kötü|geç|değiştir|getirmedi)|teslim edil(me|di ola)|geç geldi|ptt|\d+ gün sonra elime|teslimat yapılmadı'),
+    'eksik': ('Eksik paket geldi', 'Eksik paket geliyor!', r'eksik|\d (adet|tane|paket) (geldi|gelmiş|yolla)|yollamak yerine|gelmesi gerekirken|hediye\w* .{0,40}(gelme|gönderilme|yok|yollanma)|bardak gönderilmedi'),
+    'yanlis': ('Yanlış ürün, orijinal değil', 'Yanlış ya da farklı ürün geliyor!', r'yanlış|yanlis|farklı (bir )?ürün|ambalajı farklı|istedim .{0,25}geldi|açıklamada yazan\w* .{0,15}aynı değil|sattığınız şeyi göndermiyor|orijinal değil|kağıt kesip'),
+    'ogutme': ('Öğütme yanlış, makineye uymadı', 'Öğütme makineye uymuyor!', r'öğüt\w* .{0,30}(ince|kalın|değil|uymad|olmad|yolla|gönder)|ince çek|incecik|toz gibi|un gibi|çekirdek (olarak )?(geldi|gönder|kahve göndermiş)|kağıt filtreye göre|french press|makine\w* (uymad|olmad|göre öğüt)|türk kahvesi gibi|türk kahvesi bildiğin|çekim\w* (yanlış|hatalı)|öğütülmüş yolladılar|toz gelmiş'),
+    'yorum': ('Yorumlara güvendi, hayal kırıklığı', 'Yorumlar beklentiyi yükseltiyor!', r'yorumlara (bakarak|göre|güven)|yorumları görünce|bu kadar (güzel|iyi) yorum|yüksek puan veren|yorum yapanlar|övülmesine|muhteşem bayildim'),
+    'kavrum': ('Fazla kavrulmuş, yanık, acı', 'Yanık ve acı tat!', r'yanık|yanik|çok kavrul|çifte kavrul|yakmışlar|fazla acı|acı oluyor|çok sert|aşırı sert|sert geldi'),
+    'yabanci': ('İçinden yabancı madde çıktı', 'İçinden yabancı madde çıkıyor!', r'tel çıktı|odun|kıl çıktı|böcek|taş çıktı|karıştırılmış|yabancı madde'),
+    'fiyat': ('Fiyat dalgalı / pahalı', 'Fiyatı dalgalı!', r'fiyat\w* .{0,30}(düştü|arttı|pahalı|yüksek|karar ver|düşük)|bu fiyata|pahalı'),
+}
+OLUMLU = {
+    'lezzet': ('Lezzetli, aroması güzel', r'lezzet|tadı (çok )?(güzel|harika|muhteşem|mükemmel|iyi)|tadına bayıl|aroma\w* (güzel|harika|zengin|yoğun)|enfes|nefis'),
+    'koku': ('Kokusu güzel', r'koku|kokuyor|mis gibi'),
+    'yumusak': ('Yumuşak, dengeli içim', r'yumuşak|ekşi değil|ekşilik yok|acı değil|dengeli|hafif içim|içimi (kolay|güzel|yumuşak)|ferah'),
+    'yogun': ('Sert, yoğun gövde', r'sert|yoğun|gövde|güçlü|dolgun|koyu'),
+    'taze': ('Taze, tarihi uzun', r'taze|tarihi? (uzun|ileri)|skt\w* (uzun|ileri|iyi)|son kullanma tarihi (uzun|ileri)|vakum'),
+    'fiyat': ('Fiyatı uygun', r'fiyat|uygun|ucuz|indirim|fp|performans|hesaplı'),
+    'paket': ('Özenli paket, hızlı kargo', r'paketle|paketlen|hızlı|kargo|sağlam geldi|özenli'),
+    'sadakat': ('Yıllardır içiyor, tekrar alıyor', r'yıllardır|her zaman|hep (bunu|bu|aldığım)|sürekli|vazgeçilmez|tekrar|yine aldım|ikinci kez|stok'),
+    'ogutme': ('Öğütme makineye tam uygun', r'öğütme\w* (güzel|iyi|tam|doğru|ideal)|tam kıvamında|makine\w* (uygun|uyumlu|tam)|french press\w* (için )?(uygun|güzel)'),
+    'hediye': ('Hediye (bardak, klips, Türk kahvesi)', r'hediye|bardak|klips|türk kahvesi hediye|numune'),
+    'cesit': ('Farklı çeşitleri denemek', r'çeşit|deneme|tanışma|farklı (tat|aroma|ülke)|her biri|kenya|etiyopya|kolombiya|guatemala|brezilya'),
+}

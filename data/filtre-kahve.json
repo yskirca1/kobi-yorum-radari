@@ -1,0 +1,1087 @@
+{
+ "id": "filtre-kahve",
+ "ad": "Filtre kahve",
+ "ust": "Gıda",
+ "toplama": "2 Kasım 2026",
+ "kaynak": "Trendyol",
+ "esanlam": [
+  "filtre kahve",
+  "kahve",
+  "öğütülmüş kahve",
+  "çekirdek kahve",
+  "french press",
+  "kahve seti",
+  "aromalı kahve",
+  "yöresel kahve"
+ ],
+ "temalar": [
+  {
+   "id": "tat",
+   "ad": "Tadı kötü, aroması yok, ekşi",
+   "unlem": "Tadı ve aroması beklentiyi karşılamıyor!"
+  },
+  {
+   "id": "skt",
+   "ad": "Son kullanma tarihi yakın geldi",
+   "unlem": "Tarihi yaklaşmış ürün geliyor!"
+  },
+  {
+   "id": "paket_hasar",
+   "ad": "Paket patlak, vakumu kaçmış",
+   "unlem": "Paketi patlak geliyor!"
+  },
+  {
+   "id": "bayat",
+   "ad": "Bayat, hava almış",
+   "unlem": "Bayat geliyor!"
+  },
+  {
+   "id": "kargo",
+   "ad": "Kargo ve teslimat sorunu",
+   "unlem": "Kargo gecikiyor!"
+  },
+  {
+   "id": "eksik",
+   "ad": "Eksik paket geldi",
+   "unlem": "Eksik paket geliyor!"
+  },
+  {
+   "id": "yanlis",
+   "ad": "Yanlış ürün, orijinal değil",
+   "unlem": "Yanlış ya da farklı ürün geliyor!"
+  },
+  {
+   "id": "ogutme",
+   "ad": "Öğütme yanlış, makineye uymadı",
+   "unlem": "Öğütme makineye uymuyor!"
+  },
+  {
+   "id": "yorum",
+   "ad": "Yorumlara güvendi, hayal kırıklığı",
+   "unlem": "Yorumlar beklentiyi yükseltiyor!"
+  },
+  {
+   "id": "kavrum",
+   "ad": "Fazla kavrulmuş, yanık, acı",
+   "unlem": "Yanık ve acı tat!"
+  },
+  {
+   "id": "yabanci",
+   "ad": "İçinden yabancı madde çıktı",
+   "unlem": "İçinden yabancı madde çıkıyor!"
+  },
+  {
+   "id": "fiyat",
+   "ad": "Fiyat dalgalı / pahalı",
+   "unlem": "Fiyatı dalgalı!"
+  }
+ ],
+ "olumlu_konular": [
+  {
+   "id": "lezzet",
+   "ad": "Lezzetli, aroması güzel"
+  },
+  {
+   "id": "koku",
+   "ad": "Kokusu güzel"
+  },
+  {
+   "id": "yumusak",
+   "ad": "Yumuşak, dengeli içim"
+  },
+  {
+   "id": "yogun",
+   "ad": "Sert, yoğun gövde"
+  },
+  {
+   "id": "taze",
+   "ad": "Taze, tarihi uzun"
+  },
+  {
+   "id": "fiyat",
+   "ad": "Fiyatı uygun"
+  },
+  {
+   "id": "paket",
+   "ad": "Özenli paket, hızlı kargo"
+  },
+  {
+   "id": "sadakat",
+   "ad": "Yıllardır içiyor, tekrar alıyor"
+  },
+  {
+   "id": "ogutme",
+   "ad": "Öğütme makineye tam uygun"
+  },
+  {
+   "id": "hediye",
+   "ad": "Hediye (bardak, klips, Türk kahvesi)"
+  },
+  {
+   "id": "cesit",
+   "ad": "Farklı çeşitleri denemek"
+  }
+ ],
+ "oneriler": [
+  {
+   "baslik": "KOBİ'nin rakibi damak tadı: tadı net anlat",
+   "metin": "KOBİ kahvelerinde olumsuz yorumların %44'ü tattan (\"aroma yok\", \"su gibi\", \"ekşi\"); büyük markalarda bu oran %13. Tat beklentisi kişiye göre değiştiği için kavrum derecesini, asiditeyi, gövdeyi ve tat notalarını ilanda açıkça yazmak doğru müşteriyi getirir."
+  },
+  {
+   "baslik": "Taze kahve en güçlü kozun",
+   "metin": "Büyük markalarda olumsuz yorumların %30'u son kullanma tarihinden; Tchibo Profesional'da %59. KOBİ'lerde bu oran %2. Kavrum tarihini paketin üstüne ve ilana yazmak, KOBİ'nin büyük markaya karşı en kolay farkı."
+  },
+  {
+   "baslik": "Paketi kargoya dayanıklı yap",
+   "metin": "Büyük marka kahvelerde patlak ve vakumu kaçmış paket şikâyeti %17 (Jacobs %32, Tchibo Gold %26). Naylon poşete konan 4'lü paketler kargoda patlıyor. Kutu, balonlu naylon ve valfli paket bu şikâyeti bitirir; KOBİ'lerde paket şikâyeti yalnızca %2."
+  },
+  {
+   "baslik": "Öğütmeyi müşteriye sor, doğru öğüt",
+   "metin": "Öğütme şikâyeti %3: French press seçen müşteriye ince çekim, çekirdek isteyene öğütülmüş kahve gidiyor. Demleme yöntemine göre öğütme seçeneği sunmak ve siparişte doğru öğütmek iade sebebini ortadan kaldırır."
+  },
+  {
+   "baslik": "Yorum beklentisini yönet",
+   "metin": "KOBİ kahvelerinde olumsuz yorumların %5'i \"yorumlara güvenip aldım, hayal kırıklığı\" diyor. Çok sayıda 5 yıldız beklentiyi yükseltiyor; tat profilini dürüst anlatmak ve küçük deneme paketi sunmak bu hayal kırıklığını azaltır."
+  },
+  {
+   "baslik": "Deneme seti ve hediye kapıyı açar",
+   "metin": "Deneme ve tanışma setleri çeşit merakıyla satılıyor; Bongardi'nin önerilen yorumlarının %40'ı, Addis Ababa'nınkilerin %31'i hediyeden (klips, Türk kahvesi) söz ediyor. Yeni müşteri için küçük gramajlı set iyi bir giriş ürünü."
+  }
+ ],
+ "urunler": [
+  {
+   "id": "788858071",
+   "kisa": "Tchibo Gold Selection 4x250",
+   "marka": "Tchibo",
+   "ad": "Tchibo Gold Selection Filtre Kahve 4x250 g",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1744/product/media/images/prod/PIM/20250917/08/8f25347a-ef3b-442e-8862-9640e044c98a/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/tchibo/gold-selection-250-gr-4-lu-paket-filtre-kahve-p-788858071",
+   "yazili": 1535,
+   "yildiz": [
+    64,
+    23,
+    40,
+    113,
+    1295
+   ],
+   "ort": 4.66,
+   "onerilen_ort": 4.96,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 87,
+   "sikayet": {
+    "tat": 0.07,
+    "skt": 0.15,
+    "paket_hasar": 0.26,
+    "bayat": 0.11,
+    "kargo": 0.05,
+    "eksik": 0.05,
+    "yanlis": 0.07,
+    "ogutme": 0.03,
+    "yorum": 0,
+    "kavrum": 0.02,
+    "yabanci": 0,
+    "fiyat": 0
+   },
+   "olumlu": {
+    "lezzet": 0.15,
+    "koku": 0.03,
+    "yumusak": 0.07,
+    "yogun": 0.04,
+    "taze": 0.04,
+    "fiyat": 0.27,
+    "paket": 0.53,
+    "sadakat": 0.38,
+    "ogutme": 0.01,
+    "hediye": 0.02,
+    "cesit": 0
+   },
+   "dikkat": [
+    "En sık şikâyet patlak ya da vakumu kaçmış paket (%26); naylon poşete sarılıp gönderildiği yazılıyor.",
+    "Son kullanma tarihi yakın gelme (%15) ve hava almış, bayat kahve (%11) şikâyeti var.",
+    "Ürünü 29 farklı satıcı satıyor; sorunların çoğu satıcının paketlemesinden."
+   ],
+   "ders": [
+    "Kahvenin kendisi seviliyor (önerilen yorumların %38'i \"yıllardır içiyorum\"); puanı satıcının paketlemesi düşürüyor."
+   ],
+   "alinti": [
+    {
+     "konu": "paket_hasar",
+     "yildiz": 1,
+     "metin": "Kahvelerden biri kargoda patlamış"
+    },
+    {
+     "konu": "skt",
+     "yildiz": 1,
+     "metin": "ürünün son kullanım tarihi 2025 mart ayrıca tadı ekşniş gibi yani bayat kahve"
+    },
+    {
+     "konu": "bayat",
+     "yildiz": 2,
+     "metin": "1 paket hava almıştı vakumlu değildi."
+    }
+   ]
+  },
+  {
+   "id": "52915799",
+   "kisa": "Tchibo Profesional 4x250",
+   "marka": "Tchibo",
+   "ad": "Tchibo Profesional Special Filtre Kahve 4x250 g",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty15/product/media/images/20201016/19/16546659/94155821/0/0_org_zoom.jpg",
+   "link": "https://www.trendyol.com/tchibo/profesional-special-filtre-kahve-4x250gr-p-52915799",
+   "yazili": 1640,
+   "yildiz": [
+    111,
+    47,
+    75,
+    117,
+    1290
+   ],
+   "ort": 4.48,
+   "onerilen_ort": 4.98,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "tat": 0.12,
+    "skt": 0.59,
+    "paket_hasar": 0.04,
+    "bayat": 0.06,
+    "kargo": 0,
+    "eksik": 0,
+    "yanlis": 0.02,
+    "ogutme": 0.01,
+    "yorum": 0.03,
+    "kavrum": 0.04,
+    "yabanci": 0.03,
+    "fiyat": 0.03
+   },
+   "olumlu": {
+    "lezzet": 0.19,
+    "koku": 0.07,
+    "yumusak": 0.05,
+    "yogun": 0.11,
+    "taze": 0.04,
+    "fiyat": 0.29,
+    "paket": 0.42,
+    "sadakat": 0.41,
+    "ogutme": 0,
+    "hediye": 0.13,
+    "cesit": 0
+   },
+   "dikkat": [
+    "Olumsuz yorumların %59'u son kullanma tarihinden: 4'lü pakette tarihine 2-3 ay kalmış kahve geliyor.",
+    "\"1 kg kahveyi 2 ayda nasıl bitireyim\" şikâyeti sık; tarih yakınken açılan paket bayat bulunuyor."
+   ],
+   "ders": [
+    "Büyük marka kahvede bile müşteri tarihi kontrol ediyor; tarihi yakın stoğu 4'lü paketle satmak 1 yıldızın 1 numaralı sebebi."
+   ],
+   "alinti": [
+    {
+     "konu": "skt",
+     "yildiz": 2,
+     "metin": "SON KULLANIM TARİHİNE 2 AY KALAN KAHVEYİ GÖNDERDİĞİNİZ İÇİN TESEKKURLER"
+    },
+    {
+     "konu": "tat",
+     "yildiz": 2,
+     "metin": "Nasıl beğenmişsiniz ya bildiğin acı. Kahve tadı yoğun değil. Acı ya yok yere 4 paket aldım ah kafam"
+    },
+    {
+     "konu": "bayat",
+     "yildiz": 1,
+     "metin": "Son kullanmasina 3 ay var bayat kahveyi 4lu satiyorlar iste. İade etsen tekini actik. Tadi cok kotu. Almayin."
+    }
+   ]
+  },
+  {
+   "id": "55413395",
+   "kisa": "Kahve Dünyası 4'lü Filtre",
+   "marka": "Kahve Dünyası",
+   "ad": "Kahve Dünyası 4'lü Filtre Kahve 1 kg",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1537/product/media/images/ty1538/prod/QC/20240912/09/059ec212-18d5-307a-9b33-40c5e7a63eda/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/kahve-dunyasi/4-lu-filtre-kahve-p-55413395",
+   "yazili": 1634,
+   "yildiz": [
+    87,
+    29,
+    56,
+    122,
+    1340
+   ],
+   "ort": 4.59,
+   "onerilen_ort": 4.97,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "tat": 0.12,
+    "skt": 0.27,
+    "paket_hasar": 0.22,
+    "bayat": 0.04,
+    "kargo": 0.1,
+    "eksik": 0.1,
+    "yanlis": 0,
+    "ogutme": 0.02,
+    "yorum": 0,
+    "kavrum": 0.02,
+    "yabanci": 0,
+    "fiyat": 0
+   },
+   "olumlu": {
+    "lezzet": 0.19,
+    "koku": 0.06,
+    "yumusak": 0.04,
+    "yogun": 0.02,
+    "taze": 0.06,
+    "fiyat": 0.37,
+    "paket": 0.42,
+    "sadakat": 0.34,
+    "ogutme": 0,
+    "hediye": 0.01,
+    "cesit": 0.01
+   },
+   "dikkat": [
+    "Son kullanma tarihi yakın gelme %27, patlak paket %22.",
+    "Eksik paket (%10) ve kargo gecikmesi (%10) yazılıyor; ürünü 20 satıcı satıyor."
+   ],
+   "ders": [
+    "Marka güveni yüksek (önerilen yorumların %34'ü sadık müşteri); ama tarih ve paket sorunu ürüne değil satıcıya bağlı."
+   ],
+   "alinti": [
+    {
+     "konu": "skt",
+     "yildiz": 1,
+     "metin": "son kullanma tarihi çok yakın satıcı eldekini tüketmek için göndermiş"
+    },
+    {
+     "konu": "paket_hasar",
+     "yildiz": 2,
+     "metin": "taze gayet ama paketleme özensiz patlamıştı bir paket iç içe geçmiş bir şekilde kargolanmis"
+    },
+    {
+     "konu": "tat",
+     "yildiz": 2,
+     "metin": "Kahve dünyasının filtre kahvesini yillar önce icip beğenmiştim fakat bu paketlerdekiler lezzetsiz"
+    }
+   ]
+  },
+  {
+   "id": "266883471",
+   "kisa": "Kahve Dünyası Fındık Aromalı",
+   "marka": "Kahve Dünyası",
+   "ad": "Kahve Dünyası Fındık Aromalı Filtre Kahve 250 g",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1719/prod/QC_ENRICHMENT/20250801/14/7463fa36-57c7-3a7b-aade-50f70ef8d8d4/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/kahve-dunyasi/findik-aromali-filtre-kahve-250g-p-266883471",
+   "yazili": 650,
+   "yildiz": [
+    78,
+    22,
+    37,
+    66,
+    447
+   ],
+   "ort": 4.2,
+   "onerilen_ort": 4.91,
+   "onerilen_dusuk": 1,
+   "onerilen_n": 100,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "tat": 0.19,
+    "skt": 0.33,
+    "paket_hasar": 0.1,
+    "bayat": 0.04,
+    "kargo": 0.07,
+    "eksik": 0,
+    "yanlis": 0.02,
+    "ogutme": 0.06,
+    "yorum": 0.01,
+    "kavrum": 0.01,
+    "yabanci": 0,
+    "fiyat": 0.01
+   },
+   "olumlu": {
+    "lezzet": 0.16,
+    "koku": 0.35,
+    "yumusak": 0.16,
+    "yogun": 0.04,
+    "taze": 0.01,
+    "fiyat": 0.05,
+    "paket": 0.13,
+    "sadakat": 0.14,
+    "ogutme": 0,
+    "hediye": 0,
+    "cesit": 0.01
+   },
+   "dikkat": [
+    "Son kullanma tarihi yakın gelme %33; \"tarihine 20 gün kalan ürün\" örnekleri var.",
+    "Fındık kokusu güzel ama tadında fındık olmadığı, \"suni\" olduğu yazılıyor (%19).",
+    "French press seçilip ince çekilmiş kahve gelmesi gibi öğütme hatası var (%6)."
+   ],
+   "ders": [
+    "Aromalı kahvede koku satışı getiriyor (%35 kokuyu övüyor), ama tat kokunun gerisinde kalınca \"suni\" yorumu geliyor."
+   ],
+   "alinti": [
+    {
+     "konu": "skt",
+     "yildiz": 1,
+     "metin": "son kullanma tarihine 20 gün kalan ürünü gönderdiğiniz için teşekkür ederim"
+    },
+    {
+     "konu": "tat",
+     "yildiz": 1,
+     "metin": "çok kötü bir tadı var. kimse sevmedi."
+    },
+    {
+     "konu": "paket_hasar",
+     "yildiz": 2,
+     "metin": "Ezilmiş bir şekilde gelmişti. Pakette delikler oluşmuş. Onun dışında kahve güzel."
+    }
+   ]
+  },
+  {
+   "id": "37634572",
+   "kisa": "Jacobs Selection 4x250",
+   "marka": "Jacobs",
+   "ad": "Jacobs Selection Filtre Kahve 250 g, 4 al 3 öde",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1637/prod/QC/20250214/16/36a5ceff-baea-33ce-9e3e-062f29e2e251/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/jacobs/selection-filtre-kahve-250-gr-4-al-3-ode-p-37634572",
+   "yazili": 1345,
+   "yildiz": [
+    59,
+    14,
+    45,
+    103,
+    1124
+   ],
+   "ort": 4.65,
+   "onerilen_ort": 4.98,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 73,
+   "sikayet": {
+    "tat": 0.15,
+    "skt": 0.07,
+    "paket_hasar": 0.32,
+    "bayat": 0.15,
+    "kargo": 0.07,
+    "eksik": 0.07,
+    "yanlis": 0.01,
+    "ogutme": 0.01,
+    "yorum": 0,
+    "kavrum": 0,
+    "yabanci": 0,
+    "fiyat": 0
+   },
+   "olumlu": {
+    "lezzet": 0.14,
+    "koku": 0.02,
+    "yumusak": 0.09,
+    "yogun": 0.01,
+    "taze": 0.01,
+    "fiyat": 0.32,
+    "paket": 0.54,
+    "sadakat": 0.14,
+    "ogutme": 0,
+    "hediye": 0.34,
+    "cesit": 0.02
+   },
+   "dikkat": [
+    "En sık şikâyet patlak paket (%32) ve hava almış kahve (%15).",
+    "\"Marketten aldığım tadı alamadım\" diyenler var."
+   ],
+   "ders": [
+    "\"4 al 3 öde\" kampanyası hacmi artırıyor; tek koliye konan 4 paket kargoda patlıyor."
+   ],
+   "alinti": [
+    {
+     "konu": "paket_hasar",
+     "yildiz": 2,
+     "metin": "Paketin biri patlamış geldi"
+    },
+    {
+     "konu": "bayat",
+     "yildiz": 1,
+     "metin": "ambalanj zayıftı. iki kahve paketi hava almış."
+    },
+    {
+     "konu": "tat",
+     "yildiz": 1,
+     "metin": "marketten aldığım tadı alamadım. Arada çok fark var"
+    }
+   ]
+  },
+  {
+   "id": "80275104",
+   "kisa": "Starbucks Veranda Blend",
+   "marka": "Starbucks",
+   "ad": "Starbucks Veranda Blend Öğütülmüş Kahve 200 g",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1688/product/media/images/prod/PIM/20250603/14/b627a8ad-ed63-4b50-baef-387c93ba5ab7/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/starbucks/veranda-blend-ogutulmus-kahve-200-gr-p-80275104",
+   "yazili": 152,
+   "yildiz": [
+    18,
+    9,
+    4,
+    10,
+    111
+   ],
+   "ort": 4.23,
+   "onerilen_ort": 4.9,
+   "onerilen_dusuk": 1,
+   "onerilen_n": 100,
+   "ornek_dusuk": 27,
+   "sikayet": {
+    "tat": 0.15,
+    "skt": 0.37,
+    "paket_hasar": 0.04,
+    "bayat": 0.04,
+    "kargo": 0.04,
+    "eksik": 0,
+    "yanlis": 0.11,
+    "ogutme": 0,
+    "yorum": 0,
+    "kavrum": 0.04,
+    "yabanci": 0,
+    "fiyat": 0
+   },
+   "olumlu": {
+    "lezzet": 0.13,
+    "koku": 0.07,
+    "yumusak": 0.18,
+    "yogun": 0.02,
+    "taze": 0.01,
+    "fiyat": 0.14,
+    "paket": 0.15,
+    "sadakat": 0.05,
+    "ogutme": 0,
+    "hediye": 0.12,
+    "cesit": 0.01
+   },
+   "dikkat": [
+    "1-2 yıldız oranı %17,8 ile kategorinin en yükseği; olumsuzların %37'si son kullanma tarihinden.",
+    "Kahvenin değiştirildiği, orijinal olmadığı şüphesi yazılıyor (%11). Ürünü 27 satıcı satıyor."
+   ],
+   "ders": [
+    "Az satılan büyük marka ürünü raf ömrünün sonunda satılıyor; tarih şikâyeti en yüksek oranlardan."
+   ],
+   "alinti": [
+    {
+     "konu": "skt",
+     "yildiz": 1,
+     "metin": "Henüz denemedim ama son kullanma tarihinin bitmesine iki hafta kalan ürün gönderilmiş."
+    },
+    {
+     "konu": "tat",
+     "yildiz": 1,
+     "metin": "Tadı ekşi acı starbaks kahvesi değil gibi"
+    },
+    {
+     "konu": "yanlis",
+     "yildiz": 1,
+     "metin": "tavsiye etmiyorum icin de ki kahveyi çıkarıp değiştirmişler orijinal değil paranız çöp olur"
+    }
+   ]
+  },
+  {
+   "id": "111624445",
+   "kisa": "Moliendo House Blend",
+   "marka": "Moliendo",
+   "ad": "Moliendo House Blend Öğütülmüş Filtre Kahve 250 g",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1923/prod/QC_ENRICHMENT/20260513/11/86e1aacc-67b6-3d1d-80d4-29f6be480ac8/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/moliendo/house-blend-filtre-kahve-ogutulmus-filtre-kahve-250-g-p-111624445",
+   "yazili": 1684,
+   "yildiz": [
+    53,
+    39,
+    92,
+    194,
+    1306
+   ],
+   "ort": 4.58,
+   "onerilen_ort": 4.98,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 92,
+   "sikayet": {
+    "tat": 0.54,
+    "skt": 0.01,
+    "paket_hasar": 0.02,
+    "bayat": 0,
+    "kargo": 0.01,
+    "eksik": 0.01,
+    "yanlis": 0.03,
+    "ogutme": 0.02,
+    "yorum": 0.05,
+    "kavrum": 0.02,
+    "yabanci": 0,
+    "fiyat": 0.02
+   },
+   "olumlu": {
+    "lezzet": 0.24,
+    "koku": 0.26,
+    "yumusak": 0.2,
+    "yogun": 0.03,
+    "taze": 0.14,
+    "fiyat": 0.14,
+    "paket": 0.33,
+    "sadakat": 0.16,
+    "ogutme": 0.01,
+    "hediye": 0.06,
+    "cesit": 0.03
+   },
+   "dikkat": [
+    "Olumsuz yorumların yarısından fazlası tattan (%54): \"aroma yok\", \"su gibi\", \"hafif\".",
+    "\"Bu kadar övülmesine şaşırdım\" diyerek yorumlara güvenip hayal kırıklığı yaşayanlar var."
+   ],
+   "ders": [
+    "KOBİ kahvesinde tarih ve paket sorunu neredeyse hiç yok; şikâyetin tamamı damak tadında toplanıyor."
+   ],
+   "alinti": [
+    {
+     "konu": "tat",
+     "yildiz": 2,
+     "metin": "Ben tadını pek beğenmedim"
+    },
+    {
+     "konu": "yorum",
+     "yildiz": 2,
+     "metin": "Hiç beğenmedim açıkçası bu kadar övülmesine çok şaşırdım"
+    },
+    {
+     "konu": "yanlis",
+     "yildiz": 1,
+     "metin": "hiç memnun kalmadım kahve tadını alamadım ve yanlış kahve göndermişsiniz"
+    }
+   ]
+  },
+  {
+   "id": "79828858",
+   "kisa": "Bongardi Dünya Kahveleri Seti",
+   "marka": "Bongardi",
+   "ad": "Bongardi 5'li Dünya Kahveleri Seti 5x200 g",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1726/prod/QC_ENRICHMENT/20250814/22/a6634d94-4bdc-3439-ba5d-a7642f1e90c6/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/bongardi-coffee/5-li-dunya-kahveleri-seti-1-kg-5x200g-brezilya-kolombiya-etiyopya-cekirdek-veya-ogutulmus-p-79828858",
+   "yazili": 905,
+   "yildiz": [
+    63,
+    16,
+    61,
+    78,
+    687
+   ],
+   "ort": 4.45,
+   "onerilen_ort": 4.98,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 79,
+   "sikayet": {
+    "tat": 0.34,
+    "skt": 0.04,
+    "paket_hasar": 0.01,
+    "bayat": 0.05,
+    "kargo": 0.01,
+    "eksik": 0.04,
+    "yanlis": 0.09,
+    "ogutme": 0.05,
+    "yorum": 0.05,
+    "kavrum": 0.04,
+    "yabanci": 0.01,
+    "fiyat": 0.03
+   },
+   "olumlu": {
+    "lezzet": 0.12,
+    "koku": 0.15,
+    "yumusak": 0.06,
+    "yogun": 0.04,
+    "taze": 0.16,
+    "fiyat": 0.13,
+    "paket": 0.51,
+    "sadakat": 0.2,
+    "ogutme": 0,
+    "hediye": 0.4,
+    "cesit": 0.19
+   },
+   "dikkat": [
+    "Tat şikâyeti %34; setteki bazı çeşitlerin beğenilmediği yazılıyor.",
+    "Görseldeki çeşitlerden farklı kahve gelmesi (%9) ve makineye uymayan ince öğütme (%5) var."
+   ],
+   "ders": [
+    "Deneme seti hediye ve paketlemeyle övülüyor (%40 hediyeden söz ediyor); setteki her çeşidin tat profili net yazılmalı."
+   ],
+   "alinti": [
+    {
+     "konu": "tat",
+     "yildiz": 1,
+     "metin": "benim damak tadıma hiç uymadı. sadece poşetleri güzel,o kadar.."
+    },
+    {
+     "konu": "yanlis",
+     "yildiz": 1,
+     "metin": "Alırken görselde görünen ürün içeriklerinin 2 tanesi yanlış gelmiş yine de iade etmeyip deneyeceğim."
+    },
+    {
+     "konu": "ogutme",
+     "yildiz": 1,
+     "metin": "incecik un gibi olduğu için makineme uymadı madur oldum 😔😔"
+    }
+   ]
+  },
+  {
+   "id": "274717174",
+   "kisa": "Addis Ababa Etiyopya Seti",
+   "marka": "Addis Ababa",
+   "ad": "Addis Ababa Etiyopya 3'lü Deneme Seti 3x250 g",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1800/prod/QC_ENRICHMENT/20251215/13/2c4779b1-317e-3b50-b683-cb3a997e4599/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/addis-ababa-coffee/etiyopya-3-lu-deneme-seti-3x250-gr-750-gr-sert-dengeli-ciceksi-p-274717174",
+   "yazili": 615,
+   "yildiz": [
+    28,
+    15,
+    30,
+    61,
+    481
+   ],
+   "ort": 4.55,
+   "onerilen_ort": 4.97,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 43,
+   "sikayet": {
+    "tat": 0.44,
+    "skt": 0,
+    "paket_hasar": 0.02,
+    "bayat": 0.02,
+    "kargo": 0,
+    "eksik": 0,
+    "yanlis": 0,
+    "ogutme": 0.02,
+    "yorum": 0.05,
+    "kavrum": 0.02,
+    "yabanci": 0,
+    "fiyat": 0
+   },
+   "olumlu": {
+    "lezzet": 0.19,
+    "koku": 0.16,
+    "yumusak": 0.1,
+    "yogun": 0.05,
+    "taze": 0.02,
+    "fiyat": 0.09,
+    "paket": 0.49,
+    "sadakat": 0.14,
+    "ogutme": 0,
+    "hediye": 0.31,
+    "cesit": 0.1
+   },
+   "dikkat": [
+    "Tat şikâyeti %44: \"orta kavrulmuş olanı bile fazla kavrulmuş, acı ve ekşi\".",
+    "Kavrumun homojen olmadığı yazılıyor."
+   ],
+   "ders": [
+    "\"Orta kavrum\" yazan pakette kavrum tutarlılığı önemli; farklı partide farklı kavrum yorumlara hemen yansıyor."
+   ],
+   "alinti": [
+    {
+     "konu": "tat",
+     "yildiz": 1,
+     "metin": "Orta kavrulmuş olanı bile fazla kavrulmuş acı ve ekşi tatlar geliyor hoş bir kahve korkusu bile yok bir daha almam"
+    },
+    {
+     "konu": "yorum",
+     "yildiz": 2,
+     "metin": "yorumlara bakarak almıştım ama hayal kırıklığı. çünkü çekirdeklerin kavrulması ve yaglılığı homojen değil. bir daha almam."
+    },
+    {
+     "konu": "bayat",
+     "yildiz": 1,
+     "metin": "Bayat tadı kötü bir daha almam pahali"
+    }
+   ]
+  },
+  {
+   "id": "75552664",
+   "kisa": "Anisah Bolivar Daily 2x500",
+   "marka": "Anisah",
+   "ad": "Anisah Bolivar Daily Öğütülmüş Filtre Kahve 2x500 g",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1818/prod/QC_ENRICHMENT/20260130/16/75e3b35a-6957-3a92-8ecc-811d04fec3a2/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/anisah-coffee/bolivar-daily-ogutulmus-filtre-kahve-2x500gr-medium-roast-p-75552664",
+   "yazili": 413,
+   "yildiz": [
+    13,
+    14,
+    21,
+    33,
+    332
+   ],
+   "ort": 4.59,
+   "onerilen_ort": 4.97,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 27,
+   "sikayet": {
+    "tat": 0.41,
+    "skt": 0,
+    "paket_hasar": 0.04,
+    "bayat": 0,
+    "kargo": 0,
+    "eksik": 0.07,
+    "yanlis": 0,
+    "ogutme": 0,
+    "yorum": 0,
+    "kavrum": 0,
+    "yabanci": 0.04,
+    "fiyat": 0
+   },
+   "olumlu": {
+    "lezzet": 0.21,
+    "koku": 0.1,
+    "yumusak": 0.12,
+    "yogun": 0.07,
+    "taze": 0.07,
+    "fiyat": 0.19,
+    "paket": 0.28,
+    "sadakat": 0.23,
+    "ogutme": 0,
+    "hediye": 0.08,
+    "cesit": 0.07
+   },
+   "dikkat": [
+    "Az olumsuz yorum (27); çoğu tattan (%41): \"aroma ve kokusu hiç yok\".",
+    "Eksik ve patlak paket gönderimi yazılıyor."
+   ],
+   "ders": [
+    "Günlük kahvede KOBİ fiyat avantajıyla seçiliyor; tat beklentisi düşük tutulursa şikâyet de az."
+   ],
+   "alinti": [
+    {
+     "konu": "tat",
+     "yildiz": 2,
+     "metin": "Kahvenin aroma ve kokusu hiç yok.Kahve tiryakileri ne göre değil."
+    },
+    {
+     "konu": "eksik",
+     "yildiz": 1,
+     "metin": "4 adet istemiştim bu üründe sadece 1 adet geldi"
+    },
+    {
+     "konu": "paket_hasar",
+     "yildiz": 1,
+     "metin": "Paketin bir tanesi patlak geldi. Paketlemesi inanılmaz kötü..."
+    }
+   ]
+  },
+  {
+   "id": "46534796",
+   "kisa": "Anisah Dünya Kahveleri Seti",
+   "marka": "Anisah",
+   "ad": "Anisah Dünya Filtre Kahveleri Tanışma Seti 5x250 g",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1928/prod/QC_ENRICHMENT/20260814/09/06ff8bbd-36e6-32a1-b4af-863d27a07da5/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/anisah-coffee/dunya-filtre-kahveleri-tanisma-seti-5x250gr-kenya-guatemala-ethiopia-colombia-brasil-p-46534796",
+   "yazili": 214,
+   "yildiz": [
+    12,
+    5,
+    7,
+    18,
+    172
+   ],
+   "ort": 4.56,
+   "onerilen_ort": 4.94,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 17,
+   "sikayet": {
+    "tat": 0.35,
+    "skt": 0,
+    "paket_hasar": 0.06,
+    "bayat": 0.06,
+    "kargo": 0,
+    "eksik": 0.06,
+    "yanlis": 0.06,
+    "ogutme": 0.06,
+    "yorum": 0.12,
+    "kavrum": 0,
+    "yabanci": 0,
+    "fiyat": 0
+   },
+   "olumlu": {
+    "lezzet": 0.16,
+    "koku": 0.13,
+    "yumusak": 0.07,
+    "yogun": 0.06,
+    "taze": 0.02,
+    "fiyat": 0.12,
+    "paket": 0.37,
+    "sadakat": 0.1,
+    "ogutme": 0,
+    "hediye": 0.08,
+    "cesit": 0.22
+   },
+   "dikkat": [
+    "Az olumsuz yorum (17); tat şikâyeti %35: \"hepsi aynı tat, aroma gelmiyor\"."
+   ],
+   "ders": [
+    "Tanışma seti çeşit merakıyla satılıyor (%22); çeşitler arasında fark hissedilmezse hayal kırıklığı geliyor."
+   ],
+   "alinti": [
+    {
+     "konu": "tat",
+     "yildiz": 1,
+     "metin": "Yorumlara bakarak aldım ya yorum yapanlar kahve tadını bilmiyor anlayamadım hiç bir aroma tadı gelmiyor hepsi aynı tat"
+    },
+    {
+     "konu": "paket_hasar",
+     "yildiz": 1,
+     "metin": "Kenya paketi patlamış olarak geldi paketlenmesi yanlış yapilmis daha dikkat ediniz...."
+    }
+   ]
+  },
+  {
+   "id": "151430407",
+   "kisa": "Anisah Aromalı Set",
+   "marka": "Anisah",
+   "ad": "Anisah Aromalı Filtre Kahve Seti (vanilya, fındık, karamel) 3x250 g",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1000412/product/media/images/prod/PIM/20260706/09/3e11c1ad-d3e5-458a-9280-81b85d6c6700/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/anisah-coffee/aromali-filtre-kahve-seti-vanilya-findik-karamel-3x250gr-sekersiz-p-151430407",
+   "yazili": 231,
+   "yildiz": [
+    8,
+    9,
+    16,
+    24,
+    174
+   ],
+   "ort": 4.5,
+   "onerilen_ort": 4.95,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 17,
+   "sikayet": {
+    "tat": 0.47,
+    "skt": 0.06,
+    "paket_hasar": 0,
+    "bayat": 0,
+    "kargo": 0,
+    "eksik": 0,
+    "yanlis": 0,
+    "ogutme": 0,
+    "yorum": 0.12,
+    "kavrum": 0,
+    "yabanci": 0,
+    "fiyat": 0
+   },
+   "olumlu": {
+    "lezzet": 0.21,
+    "koku": 0.18,
+    "yumusak": 0.07,
+    "yogun": 0.05,
+    "taze": 0.01,
+    "fiyat": 0.07,
+    "paket": 0.2,
+    "sadakat": 0.09,
+    "ogutme": 0,
+    "hediye": 0.12,
+    "cesit": 0.03
+   },
+   "dikkat": [
+    "Az olumsuz yorum (17); tat şikâyeti %47: \"ilaç tadı\", \"kahveyle alakası yok\"."
+   ],
+   "ders": [
+    "Aromalı kahvede \"suni tat\" riski yüksek; aroma oranını ve şekersiz olduğunu açıkça yazmak beklentiyi doğru kurar."
+   ],
+   "alinti": [
+    {
+     "konu": "tat",
+     "yildiz": 2,
+     "metin": "çok beğenmedim fiyatı uygun diye almıştım ama tadını sevmedim"
+    },
+    {
+     "konu": "yorum",
+     "yildiz": 1,
+     "metin": "yorumlara göre aldım ama hata yaptım kahve ile alakası yok,"
+    },
+    {
+     "konu": "skt",
+     "yildiz": 1,
+     "metin": "Son kullanma tarihi geçmiş ürünler yollamışsınız."
+    }
+   ]
+  },
+  {
+   "id": "825973627",
+   "kisa": "Anisah Organik Decaf",
+   "marka": "Anisah",
+   "ad": "Anisah Organik Decaf Kafeinsiz Filtre Kahve 250 g",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1900/prod/QC_ENRICHMENT/20260625/11/e9fe6984-c5f7-384e-b33b-87f16fd23a5c/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/anisah-coffee/organik-decaf-kafeinsiz-filtre-kahve-250gr-decaffeinated-swiss-water-100-arabica-p-825973627",
+   "yazili": 113,
+   "yildiz": [
+    14,
+    4,
+    3,
+    12,
+    80
+   ],
+   "ort": 4.24,
+   "onerilen_ort": 4.64,
+   "onerilen_dusuk": 5,
+   "onerilen_n": 100,
+   "ornek_dusuk": 18,
+   "sikayet": {
+    "tat": 0.39,
+    "skt": 0,
+    "paket_hasar": 0,
+    "bayat": 0,
+    "kargo": 0,
+    "eksik": 0,
+    "yanlis": 0.06,
+    "ogutme": 0.11,
+    "yorum": 0,
+    "kavrum": 0.06,
+    "yabanci": 0,
+    "fiyat": 0
+   },
+   "olumlu": {
+    "lezzet": 0.28,
+    "koku": 0.08,
+    "yumusak": 0.08,
+    "yogun": 0.09,
+    "taze": 0.04,
+    "fiyat": 0.08,
+    "paket": 0.11,
+    "sadakat": 0.04,
+    "ogutme": 0,
+    "hediye": 0.02,
+    "cesit": 0.03
+   },
+   "dikkat": [
+    "1-2 yıldız oranı %15,9; kafeinsiz kahve \"inanılmaz ekşi\" bulunuyor (tat %39).",
+    "Çekirdek istenip öğütülmüş gelmesi ya da espresso makinesine uymaması gibi öğütme sorunu %11."
+   ],
+   "ders": [
+    "Kafeinsiz kahvede ekşilik en büyük risk; kavrum derecesi ve asidite ilanda yazılmalı."
+   ],
+   "alinti": [
+    {
+     "konu": "tat",
+     "yildiz": 2,
+     "metin": "İnanılmaz ekşi. Latte yaptığım halde o ekşilik hissediliyor."
+    }
+   ]
+  }
+ ]
+}
