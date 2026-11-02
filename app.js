@@ -9,7 +9,7 @@
   const norm = (s) => s.toLocaleLowerCase('tr').replace(/[ıİ]/g, 'i').replace(/ş/g, 's').replace(/ğ/g, 'g').replace(/ü/g, 'u').replace(/ö/g, 'o').replace(/ç/g, 'c').trim();
   const starStr = (v) => { const f = Math.round(v); return '★'.repeat(f) + '☆'.repeat(5 - f); };
 
-  const getJSON1 = (u) => fetch(u).then((r) => { if (!r.ok) throw new Error(u); return r.json(); });
+  const getJSON1 = (u) => fetch(u, { cache: 'no-cache' }).then((r) => { if (!r.ok) throw new Error(u); return r.json(); });
   const getJSON = (u) => getJSON1(u).catch(() => getJSON1(u.replace(/^data\//, '')));
   const loadCat = async (id) => (cache[id] ??= getJSON(`data/${id}.json`).then(enrich));
 
