@@ -93,7 +93,7 @@
       <h2>Kategoriler</h2>
       <div class="cats" style="padding-top:14px">${REG.map((c) => `
         <a class="cat ${c.durum === 'hazir' ? '' : 'off'}" href="#/kategori/${c.id}">
-          <div class="cat-img">${c.gorsel ? `<img src="${esc(c.gorsel)}" alt="" referrerpolicy="no-referrer" loading="lazy">` : `<span>${esc(c.ad[0])}</span>`}</div>
+          <div class="cat-img ${c.gorsel ? '' : 'ph'}">${c.gorsel ? `<img src="${esc(c.gorsel)}" alt="" referrerpolicy="no-referrer" loading="lazy">` : `<span>${esc(c.ad[0])}</span>`}</div>
           <div class="cat-body"><small>${esc(c.ust)}</small><h3>${esc(c.ad)}</h3>
           ${c.durum === 'hazir' ? `<span class="tag">${int(c.urun)} ürün · ${int(c.yorum)} yorum</span>` : '<span class="tag grey">Yakında</span>'}</div>
         </a>`).join('')}</div>`;
@@ -137,18 +137,84 @@
           <div class="hbars">${seg.map((t) => { const m = Math.max(...seg.map((x) => Math.max(x.buyuk, x.kobi))); return `<div class="hb"><span>${esc(t.ad)}</span><span style="display:grid;gap:3px"><span class="tr"><i style="width:${(t.buyuk / m) * 100}%;background:var(--muted)"></i></span><span class="tr"><i style="width:${(t.kobi / m) * 100}%;background:var(--alert)"></i></span></span><span class="v">${pct(t.buyuk)}<br>${pct(t.kobi)}</span></div>`; }).join('')}</div></section>
         <section class="card" style="grid-column:1/-1"><h2>Bu kategoriye girecek KOBİ için öneriler</h2><ol class="recs" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))">${c.oneriler.map((o) => `<li><b>${esc(o.baslik)}</b><span>${esc(o.metin)}</span></li>`).join('')}</ol></section>
       </div>
-      <div class="tools"><h2>Ürünler <span class="muted num" style="font-weight:400;font-size:1rem">(${c.urunler.length})</span></h2>
-        <label class="muted">Sırala <select id="sort">
-          <option value="yorum">En çok yorum</option><option value="puan">En yüksek puan</option><option value="dusuk">En az 1-2 yıldız</option><option value="cok">En çok 1-2 yıldız</option></select></label></div>
-      <div class="pgrid" id="pgrid"></div>`;
+      <div class="tools"><h2>Ürünler <span class="muted num" style="font-weight:400;font-size:1rem" id="pcount"></span></h2>
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+          <button type="button" class="btn ghost f-open" id="f-open">Filtrele</button>
+          <label class="muted">Sırala <select id="sort">
+          <option value="yorum">En çok yorum</option><option value="puan">En yüksek puan</option><option value="dusuk">En az 1-2 yıldız</option><option value="cok">En çok 1-2 yıldız</option></select></label>
+        </div></div>
+      <div class="plist">
+        <aside class="filters" id="filters" aria-label="Filtreler">${filterPanel(c)}</aside>
+        <div><div class="chips" id="chips"></div><div class="pgrid" id="pgrid"></div></div>
+      </div>`;
     const sel = document.getElementById('sort'); sel.value = sort;
+    const st = (filterState[id] ??= { segment: [], marka: [], sikayet: [], puan: '', dusuk: '' });
+    const aside = document.getElementById('filters');
+    aside.querySelectorAll('input').forEach((i) => {
+      const v = st[i.name];
+      i.checked = Array.isArray(v) ? v.includes(i.value) : v === i.value;
+    });
     const draw = () => {
       const f = { yorum: (a, b) => b.yazili - a.yazili, puan: (a, b) => b.ort - a.ort, dusuk: (a, b) => a.dusuk - b.dusuk, cok: (a, b) => b.dusuk - a.dusuk }[sel.value];
+      const list = c.urunler.filter((p) => passes(p, st)).sort(f);
       const cm = getCmp();
-      document.getElementById('pgrid').innerHTML = c.urunler.slice().sort(f).map((p) => card(c, p, cm)).join('');
+      document.getElementById('pgrid').innerHTML = list.length ? list.map((p) => card(c, p, cm)).join('')
+        : '<div class="empty" style="grid-column:1/-1"><p>Bu filtrelere uyan ürün yok.</p><button type="button" class="btn ghost" data-clear>Filtreleri temizle</button></div>';
+      document.getElementById('pcount').textContent = `(${list.length} / ${c.urunler.length})`;
+      const chips = [];
+      for (const k of ['segment', 'marka', 'sikayet']) st[k].forEach((v) => chips.push([k, v, k === 'sikayet' ? c.temaMap[v].ad : v]));
+      if (st.puan) chips.push(['puan', st.puan, PUAN[st.puan]]);
+      if (st.dusuk) chips.push(['dusuk', st.dusuk, 'Şikâyet oranı: ' + DUSUK[st.dusuk][0]]);
+      document.getElementById('chips').innerHTML = chips.map(([k, v, t]) => `<button type="button" class="chip" data-k="${k}" data-v="${esc(v)}" aria-label="${esc(t)} filtresini kaldır">${esc(t)} ×</button>`).join('')
+        + (chips.length ? '<button type="button" class="linkbtn" data-clear>Tümünü temizle</button>' : '');
+    };
+    const clear = () => { Object.assign(st, { segment: [], marka: [], sikayet: [], puan: '', dusuk: '' }); aside.querySelectorAll('input').forEach((i) => { i.checked = false; }); draw(); };
+    aside.addEventListener('change', (e) => {
+      const i = e.target;
+      if (i.type === 'checkbox') st[i.name] = [...aside.querySelectorAll(`input[name="${i.name}"]:checked`)].map((x) => x.value);
+      else st[i.name] = i.value;
+      draw();
+    });
+    app.onclick = (e) => {
+      if (e.target.closest('[data-clear]')) { clear(); return; }
+      const ch = e.target.closest('.chip');
+      if (ch) {
+        const { k, v } = ch.dataset;
+        if (Array.isArray(st[k])) st[k] = st[k].filter((x) => x !== v); else st[k] = '';
+        const inp = aside.querySelector(`input[name="${k}"][value="${CSS.escape(v)}"]`); if (inp) inp.checked = false;
+        draw();
+      }
+      if (e.target.closest('#f-open')) aside.classList.add('open');
+      if (e.target.closest('#f-close')) aside.classList.remove('open');
     };
     sel.addEventListener('change', () => { sessionSort[id] = sel.value; draw(); });
     draw();
+  }
+  const filterState = {};
+  const PUAN_L = [['4.5', '4,5 ve üzeri'], ['4.0', '4 ve üzeri'], ['3.5', '3,5 ve üzeri']];
+  const PUAN = Object.fromEntries(PUAN_L);
+  const DUSUK = { a: ['%10 altı', 0, 0.1], b: ['%10 - %20', 0.1, 0.2], c: ['%20 üzeri', 0.2, 1.01] };
+  const passes = (p, st) =>
+    (!st.segment.length || st.segment.includes(p.segment)) &&
+    (!st.marka.length || st.marka.includes(p.marka)) &&
+    (!st.sikayet.length || st.sikayet.includes(p.sik[0]?.id)) &&
+    (!st.puan || p.ort >= Number(st.puan)) &&
+    (!st.dusuk || (p.dusuk >= DUSUK[st.dusuk][1] && p.dusuk < DUSUK[st.dusuk][2]));
+  function filterPanel(c) {
+    const P = c.urunler;
+    const count = (fn) => P.filter(fn).length;
+    const group = (title, name, items, type = 'checkbox') => `<div class="fg"><h3>${title}</h3>${items.map(([v, label, n]) =>
+      `<label><input type="${type}" name="${name}" value="${esc(v)}">${esc(label)}<small>${n}</small></label>`).join('')}</div>`;
+    const segs = [...new Set(P.map((p) => p.segment))];
+    const markalar = [...new Set(P.map((p) => p.marka))].sort((a, b) => a.localeCompare(b, 'tr'));
+    const tops = [...new Set(P.map((p) => p.sik[0]?.id).filter(Boolean))];
+    return `<div class="f-head"><h2 style="font-size:1.1rem">Filtreler</h2><button type="button" class="linkbtn f-close" id="f-close">Kapat</button></div>`
+      + group('Satıcı tipi', 'segment', segs.map((s) => [s, s, count((p) => p.segment === s)]))
+      + group('Marka', 'marka', markalar.map((m) => [m, m, count((p) => p.marka === m)]))
+      + group('En sık şikâyet', 'sikayet', tops.map((t) => [t, c.temaMap[t].ad, count((p) => p.sik[0]?.id === t)]))
+      + group('Ortalama puan', 'puan', PUAN_L.map(([v, l]) => [v, l, count((p) => p.ort >= Number(v))]), 'radio')
+      + group('1-2 yıldız oranı', 'dusuk', Object.entries(DUSUK).map(([v, [l, lo, hi]]) => [v, l, count((p) => p.dusuk >= lo && p.dusuk < hi)]), 'radio')
+      + '<div class="fg"><button type="button" class="btn ghost" data-clear>Filtreleri temizle</button></div>';
   }
   const sessionSort = {};
   const card = (c, p, cm) => `
@@ -227,6 +293,7 @@
   }
 
   async function route() {
+    app.onclick = null;
     const h = decodeURIComponent(location.hash.replace(/^#\/?/, '')).split('/');
     try {
       if (h[0] === 'kategori') await category(h[1]);
@@ -241,6 +308,12 @@
     window.scrollTo(0, 0);
     drawBar();
   }
+  document.getElementById('theme').addEventListener('click', () => {
+    const root = document.documentElement;
+    const dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme = dark ? 'light' : 'dark';
+    try { localStorage.setItem('rr_theme', root.dataset.theme); } catch {}
+  });
   window.addEventListener('hashchange', route);
   getJSON('data/kategoriler.json').then((r) => { REG = r; route(); }).catch(() => { app.innerHTML = '<div class="empty"><p>Kategori listesi yüklenemedi.</p></div>'; });
 })();
