@@ -19,6 +19,25 @@
   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1618/prod/QC/20241226/18/b1160709-4937-3a26-87db-47080a16772f/1_org_zoom.jpg"
  },
  {
+  "id": "sweatshirt",
+  "ad": "Sweatshirt",
+  "ust": "Giyim",
+  "durum": "hazir",
+  "urun": 6,
+  "yorum": 1200,
+  "esanlam": [
+   "sweatshirt",
+   "sweat",
+   "svetşört",
+   "sweatşirt",
+   "kapüşonlu",
+   "hoodie",
+   "polar sweatshirt",
+   "oversize sweatshirt"
+  ],
+  "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1000428/product/media/images/prod/PIM/20260817/15/75c9e131-b7e1-4b86-ad31-e2a31ab6208d/1_org_zoom.jpg"
+ },
+ {
   "id": "bebek-arabasi",
   "ad": "Bebek arabası",
   "ust": "Anne ve bebek",

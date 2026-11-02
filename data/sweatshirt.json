@@ -1,0 +1,628 @@
+{
+ "id": "sweatshirt",
+ "ad": "Sweatshirt",
+ "ust": "Giyim",
+ "esanlam": [
+  "sweatshirt",
+  "sweat",
+  "svetşört",
+  "sweatşirt",
+  "kapüşonlu",
+  "hoodie",
+  "polar sweatshirt",
+  "oversize sweatshirt"
+ ],
+ "toplama": "2 Kasım 2026",
+ "kaynak": "Trendyol",
+ "temalar": [
+  {
+   "id": "tuylenme",
+   "ad": "Tüylenme / tiftiklenme",
+   "unlem": "Tüyleniyor, tiftikleniyor!"
+  },
+  {
+   "id": "dar",
+   "ad": "Kalıp dar / küçük",
+   "unlem": "Kalıbı dar, küçük geliyor!"
+  },
+  {
+   "id": "bol",
+   "ad": "Kalıp bol / büyük",
+   "unlem": "Çok bol, çuval gibi duruyor!"
+  },
+  {
+   "id": "yanlis",
+   "ad": "Yanlış beden / ürün gönderildi",
+   "unlem": "Yanlış beden ya da ürün geliyor!"
+  },
+  {
+   "id": "cekme",
+   "ad": "Yıkayınca çekiyor",
+   "unlem": "Yıkayınca çekiyor, küçülüyor!"
+  },
+  {
+   "id": "renk",
+   "ad": "Renk görseldekinden farklı",
+   "unlem": "Rengi görseldeki gibi değil!"
+  },
+  {
+   "id": "gorsel",
+   "ad": "Görseldeki gibi değil",
+   "unlem": "Fotoğraftaki gibi gelmiyor!"
+  },
+  {
+   "id": "ince",
+   "ad": "İnce / kalitesiz kumaş",
+   "unlem": "Kumaşı ince, kalitesiz!"
+  },
+  {
+   "id": "oversize",
+   "ad": "Oversize değil",
+   "unlem": "Oversize yazıyor ama değil!"
+  },
+  {
+   "id": "defo",
+   "ad": "Defolu / lekeli / yırtık geldi",
+   "unlem": "Defolu, lekeli ya da yırtık geliyor!"
+  },
+  {
+   "id": "dikis",
+   "ad": "Dikiş, fermuar, yaka, kol",
+   "unlem": "Dikiş, fermuar ve yaka sorunlu!"
+  },
+  {
+   "id": "kargo",
+   "ad": "Kargo gecikmesi / eksik ürün",
+   "unlem": "Kargo gecikiyor, eksik geliyor!"
+  },
+  {
+   "id": "fiyat",
+   "ad": "Fiyat / değmez / zam",
+   "unlem": "Fiyatına değmiyor, zam geliyor!"
+  }
+ ],
+ "olumlu_konular": [
+  {
+   "id": "kalite",
+   "ad": "Kaliteli kumaş"
+  },
+  {
+   "id": "sicak",
+   "ad": "Yumuşak ve sıcak tutuyor"
+  },
+  {
+   "id": "beden",
+   "ad": "Beden tam oldu"
+  },
+  {
+   "id": "boykilo",
+   "ad": "Boy, kilo ve beden yazmış"
+  },
+  {
+   "id": "hediye",
+   "ad": "Hediye / sevdiğine almış"
+  },
+  {
+   "id": "renk",
+   "ad": "Rengi güzel"
+  },
+  {
+   "id": "fp",
+   "ad": "Fiyat performans"
+  },
+  {
+   "id": "kargo",
+   "ad": "Hızlı kargo, özenli paket"
+  },
+  {
+   "id": "gorsel",
+   "ad": "Görseldeki gibi geldi"
+  },
+  {
+   "id": "salas",
+   "ad": "Salaş / oversize duruşu"
+  }
+ ],
+ "oneriler": [
+  {
+   "baslik": "Beden tablosunu boy ve kiloyla ver",
+   "metin": "Olumsuz yorumlarda beden ve kalıp sorunu oranı %35: dar, bol, \"oversize değil\", yıkayınca çekme ya da yanlış beden. Olumlu yorumlarda kendi boy-kilo-bedenini yazanların oranı %18; müşteri bu bilgiyi arıyor. Ürün sayfasına \"170 cm, 65 kg → M\" tarzı bir tablo ve mankenin ölçülerini koy."
+  },
+  {
+   "baslik": "Tüylenmeyi yıkamadan önce çöz",
+   "metin": "Tek başına en sık şikâyet tüylenme (%18). Bu şikâyetlerin yaklaşık yarısı ilk yıkamalardan sonra yazılmış. Tüylenme testinden geçmiş kumaş seç; içi polarlıysa ürünle birlikte yıkama kartı gönder (ters çevir, 30°, kurutma makinesi yok)."
+  },
+  {
+   "baslik": "Kumaşı fotoğrafta abartma, kalınlığını yaz",
+   "metin": "KOBİ ürünlerinde \"ince, kalitesiz kumaş\" şikâyeti büyük markaların yaklaşık üç katı (%21 ve %8). Kalın görünen fotoğraf ince ürünle buluşunca 1 yıldız geliyor. İplik sayısını ya da gramajı yaz, yakın çekim kumaş fotoğrafı ekle."
+  },
+  {
+   "baslik": "Doğru bedeni, doğru ürünü gönder",
+   "metin": "Büyük markaların olumsuz yorumlarında yanlış beden ya da ürün gönderimi oranı %18: S yerine XL, füme yerine bej, hatta başka marka. Paketlemede etiket kontrolü basit ama güçlü bir ayrışma noktası."
+  },
+  {
+   "baslik": "Rengi gün ışığında çek",
+   "metin": "Renk farkı şikâyeti kategoride %7, ama bazı ürünlerde %13-14'e çıkıyor: füme açık gri, krem sütlü kahve geliyor. Filtresiz, gün ışığında fotoğraf ve net renk adı iadeyi ve sessiz 1 yıldızı azaltır."
+  },
+  {
+   "baslik": "Hediye alıcısını hedefle",
+   "metin": "Önerilen yorumlarda eş, sevgili ya da çocuk için hediye alımı oranı %22 (bir üründe %50). Hediye notu, kolay beden değişimi ve hediye paketi bu kitleyi kazanır; ama paket söz verildiyse mutlaka gönderilmeli."
+  }
+ ],
+ "urunler": [
+  {
+   "id": "777723073",
+   "kisa": "Tudors",
+   "marka": "Tudors",
+   "ad": "Tudors Relax Fit Yarım Fermuarlı Dik Yaka Sweatshirt, içi polarlı, siyah",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1000428/product/media/images/prod/PIM/20260817/15/75c9e131-b7e1-4b86-ad31-e2a31ab6208d/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/tudors/unisex-relax-fit-rahat-kesim-pamuklu-ici-polarli-yarim-fermuarli-siyah-dik-bato-yaka-sweatshirt-p-777723073",
+   "yazili": 7153,
+   "yildiz": [
+    174,
+    74,
+    219,
+    848,
+    5838
+   ],
+   "ort": 4.69,
+   "onerilen_ort": 4.92,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "tuylenme": 0.21,
+    "dar": 0.23,
+    "bol": 0.07,
+    "yanlis": 0.2,
+    "cekme": 0.05,
+    "renk": 0.01,
+    "gorsel": 0.02,
+    "ince": 0.05,
+    "oversize": 0.0,
+    "defo": 0.03,
+    "dikis": 0.11,
+    "kargo": 0.03,
+    "fiyat": 0.1
+   },
+   "olumlu": {
+    "kalite": 0.46,
+    "sicak": 0.2,
+    "beden": 0.43,
+    "boykilo": 0.29,
+    "hediye": 0.5,
+    "renk": 0.06,
+    "fp": 0.09,
+    "kargo": 0.13,
+    "gorsel": 0.02,
+    "salas": 0.02
+   },
+   "dikkat": [
+    "Kalıp dar: olumsuz yorumların neredeyse dörtte biri bir, hatta iki beden büyük almayı öneriyor.",
+    "İçteki polar ilk yıkamalarda tüy bırakıyor; altına giyilen açık renk tişörtü kirlettiği yazılıyor.",
+    "Yanlış beden gönderimi sık: S istenip XL, XL istenip S gelen siparişler 1 yıldız getiriyor."
+   ],
+   "ders": [
+    "Olumlu yorumların yarısı hediye alımı. Yanlış beden gönderimi hediyeyi bozuyor; paketlemede beden kontrolü ve kolay değişim burada doğrudan puan demek.",
+    "Lider üründe bile beden tablosu yetmiyor; müşteriler birbirine boy-kilo-beden yazarak yol gösteriyor."
+   ],
+   "alinti": [
+    {
+     "konu": "Kalıp dar / küçük",
+     "yildiz": 2,
+     "metin": "Kendi bedenizin en az 2 beden fazlasını sipariş edin. Aşırı küçük ve dar"
+    },
+    {
+     "konu": "Tüylenme / tiftiklenme",
+     "yildiz": 1,
+     "metin": "Sweat içine beyaz bir şey giyince siyah tüy bırakıyor. Beyaz tshirt’ün üstüne giydim mahvoldu"
+    },
+    {
+     "konu": "Yanlış beden / ürün gönderildi",
+     "yildiz": 1,
+     "metin": "Hediye aldım M beden sipariş etmiştim S yolladılar ve M bedenin fiyatını arttırmışlar yazık yani"
+    },
+    {
+     "konu": "Olumlu: beden bilgisi",
+     "yildiz": 5,
+     "metin": "Ürünü oğlum için aldım...beden L tam oldu (Oğlum 1.80 boy ve 78 kg)....Emeği geçenlere teşekkürler"
+    }
+   ]
+  },
+  {
+   "id": "338581269",
+   "kisa": "Madmext",
+   "marka": "Madmext",
+   "ad": "Madmext Bisiklet Yaka Basic Sweatshirt, füme",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1668/prod/QC/20250424/16/7b77292d-5653-3d62-b249-1cdf2f3b5c50/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/madmext/fume-bisiklet-yaka-basic-sweatshirt-mg1559-p-338581269",
+   "yazili": 2737,
+   "yildiz": [
+    87,
+    58,
+    152,
+    400,
+    2040
+   ],
+   "ort": 4.55,
+   "onerilen_ort": 4.92,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "tuylenme": 0.17,
+    "dar": 0.03,
+    "bol": 0.22,
+    "yanlis": 0.16,
+    "cekme": 0.01,
+    "renk": 0.13,
+    "gorsel": 0.16,
+    "ince": 0.1,
+    "oversize": 0.0,
+    "defo": 0.13,
+    "dikis": 0.02,
+    "kargo": 0.06,
+    "fiyat": 0.05
+   },
+   "olumlu": {
+    "kalite": 0.3,
+    "sicak": 0.33,
+    "beden": 0.4,
+    "boykilo": 0.26,
+    "hediye": 0.08,
+    "renk": 0.23,
+    "fp": 0.1,
+    "kargo": 0.06,
+    "gorsel": 0.07,
+    "salas": 0.43
+   },
+   "dikkat": [
+    "Kalıp çok bol: \"en küçük beden bile büyük\" yorumu yaygın, bir beden küçük almak öneriliyor.",
+    "Füme renk siparişlerinde açık gri gelen ürün şikâyeti sık; fotoğraftaki ton tutmuyor.",
+    "Aynı ilanda başka satıcılar da var; etiketi farklı, başka markalı ürün geldiği yazılıyor."
+   ],
+   "ders": [
+    "Olumsuz yorumların %40'ı ilandaki başka satıcılardan; önerilen ilk 100 yorumda bu oran %1. Aynı ürünü birçok satıcı satınca kontrol kayboluyor ve markanın puanı düşüyor.",
+    "Renk adı ile fotoğraf aynı tonu göstermeli; \"füme\" yazıp açık gri göndermek iade yerine sessiz 1 yıldız getiriyor."
+   ],
+   "alinti": [
+    {
+     "konu": "Renk görseldekinden farklı",
+     "yildiz": 2,
+     "metin": "hiç gözüktüğü gibi değil ne oversize bi ürün ne de rengi füme tamamen farklı açık gri bi renk geldi hevesle beklemiştim bide cok üzüdüm"
+    },
+    {
+     "konu": "Yanlış beden / ürün gönderildi",
+     "yildiz": 1,
+     "metin": "sözde madmext marka yollayacaklardı warn diye bir markanın ürününü yollamışlar. Fotoğraflarda madmextin ürünlerinin fotoğraflarını koymuşlar ama hiç öyle gelmedi. oversize bekliyordum fakat düz t-shirt gibi bir şey geldi. kuzenime doğum günü hediyesi için hem ona hemde kendime almıştım maalesef iade olucak"
+    },
+    {
+     "konu": "Kalıp bol / büyük",
+     "yildiz": 2,
+     "metin": "en küçük bedeni bile aşırı bol ben iade ettim"
+    },
+    {
+     "konu": "Olumlu: salaş duruş",
+     "yildiz": 5,
+     "metin": "Mükemmel kendi bedenimi almama rağmen istediğim gibi salaş oldu"
+    }
+   ]
+  },
+  {
+   "id": "343388614",
+   "kisa": "Modagen",
+   "marka": "Modagen",
+   "ad": "Modagen Unisex Baskılı Oversize Kapüşonlu Sweatshirt, bebe mavisi",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1597/prod/QC/20241103/22/c674d22e-2430-3eee-be4a-31f756dda112/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/modagen/unisex-bebe-mavisi-san-francisco-baskili-oversize-kapusonlu-p-343388614",
+   "yazili": 2786,
+   "yildiz": [
+    372,
+    250,
+    447,
+    568,
+    1149
+   ],
+   "ort": 3.67,
+   "onerilen_ort": 4.96,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "tuylenme": 0.04,
+    "dar": 0.15,
+    "bol": 0.09,
+    "yanlis": 0.1,
+    "cekme": 0.03,
+    "renk": 0.05,
+    "gorsel": 0.07,
+    "ince": 0.32,
+    "oversize": 0.02,
+    "defo": 0.08,
+    "dikis": 0.03,
+    "kargo": 0.02,
+    "fiyat": 0.01
+   },
+   "olumlu": {
+    "kalite": 0.28,
+    "sicak": 0.25,
+    "beden": 0.19,
+    "boykilo": 0.08,
+    "hediye": 0.12,
+    "renk": 0.27,
+    "fp": 0.2,
+    "kargo": 0.1,
+    "gorsel": 0.07,
+    "salas": 0.11
+   },
+   "dikkat": [
+    "Fotoğrafta kalın ve pofuduk görünen ürünün ince geldiği şikâyeti en sık sorun.",
+    "Kapüşon ipi eksik gelen ve fotoğraftan farklı dikilmiş ürün yorumları var.",
+    "Beden tutarsız: S-M ve L-XL gibi çift beden etiketleri karışıklık yaratıyor."
+   ],
+   "ders": [
+    "Düşük fiyat ince kumaşı affettirmiyor. Fotoğraf beklentiyi kalın gösterirse 1-2 yıldız payı kategorinin en yükseğine (%22) çıkıyor.",
+    "Renk ve fiyat-performans seviliyor; kumaş kalınlığını (iplik, gramaj) açıkça yazmak beklentiyi doğru kurar."
+   ],
+   "alinti": [
+    {
+     "konu": "İnce / kalitesiz kumaş",
+     "yildiz": 2,
+     "metin": "Fotoğraftan yola çıkarak böyle pofuduk bir şey bekliyordum bi geldi incecik rengi falan güzel ama beklentimin çok altında"
+    },
+    {
+     "konu": "Görseldeki gibi değil",
+     "yildiz": 2,
+     "metin": "Abi sweat güzel fln ama burda gözüktuguyle alakası yok o ipleri fln yok mesela ici yumusacik ama çok güzel siz bilirsiniz"
+    },
+    {
+     "konu": "Kalıp dar / küçük",
+     "yildiz": 2,
+     "metin": "kumaş kalitesi ama bedenler standartlara uygun değil tüm gardolabım xl ama burdan aldığım xl nedense m gibi geldi"
+    },
+    {
+     "konu": "Olumlu: renk ve fiyat",
+     "yildiz": 5,
+     "metin": "Harika renk harika kumaş fiyatın üstünde performans artı ikinci ürün indirimi vardı daha uyguna geldi tam kışlık bir ürün 165 boy 73 kilo XL çok şık durdu"
+    }
+   ]
+  },
+  {
+   "id": "466787620",
+   "kisa": "Altamira",
+   "marka": "Altamira",
+   "ad": "Altamira Unisex Baskılı Oversize Kapüşonlu Sweatshirt, bej",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1597/prod/QC/20241103/22/c674d22e-2430-3eee-be4a-31f756dda112/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/altamira/unisex-bej-happiest-baskili-oversize-kapsonlu-sweatshirt-p-466787620",
+   "yazili": 2802,
+   "yildiz": [
+    288,
+    149,
+    316,
+    506,
+    1543
+   ],
+   "ort": 4.02,
+   "onerilen_ort": 4.88,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "tuylenme": 0.33,
+    "dar": 0.09,
+    "bol": 0.06,
+    "yanlis": 0.01,
+    "cekme": 0.01,
+    "renk": 0.14,
+    "gorsel": 0.13,
+    "ince": 0.15,
+    "oversize": 0.08,
+    "defo": 0.03,
+    "dikis": 0.03,
+    "kargo": 0.05,
+    "fiyat": 0.01
+   },
+   "olumlu": {
+    "kalite": 0.39,
+    "sicak": 0.38,
+    "beden": 0.15,
+    "boykilo": 0.09,
+    "hediye": 0.27,
+    "renk": 0.13,
+    "fp": 0.16,
+    "kargo": 0.15,
+    "gorsel": 0.06,
+    "salas": 0.05
+   },
+   "dikkat": [
+    "Tüylenme kategorideki en yüksek oranda: yorumların çoğu ilk yıkamadan sonra tiftiklendiğini söylüyor.",
+    "Krem görünen renk sütlü kahve ya da daha koyu geliyor.",
+    "\"Oversize\" yazmasına rağmen düz kalıp olduğu, bol durmadığı yazılıyor."
+   ],
+   "ders": [
+    "Yıkama sonrası performans, ürün vaadinin asıl sınavı. Tüylenmeye dayanıklı kumaş ve yıkama talimatı en büyük şikâyeti hedefler.",
+    "Başlıktaki \"oversize\" kelimesi tutmazsa müşteri kendini yanıltılmış hissediyor."
+   ],
+   "alinti": [
+    {
+     "konu": "Tüylenme / tiftiklenme",
+     "yildiz": 1,
+     "metin": "Rejenere iplikten üretilmiş. Umarım yıkamayla tüylenmez dedim ve tüylendi. 3-5 yıkamaya tüyleniyor"
+    },
+    {
+     "konu": "Renk görseldekinden farklı",
+     "yildiz": 2,
+     "metin": "Urun gayet guzel ama renginin fotograftakiyle alakası yok, gorselde krem rengi verilmis ama gelen urun sutlu kahve tam bir hayal kirikligi dogum gunu hediyesi almistim"
+    },
+    {
+     "konu": "Oversize değil",
+     "yildiz": 1,
+     "metin": "oversize felan olduğu yok normal şekil hatta bi büyük alın oversizde diye bir beden küçük istedim kücücük oldu iade 👎🏿"
+    },
+    {
+     "konu": "Olumlu: sıcak ve yumuşak",
+     "yildiz": 5,
+     "metin": "ürüne bayildim içi yumusacik ve çok sicak tutuyor ve kendi bedeninizi alin"
+    }
+   ]
+  },
+  {
+   "id": "839417686",
+   "kisa": "Grimelange",
+   "marka": "Grimelange",
+   "ad": "Grimelange Vaneltina Kadın İçi Polarlı Oversize Basic Sweatshirt",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1588/prod/QC/20241018/18/02e15851-113b-3b03-8b1f-7567e7779aac/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/grimelange/vaneltina-kadin-ici-polarli-3-iplik-organik-pamuk-oversize-basic-bisiklet-yaka-vanilya-sweatshirt-p-839417686",
+   "yazili": 2770,
+   "yildiz": [
+    224,
+    134,
+    265,
+    491,
+    1656
+   ],
+   "ort": 4.16,
+   "onerilen_ort": 4.92,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "tuylenme": 0.26,
+    "dar": 0.12,
+    "bol": 0.11,
+    "yanlis": 0.1,
+    "cekme": 0.11,
+    "renk": 0.06,
+    "gorsel": 0.02,
+    "ince": 0.22,
+    "oversize": 0.02,
+    "defo": 0.09,
+    "dikis": 0.11,
+    "kargo": 0.06,
+    "fiyat": 0.04
+   },
+   "olumlu": {
+    "kalite": 0.38,
+    "sicak": 0.39,
+    "beden": 0.36,
+    "boykilo": 0.29,
+    "hediye": 0.05,
+    "renk": 0.14,
+    "fp": 0.08,
+    "kargo": 0.05,
+    "gorsel": 0.03,
+    "salas": 0.28
+   },
+   "dikkat": [
+    "Yıkamada çekme ve tüylenme birlikte geliyor; \"ilk yıkamada mahvoldu\" yorumu sık.",
+    "Renkler arasında kumaş farkı var: siyahı kalın, beyazı ince ve farklı kalıpta bulunuyor.",
+    "Beyaz renk sarı ya da krem tonda geliyor; beden karışıklığı ve gecikmeli kargo da şikâyet konusu."
+   ],
+   "ders": [
+    "Aynı ürünün renkleri arasında kalite farkı güveni bozuyor; renkler ve üretim partileri arasında kumaş kontrolü şart.",
+    "Kumaş içeriği değiştiyse açıklama da güncellenmeli: müşteri pamuk oranının düştüğünü etiketten fark edip yazıyor."
+   ],
+   "alinti": [
+    {
+     "konu": "Tüylenme / tiftiklenme",
+     "yildiz": 2,
+     "metin": "Ürün ilk geldiğinde çok güzel diyorsunuz ama 1 yıkamada ( 30 derece ) kumaşın ön yüzü aşırı tüylendi. Piling sorunu var sadece evde giyilebilir"
+    },
+    {
+     "konu": "İnce / kalitesiz kumaş",
+     "yildiz": 2,
+     "metin": "Aynı ürünü daha önce de almıştım,kalitesi düşmüş.Ürün özelliklerini açıklama kısmında değiştirmeseler de etiketde yazılana bakılırsa pamuk oranı düşmüş,polyester artmış.Dokununca da anlaşılıyor,incecik kalmış.Vücuda değen kısım polyester.Kalitenin düşmesindense fiyatın artmasına razıyım.Sağlıklı ürünü tercih ederim.Kalıp güzel."
+    },
+    {
+     "konu": "Renk görseldekinden farklı",
+     "yildiz": 1,
+     "metin": "Rengi kesinlikle beyaz değil krem bildiğimiz"
+    },
+    {
+     "konu": "Olumlu: beden bilgisi",
+     "yildiz": 5,
+     "metin": "Çok güzel, yumaşacık bir sweet. 176 boy 54 kilo M tam oldu"
+    }
+   ]
+  },
+  {
+   "id": "856685071",
+   "kisa": "Trendgar",
+   "marka": "Trendgar",
+   "ad": "Trendgar 3'lü Dik Yaka Fermuarlı Oversize Sweatshirt Seti",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1531/product/media/images/prod/QC/20240908/18/3201b189-a6bb-39cb-a6e2-cb942077a5ea/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/trendgar/3-lu-dik-yakali-fermuarli-oversize-unisex-sweatshirt-siyah-gri-lacivert-p-856685071",
+   "yazili": 2281,
+   "yildiz": [
+    333,
+    135,
+    326,
+    425,
+    1062
+   ],
+   "ort": 3.77,
+   "onerilen_ort": 4.87,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "tuylenme": 0.09,
+    "dar": 0.19,
+    "bol": 0.03,
+    "yanlis": 0.07,
+    "cekme": 0.12,
+    "renk": 0.01,
+    "gorsel": 0.02,
+    "ince": 0.16,
+    "oversize": 0.02,
+    "defo": 0.1,
+    "dikis": 0.07,
+    "kargo": 0.04,
+    "fiyat": 0.0
+   },
+   "olumlu": {
+    "kalite": 0.29,
+    "sicak": 0.14,
+    "beden": 0.19,
+    "boykilo": 0.08,
+    "hediye": 0.28,
+    "renk": 0.1,
+    "fp": 0.29,
+    "kargo": 0.15,
+    "gorsel": 0.02,
+    "salas": 0.03
+   },
+   "dikkat": [
+    "3'lü sette parçaların bedeni ve kalıbı birbirinden farklı gelebiliyor.",
+    "Yıkayınca belirgin çekiyor; çok sayıda yorum bir iki beden büyük almayı öneriyor.",
+    "Setteki parçalardan birinin yırtık ya da defolu çıktığı sık yazılıyor."
+   ],
+   "ders": [
+    "Çoklu pakette tek defolu parça bütün siparişi 1 yıldıza çeviriyor; paketlemeden önce her parçayı kontrol et.",
+    "Fiyat-performans için alan müşteri de setteki parçaların aynı beden ve kalıpta olmasını bekliyor."
+   ],
+   "alinti": [
+    {
+     "konu": "Kalıp dar / küçük",
+     "yildiz": 2,
+     "metin": "3 kazağında kalıbı farklı siyah çok dar lacivert biraz bol gri olan salaş dahada bol ama 3 ü de s beden aldım iç pamukları vücutta yıkanmasına rağmen toz şeklinde yapışıyor"
+    },
+    {
+     "konu": "Defolu / lekeli / yırtık geldi",
+     "yildiz": 1,
+     "metin": "hediye gönderdim biri tiftiklenmiş birinin kolunda defo var kalitesi çok kötüymüş çok utandım bunları duyunca uzak yere gönderdiğim için iade süreci geçti yoksa iade edecektim"
+    },
+    {
+     "konu": "Yıkayınca çekiyor",
+     "yildiz": 1,
+     "metin": "eşim için aldım ( 1.80 - 83kg ) xl aldık fakat ilk yıkamada çekti. iade etmedik ben kullanıyorum."
+    },
+    {
+     "konu": "Olumlu: fiyat performans",
+     "yildiz": 5,
+     "metin": "ürün kalitesi gerçekten çok iyi, bu fiyata bu kalite bulmak zor. satıcıya kaliteden dolayı ve kargo firmasına sorunsuz teslim ve hızlı korgodan dolayı sonsuz teşekkürler..."
+    }
+   ]
+  }
+ ]
+}

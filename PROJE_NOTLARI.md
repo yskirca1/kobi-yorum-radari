@@ -2,7 +2,7 @@
 
 > Bu dosya, projeyi yeni bir Claude oturumunda (ya da yeni bir hesapta) kaldığı yerden devam ettirmek için yazıldı.
 > Yeni oturumda ilk mesaj: **"yskirca1/kobi-yorum-radari deposundaki PROJE_NOTLARI.md dosyasını oku, projeye devam edelim."**
-> Son güncelleme: 2 Kasım 2026
+> Son güncelleme: 2 Kasım 2026 (sweatshirt eklendi)
 
 ## 1. Proje nedir?
 
@@ -27,7 +27,14 @@
   - KOBİ: Vivien Home dijital göstergeli 500 ml (748758153), Sedef Silver 500 ml (127482743), WarmShield 400 ml (81878270), MissCafe Snape 380 ml (112084901)
 - Her ürün için iki örnek: **"Önerilen" sıralamanın ilk 100 yorumu** + **Puan filtresinde 1 ve 2 yıldız seçilerek ilk 100 yorum**. Toplam 1.544 yorum okundu (Skyfall'da 55, Espressolab'da 89 olumsuz yorum vardı).
 - Toplama betiği: `tools/toplama.js`. Konu sözlüğü: `tools/temalar.json`.
-- Toplama, Claude masaüstü uygulamasının içindeki tarayıcıyla yapıldı (kullanıcının bilgisayarı açık olmalı). Ham veri tarayıcının localStorage'ında `rv_<urunId>` anahtarlarıyla duruyordu; özetler `data/termos.json` içinde.
+- Termos toplaması Claude masaüstü uygulamasının içindeki tarayıcıyla yapıldı. Ham yorumlar kullanıcının bilgisayarında `Belgeler\Claude\Hamilik Projesi\termos_yorumlari_trendyol.csv` dosyasında; özetler `data/termos.json` içinde.
+
+### Yeni toplama yöntemi (yer imi, kredi harcamaz)
+- `tools/yer_imi.html` açılır, "ReviewRadar Topla" düğmesi yer imleri çubuğuna sürüklenir. Kullanıcı Brave kullanıyor.
+- Ürünün sayfasında yer imine tıklanır (yorumlar sayfasına geçer, tekrar tıklanır). 3-5 dk sonra `rv_<urunId>.json` iner: `{meta (görsel, toplama_tarihi dahil), dist, top, neg}`. Kutu kırmızıysa sorun kutuda yazar.
+- **Ürünler tek tek toplanmalı ve tarayıcı penceresi görünür kalmalı**: arka plandaki sekmede/pencerede Trendyol yeni yorum yüklemiyor (paralel denemede hepsi 20-40 yorumda kaldı).
+- Trendyol notları: Puan filtresindeki kutucuklar `<button role="checkbox" aria-checked>`, yalnızca menü açıkken DOM'da; düğmeler `data-testid="filter-toggle-rate" / filter-apply-button-rate`. Filtreden sonra sayfa yüksekliği eski listede kalıyor, bu yüzden liste sonundaki 1px işarete kaydırılıyor.
+- Ham dosyalar kullanıcının bilgisayarında `Belgeler\Claude\Hamilik Projesi\veri\<kategori>\` klasöründe. Analiz: `tools/sweatshirt/analiz.py` (konu sözlüğü) ve `olustur.py` (`data/<kategori>.json` üretir); yeni kategori için kopyalanıp sözlük uyarlanır.
 
 ### Temel bulgular (termos)
 - 8 ürünün 9.100 yazılı yorumunun **%16,3'ü 1-2 yıldız**; ama "Önerilen" sıralamanın ilk 100 yorumunda 8 üründe **0** adet 1-2 yıldızlı yorum var.
@@ -36,6 +43,14 @@
 - Sedef Silver olumlu yorumlarının %35'i hediye paketi/notundan söz ediyor; Espressolab'da söz verilen hediye kahve eksik gelince 1 yıldız geliyor.
 - Vivien Home'da bebek/mama kullanımı ve dijital gösterge arızası öne çıkıyor.
 - Oranlar anahtar kelime eşleşmesiyle hesaplandı, yaklaşıktır. "Dikkat" ve "ders" notları Claude'un olumsuz yorumları okuyarak yazdığı yorumlardır (ölçüm değil).
+
+### Temel bulgular (sweatshirt, 2 Kasım 2026)
+- 6 ürün (büyük marka: Tudors, Madmext; KOBİ: Modagen, Altamira, Grimelange, Trendgar), 20.529 yazılı yorum, 1.200 yorum okundu. Tudors'un bordo ve haki renkleri de toplandı ama aynı ürün olduğu için analize alınmadı.
+- Yazılı yorumların %11,1'i 1-2 yıldız; "Önerilen" ilk 100'de yine 6 üründe **0** (termosla aynı bulgu).
+- 1-2 yıldız payı büyük markada %3,5-5,3, KOBİ'de %12,9-22,3 (3-4 kat).
+- En sık tekil şikâyet tüylenme %18 (yarısı yıkama sonrası), ince/kalitesiz kumaş %17 (KOBİ %21, büyük %8), dar kalıp %14, yanlış beden/ürün %11 (büyük markada %18).
+- Beden ve kalıp sorunları birlikte (dar, bol, oversize değil, çekme, yanlış beden) olumsuz yorumların %35'i. Olumlu yorumların %18'i boy-kilo-beden yazıyor; %22'si hediye (Tudors %50).
+- Madmext: olumsuz yorumların %40'ı ilandaki başka satıcılardan (önerilen ilk 100'de %1); başka marka/renk gelen ürün şikâyetleri.
 
 ### Site
 - Dosyalar: `index.html`, `style.css`, `app.js`, `favicon.svg`, `data/kategoriler.json` (kategori listesi + eş anlamlılar), `data/termos.json` (kategori verisi), `logo/` (logo dosyaları).
@@ -53,10 +68,11 @@
 
 - **Yasal yaklaşım:** Trendyol'dan otomatik veri çekmek kullanım koşullarına aykırı; proje için tek seferlik, yavaş ve az sayfayla "araştırma örneklemi" olarak toplanıyor. Kişisel veri (yorumcu adı) toplanmıyor. Sunumda sürekli sistem vizyonu yasal kanallarla anlatılacak: satıcının kendi mağazasını bağlaması (Trendyol Partner API), pazar yeri veri ortaklığı, lisanslı veri sağlayıcılar.
 - **Trendyol'a fikir götürmek:** şimdi değil. Önce kanıt (çok kategori + gerçek KOBİ kullanıcı geri bildirimi), sonra resmi iş ortaklığı/entegratör kanalları, yöntem değil sonuç paylaşılır, gerekirse NDA. Tek pazar yerine bağımlı iş modeli kurma (Hepsiburada, n11, Amazon, ajanslar, bankaların KOBİ programları da hedef).
-- **GitHub:** Claude bu depoya push yapabiliyor (Claude GitHub uygulaması yskirca1 hesabına kurulu). Depo ayarları (Pages, depo adı) kullanıcı tarafından yapılır. İsim kesinleşirse depo adı `reviewradar` yapılabilir.
+- **GitHub:** Claude bu depoya push yapabiliyor (yeni hesapta da yazma erişimi verildi). Depo ayarları (Pages, depo adı) kullanıcı tarafından yapılır. İsim kesinleşirse depo adı `reviewradar` yapılabilir.
 
 ## 5. Sıradaki adımlar
 
+0. **Sıradaki kategoriler:** termos ✓, sweatshirt ✓. Önerilen: Bluetooth kulaklık (elektronik) ve yüz serumu / doğal sabun (kozmetik): ETBİS'e göre en büyük alanlar.
 1. **50 kategori listesi:** KOBİ'lerin rekabet ettiği, yorumu bol kategoriler. Taslak "yakında" listesi: bebek arabası, telefon kılıfı, doğal sabun, kedi tırmalama tahtası, spor tayt, filtre kahve, kamp sandalyesi. Liste kullanıcıyla netleştirilecek.
 2. **Veri toplama:** 5'erli partiler hâlinde, zamana yayarak. Her kategoride ortak konular (dayanıklılık, beden/ölçü, görselden farklı, kargo/paket, sahtelik, eksik parça, koku, fiyat) + kategoriye özel 2-4 konu.
 3. **Otomasyon (sunuma kadar "canlı MVP"):** bilgisayarda çalışan toplama programı (Python + Playwright), Claude API ile otomatik konu sınıflandırma ve not üretimi (kullanıcının Anthropic API anahtarı gerekir), sonuçların GitHub'a otomatik yüklenmesi, tarihli kayıtlarla zaman içinde değişim takibi.
