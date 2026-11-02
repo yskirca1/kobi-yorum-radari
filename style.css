@@ -66,6 +66,10 @@ p { margin: 0; }
 .cat-top b { color: var(--neg); font-weight: 600; }
 .soon { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
 .soon li { padding: 6px 12px; border: 1px dashed var(--line-2); border-radius: var(--r); color: var(--muted); font-size: .92rem; }
+.alan-f { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 4px 0 8px; }
+.chip.on { background: var(--brand); border-color: var(--brand); color: var(--brand-ink); font-weight: 600; }
+.cat-ph { position: absolute; inset: 0; display: grid; place-items: center; padding: 16px; text-align: center; color: var(--muted); font-weight: 600; font-size: 1.05rem; background: var(--subtle); }
+.cat.off .cat-body h3 { color: var(--ink-2); }
 
 /* category */
 .crumbs { padding-top: 22px; font-size: .86rem; color: var(--muted); }

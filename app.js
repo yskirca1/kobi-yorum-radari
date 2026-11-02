@@ -85,10 +85,22 @@
   }).join('')}</div>`;
 
   // views
+  // Kategori kartı (ana sayfa ve arama ortak). Hazır olmayan kategoride görsel yerine sade bir yer tutucu.
+  const catCard = (c, d) => `
+          <a class="cat ${c.durum === 'hazir' ? '' : 'off'}" href="#/kategori/${c.id}">
+            <div class="cat-img">${c.gorsel ? `<img src="${esc(c.gorsel)}" alt="" referrerpolicy="no-referrer" loading="lazy">` : `<span class="cat-ph">${esc(c.ad)}</span>`}</div>
+            <div class="cat-body"><small>${esc(c.ust)}</small><h3>${esc(c.ad)}</h3>
+              ${c.durum === 'hazir'
+                ? `<span class="muted num" style="font-size:.88rem">${int(c.urun)} ürün · ${int(c.yorum)} yorum incelendi</span>${d && d.tema[0] ? `<span class="cat-top">En sık şikâyet: ${esc(d.tema[0].ad)} <b class="num">${pct(d.tema[0].tum)}</b></span>` : ''}`
+                : '<span class="tag grey">Yakında</span>'}</div>
+          </a>`;
+  let homeAlan = '';
   async function home() {
     document.title = 'ReviewRadar';
-    const ready = REG.filter((c) => c.durum === 'hazir'), soon = REG.filter((c) => c.durum !== 'hazir');
-    const data = await Promise.all(ready.map((c) => loadCat(c.id).catch(() => null)));
+    const ready = REG.filter((c) => c.durum === 'hazir');
+    const data = Object.fromEntries((await Promise.all(ready.map((c) => loadCat(c.id).catch(() => null)))).map((d, i) => [ready[i].id, d]));
+    const alanlar = [...new Set(REG.map((c) => c.ust))].sort((a, b) => a.localeCompare(b, 'tr'));
+    if (homeAlan && !alanlar.includes(homeAlan)) homeAlan = '';
     app.innerHTML = `
       <section class="hero">
         <span class="eyebrow">KOBİ'ler için müşteri yorumu analizi</span>
@@ -96,23 +108,29 @@
         <p class="lead">Rakip ürünlerin binlerce yorumunu tek tek okuduk. Bir kategori seç; en sık şikâyetleri, müşterinin neyi sevdiğini ve pazara girerken neye dikkat etmen gerektiğini gör.</p>
         <ol class="steps"><li><b>1</b>Kategori seç</li><li><b>2</b>Şikâyetleri gör</li><li><b>3</b>Ürünleri karşılaştır</li></ol>
       </section>
-      <section class="sec"><div class="sec-top"><h2>Analiz edilen kategoriler</h2><span class="muted num">${ready.length} kategori</span></div>
-        <div class="cats">${ready.map((c, i) => { const d = data[i]; const t = d && d.tema[0]; return `
-          <a class="cat" href="#/kategori/${c.id}">
-            <div class="cat-img">${c.gorsel ? `<img src="${esc(c.gorsel)}" alt="" referrerpolicy="no-referrer" loading="lazy">` : ''}</div>
-            <div class="cat-body"><small>${esc(c.ust)}</small><h3>${esc(c.ad)}</h3>
-              <span class="muted num" style="font-size:.88rem">${int(c.urun)} ürün · ${int(c.yorum)} yorum incelendi</span>
-              ${t ? `<span class="cat-top">En sık şikâyet: ${esc(t.ad)} <b class="num">${pct(t.tum)}</b></span>` : ''}</div>
-          </a>`; }).join('')}</div>
-      </section>
-      ${soon.length ? `<section class="sec"><div class="sec-top"><h2>Yakında eklenecek</h2></div><ul class="soon">${soon.map((c) => `<li>${esc(c.ad)}</li>`).join('')}</ul></section>` : ''}`;
+      <div class="alan-f" role="group" aria-label="Alana göre filtrele"><span class="muted">Alan:</span>
+        ${['', ...alanlar].map((a) => `<button type="button" class="chip${a === homeAlan ? ' on' : ''}" data-alan="${esc(a)}" aria-pressed="${a === homeAlan}">${a ? esc(a) : 'Tümü'}</button>`).join('')}</div>
+      <div id="home-list"></div>`;
+    const draw = () => {
+      const sec = (c) => !homeAlan || c.ust === homeAlan;
+      const r = ready.filter(sec), soon = REG.filter((c) => c.durum !== 'hazir' && sec(c));
+      document.getElementById('home-list').innerHTML = `
+        <section class="sec"><div class="sec-top"><h2>Analiz edilen kategoriler</h2><span class="muted num">${r.length} kategori</span></div>
+          ${r.length ? `<div class="cats">${r.map((c) => catCard(c, data[c.id])).join('')}</div>` : '<p class="muted">Bu alanda henüz analiz edilen kategori yok.</p>'}
+        </section>
+        ${soon.length ? `<section class="sec"><div class="sec-top"><h2>Yakında eklenecek</h2></div><ul class="soon">${soon.map((c) => `<li>${esc(c.ad)}</li>`).join('')}</ul></section>` : ''}`;
+      app.querySelectorAll('[data-alan]').forEach((x) => { const on = x.dataset.alan === homeAlan; x.classList.toggle('on', on); x.setAttribute('aria-pressed', on); });
+    };
+    app.onclick = (e) => { const x = e.target.closest('[data-alan]'); if (x) { homeAlan = x.dataset.alan; draw(); } };
+    draw();
   }
 
-  function search(term) {
+  async function search(term) {
     const m = match(term);
+    const data = Object.fromEntries(await Promise.all(m.filter((c) => c.durum === 'hazir').map(async (c) => [c.id, await loadCat(c.id).catch(() => null)])));
     app.innerHTML = `<div class="crumbs"><a href="#/">Ana sayfa</a> / Arama</div>
       <div class="chead"><h1>"${esc(term)}" için sonuçlar</h1></div>
-      ${m.length ? `<div class="cats">${m.map((c) => `<a class="cat ${c.durum === 'hazir' ? '' : 'off'}" href="#/kategori/${c.id}"><div class="cat-body"><small>${esc(c.ust)}</small><h3>${esc(c.ad)}</h3>${c.durum === 'hazir' ? '<span class="tag">Hazır</span>' : '<span class="tag grey">Yakında</span>'}</div></a>`).join('')}</div>`
+      ${m.length ? `<div class="cats">${m.map((c) => catCard(c, data[c.id])).join('')}</div>`
       : `<div class="empty"><p>Bu kategori henüz analiz edilmedi. Analiz edilen kategoriler ana sayfada listeleniyor.</p><a class="btn" href="#/">Kategorilere dön</a></div>`}`;
   }
 
@@ -223,7 +241,8 @@
     const tops = [...new Set(P.map((p) => p.sik[0]?.id).filter(Boolean))];
     return `<div class="f-head"><h2 style="font-size:1.1rem">Filtreler</h2><button type="button" class="linkbtn f-close" id="f-close">Kapat</button></div>`
       + group('Satıcı tipi', 'segment', segs.map((s) => [s, s, count((p) => p.segment === s)]))
-      + group('Marka', 'marka', markalar.map((m) => [m, m, count((p) => p.marka === m)]))
+      // Markaların çoğundan tek ürün varken marka filtresi ürün listesini tekrarlar; marka sayısı ürünlerin 3/4'ünü geçmiyorsa göster
+      + (markalar.length <= P.length * 0.75 ? group('Marka', 'marka', markalar.map((m) => [m, m, count((p) => p.marka === m)])) : '')
       + group('En sık şikâyet', 'sikayet', tops.map((t) => [t, c.temaMap[t].ad, count((p) => p.sik[0]?.id === t)]))
       + group('Ortalama puan', 'puan', PUAN_L.map(([v, l]) => [v, l, count((p) => p.ort >= Number(v))]), 'radio')
       + group('1-2 yıldız oranı', 'dusuk', Object.entries(DUSUK).map(([v, [l, lo, hi]]) => [v, l, count((p) => p.dusuk >= lo && p.dusuk < hi)]), 'radio')

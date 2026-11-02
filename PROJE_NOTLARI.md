@@ -56,6 +56,9 @@
 - Dosyalar: `index.html`, `style.css`, `app.js`, `favicon.svg`, `data/kategoriler.json` (kategori listesi + eş anlamlılar), `data/termos.json` (kategori verisi), `logo/` (logo dosyaları).
 - Sayfalar (hash yönlendirme): `#/` ana sayfa, `#/kategori/<id>`, `#/urun/<kategori>/<urunId>`, `#/karsilastir`, `#/ara/<terim>`.
 - Özellikler: arama (eş anlamlılar), kategori özeti (en sık 4 şikâyet + 3 temel bilgi), sol filtre paneli (satıcı tipi, marka, en sık şikâyet, puan, 1-2 yıldız oranı), ürün kartları (Trendyol görselleri doğrudan bağlantıyla), ürün sayfası, 2-4 ürün karşılaştırma, açık/koyu tema.
+- Ana sayfada alan (üst kategori) filtresi var; arama sonuçları ana sayfayla aynı kartları kullanıyor (hazır olmayan kategoride görsel yerine yer tutucu). Marka filtresi yalnızca marka sayısı ürünlerin 3/4'ünü geçmiyorsa görünür.
+- **CSS ya da JS değişince `index.html` içindeki `?v=` numarası artırılmalı**, yoksa tarayıcılar eski dosyayı önbellekten okuyor. Veri dosyaları önbelleğe takılmadan çekiliyor.
+- Kategori görseli kartta kırpılmadan gösterilir; yine de ürünün ortada ve net olduğu bir fotoğraf seç.
 - Yeni kategori eklemek: `data/<id>.json` dosyasını `termos.json` ile aynı yapıda üret, `data/kategoriler.json` içinde durumunu `"hazir"` yap, `urun`/`yorum`/`gorsel` alanlarını doldur.
 - `data/<id>.json` yapısı: `{id, ad, ust, esanlam[], toplama, kaynak, temalar[{id, ad, unlem}], olumlu_konular[{id, ad}], oneriler[{baslik, metin}], urunler[{id, kisa, marka, ad, segment ("Büyük marka"|"KOBİ"), gorsel, link, yazili, yildiz[1..5 sayıları], ort, onerilen_ort, onerilen_dusuk, ornek_dusuk, sikayet{temaId: oran}, olumlu{konuId: oran}, dikkat[], ders[], alinti[{konu, yildiz, metin}]}]}`
 
