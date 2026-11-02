@@ -22,7 +22,7 @@
     c.olk = c.olumlu_konular.map((k) => ({ ...k, tum: P.reduce((a, p) => a + (p.olumlu[k.id] || 0), 0) / P.length })).sort((a, b) => b.tum - a.tum);
     c.olkMap = Object.fromEntries(c.olk.map((k) => [k.id, k]));
     const yaz = P.reduce((a, p) => a + p.yazili, 0), dus = P.reduce((a, p) => a + p.yildiz[0] + p.yildiz[1], 0);
-    c.top = { yazili: yaz, dusuk: dus / yaz, okunan: P.reduce((a, p) => a + 100 + p.ornek_dusuk, 0), onerilen: P.reduce((a, p) => a + p.onerilen_dusuk, 0) };
+    c.top = { yazili: yaz, dusuk: dus / yaz, okunan: P.reduce((a, p) => a + (p.onerilen_n ?? 100) + p.ornek_dusuk, 0), onerilenN: P.reduce((a, p) => a + (p.onerilen_n ?? 100), 0), onerilen: P.reduce((a, p) => a + p.onerilen_dusuk, 0) };
     P.forEach((p) => {
       p.dusuk = (p.yildiz[0] + p.yildiz[1]) / p.yazili;
       p.sik = Object.entries(p.sikayet).filter(([, v]) => v > 0).sort((a, b) => b[1] - a[1]).map(([k, v]) => ({ ...c.temaMap[k], v }));
@@ -157,7 +157,7 @@
         </div>
         <div class="sum-side">
           <div class="fact"><b class="neg">${pct(c.top.dusuk, 1)}</b><span>Yazılı yorumlarda 1-2 yıldız payı</span></div>
-          <div class="fact"><b>${c.top.onerilen}</b><span>Trendyol'un "Önerilen" sıralamasında ${c.urunler.length} ürünün ilk 100 yorumunda (toplam ${int(c.urunler.length * 100)}) görünen 1-2 yıldızlı yorum</span></div>
+          <div class="fact"><b>${c.top.onerilen}</b><span>Trendyol'un "Önerilen" sıralamasında ${c.urunler.length} ürünün ilk 100 yorumunda (toplam ${int(c.top.onerilenN)}) görünen 1-2 yıldızlı yorum</span></div>
           <div class="fact"><b>${esc(c.tema[0].ad)}</b><span>Kategorinin 1 numaralı sorunu</span></div>
         </div>
       </section>

@@ -67,6 +67,14 @@
 - Yanlış renk/ürün %16 ve renk farkı %14 (birlikte yerel 8 üründe %29); en kötü 3'lü/4'lü setler (Organic Scarfs 1-2 payı %27).
 - Büyük marka şallarını çoğunlukla bayiler satıyor; büyük markada defo %28 (KOBİ %10), yıkamada solma/tüylenme %10 (Modakaşmir Neo %18).
 
+### Temel bulgular (telefon kılıfı, 2 Kasım 2026, 12 ürün; hepsi Claude tarayıcısında toplandı)
+- KOBİ: Fibaks (2), Go Aksesuar (4), Powerfox, KVK Privacy (2). Büyük marka: Spigen Liquid Air, Apple MagSafe Silikon ve Şeffaf (çok az yorum).
+- 26.183 yazılı yorumun yalnızca 59'u büyük markada (%0,2): pazar KOBİ'lerin. 1-2 yıldız payı %9,4.
+- Sararma/kararma %22 (1 numara), telefona oturmama %15 ("13/14/15 uyumlu" Fibaks Mat ve KVK Lansman'da %37), çizik/kusurlu %11 (şeffaflarda %23-26), baskı/taş soyulması %6 (süslemelilerde %18-20).
+- KOBİ önerilen yorumlarının %25'i satıcının hediyesine (kablo/şarj koruyucu) teşekkür ediyor (Fibaks %53).
+- Apple silikon kılıfın 5 olumsuz yorumu elle sınıflandırıldı; 2'si "logo yok, çakma gibi".
+- Sitede `onerilen_n` alanı eklendi: önerilen yorum sayısı 100'den azsa "okunan" ve "ilk 100" sayıları buna göre hesaplanıyor.
+
 ### Claude'un uygulama tarayıcısıyla toplama (kullanıcı istemezse dosya indirme YOK)
 - Kod `tools/toplama.js` sitedeki kopyasından (`https://yskirca1.github.io/kobi-yorum-radari/tools/toplama.js`) tarayıcının localStorage'ına `rvcode` olarak yüklenir, indirme satırı çıkarılır; her ürün `localStorage['rv_<id>']` içinde kalır. İndirme yapılınca uygulama kullanıcıdan izin istiyor; kullanıcı bunu istemedi.
 - Trendyol yeni yorumları ancak sayfada **gerçek bir kullanıcı kaydırması** olduktan sonra yüklüyor: her üründe sayfa açılınca küçük bir ekran görüntüsü (scale 0.1) + bir fare tekerleği kaydırması, sonra betik. Claude penceresi ekranda görünür olmalı.
@@ -97,7 +105,7 @@
 
 ## 5. Sıradaki adımlar
 
-0. **Sıradaki kategoriler:** termos ✓, sweatshirt ✓ (12 ürün), Bluetooth kulaklık ✓ (12 ürün), şal ✓ (12 ürün). Sırada yakında listesi: telefon kılıfı, doğal sabun, spor tayt, kamp sandalyesi, kedi tırmalama tahtası, filtre kahve, bebek arabası. Hedef: her kategoride 12 ürün. Önerilen: Bluetooth kulaklık (elektronik) ve yüz serumu / doğal sabun (kozmetik): ETBİS'e göre en büyük alanlar.
+0. **Sıradaki kategoriler:** termos ✓, sweatshirt ✓ (12 ürün), Bluetooth kulaklık ✓ (12 ürün), şal ✓ (12 ürün), telefon kılıfı ✓ (12 ürün). Sırada yakında listesi: doğal sabun, spor tayt, kamp sandalyesi, kedi tırmalama tahtası, filtre kahve, bebek arabası. Hedef: her kategoride 12 ürün. Önerilen: Bluetooth kulaklık (elektronik) ve yüz serumu / doğal sabun (kozmetik): ETBİS'e göre en büyük alanlar.
 1. **50 kategori listesi:** KOBİ'lerin rekabet ettiği, yorumu bol kategoriler. Taslak "yakında" listesi: bebek arabası, telefon kılıfı, doğal sabun, kedi tırmalama tahtası, spor tayt, filtre kahve, kamp sandalyesi. Liste kullanıcıyla netleştirilecek.
 2. **Veri toplama:** 5'erli partiler hâlinde, zamana yayarak. Her kategoride ortak konular (dayanıklılık, beden/ölçü, görselden farklı, kargo/paket, sahtelik, eksik parça, koku, fiyat) + kategoriye özel 2-4 konu.
 3. **Otomasyon (sunuma kadar "canlı MVP"):** bilgisayarda çalışan toplama programı (Python + Playwright), Claude API ile otomatik konu sınıflandırma ve not üretimi (kullanıcının Anthropic API anahtarı gerekir), sonuçların GitHub'a otomatik yüklenmesi, tarihli kayıtlarla zaman içinde değişim takibi.

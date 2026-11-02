@@ -76,6 +76,25 @@
   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1692/prod/QC_PREP/20250614/00/4c65ce80-3388-3cff-8734-bec557bb6bb0/1_org_zoom.jpg"
  },
  {
+  "id": "telefon-kilifi",
+  "ad": "Telefon kılıfı",
+  "ust": "Elektronik aksesuar",
+  "durum": "hazir",
+  "esanlam": [
+   "telefon kılıfı",
+   "kılıf",
+   "iphone kılıf",
+   "kapak",
+   "telefon kapağı",
+   "magsafe kılıf",
+   "şeffaf kılıf",
+   "silikon kılıf"
+  ],
+  "urun": 12,
+  "yorum": 1773,
+  "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1936/prod/QC_ENRICHMENT/20260722/03/3a866969-fb64-3f51-a941-fae219c092c8/1_org_zoom.jpg"
+ },
+ {
   "id": "bebek-arabasi",
   "ad": "Bebek arabası",
   "ust": "Anne ve bebek",
@@ -84,17 +103,6 @@
    "bebek arabası",
    "puset",
    "travel sistem"
-  ]
- },
- {
-  "id": "telefon-kilifi",
-  "ad": "Telefon kılıfı",
-  "ust": "Elektronik aksesuar",
-  "durum": "yakinda",
-  "esanlam": [
-   "telefon kılıfı",
-   "kılıf",
-   "iphone kılıf"
   ]
  },
  {
