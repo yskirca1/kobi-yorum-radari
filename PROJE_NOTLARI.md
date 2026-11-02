@@ -44,13 +44,14 @@
 - Vivien Home'da bebek/mama kullanımı ve dijital gösterge arızası öne çıkıyor.
 - Oranlar anahtar kelime eşleşmesiyle hesaplandı, yaklaşıktır. "Dikkat" ve "ders" notları Claude'un olumsuz yorumları okuyarak yazdığı yorumlardır (ölçüm değil).
 
-### Temel bulgular (sweatshirt, 2 Kasım 2026)
-- 6 ürün (büyük marka: Tudors, Madmext; KOBİ: Modagen, Altamira, Grimelange, Trendgar), 20.529 yazılı yorum, 1.200 yorum okundu. Tudors'un bordo ve haki renkleri de toplandı ama aynı ürün olduğu için analize alınmadı.
-- Yazılı yorumların %11,1'i 1-2 yıldız; "Önerilen" ilk 100'de yine 6 üründe **0** (termosla aynı bulgu).
-- 1-2 yıldız payı büyük markada %3,5-5,3, KOBİ'de %12,9-22,3 (3-4 kat).
-- En sık tekil şikâyet tüylenme %18 (yarısı yıkama sonrası), ince/kalitesiz kumaş %17 (KOBİ %21, büyük %8), dar kalıp %14, yanlış beden/ürün %11 (büyük markada %18).
-- Beden ve kalıp sorunları birlikte (dar, bol, oversize değil, çekme, yanlış beden) olumsuz yorumların %35'i. Olumlu yorumların %18'i boy-kilo-beden yazıyor; %22'si hediye (Tudors %50).
-- Madmext: olumsuz yorumların %40'ı ilandaki başka satıcılardan (önerilen ilk 100'de %1); başka marka/renk gelen ürün şikâyetleri.
+### Temel bulgular (sweatshirt, 2 Kasım 2026, 12 ürün)
+- 12 ürün: büyük marka Tudors (siyah, bordo, haki) ve Madmext; KOBİ Modagen (kapüşonlu, 3'lü set), Altamira, Grimelange (vanilya, siyah), Trendgar 3'lü, Co Trendiz (hoodie, taşlı). Kullanıcının kararıyla aynı modelin renkleri ayrı ürün sayıldı (renklerin yorumları birbirinden ayrı, ortak yorum yok denecek kadar az).
+- 34.073 yazılı yorum, 2.354 yorum okundu. Yazılı yorumların %11,6'sı 1-2 yıldız; "Önerilen" ilk 100'de 12 üründe **0** (termosla aynı bulgu).
+- 1-2 yıldız payı: büyük markalarda %3,1-5,3 (havuz %3,8), KOBİ'de %4,4-38,3 (havuz %17,3). En yüksek Modagen 3'lü (%38).
+- En sık tekil şikâyet tüylenme %18,5; ince/kalitesiz kumaş %14,5 (KOBİ %18, büyük %6); dar kalıp %12; bol kalıp %11; yanlış beden/ürün %9 (büyük markada %13).
+- Beden ve kalıp sorunları birlikte olumsuz yorumların %32'si. Olumlu yorumların %19'u boy-kilo-beden yazıyor; %23'ü hediye (Tudors'ta yaklaşık yarısı).
+- Renk varyantı bulgusu: aynı modelde Grimelange tüylenme vanilya %26, siyah %51; Tudors siyahı dar, hakisi bol, bordosu boya akıtıyor; 3'lü setlerde parçalar farklı kalıpta.
+- Madmext: olumsuz yorumların %40'ı ilandaki başka satıcılardan (önerilen ilk 100'de %1).
 
 ### Site
 - Dosyalar: `index.html`, `style.css`, `app.js`, `favicon.svg`, `data/kategoriler.json` (kategori listesi + eş anlamlılar), `data/termos.json` (kategori verisi), `logo/` (logo dosyaları).
@@ -75,7 +76,7 @@
 
 ## 5. Sıradaki adımlar
 
-0. **Sıradaki kategoriler:** termos ✓, sweatshirt ✓. Önerilen: Bluetooth kulaklık (elektronik) ve yüz serumu / doğal sabun (kozmetik): ETBİS'e göre en büyük alanlar.
+0. **Sıradaki kategoriler:** termos ✓, sweatshirt ✓ (12 ürün). Hedef: her kategoride 12 ürün. Önerilen: Bluetooth kulaklık (elektronik) ve yüz serumu / doğal sabun (kozmetik): ETBİS'e göre en büyük alanlar.
 1. **50 kategori listesi:** KOBİ'lerin rekabet ettiği, yorumu bol kategoriler. Taslak "yakında" listesi: bebek arabası, telefon kılıfı, doğal sabun, kedi tırmalama tahtası, spor tayt, filtre kahve, kamp sandalyesi. Liste kullanıcıyla netleştirilecek.
 2. **Veri toplama:** 5'erli partiler hâlinde, zamana yayarak. Her kategoride ortak konular (dayanıklılık, beden/ölçü, görselden farklı, kargo/paket, sahtelik, eksik parça, koku, fiyat) + kategoriye özel 2-4 konu.
 3. **Otomasyon (sunuma kadar "canlı MVP"):** bilgisayarda çalışan toplama programı (Python + Playwright), Claude API ile otomatik konu sınıflandırma ve not üretimi (kullanıcının Anthropic API anahtarı gerekir), sonuçların GitHub'a otomatik yüklenmesi, tarihli kayıtlarla zaman içinde değişim takibi.

@@ -2,13 +2,19 @@
 import json, re, sys
 from collections import Counter
 
-DOSYALAR = {  # urunId: (kisa, marka, segment)
-    '777723073': ('Tudors', 'Tudors', 'Büyük marka'),
+DOSYALAR = {  # urunId: (kisa, marka, segment). Aynı modelin renkleri ayrı ürün olarak alındı (yorumları birbirinden ayrı).
+    '777723073': ('Tudors siyah', 'Tudors', 'Büyük marka'),
+    '778486825': ('Tudors bordo', 'Tudors', 'Büyük marka'),
+    '777723112': ('Tudors haki', 'Tudors', 'Büyük marka'),
     '338581269': ('Madmext', 'Madmext', 'Büyük marka'),
-    '343388614': ('Modagen', 'Modagen', 'KOBİ'),
+    '343388614': ('Modagen kapüşonlu', 'Modagen', 'KOBİ'),
+    '848077903': ("Modagen 3'lü", 'Modagen', 'KOBİ'),
     '466787620': ('Altamira', 'Altamira', 'KOBİ'),
-    '839417686': ('Grimelange', 'Grimelange', 'KOBİ'),
-    '856685071': ('Trendgar', 'Trendgar', 'KOBİ'),
+    '839417686': ('Grimelange vanilya', 'Grimelange', 'KOBİ'),
+    '804799946': ('Grimelange siyah', 'Grimelange', 'KOBİ'),
+    '856685071': ("Trendgar 3'lü", 'Trendgar', 'KOBİ'),
+    '137159223': ('Co Trendiz hoodie', 'Co Trendiz', 'KOBİ'),
+    '839407439': ('Co Trendiz taşlı', 'Co Trendiz', 'KOBİ'),
 }
 BEDEN = r'(xxs|xs|s|m|l|xl|xxl|xxxl|2xl|3xl|small|medium|large)'
 SIKAYET = {

@@ -7,8 +7,14 @@ AD = {
     '338581269': 'Madmext Bisiklet Yaka Basic Sweatshirt, füme',
     '343388614': 'Modagen Unisex Baskılı Oversize Kapüşonlu Sweatshirt, bebe mavisi',
     '466787620': 'Altamira Unisex Baskılı Oversize Kapüşonlu Sweatshirt, bej',
-    '839417686': 'Grimelange Vaneltina Kadın İçi Polarlı Oversize Basic Sweatshirt',
+    '839417686': 'Grimelange Vaneltina Kadın İçi Polarlı Oversize Basic Sweatshirt, vanilya',
     '856685071': 'Trendgar 3\'lü Dik Yaka Fermuarlı Oversize Sweatshirt Seti',
+    '778486825': 'Tudors Relax Fit Yarım Fermuarlı Dik Yaka Sweatshirt, içi polarlı, bordo',
+    '777723112': 'Tudors Relax Fit Yarım Fermuarlı Dik Yaka Sweatshirt, içi polarlı, haki',
+    '848077903': 'Modagen Unisex 3\'lü Bisiklet Yaka Oversize Sweatshirt Seti, kahve-siyah-bej',
+    '804799946': 'Grimelange Vaneltina Kadın İçi Polarlı Oversize Basic Sweatshirt, siyah',
+    '137159223': 'Co Trendiz Unisex Basic Kapüşonlu Sweatshirt, siyah',
+    '839407439': 'Co Trendiz Unisex Taş Baskılı Sweatshirt, pembe',
 }
 DIKKAT = {
     '777723073': [
@@ -41,6 +47,36 @@ DIKKAT = {
         'Yıkayınca belirgin çekiyor; çok sayıda yorum bir iki beden büyük almayı öneriyor.',
         'Setteki parçalardan birinin yırtık ya da defolu çıktığı sık yazılıyor.',
     ],
+    '778486825': [
+        'İçteki polar siyah renkteki gibi tüy bırakıyor; bu renkte ayrıca tüylerin altına giyilen atleti kırmızıya boyadığı yazılıyor.',
+        'Bordo renk yıkamada boya akıtıyor; diğer çamaşırları boyadığını söyleyen yorumlar var.',
+        'Aynı siparişteki iki ürünün tonu farklı gelebiliyor; yırtık ya da defolu ürün şikâyeti de var.',
+    ],
+    '777723112': [
+        'Kalıp siyah renkten farklı: aynı bedende haki rengin daha bol geldiği yazılıyor, bir beden küçük almak öneriliyor.',
+        'Tüylenme bu renkte de en sık şikâyet; polar parçacıklar tişörte yapışıyor.',
+        'Yaka uzun ve kalın; fermuarın sakala takıldığını söyleyen yorumlar var. Yanlış beden gönderimi de sık.',
+    ],
+    '848077903': [
+        'Kumaş ince; setteki renkler arasında fark var: krem daha kalın, siyah ve kahve daha ince bulunuyor.',
+        'Beden iki yönde de şikâyet alıyor: bir kısmına küçük ve kısa, bir kısmına çok büyük geliyor.',
+        'Sette eksik parça ya da yanlış beden gelen siparişler var.',
+    ],
+    '804799946': [
+        'Tüylenme kategorinin en yüksek oranında: olumsuz yorumların yarısı ilk yıkamalarda tiftiklendiğini söylüyor.',
+        'Diğer renklerini alanlar siyahın daha düşük kalitede olduğunu, dışının sert ve polyester karışımlı durduğunu yazıyor.',
+        'Yaka zamanla açılıyor ve bozuluyor; boyu kısa, kolları kısa bulunuyor.',
+    ],
+    '137159223': [
+        'Kalıp tutarsız: bir kısmı dar ve oversize olmadığını, bir kısmı aşırı büyük geldiğini yazıyor.',
+        'Tekrar alanlar kumaşın inceldiğini ve her siparişte kalitenin düştüğünü söylüyor.',
+        'Yanlış ürün ya da yanlış model gönderimi var: baskısız yerine baskılı, sweatshirt yerine tişört gelmiş.',
+    ],
+    '839407439': [
+        'XS-S gibi çift bedenler çok bol geliyor; bir kısmı ise oversize olmadığını yazıyor.',
+        'Aynı ürünün bir kişiye kalın, diğerine ince geldiği yazılıyor; kumaş partiler arasında değişiyor.',
+        'Taşlar yıkamada kararıyor ve dökülüyor; açıklamadaki pamuk oranının etiketle tutmadığı yazılıyor.',
+    ],
 }
 DERS = {
     '777723073': [
@@ -52,7 +88,7 @@ DERS = {
         'Renk adı ile fotoğraf aynı tonu göstermeli; "füme" yazıp açık gri göndermek iade yerine sessiz 1 yıldız getiriyor.',
     ],
     '343388614': [
-        'Düşük fiyat ince kumaşı affettirmiyor. Fotoğraf beklentiyi kalın gösterirse 1-2 yıldız payı kategorinin en yükseğine (%22) çıkıyor.',
+        'Düşük fiyat ince kumaşı affettirmiyor. Fotoğraf beklentiyi kalın gösterirse 1-2 yıldız payı kategorinin en yükseklerinden birine (%22) çıkıyor.',
         'Renk ve fiyat-performans seviliyor; kumaş kalınlığını (iplik, gramaj) açıkça yazmak beklentiyi doğru kurar.',
     ],
     '466787620': [
@@ -66,6 +102,24 @@ DERS = {
     '856685071': [
         'Çoklu pakette tek defolu parça bütün siparişi 1 yıldıza çeviriyor; paketlemeden önce her parçayı kontrol et.',
         'Fiyat-performans için alan müşteri de setteki parçaların aynı beden ve kalıpta olmasını bekliyor.',
+    ],
+    '778486825': [
+        'Aynı modelin üç rengi aynı puanı alıyor ama şikâyetleri farklı: bordoda boya akıtma öne çıkıyor. Koyu renklerde renk haslığı testi şart.',
+    ],
+    '777723112': [
+        'Aynı model, aynı beden, farklı renk: kalıp tutmayınca müşteri "bedenler tutarsız" diyor. Renkler arasında ölçü kontrolü yapılmalı.',
+    ],
+    '848077903': [
+        '1-2 yıldız payı kategorinin en yükseği (%38). Çok ucuz set alıcıyı çekiyor ama ince kumaş ve renkler arası fark puanı düşürüyor.',
+    ],
+    '804799946': [
+        'Aynı modelin vanilya renginde tüylenme %26, siyahta %51. Renk ve üretim partisi değişince kumaş da değişiyorsa müşteri bunu hemen fark ediyor.',
+    ],
+    '137159223': [
+        'Tekrar alan müşteri kaliteyi önceki siparişiyle kıyaslıyor; kumaşı inceltmek sadık müşteriyi 1 yıldıza çeviriyor.',
+    ],
+    '839407439': [
+        'Açıklamadaki malzeme bilgisi etiketle aynı olmalı; "%100 pamuk" yazıp %75 göndermek güveni bozuyor.',
     ],
 }
 # Alıntılar: (konu, yorum metninin başı) — metin ham veriden aynen alınır
@@ -82,6 +136,18 @@ ALINTI = {
                   ('Renk görseldekinden farklı', 'Rengi kesinlikle beyaz değil'), ('Olumlu: beden bilgisi', 'Çok güzel, yumaşacık bir sweet')],
     '856685071': [('Kalıp dar / küçük', '3 kazağında kalıbı farklı'), ('Defolu / lekeli / yırtık geldi', 'hediye gönderdim biri tiftiklenmiş'),
                   ('Yıkayınca çekiyor', 'eşim için aldım ( 1.80 - 83kg )'), ('Olumlu: fiyat performans', 'ürün kalitesi gerçekten çok iyi, bu fiyata')],
+    '778486825': [('Tüylenme / tiftiklenme', 'İçi çok tüy veriyor atlet'), ('Renk görseldekinden farklı', 'Bu renk çamaşır yıkarken'),
+                  ('Renk görseldekinden farklı', 'kumaş kalitesi guzel ama 2 adet aldim'), ('Olumlu: dayanıklılık', '2 yıl önce farklı bi rengini aldık')],
+    '777723112': [('Kalıp bol / büyük', 'Aynı sweatin bordosunu da aldım'), ('Tüylenme / tiftiklenme', 'Giymeden yıkandı ve tüm kıyafetler'),
+                  ('Dikiş, fermuar, yaka, kol', 'fermuarin uç kısmı her seferinde'), ('Olumlu: kalın kumaş', 'gayet güzel kumaşı kalın sağlam')],
+    '848077903': [('İnce / kalitesiz kumaş', 'Krem rengi hariç siyah ve kahverengi'), ('Kargo gecikmesi / eksik ürün', 'Yalnızca 2 adet geldi'),
+                  ('Kalıp bol / büyük', 'bedeni çok büyük geldi iade ettim'), ('Olumlu: fiyat', 'bu fiyata bu kalite değer')],
+    '804799946': [('Tüylenme / tiftiklenme', 'Bu sweatlerin her rengini aldım'), ('İnce / kalitesiz kumaş', 'beklediğim kadar kaliteli değil'),
+                  ('Dikiş, fermuar, yaka, kol', 'Ürünün yaka kısmı çok açık'), ('Olumlu: beden bilgisi', 'indirimde aldım çok güzel içi polarlı')],
+    '137159223': [('İnce / kalitesiz kumaş', 'Benim aldığın ilk sweatahirt'), ('Kalıp bol / büyük', 'kumaşı gayet iyi ama aşırı büyük'),
+                  ('Yanlış beden / ürün gönderildi', 'Sweat yerine yarım kol t shirt'), ('Olumlu: beden bilgisi', 'çok beğendim 160 boyuna 50 kiloyum')],
+    '839407439': [('İnce / kalitesiz kumaş', 'arkadaşımla aynı sweatten aldık'), ('Yanlış beden / ürün gönderildi', '%100 pamuk yazmissiniz'),
+                  ('Kalıp bol / büyük', 'XS/S olmasına rağmen aşırı büyük'), ('Olumlu: sıcak tutuyor', 'Çook güzel bir ürün rengi falan')],
 }
 ONERILER = [
     ('Beden tablosunu boy ve kiloyla ver',
@@ -92,10 +158,10 @@ ONERILER = [
      'KOBİ ürünlerinde "ince, kalitesiz kumaş" şikâyeti büyük markaların yaklaşık üç katı (%{ince_k} ve %{ince_b}). Kalın görünen fotoğraf ince ürünle buluşunca 1 yıldız geliyor. İplik sayısını ya da gramajı yaz, yakın çekim kumaş fotoğrafı ekle.'),
     ('Doğru bedeni, doğru ürünü gönder',
      'Büyük markaların olumsuz yorumlarında yanlış beden ya da ürün gönderimi oranı %{yanlis_b}: S yerine XL, füme yerine bej, hatta başka marka. Paketlemede etiket kontrolü basit ama güçlü bir ayrışma noktası.'),
-    ('Rengi gün ışığında çek',
-     'Renk farkı şikâyeti kategoride %{renk}, ama bazı ürünlerde %13-14\'e çıkıyor: füme açık gri, krem sütlü kahve geliyor. Filtresiz, gün ışığında fotoğraf ve net renk adı iadeyi ve sessiz 1 yıldızı azaltır.'),
+    ('Renkler arasında kalıbı ve kumaşı eşitle',
+     'Aynı modelin farklı renkleri farklı şikâyet alıyor: Grimelange\'ın aynı modelinde tüylenme vanilya renkte %{g1}, siyahta %{g2}; Tudors\'un siyahı dar, hakisi bol geliyor, bordosu boya akıtıyor; 3\'lü setlerde parçalar farklı kalıpta. Müşteri bunu "tutarsız" diye okuyor. Her renk ve üretim partisinde ölçü, kumaş ve renk haslığı kontrolü yap; renk tonunu gün ışığında, filtresiz çek.'),
     ('Hediye alıcısını hedefle',
-     'Önerilen yorumlarda eş, sevgili ya da çocuk için hediye alımı oranı %{hediye} (bir üründe %50). Hediye notu, kolay beden değişimi ve hediye paketi bu kitleyi kazanır; ama paket söz verildiyse mutlaka gönderilmeli.'),
+     'Önerilen yorumlarda eş, sevgili ya da çocuk için hediye alımı oranı %{hediye} (Tudors\'ta yaklaşık yarısı). Hediye notu, kolay beden değişimi ve hediye paketi bu kitleyi kazanır; ama paket söz verildiyse mutlaka gönderilmeli.'),
 ]
 
 def p(v): return f'{round(v * 100):d}'
@@ -133,7 +199,8 @@ def main(out):
     ort_top = lambda k: sum(oran(t, OLUMLU[k][1]) for _, _, t in P) / len(P)
     v = {'beden': p(union(allneg, ['dar', 'bol', 'oversize', 'cekme', 'yanlis'])), 'boykilo': p(ort_top('boykilo')),
          'tuy': p(oran(allneg, SIKAYET['tuylenme'][2])), 'ince_k': p(oran(kobi, SIKAYET['ince'][2])), 'ince_b': p(oran(big, SIKAYET['ince'][2])),
-         'yanlis_b': p(oran(big, SIKAYET['yanlis'][2])), 'renk': p(oran(allneg, SIKAYET['renk'][2])), 'hediye': p(ort_top('hediye'))}
+         'yanlis_b': p(oran(big, SIKAYET['yanlis'][2])), 'renk': p(oran(allneg, SIKAYET['renk'][2])), 'hediye': p(ort_top('hediye')),
+         'g1': p(oran(json.load(open('rv_839417686.json'))['neg'], SIKAYET['tuylenme'][2])), 'g2': p(oran(json.load(open('rv_804799946.json'))['neg'], SIKAYET['tuylenme'][2]))}
     print('öneri rakamları', v, file=sys.stderr)
     cat = {
         'id': 'sweatshirt', 'ad': 'Sweatshirt', 'ust': 'Giyim',
