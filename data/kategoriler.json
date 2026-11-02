@@ -57,6 +57,25 @@
   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1930/prod/QC_ENRICHMENT/20260629/08/8d7388f1-c712-34e0-ab05-955231b66591/1_org_zoom.jpg"
  },
  {
+  "id": "sal",
+  "ad": "Şal",
+  "ust": "Giyim",
+  "durum": "hazir",
+  "urun": 12,
+  "yorum": 2044,
+  "esanlam": [
+   "şal",
+   "sal",
+   "eşarp",
+   "tesettür şal",
+   "pamuk şal",
+   "bambu şal",
+   "başörtüsü",
+   "örtü"
+  ],
+  "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1692/prod/QC_PREP/20250614/00/4c65ce80-3388-3cff-8734-bec557bb6bb0/1_org_zoom.jpg"
+ },
+ {
   "id": "bebek-arabasi",
   "ad": "Bebek arabası",
   "ust": "Anne ve bebek",

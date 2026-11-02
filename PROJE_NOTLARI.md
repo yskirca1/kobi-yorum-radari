@@ -61,6 +61,18 @@
 - KOBİ önerilen yorumlarının %19'u satıcının hediyesine (kılıf, kahve) teşekkür ediyor (Barbanti Air 2 %54, büyük markada ~0). Tarçın'ın olumsuzlarının %10'u hediye karşılığı yorum yazdırıldığını söylüyor.
 - KOBİ ürünlerinde 1-2 yıldızlı yorumların önemli kısmının metni olumlu (Abbruch'ta yaklaşık üçte biri); puan tek başına yanıltıcı.
 
+### Temel bulgular (şal, 2 Kasım 2026, 12 ürün)
+- Büyük marka: Armine (Medine İpeği, Trend 2206), Aker Elegance, Modakaşmir (Aya, Neo Pamuk). KOBİ: Mira İpek (3 model), Bambu Kraş 3'lü (Genel Markalar), Organic Scarfs 3'lü, Afvente, Naciye Sultan 4'lü. 8'ini kullanıcı topladı, 4'ünü (Armine x2, Aker, Modakaşmir Aya) Claude uygulama tarayıcısında topladı.
+- En az riskli kategori: yazılı yorumların %8,9'u 1-2 yıldız; büyük marka %9,5, KOBİ %8,8 (fark yok). Önerilen ilk 100'lerde 1.200 yorumdan 3'ü 1-2 yıldız.
+- Yanlış renk/ürün %16 ve renk farkı %14 (birlikte yerel 8 üründe %29); en kötü 3'lü/4'lü setler (Organic Scarfs 1-2 payı %27).
+- Büyük marka şallarını çoğunlukla bayiler satıyor; büyük markada defo %28 (KOBİ %10), yıkamada solma/tüylenme %10 (Modakaşmir Neo %18).
+
+### Claude'un uygulama tarayıcısıyla toplama (kullanıcı istemezse dosya indirme YOK)
+- Kod `tools/toplama.js` sitedeki kopyasından (`https://yskirca1.github.io/kobi-yorum-radari/tools/toplama.js`) tarayıcının localStorage'ına `rvcode` olarak yüklenir, indirme satırı çıkarılır; her ürün `localStorage['rv_<id>']` içinde kalır. İndirme yapılınca uygulama kullanıcıdan izin istiyor; kullanıcı bunu istemedi.
+- Trendyol yeni yorumları ancak sayfada **gerçek bir kullanıcı kaydırması** olduktan sonra yüklüyor: her üründe sayfa açılınca küçük bir ekran görüntüsü (scale 0.1) + bir fare tekerleği kaydırması, sonra betik. Claude penceresi ekranda görünür olmalı.
+- Oranlar, Python sözlüğü JSON olarak tarayıcıya gönderilip orada hesaplanıyor (JS'de \w yerine [\p{L}\d_] ve 'u' bayrağı); bağlama yalnızca özet ve okunacak örnek yorumlar geliyor. Örnek: `tools/sal/sal_tarayici.json`.
+- Arama sonuçları sayfa açmadan `fetch('/sr?q=...&sst=MOST_RATED')` ile alınıp ayrıştırılabiliyor.
+
 ### Site
 - Dosyalar: `index.html`, `style.css`, `app.js`, `favicon.svg`, `data/kategoriler.json` (kategori listesi + eş anlamlılar), `data/termos.json` (kategori verisi), `logo/` (logo dosyaları).
 - Sayfalar (hash yönlendirme): `#/` ana sayfa, `#/kategori/<id>`, `#/urun/<kategori>/<urunId>`, `#/karsilastir`, `#/ara/<terim>`.
@@ -85,7 +97,7 @@
 
 ## 5. Sıradaki adımlar
 
-0. **Sıradaki kategoriler:** termos ✓, sweatshirt ✓ (12 ürün), Bluetooth kulaklık ✓ (12 ürün). Hedef: her kategoride 12 ürün. Önerilen: Bluetooth kulaklık (elektronik) ve yüz serumu / doğal sabun (kozmetik): ETBİS'e göre en büyük alanlar.
+0. **Sıradaki kategoriler:** termos ✓, sweatshirt ✓ (12 ürün), Bluetooth kulaklık ✓ (12 ürün), şal ✓ (12 ürün). Sırada yakında listesi: telefon kılıfı, doğal sabun, spor tayt, kamp sandalyesi, kedi tırmalama tahtası, filtre kahve, bebek arabası. Hedef: her kategoride 12 ürün. Önerilen: Bluetooth kulaklık (elektronik) ve yüz serumu / doğal sabun (kozmetik): ETBİS'e göre en büyük alanlar.
 1. **50 kategori listesi:** KOBİ'lerin rekabet ettiği, yorumu bol kategoriler. Taslak "yakında" listesi: bebek arabası, telefon kılıfı, doğal sabun, kedi tırmalama tahtası, spor tayt, filtre kahve, kamp sandalyesi. Liste kullanıcıyla netleştirilecek.
 2. **Veri toplama:** 5'erli partiler hâlinde, zamana yayarak. Her kategoride ortak konular (dayanıklılık, beden/ölçü, görselden farklı, kargo/paket, sahtelik, eksik parça, koku, fiyat) + kategoriye özel 2-4 konu.
 3. **Otomasyon (sunuma kadar "canlı MVP"):** bilgisayarda çalışan toplama programı (Python + Playwright), Claude API ile otomatik konu sınıflandırma ve not üretimi (kullanıcının Anthropic API anahtarı gerekir), sonuçların GitHub'a otomatik yüklenmesi, tarihli kayıtlarla zaman içinde değişim takibi.

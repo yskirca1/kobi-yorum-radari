@@ -1,0 +1,1106 @@
+{
+ "id": "sal",
+ "ad": "Şal",
+ "ust": "Giyim",
+ "toplama": "2 Kasım 2026",
+ "kaynak": "Trendyol",
+ "esanlam": [
+  "şal",
+  "sal",
+  "eşarp",
+  "tesettür şal",
+  "pamuk şal",
+  "bambu şal",
+  "başörtüsü",
+  "örtü"
+ ],
+ "temalar": [
+  {
+   "id": "renk",
+   "ad": "Renk görseldekinden farklı",
+   "unlem": "Rengi fotoğraftaki gibi gelmiyor!"
+  },
+  {
+   "id": "yanlis",
+   "ad": "Yanlış ürün / renk gönderildi",
+   "unlem": "Yanlış ürün ya da renk geliyor!"
+  },
+  {
+   "id": "sentetik",
+   "ad": "Kumaş kötü: naylon, polyester",
+   "unlem": "Pamuk yazıyor, naylon çıkıyor!"
+  },
+  {
+   "id": "kayiyor",
+   "ad": "Kayıyor, şekil almıyor",
+   "unlem": "Kayıyor, şekil almıyor!"
+  },
+  {
+   "id": "ince",
+   "ad": "İnce / iç gösteriyor",
+   "unlem": "Çok ince, iç gösteriyor!"
+  },
+  {
+   "id": "sert",
+   "ad": "Sert, kalın, terletiyor",
+   "unlem": "Kumaşı sert, kalın ve terletiyor!"
+  },
+  {
+   "id": "defo",
+   "ad": "Defolu / lekeli / yırtık",
+   "unlem": "Defolu, lekeli ya da yırtık geliyor!"
+  },
+  {
+   "id": "baski",
+   "ad": "Baskı kalitesiz, desen farklı",
+   "unlem": "Baskısı kalitesiz, deseni farklı!"
+  },
+  {
+   "id": "yikama",
+   "ad": "Yıkayınca soluyor, tüyleniyor, boya veriyor",
+   "unlem": "Yıkayınca soluyor, tüyleniyor!"
+  },
+  {
+   "id": "olcu",
+   "ad": "Ölçü küçük / kısa / orantısız",
+   "unlem": "Ölçüsü küçük ya da orantısız!"
+  },
+  {
+   "id": "eksik",
+   "ad": "Eksik ya da gelmeyen ürün",
+   "unlem": "Siparişteki ürün eksik geliyor!"
+  },
+  {
+   "id": "fiyat",
+   "ad": "Fiyatına değmez",
+   "unlem": "Fiyatına değmiyor!"
+  },
+  {
+   "id": "satici",
+   "ad": "İade, kargo, satıcı ilgisi",
+   "unlem": "İade ve satıcı ilgisi zayıf!"
+  }
+ ],
+ "olumlu_konular": [
+  {
+   "id": "kalite",
+   "ad": "Kaliteli kumaş"
+  },
+  {
+   "id": "yumusak",
+   "ad": "Yumuşak, hafif, rahat"
+  },
+  {
+   "id": "kaymaz",
+   "ad": "Kaymıyor, şekil alıyor"
+  },
+  {
+   "id": "renk",
+   "ad": "Renkleri canlı ve güzel"
+  },
+  {
+   "id": "gorsel",
+   "ad": "Görseldeki gibi geldi"
+  },
+  {
+   "id": "tekrar",
+   "ad": "Tekrar alıyor, diğer renklerini de aldı"
+  },
+  {
+   "id": "hediye",
+   "ad": "Hediye / yakınına almış"
+  },
+  {
+   "id": "not",
+   "ad": "Satıcının notu / hediyesi"
+  },
+  {
+   "id": "fp",
+   "ad": "Fiyat performans"
+  },
+  {
+   "id": "kargo",
+   "ad": "Hızlı kargo, özenli paket"
+  },
+  {
+   "id": "yazlik",
+   "ad": "Yazın rahat, terletmiyor"
+  }
+ ],
+ "oneriler": [
+  {
+   "baslik": "Setlerde her rengi tek tek kontrol et",
+   "metin": "Olumsuz yorumlarda yanlış renk ya da ürün gönderimi %16, rengin fotoğraftan farklı gelmesi %14 oranında; en yüksek değerler 3'lü ve 4'lü setlerde. Organic Scarfs setinde renk farkı şikâyeti oranı %39. Paketlemeden önce her rengi sipariş kodlarıyla eşleştir; stokta olmayan rengi satıştan kaldır."
+  },
+  {
+   "baslik": "Rengi gün ışığında çek, tonu doğru adlandır",
+   "metin": "\"Kakao renk istedim, kahverenginin hiç sevmediğim tonu geldi\", \"karamel değil turuncu\" yorumları tonun yanlış adlandırıldığını gösteriyor. Filtresiz gün ışığında fotoğraf, yakın çekim kumaş ve tonu tarif eden bir cümle (ör. \"sütlü kahveye yakın\") beklentiyi doğru kurar."
+  },
+  {
+   "baslik": "Kenarları kontrol et, iade dönen ürünü yeniden satma",
+   "metin": "Büyük markaların olumsuz yorumlarında defo oranı %28, KOBİ'lerde %10. Büyük marka şallarını çoğunlukla bayiler satıyor ve şikâyetler \"kenarları sökük\", \"başkasının iadesini göndermişler\" şeklinde. Her şalı katlamadan önce kenar dikişini ve ipleri kontrol eden bir KOBİ, büyük markaya karşı burada öne geçer."
+  },
+  {
+   "baslik": "Kumaşı fotoğraftaki gibi anlat",
+   "metin": "Kumaşın sert ya da kalın olması (%8), naylon ve polyester çıkması (%7) ve çok ince olması (%7) şikâyetleri birlikte önemli bir pay tutuyor. Kumaş içeriğini, kalınlığı ve mevsimini (yazlık mı, dört mevsim mi) açıkça yaz; \"pamuk\" yazıp karışım göndermek güveni bozuyor."
+  },
+  {
+   "baslik": "Yıkama dayanımını test et",
+   "metin": "Büyük markalarda yıkamada solma, tiftiklenme ve boya bırakma şikâyeti %10 (KOBİ'de %2); Modakaşmir Neo Pamuk'ta %18. Her renk için renk haslığı testi yap, ürünle birlikte kısa bir yıkama talimatı gönder."
+  },
+  {
+   "baslik": "Büyük markayla aynı ligdesin: farkı hizmette yarat",
+   "metin": "Şalda 1-2 yıldız payı büyük markalarda %9,5, KOBİ'lerde %8,8; ürün kalitesinde açık bir fark yok. Olumlu yorumlarda renk canlılığı (%28), kumaş kalitesi ve kaymaması öne çıkıyor. Hediye paketi ve not gibi küçük hizmetler fark yaratıyor; ama istenen paket gönderilmezse sipariş iadeye dönüyor."
+  }
+ ],
+ "urunler": [
+  {
+   "id": "327241909",
+   "kisa": "Armine Medine İpeği",
+   "marka": "Armine",
+   "ad": "Armine Medine İpeği Şal, siyah",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1629/prod/QC/20250201/02/023b398d-7d9c-3f89-904a-e3e682cb490c/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/armine/medine-ipegi-sal-siyah-1001-p-327241909",
+   "yazili": 212,
+   "yildiz": [
+    6,
+    3,
+    6,
+    28,
+    169
+   ],
+   "ort": 4.66,
+   "onerilen_ort": 4.94,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 9,
+   "sikayet": {
+    "renk": 0,
+    "yanlis": 0.22,
+    "sentetik": 0,
+    "kayiyor": 0,
+    "ince": 0,
+    "sert": 0.33,
+    "defo": 0.11,
+    "baski": 0,
+    "yikama": 0,
+    "olcu": 0.11,
+    "eksik": 0,
+    "fiyat": 0,
+    "satici": 0
+   },
+   "olumlu": {
+    "kalite": 0.34,
+    "yumusak": 0.13,
+    "kaymaz": 0.17,
+    "renk": 0.1,
+    "gorsel": 0,
+    "tekrar": 0.05,
+    "hediye": 0.09,
+    "not": 0.01,
+    "fp": 0.08,
+    "kargo": 0.12,
+    "yazlik": 0
+   },
+   "dikkat": [
+    "Yorum sayısı az ve 1-2 yıldız payı düşük (%4); şikâyetler kumaşın sert ve kalın olmasında toplanıyor.",
+    "Ürünü markanın kendisi değil, birden çok bayi satıyor; yanlış renk ve kargo şikâyetleri bayilerden.",
+    "\"Medine ipeği değil, yazın yakar\" diyen alıcılar var."
+   ],
+   "ders": [
+    "Büyük marka ürünü bayiler satınca paketleme ve gönderim kalitesi bayiye kalıyor; marka puanı bundan etkileniyor."
+   ],
+   "alinti": [
+    {
+     "konu": "Sert, kalın, terletiyor",
+     "yildiz": 2,
+     "metin": "çok sert ve kalın iğne girmiyor çok uğraştırma beni"
+    },
+    {
+     "konu": "Ölçü küçük / kısa / orantısız",
+     "yildiz": 1,
+     "metin": "beklediğimden küçük geldi ayrıca medine ipeği degil bu yazın yakar degiştirmekle hiç uğraşmaacağım 😡"
+    },
+    {
+     "konu": "Yanlış ürün / renk gönderildi",
+     "yildiz": 1,
+     "metin": "siyah renk olarak gelmedi başka renk geldi"
+    },
+    {
+     "konu": "Olumlu: kaymıyor",
+     "yildiz": 5,
+     "metin": "ürün kalite muazam kaymaz ne yapsanız da kızlar kesinlikle tavsiye ederim"
+    }
+   ]
+  },
+  {
+   "id": "51132406",
+   "kisa": "Armine Trend 2206",
+   "marka": "Armine",
+   "ad": "Armine Trend Şal 2206",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty996/product/media/images/prod/SPM/PIM/20230910/23/e422c93b-1f38-31ed-bbd9-334f7ee1e4a9/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/armine/trend-sal-2206-v1-p-51132406",
+   "yazili": 126,
+   "yildiz": [
+    15,
+    4,
+    8,
+    26,
+    73
+   ],
+   "ort": 4.1,
+   "onerilen_ort": 4.61,
+   "onerilen_dusuk": 2,
+   "ornek_dusuk": 19,
+   "sikayet": {
+    "renk": 0.05,
+    "yanlis": 0.05,
+    "sentetik": 0.21,
+    "kayiyor": 0.11,
+    "ince": 0,
+    "sert": 0.21,
+    "defo": 0,
+    "baski": 0,
+    "yikama": 0,
+    "olcu": 0,
+    "eksik": 0.05,
+    "fiyat": 0.05,
+    "satici": 0
+   },
+   "olumlu": {
+    "kalite": 0.17,
+    "yumusak": 0.03,
+    "kaymaz": 0.08,
+    "renk": 0.07,
+    "gorsel": 0.05,
+    "tekrar": 0.02,
+    "hediye": 0.12,
+    "not": 0.02,
+    "fp": 0.04,
+    "kargo": 0.13,
+    "yazlik": 0
+   },
+   "dikkat": [
+    "Kumaş sert ve kağıt gibi bulunuyor; \"naylon gibi, şekil almıyor\" yorumu sık.",
+    "\"Armine kalitesinde değil\" diyenler markadan daha yüksek beklenti içinde.",
+    "Hediye paketi istenip düz poşetle gelen siparişler iadeye dönüyor."
+   ],
+   "ders": [
+    "Marka adı beklentiyi yükseltiyor: aynı kumaş bir KOBİ'de idare eder sayılırken \"Armine kalitesinde değil\" diye 1 yıldız alıyor."
+   ],
+   "alinti": [
+    {
+     "konu": "Sert, kalın, terletiyor",
+     "yildiz": 1,
+     "metin": "cok sert kabuk gibi"
+    },
+    {
+     "konu": "Kumaş kötü: naylon, polyester",
+     "yildiz": 1,
+     "metin": "hiç begenmedim tamamen naylon şekil bile almıyor"
+    },
+    {
+     "konu": "İade, kargo, satıcı ilgisi",
+     "yildiz": 1,
+     "metin": "Hediye olarak aldım bazı kullanıcılara paketli gönderilmiş bana düz bir poşet icinde hediye paketi olmadan gönderilmiş bu yüzden iade edeceğim"
+    },
+    {
+     "konu": "Olumlu: şekil alıyor",
+     "yildiz": 5,
+     "metin": "banko bı eşarp hersye uyumlu kaliteli hemen şekil aliyo bayıldım 🌸"
+    }
+   ]
+  },
+  {
+   "id": "778137757",
+   "kisa": "Aker Elegance",
+   "marka": "Aker",
+   "ad": "Aker Elegance Monogram Şal, füme",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1712/prod/QC_ENRICHMENT/20250715/16/543f7949-4c0b-3dd4-b478-8dfcdfee5f54/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/aker/elegance-monogram-sal-fume-913-p-778137757",
+   "yazili": 113,
+   "yildiz": [
+    4,
+    2,
+    9,
+    14,
+    84
+   ],
+   "ort": 4.52,
+   "onerilen_ort": 4.76,
+   "onerilen_dusuk": 1,
+   "ornek_dusuk": 6,
+   "sikayet": {
+    "renk": 0,
+    "yanlis": 0,
+    "sentetik": 0.33,
+    "kayiyor": 0,
+    "ince": 0,
+    "sert": 0,
+    "defo": 0.17,
+    "baski": 0,
+    "yikama": 0,
+    "olcu": 0,
+    "eksik": 0,
+    "fiyat": 0,
+    "satici": 0
+   },
+   "olumlu": {
+    "kalite": 0.19,
+    "yumusak": 0.05,
+    "kaymaz": 0.09,
+    "renk": 0.23,
+    "gorsel": 0.04,
+    "tekrar": 0.03,
+    "hediye": 0.12,
+    "not": 0,
+    "fp": 0.07,
+    "kargo": 0.1,
+    "yazlik": 0.02
+   },
+   "dikkat": [
+    "1-2 yıldız payı çok düşük (%5); yalnızca 6 olumsuz yorum var.",
+    "Fotoğraftaki pamuklu görünümün polyester çıktığı ve önünün kaydığı yazılıyor.",
+    "Kutusuz gelen ya da ipi çekilmiş ürün şikâyeti var."
+   ],
+   "ders": [
+    "Az şikâyet var ama hepsi \"pamuk gibi görünüp polyester çıkması\". Kumaş içeriği fotoğraftaki dokuyla tutarlı olmalı."
+   ],
+   "alinti": [
+    {
+     "konu": "Kumaş kötü: naylon, polyester",
+     "yildiz": 1,
+     "metin": "Fotoğrafta pamuk dokulu gibi duruyor ama asla değil..çok polyester.önü üçgen oluyor kaymaya çok müsait ben beğenmedim"
+    },
+    {
+     "konu": "Eksik ya da gelmeyen ürün",
+     "yildiz": 1,
+     "metin": "Aker kutusu yok içinde maalesef"
+    },
+    {
+     "konu": "Defolu / lekeli / yırtık",
+     "yildiz": 1,
+     "metin": "defolu⁰ ipi cekişmis ürünü neden gonderdınız"
+    },
+    {
+     "konu": "Olumlu: hediye paketi",
+     "yildiz": 5,
+     "metin": "Hediye için almıştım. İstediğim gibi karton çantadında vs gönderdiler. Mükemmel hizmet 👍🏻"
+    }
+   ]
+  },
+  {
+   "id": "950221597",
+   "kisa": "Modakaşmir Aya",
+   "marka": "Modakaşmir",
+   "ad": "Modakaşmir Aya Serisi Şal, kakao",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1701/prod/QC_PREP/20250629/18/0a6ddb6e-439f-3e60-830f-77cbc8e66b77/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/modakasmir/aya-serisi-sal-kakao-p-950221597",
+   "yazili": 695,
+   "yildiz": [
+    64,
+    20,
+    39,
+    96,
+    476
+   ],
+   "ort": 4.29,
+   "onerilen_ort": 4.95,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 84,
+   "sikayet": {
+    "renk": 0.1,
+    "yanlis": 0.13,
+    "sentetik": 0.02,
+    "kayiyor": 0.02,
+    "ince": 0.06,
+    "sert": 0.04,
+    "defo": 0.38,
+    "baski": 0.01,
+    "yikama": 0.05,
+    "olcu": 0.05,
+    "eksik": 0,
+    "fiyat": 0,
+    "satici": 0.06
+   },
+   "olumlu": {
+    "kalite": 0.15,
+    "yumusak": 0.4,
+    "kaymaz": 0.23,
+    "renk": 0.41,
+    "gorsel": 0.04,
+    "tekrar": 0.11,
+    "hediye": 0,
+    "not": 0,
+    "fp": 0.01,
+    "kargo": 0.06,
+    "yazlik": 0.15
+   },
+   "dikkat": [
+    "Defo kategorinin en yüksek oranında: olumsuzların %38'i kenar dikişi sökük, ipi çekik ya da lekeli ürün.",
+    "\"Başkasının iadesini göndermişler\" yorumu var; ürün birçok bayiden satılıyor.",
+    "Kakao, acı kahve gibi tonlar fotoğraftakinden farklı geliyor; ölçünün yanlış geldiği de yazılıyor."
+   ],
+   "ders": [
+    "Yüksek puanlı bir ürün (ortalama 4,3) bile defolu gönderimle 1 yıldız topluyor. Kenar dikişi kontrolü ve iade dönen ürünü yeniden satmamak şart."
+   ],
+   "alinti": [
+    {
+     "konu": "Defolu / lekeli / yırtık",
+     "yildiz": 2,
+     "metin": "şalın rengi cok güzel ama kenarlarındaki dikişlerin hepsi söküktü ve bu yuzden delik delik kenarlari keske defolu ürün gonderilmeseydi"
+    },
+    {
+     "konu": "Defolu / lekeli / yırtık",
+     "yildiz": 1,
+     "metin": "Başkasının iadesini göndermişler kenarları sökülmüş oyüzden iade"
+    },
+    {
+     "konu": "Renk görseldekinden farklı",
+     "yildiz": 1,
+     "metin": "kakao renk istedim gelen renk kahverenginin hiç sevmediğim tonu ?"
+    },
+    {
+     "konu": "Olumlu: yazlık, şekil alıyor",
+     "yildiz": 5,
+     "metin": "Çok hoş,birebir yazlık bir ürün saçı göstermiyor alın şekil alması kolay"
+    }
+   ]
+  },
+  {
+   "id": "811110897",
+   "kisa": "Modakaşmir Neo Pamuk",
+   "marka": "Modakaşmir",
+   "ad": "Modakaşmir Neo Pamuk Şal, siyah",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1648/prod/QC/20250308/16/8a71e384-26fe-3bc6-aa65-4ec486e00310/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/modakasmir/neo-pamuk-sal-siyah-renk-p-811110897",
+   "yazili": 1400,
+   "yildiz": [
+    85,
+    38,
+    90,
+    202,
+    985
+   ],
+   "ort": 4.4,
+   "onerilen_ort": 4.95,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "renk": 0.06,
+    "yanlis": 0.11,
+    "sentetik": 0.06,
+    "kayiyor": 0.02,
+    "ince": 0.08,
+    "sert": 0.07,
+    "defo": 0.28,
+    "baski": 0.01,
+    "yikama": 0.18,
+    "olcu": 0.08,
+    "eksik": 0.0,
+    "fiyat": 0.03,
+    "satici": 0.11
+   },
+   "olumlu": {
+    "kalite": 0.16,
+    "yumusak": 0.41,
+    "kaymaz": 0.23,
+    "renk": 0.18,
+    "gorsel": 0.02,
+    "tekrar": 0.08,
+    "hediye": 0.04,
+    "not": 0.08,
+    "fp": 0.09,
+    "kargo": 0.13,
+    "yazlik": 0.13
+   },
+   "dikkat": [
+    "Defo ve dikiş açılması sık; ipi çekik gelen ürünler var.",
+    "Yıkamada solma, tiftiklenme ve boya bırakma şikâyeti kategorinin en yükseği (%18).",
+    "Satıcı bir bayi; \"bu neo pamuk değil, başka ürün göndermişler\" diyenler var."
+   ],
+   "ders": [
+    "Aynı serinin farklı renklerinde yıkama dayanımı farklı; renk haslığı testi her renk için ayrı yapılmalı."
+   ],
+   "alinti": [
+    {
+     "konu": "Defolu / lekeli / yırtık",
+     "yildiz": 1,
+     "metin": "ipi cekik geldi biraz duzelttim elimle iadeyle ugrasmamak icin"
+    },
+    {
+     "konu": "Yıkayınca soluyor, tüyleniyor, boya veriyor",
+     "yildiz": 2,
+     "metin": "Daha öncede aynı ürünün farklı renklerini almıştım kullandıktan sonra tiftiklenme olmamıştı ama bu üründe oldu."
+    },
+    {
+     "konu": "Yanlış ürün / renk gönderildi",
+     "yildiz": 1,
+     "metin": "Güzel ürün, ama siparişim başka farkı renge geldi, siyah istemiştim"
+    },
+    {
+     "konu": "Olumlu: kaymıyor, hafif",
+     "yildiz": 5,
+     "metin": "severek kullanıyorum daha önce lacivertini almıştım kayma yapmiyor çok hafif sıcak ta tutmuyor çok iyi"
+    }
+   ]
+  },
+  {
+   "id": "944739275",
+   "kisa": "Mira İpek Gül Desen",
+   "marka": "Mira İpek",
+   "ad": "Mira İpek Gül Desen Pamuk Şal, pudra",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1692/prod/QC_PREP/20250614/00/4c65ce80-3388-3cff-8734-bec557bb6bb0/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/mira-ipek/gul-desen-pamuk-sal-pudra-ps72-p-944739275",
+   "yazili": 3016,
+   "yildiz": [
+    111,
+    50,
+    158,
+    333,
+    2364
+   ],
+   "ort": 4.59,
+   "onerilen_ort": 4.99,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "renk": 0.11,
+    "yanlis": 0.07,
+    "sentetik": 0.18,
+    "kayiyor": 0.06,
+    "ince": 0.07,
+    "sert": 0.28,
+    "defo": 0.1,
+    "baski": 0.03,
+    "yikama": 0.01,
+    "olcu": 0.0,
+    "eksik": 0.02,
+    "fiyat": 0.01,
+    "satici": 0.05
+   },
+   "olumlu": {
+    "kalite": 0.28,
+    "yumusak": 0.18,
+    "kaymaz": 0.16,
+    "renk": 0.39,
+    "gorsel": 0.13,
+    "tekrar": 0.07,
+    "hediye": 0.09,
+    "not": 0.0,
+    "fp": 0.13,
+    "kargo": 0.19,
+    "yazlik": 0.04
+   },
+   "dikkat": [
+    "Kumaş sert ve kalın; \"pamuklu değil, polyester\" yorumu sık.",
+    "Renk fotoğraftaki kadar canlı değil, soluk geliyor.",
+    "Şeklin tutmadığı, sürekli düzeltmek gerektiği yazılıyor."
+   ],
+   "ders": [
+    "Kategorinin en çok yorum alan ürünlerinden; 1-2 yıldız payı düşük (%5), şikâyetler kumaş tercihinde. Mevsime göre kumaş seçeneği bu müşteriyi tutar."
+   ],
+   "alinti": [
+    {
+     "konu": "Kumaş kötü: naylon, polyester",
+     "yildiz": 1,
+     "metin": "Pamuklu değil ürün sert bir yapısı var"
+    },
+    {
+     "konu": "Renk görseldekinden farklı",
+     "yildiz": 1,
+     "metin": "Rengi asla fotoğrafta görüldüğü gibi canlı değil inanılmaz soluk ve çok ince"
+    },
+    {
+     "konu": "Sert, kalın, terletiyor",
+     "yildiz": 2,
+     "metin": "polyester kumaşı kalın biraz pek sevemedim açıkçası"
+    },
+    {
+     "konu": "Olumlu: iç göstermiyor",
+     "yildiz": 5,
+     "metin": "Desenleri çok güzel kalitesi de öyle iç göstermiyor en sevdiğim özelliği oldu"
+    }
+   ]
+  },
+  {
+   "id": "968548196",
+   "kisa": "Mira İpek İlham ps33",
+   "marka": "Mira İpek",
+   "ad": "Mira İpek İlham Serisi Etnik Desenli Şal ps33",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1722/prod/QC_PREP/20250808/16/a2492ba5-e715-300c-9354-d33144aa4200/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/mira-ipek/ilham-serisi-yumusak-pamuklu-etnik-desenli-bordo-kenarli-sal-ps33-p-968548196",
+   "yazili": 2575,
+   "yildiz": [
+    97,
+    48,
+    143,
+    281,
+    2006
+   ],
+   "ort": 4.57,
+   "onerilen_ort": 4.95,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "renk": 0.17,
+    "yanlis": 0.08,
+    "sentetik": 0.14,
+    "kayiyor": 0.03,
+    "ince": 0.05,
+    "sert": 0.03,
+    "defo": 0.06,
+    "baski": 0.15,
+    "yikama": 0.0,
+    "olcu": 0.01,
+    "eksik": 0.01,
+    "fiyat": 0.02,
+    "satici": 0.05
+   },
+   "olumlu": {
+    "kalite": 0.32,
+    "yumusak": 0.14,
+    "kaymaz": 0.11,
+    "renk": 0.33,
+    "gorsel": 0.07,
+    "tekrar": 0.04,
+    "hediye": 0.09,
+    "not": 0.02,
+    "fp": 0.25,
+    "kargo": 0.18,
+    "yazlik": 0.0
+   },
+   "dikkat": [
+    "Renk fotoğraftakinden soluk; bordoya kaçtığı söyleniyor.",
+    "Baskı dijital ve yapmacık duruyor; desen fotoğraftakinden büyük geliyor.",
+    "Kumaşın naylon gibi olduğu, yazın terlettiği yazılıyor."
+   ],
+   "ders": [
+    "Desenli şalda baskı kalitesi fotoğrafla aynı olmalı; dijital baskı görüntüsü \"yapmacık\" diye geri dönüyor."
+   ],
+   "alinti": [
+    {
+     "konu": "Baskı kalitesiz, desen farklı",
+     "yildiz": 2,
+     "metin": "Kumaşları güzel ama baskıları cok yapmacık duruyor hayal kırıkgına ugradım…"
+    },
+    {
+     "konu": "Renk görseldekinden farklı",
+     "yildiz": 1,
+     "metin": "Rengi Fotoğraftaki gibi canlı değil daha soluk geldi"
+    },
+    {
+     "konu": "Kumaş kötü: naylon, polyester",
+     "yildiz": 1,
+     "metin": "kumaşı pamuklu değil naylonlu yaz mevsiminde çok terletir"
+    },
+    {
+     "konu": "Olumlu: şekil alıyor",
+     "yildiz": 5,
+     "metin": "Kızlar hiç tereddüt etmeden alın.O kadar güzel ki.Çok kolay şekil alıyor ve kaymıyor"
+    }
+   ]
+  },
+  {
+   "id": "973174379",
+   "kisa": "Mira İpek Batik ps24",
+   "marka": "Mira İpek",
+   "ad": "Mira İpek Batik Desenli Pamuk Soft Şal ps24",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1730/prod/QC_ENRICHMENT/20250818/13/347abb34-a13e-305b-b5b6-50bc6dd2fa2c/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/mira-ipek/batik-desenli-pamuk-soft-sal-ilham-serisi-ps24-p-973174379",
+   "yazili": 2207,
+   "yildiz": [
+    95,
+    59,
+    130,
+    261,
+    1662
+   ],
+   "ort": 4.51,
+   "onerilen_ort": 4.95,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "renk": 0.12,
+    "yanlis": 0.13,
+    "sentetik": 0.05,
+    "kayiyor": 0.04,
+    "ince": 0.04,
+    "sert": 0.09,
+    "defo": 0.08,
+    "baski": 0.01,
+    "yikama": 0.02,
+    "olcu": 0.02,
+    "eksik": 0.02,
+    "fiyat": 0.0,
+    "satici": 0.04
+   },
+   "olumlu": {
+    "kalite": 0.31,
+    "yumusak": 0.15,
+    "kaymaz": 0.17,
+    "renk": 0.26,
+    "gorsel": 0.17,
+    "tekrar": 0.07,
+    "hediye": 0.03,
+    "not": 0.0,
+    "fp": 0.19,
+    "kargo": 0.14,
+    "yazlik": 0.02
+   },
+   "dikkat": [
+    "Kahverengi siparişlerde bordo, pembe ya da gül kurusu gelen ürün şikâyeti sık.",
+    "Renk fotoğraftakinden daha koyu geliyor.",
+    "Önceki alımlara göre kumaşın kalınlaştığını söyleyenler var."
+   ],
+   "ders": [
+    "Tek renk sipariş edilen üründe bile yanlış renk gönderimi 1 yıldız sebebi; renk adı ve stok kodu eşleşmeli."
+   ],
+   "alinti": [
+    {
+     "konu": "Yanlış ürün / renk gönderildi",
+     "yildiz": 1,
+     "metin": "Ben sizden pembe istemedim kahve istedim gitmişsiniz bana pembe göndermişsiniz düğünde takacam diye kaç gündür bekliyorum"
+    },
+    {
+     "konu": "Yanlış ürün / renk gönderildi",
+     "yildiz": 2,
+     "metin": "Kahverengi istedim bordo gönderilmiş ,ama şalın kumaşı güzel"
+    },
+    {
+     "konu": "Renk görseldekinden farklı",
+     "yildiz": 2,
+     "metin": "yapısı güzel lakin rengi göründüğünden çok daha koyu şekilde"
+    },
+    {
+     "konu": "Olumlu: tekrar alım",
+     "yildiz": 5,
+     "metin": "acayip iyi kac tane aldım hepsini de bayılarak kombin yapıyorum düşünmeden alın"
+    }
+   ]
+  },
+  {
+   "id": "468684489",
+   "kisa": "Bambu Kraş 3'lü (Genel Markalar)",
+   "marka": "Genel Markalar",
+   "ad": "Bambu Kraş Şal 3'lü Set, lacivert-mavi-gri",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1644/prod/QC/20250305/11/9aec1812-6d3b-3548-864f-111bc45d5015/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/genel-markalar/bambu-kras-sal-3-lu-set-lacivert-mavi-gri-p-468684489",
+   "yazili": 1188,
+   "yildiz": [
+    130,
+    55,
+    118,
+    185,
+    700
+   ],
+   "ort": 4.07,
+   "onerilen_ort": 4.95,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "renk": 0.13,
+    "yanlis": 0.4,
+    "sentetik": 0.02,
+    "kayiyor": 0.0,
+    "ince": 0.09,
+    "sert": 0.06,
+    "defo": 0.03,
+    "baski": 0.0,
+    "yikama": 0.03,
+    "olcu": 0.01,
+    "eksik": 0.03,
+    "fiyat": 0.0,
+    "satici": 0.08
+   },
+   "olumlu": {
+    "kalite": 0.29,
+    "yumusak": 0.29,
+    "kaymaz": 0.05,
+    "renk": 0.25,
+    "gorsel": 0.13,
+    "tekrar": 0.05,
+    "hediye": 0.08,
+    "not": 0.03,
+    "fp": 0.16,
+    "kargo": 0.18,
+    "yazlik": 0.08
+   },
+   "dikkat": [
+    "Olumsuzların %40'ı yanlış renk gönderiminden: lacivert yerine siyah ya da yeşil, gri yerine bebe mavisi.",
+    "Setteki renkler fotoğrafla tutmuyor.",
+    "Kumaşın ince olduğu, iç gösterdiği yazılıyor."
+   ],
+   "ders": [
+    "Çok renkli sette her renk ayrı bir sipariş gibi kontrol edilmeli; tek bir yanlış renk bütün seti iadeye çeviriyor."
+   ],
+   "alinti": [
+    {
+     "konu": "Yanlış ürün / renk gönderildi",
+     "yildiz": 1,
+     "metin": "Rengi modeli farklı geldi lacivert yerine yeşil geldi"
+    },
+    {
+     "konu": "Yanlış ürün / renk gönderildi",
+     "yildiz": 2,
+     "metin": "yanlis renk gonerilmis ,iade ettim, urun kalitesi de iyiydi fiyatina gore"
+    },
+    {
+     "konu": "İnce / iç gösteriyor",
+     "yildiz": 1,
+     "metin": "Gerçekten çok ince ve insanın boynum görünüyor tesettürü n bir anlamı kalmıyor günlük evde takmalık"
+    },
+    {
+     "konu": "Olumlu: rahat",
+     "yildiz": 5,
+     "metin": "beklediğimden daha iyiler Hem rahat hem kullanışlı indirimdeyken almıştım tavsiye ederim"
+    }
+   ]
+  },
+  {
+   "id": "763220958",
+   "kisa": "Organic Scarfs 3'lü",
+   "marka": "Organic Scarfs",
+   "ad": "Organic Scarfs Bambu Kraş Şal 3'lü Set",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1537/product/media/images/ty1537/prod/QC/20240911/21/1b14884a-10fa-359f-aa41-d93c95062e41/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/organic-scarfs/tesettur-hijab-kadin-bambu-kras-sal-modeli-3-lu-set-p-763220958",
+   "yazili": 1061,
+   "yildiz": [
+    232,
+    58,
+    126,
+    139,
+    506
+   ],
+   "ort": 3.59,
+   "onerilen_ort": 4.95,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "renk": 0.39,
+    "yanlis": 0.31,
+    "sentetik": 0.02,
+    "kayiyor": 0.0,
+    "ince": 0.05,
+    "sert": 0.0,
+    "defo": 0.06,
+    "baski": 0.0,
+    "yikama": 0.02,
+    "olcu": 0.0,
+    "eksik": 0.0,
+    "fiyat": 0.0,
+    "satici": 0.04
+   },
+   "olumlu": {
+    "kalite": 0.17,
+    "yumusak": 0.31,
+    "kaymaz": 0.14,
+    "renk": 0.39,
+    "gorsel": 0.11,
+    "tekrar": 0.05,
+    "hediye": 0.08,
+    "not": 0.09,
+    "fp": 0.11,
+    "kargo": 0.14,
+    "yazlik": 0.05
+   },
+   "dikkat": [
+    "Kategorinin en yüksek 1-2 yıldız payı (%27): seçilen renkler yerine başka renkler geliyor.",
+    "Olumsuzların %39'u renk farkından, %31'i yanlış gönderimden söz ediyor.",
+    "Renklerin solmuş ve kullanılmış gibi geldiği, süsün kırık geldiği yazılıyor."
+   ],
+   "ders": [
+    "Kumaş beğenilse de (\"kumaşı güzel ama\") yanlış renk puanı düşürüyor. Stokta olmayan renk satıştan kaldırılmalı."
+   ],
+   "alinti": [
+    {
+     "konu": "Renk görseldekinden farklı",
+     "yildiz": 1,
+     "metin": "ürün çok güzel istediğim gibi fakat istediğim renkler gelmedi. özellikle koyu kahve rengi için aldım bambaşka renkler geldi"
+    },
+    {
+     "konu": "Renk görseldekinden farklı",
+     "yildiz": 2,
+     "metin": "gorseldeki renkler gelmedi kumasi guzdl ama keske secilen renkler gpnderilse"
+    },
+    {
+     "konu": "Defolu / lekeli / yırtık",
+     "yildiz": 1,
+     "metin": "Renklerin hepsinin tonu farklı solmuş kullanılmış gibi hiç beğenmedim"
+    },
+    {
+     "konu": "Olumlu: kaymıyor, terletmiyor",
+     "yildiz": 5,
+     "metin": "yumuşacık harika kaymayan terletmeyen şallar kesinlikle tavsiye ederim"
+    }
+   ]
+  },
+  {
+   "id": "211986804",
+   "kisa": "Afvente Paisley",
+   "marka": "Afvente",
+   "ad": "Afvente Paisley Desen Soft Pamuk Şal, kahverengi",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1849/prod/QC_ENRICHMENT/20260402/10/977f5a9b-0d1d-3bb7-af45-66b2a8781cca/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/afvente/paisley-desen-kahverengi-soft-pamuk-sal-p-211986804",
+   "yazili": 1155,
+   "yildiz": [
+    48,
+    29,
+    77,
+    150,
+    851
+   ],
+   "ort": 4.5,
+   "onerilen_ort": 4.98,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 77,
+   "sikayet": {
+    "renk": 0.03,
+    "yanlis": 0.09,
+    "sentetik": 0.09,
+    "kayiyor": 0.05,
+    "ince": 0.01,
+    "sert": 0.05,
+    "defo": 0.26,
+    "baski": 0.04,
+    "yikama": 0.03,
+    "olcu": 0.01,
+    "eksik": 0.03,
+    "fiyat": 0.0,
+    "satici": 0.06
+   },
+   "olumlu": {
+    "kalite": 0.29,
+    "yumusak": 0.23,
+    "kaymaz": 0.24,
+    "renk": 0.34,
+    "gorsel": 0.09,
+    "tekrar": 0.08,
+    "hediye": 0.07,
+    "not": 0.01,
+    "fp": 0.13,
+    "kargo": 0.14,
+    "yazlik": 0.0
+   },
+   "dikkat": [
+    "Defo sık: ortasında çizgi baskı hatası, çekilmiş ya da deforme şallar.",
+    "Farklı model sipariş edilip aynısının geldiği yazılıyor.",
+    "\"Pamuk yazıyor ama naylonumsu\" diyenler var; kayan bir yapısı olduğu söyleniyor."
+   ],
+   "ders": [
+    "Toplu siparişlerde (9 şalın 3'ü defolu) her parça tek tek kontrol edilmeli; müşteri hatayı yorumda sayıyla yazıyor."
+   ],
+   "alinti": [
+    {
+     "konu": "Defolu / lekeli / yırtık",
+     "yildiz": 1,
+     "metin": "Çok beğenerek aldım 9 tane sipariş vermiştim 3 tane şalım da deforme var çekilmiş değişim yapmanızı istiyorum"
+    },
+    {
+     "konu": "Yanlış ürün / renk gönderildi",
+     "yildiz": 1,
+     "metin": "2 tane farklı model sipariş ettim ikiside aynı geldi"
+    },
+    {
+     "konu": "Kumaş kötü: naylon, polyester",
+     "yildiz": 1,
+     "metin": "pamuk şal yazıyor ürünün altında fakat sert ve naylonumsu bir ürün geliyor maalesef beğenmedim."
+    },
+    {
+     "konu": "Olumlu: şekil alıyor",
+     "yildiz": 5,
+     "metin": "benim favori şalim oldu , nerdeyse hergun kullanacagim kumaşı çok güzel hemen şekil alıyor bayıldım"
+    }
+   ]
+  },
+  {
+   "id": "366531659",
+   "kisa": "Naciye Sultan 4'lü Penye",
+   "marka": "Naciye Sultan",
+   "ad": "Naciye Sultan Penye Şal 4'lü Set",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty727/product/media/images/20230212/20/279886355/593916939/1/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/naciye-sultan/penye-sal-4-lu-set-cikolata-vizon-karamel-bej-p-366531659",
+   "yazili": 824,
+   "yildiz": [
+    35,
+    14,
+    61,
+    110,
+    604
+   ],
+   "ort": 4.5,
+   "onerilen_ort": 4.94,
+   "onerilen_dusuk": 0,
+   "ornek_dusuk": 49,
+   "sikayet": {
+    "renk": 0.18,
+    "yanlis": 0.04,
+    "sentetik": 0.02,
+    "kayiyor": 0.16,
+    "ince": 0.24,
+    "sert": 0.0,
+    "defo": 0.18,
+    "baski": 0.0,
+    "yikama": 0.04,
+    "olcu": 0.06,
+    "eksik": 0.02,
+    "fiyat": 0.0,
+    "satici": 0.0
+   },
+   "olumlu": {
+    "kalite": 0.34,
+    "yumusak": 0.32,
+    "kaymaz": 0.1,
+    "renk": 0.46,
+    "gorsel": 0.11,
+    "tekrar": 0.11,
+    "hediye": 0.1,
+    "not": 0.04,
+    "fp": 0.09,
+    "kargo": 0.23,
+    "yazlik": 0.03
+   },
+   "dikkat": [
+    "Penye kumaş çok ince; önünün şekil almadığı yazılıyor.",
+    "Renkler fotoğraftan farklı: karamel turuncu, kahve çikolata geliyor.",
+    "Setteki şallardan birinin kusurlu ya da yırtık geldiği söyleniyor."
+   ],
+   "ders": [
+    "Ucuz set alıcısı bile \"önü şekil almıyor\" diye 1 yıldız veriyor; penye kalınlığı ve ölçüleri açıkça yazılmalı."
+   ],
+   "alinti": [
+    {
+     "konu": "İnce / iç gösteriyor",
+     "yildiz": 1,
+     "metin": "renkleri güzel, kumaşı çok ince ve kaliteli değil."
+    },
+    {
+     "konu": "Renk görseldekinden farklı",
+     "yildiz": 1,
+     "metin": "karamel, karamel değil turuncu. renkleri gerçekten vasat. uğraşmak istemediğim için iade etmeyeceğim."
+    },
+    {
+     "konu": "Defolu / lekeli / yırtık",
+     "yildiz": 1,
+     "metin": "iki tane şalım da defo çıktı ona göre alın"
+    },
+    {
+     "konu": "Olumlu: yazın rahat",
+     "yildiz": 3,
+     "metin": "Yaz sıcaklarında en iyisi penye giderdi çok memnun kaldım tavsiye ederim kesinlikle👍"
+    }
+   ]
+  }
+ ]
+}
