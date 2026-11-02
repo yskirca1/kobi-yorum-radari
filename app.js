@@ -92,7 +92,8 @@
             <div class="cat-body"><small>${esc(c.ust)}</small><h3>${esc(c.ad)}</h3>
               ${c.durum === 'hazir'
                 ? `<span class="muted num" style="font-size:.88rem">${int(c.urun)} ürün · ${int(c.yorum)} yorum incelendi</span>${d && d.tema[0] ? `<span class="cat-top">En sık şikâyet: ${esc(d.tema[0].ad)} <b class="num">${pct(d.tema[0].tum)}</b></span>` : ''}`
-                : '<span class="tag grey">Yakında</span>'}</div>
+                : '<span class="tag grey">Yakında</span>'}
+              ${c.durum === 'hazir' ? '<span class="cat-go">Analizi incele <span aria-hidden="true">→</span></span>' : ''}</div>
           </a>`;
   let homeAlan = '';
   async function home() {
@@ -102,11 +103,19 @@
     const alanlar = [...new Set(REG.map((c) => c.ust))].sort((a, b) => a.localeCompare(b, 'tr'));
     if (homeAlan && !alanlar.includes(homeAlan)) homeAlan = '';
     app.innerHTML = `
-      <section class="hero">
-        <span class="eyebrow">KOBİ'ler için müşteri yorumu analizi</span>
-        <h1>Satmak istediğin üründe müşteri neden memnun değil?</h1>
-        <p class="lead">Rakip ürünlerin binlerce yorumunu tek tek okuduk. Bir kategori seç; en sık şikâyetleri, müşterinin neyi sevdiğini ve pazara girerken neye dikkat etmen gerektiğini gör.</p>
-        <ol class="steps"><li><b>1</b>Kategori seç</li><li><b>2</b>Şikâyetleri gör</li><li><b>3</b>Ürünleri karşılaştır</li></ol>
+      <section class="band hero-band">
+        <div class="hero">
+          <span class="eyebrow">KOBİ'ler için müşteri yorumu analizi</span>
+          <h1>Satmak istediğin üründe müşteri neden memnun değil?</h1>
+          <p class="lead">Rakip ürünlerin binlerce yorumunu tek tek okuduk. Bir kategori seç; en sık şikâyetleri, müşterinin neyi sevdiğini ve pazara girerken neye dikkat etmen gerektiğini gör.</p>
+          <ol class="steps"><li><b>1</b>Kategori seç</li><li><b>2</b>Şikâyetleri gör</li><li><b>3</b>Ürünleri karşılaştır</li></ol>
+        </div>
+        <dl class="kpis">
+          <div><dt>Analiz edilen kategori</dt><dd class="num">${ready.length}</dd></div>
+          <div><dt>İncelenen ürün</dt><dd class="num">${int(ready.reduce((a, c) => a + (c.urun || 0), 0))}</dd></div>
+          <div><dt>Yazılı yorum</dt><dd class="num">${int(Object.values(data).reduce((a, d) => a + (d ? d.top.yazili : 0), 0))}</dd></div>
+          <div><dt>Tek tek okunan yorum</dt><dd class="num">${int(ready.reduce((a, c) => a + (c.yorum || 0), 0))}</dd></div>
+        </dl>
       </section>
       <div class="alan-f" role="group" aria-label="Alana göre filtrele"><span class="muted">Alan:</span>
         ${['', ...alanlar].map((a) => `<button type="button" class="chip${a === homeAlan ? ' on' : ''}" data-alan="${esc(a)}" aria-pressed="${a === homeAlan}">${a ? esc(a) : 'Tümü'}</button>`).join('')}</div>
@@ -128,8 +137,8 @@
   async function search(term) {
     const m = match(term);
     const data = Object.fromEntries(await Promise.all(m.filter((c) => c.durum === 'hazir').map(async (c) => [c.id, await loadCat(c.id).catch(() => null)])));
-    app.innerHTML = `<div class="crumbs"><a href="#/">Ana sayfa</a> / Arama</div>
-      <div class="chead"><h1>"${esc(term)}" için sonuçlar</h1></div>
+    app.innerHTML = `<div class="band phead"><div class="crumbs"><a href="#/">Ana sayfa</a> / Arama</div>
+      <div class="chead"><h1>"${esc(term)}" için sonuçlar</h1></div></div>
       ${m.length ? `<div class="cats">${m.map((c) => catCard(c, data[c.id])).join('')}</div>`
       : `<div class="empty"><p>Bu kategori henüz analiz edilmedi. Analiz edilen kategoriler ana sayfada listeleniyor.</p><a class="btn" href="#/">Kategorilere dön</a></div>`}`;
   }
@@ -147,9 +156,11 @@
     const segIki = new Set(c.urunler.map((p) => p.segment)).size > 1;
     const sort = sessionSort[id] || 'yorum';
     app.innerHTML = `
-      <div class="crumbs"><a href="#/">Ana sayfa</a> / ${esc(c.ust)} / ${esc(c.ad)}</div>
-      <div class="chead"><h1>${esc(c.ad)}</h1>
-        <p class="muted num">${c.urunler.length} ürün · ${int(c.top.yazili)} yazılı yorum · ${int(c.top.okunan)} yorum okundu · Kaynak: ${esc(c.kaynak)}</p></div>
+      <div class="band phead">
+        <div class="crumbs"><a href="#/">Ana sayfa</a> / ${esc(c.ust)} / ${esc(c.ad)}</div>
+        <div class="chead"><span class="eyebrow">${esc(c.ust)}</span><h1>${esc(c.ad)}</h1>
+          <ul class="meta num"><li><b>${c.urunler.length}</b> ürün</li><li><b>${int(c.top.yazili)}</b> yazılı yorum</li><li><b>${int(c.top.okunan)}</b> yorum okundu</li><li>Kaynak: <b>${esc(c.kaynak)}</b></li></ul></div>
+      </div>
       <section class="summary" aria-labelledby="sum-t">
         <div class="sum-main">
           <span class="label" id="sum-t">En sık şikâyetler</span>
@@ -254,7 +265,7 @@
     <article class="pc">
       <a class="pc-img" href="#/urun/${c.id}/${p.id}"><img src="${esc(p.gorsel)}" alt="${esc(p.ad)}" loading="lazy" referrerpolicy="no-referrer"></a>
       <div class="pc-body">
-        <span class="pc-seg">${esc(p.segment)}</span>
+        <span class="seg ${p.segment === 'KOBİ' ? 'kobi' : 'buyuk'}">${esc(p.segment)}</span>
         <a class="pc-name" href="#/urun/${c.id}/${p.id}"><b>${esc(p.marka)}</b> ${esc(p.ad.replace(p.marka, '').trim())}</a>
         <div class="stars"><span class="s" aria-hidden="true">★</span><b class="num">${dec(p.ort)}</b><span class="muted num">(${int(p.yazili)} yorum)</span></div>
         <dl class="pc-meta">
@@ -272,11 +283,12 @@
     const on = getCmp().some((x) => x.id === p.id);
     const yt = p.yazili;
     app.innerHTML = `
+      <div class="band phead">
       <div class="crumbs"><a href="#/">Ana sayfa</a> / <a href="#/kategori/${c.id}">${esc(c.ad)}</a> / ${esc(p.kisa)}</div>
       <div class="prod">
         <div class="prod-img"><img src="${esc(p.gorsel)}" alt="${esc(p.ad)}" referrerpolicy="no-referrer"></div>
         <div class="prod-info">
-          <span class="tag ${p.segment === 'KOBİ' ? '' : 'grey'}">${esc(p.segment)}</span>
+          <span class="seg ${p.segment === 'KOBİ' ? 'kobi' : 'buyuk'}">${esc(p.segment)}</span>
           <h1>${esc(p.ad)}</h1>
           <div class="stars"><span class="s" aria-hidden="true">★</span><b class="num">${dec(p.ort)}</b><span class="muted num">${int(yt)} yazılı yorum</span></div>
           <div class="stats">
@@ -291,13 +303,14 @@
           </div>
         </div>
       </div>
+      </div>
       <div class="cgrid">
         <section class="card"><h2>En çok neden şikâyet ediyorlar?</h2><p class="muted">1-2 yıldızlı yorumlarda geçme oranı. İnce çizgi kategori ortalaması.</p>${hbar(p.sik.slice(0, 7).map((t) => ({ ad: t.ad, v: t.v, avg: t.tum })), 'neg', 'avg')}</section>
         <section class="card"><h2>Neyi seviyorlar?</h2><p class="muted">"Önerilen" sıralamanın ilk 100 yorumunda geçme oranı.</p>${hbar(p.sev.slice(0, 7).map((k) => ({ ad: k.ad, v: k.v })))}</section>
         <section class="card"><h2>Alırken dikkat edilmesi gerekenler</h2><ul class="ul">${p.dikkat.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></section>
         <section class="card"><h2>Rakip bir KOBİ için ders</h2><ul class="ul">${p.ders.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></section>
         <section class="card"><h2>Yıldız dağılımı</h2>${hbar([5, 4, 3, 2, 1].map((s) => ({ ad: s + ' yıldız', v: p.yildiz[s - 1] / yt })))}</section>
-        <section class="card"><h2>Müşterinin kendi sözleriyle</h2><div class="quotes">${p.alinti.map((a) => `<div class="q"><span>"${esc(a.metin)}"</span><small>${a.yildiz} yıldız · ${esc(a.konu)}</small></div>`).join('')}</div></section>
+        <section class="card"><h2>Müşterinin kendi sözleriyle</h2><div class="quotes">${p.alinti.map((a) => `<div class="q"><span>"${esc(a.metin)}"</span><small>${a.yildiz} yıldız · ${esc(c.temaMap[a.konu]?.ad || a.konu)}</small></div>`).join('')}</div></section>
       </div>`;
   }
 
@@ -310,8 +323,8 @@
     const ortC = best(P.map((p) => p.ort), true), dusC = best(P.map((p) => p.dusuk), false), gapC = best(P.map((p) => p.onerilen_ort - p.ort), false);
     const row = (h, cells) => `<tr><th scope="row">${h}</th>${cells.join('')}</tr>`;
     app.innerHTML = `
-      <div class="crumbs"><a href="#/">Ana sayfa</a> / <a href="#/kategori/${c.id}">${esc(c.ad)}</a> / Karşılaştır</div>
-      <div class="chead"><h1>${P.length} ürünü karşılaştır</h1><p class="muted">Yeşil hücre gruptaki en iyi, kırmızı hücre en kötü değer.</p></div>
+      <div class="band phead"><div class="crumbs"><a href="#/">Ana sayfa</a> / <a href="#/kategori/${c.id}">${esc(c.ad)}</a> / Karşılaştır</div>
+      <div class="chead"><h1>${P.length} ürünü karşılaştır</h1><p class="muted">Yeşil hücre gruptaki en iyi, kırmızı hücre en kötü değer.</p></div></div>
       <div class="ctable-box"><table class="ctable">
         <tbody>
         ${row('', P.map((p) => `<td><a href="#/urun/${c.id}/${p.id}"><img src="${esc(p.gorsel)}" alt="${esc(p.ad)}" referrerpolicy="no-referrer"></a></td>`))}

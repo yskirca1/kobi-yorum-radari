@@ -116,6 +116,7 @@
 - `data/<id>.json` yapısı: `{id, ad, ust, esanlam[], toplama, kaynak, temalar[{id, ad, unlem}], olumlu_konular[{id, ad}], oneriler[{baslik, metin}], urunler[{id, kisa, marka, ad, segment ("Büyük marka"|"KOBİ"), gorsel, link, yazili, yildiz[1..5 sayıları], ort, onerilen_ort, onerilen_dusuk, ornek_dusuk, sikayet{temaId: oran}, olumlu{konuId: oran}, dikkat[], ders[], alinti[{konu, yildiz, metin}]}]}`
 
 ### Tasarım kararları
+- 3 Kasım 2026 yeniden tasarım (asset v=11): açık gri zemin (#f3f5f8) üzerinde gölgeli beyaz kartlar; ana sayfada koyu lacivert tanıtım bandı + 4'lü rakam şeridi (kategori, ürün, yazılı yorum, okunan yorum); iç sayfalarda beyaz başlık bandı; KOBİ/Büyük marka rozetleri; numaralı öneri kutuları; koyu altbilgi. Tam genişlik bantlar `.band::before` (100vw) ile yapılıyor.
 - Sade, kurumsal pazar yeri görünümü; "yapay zekâ havası" veren şeylerden (trend yazı tipleri, renkli kutular, her yerde etiket/gölge) kaçınılıyor.
 - Yazı tipi: IBM Plex Sans. Renkler: beyaz zemin, turkuaz marka rengi (logo balonu #14b8a6, buton/link #0d8a7f; koyu temada #2dd4bf), kırmızı yalnızca şikâyet oranlarında.
 - Logo: turkuaz konuşma balonu içinde radar (halkalar + tarama dilimi + sinyal noktası) + tek satır "Review**Radar**" ("Radar" turkuaz). Dosyalar `logo/` klasöründe (açık, koyu, şeffaf, ikon; SVG + PNG).
