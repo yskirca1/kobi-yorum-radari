@@ -1,4 +1,4 @@
-# KOBİ Yorum Radarı
+# ReviewRadar
 
 Satmak istediğin ürünün kategorisini ara; rakip ürünlerin müşteri yorumlarından çıkan en büyük şikâyetleri, müşterinin neyi sevdiğini ve bu pazara girerken nelere dikkat etmen gerektiğini gör.
 

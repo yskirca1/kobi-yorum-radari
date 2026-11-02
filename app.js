@@ -86,7 +86,7 @@
 
   // views
   function home() {
-    document.title = 'KOBİ Yorum Radarı';
+    document.title = 'ReviewRadar';
     app.innerHTML = `
       <section class="hero"><h1>Ne satmak istiyorsun?</h1>
       <p>Bir kategori ara. Rakip ürünlerin binlerce müşteri yorumundan çıkan en büyük şikâyetleri, müşterinin neyi sevdiğini ve bu pazara girerken neye dikkat etmen gerektiğini gör.</p></section>
@@ -114,7 +114,7 @@
       return;
     }
     const c = await loadCat(id);
-    document.title = c.ad + ' · KOBİ Yorum Radarı';
+    document.title = c.ad + ' · ReviewRadar';
     const top4 = c.tema.slice(0, 4), max = top4[0].tum;
     const seg = c.tema.filter((t) => t.id !== 'gosterge').slice(0, 5);
     const sort = sessionSort[id] || 'yorum';
@@ -167,7 +167,7 @@
   async function product(cid, pid) {
     const c = await loadCat(cid), p = c.urunler.find((u) => u.id === pid);
     if (!p) { app.innerHTML = '<div class="empty"><p>Ürün bulunamadı.</p><a class="btn" href="#/">Ana sayfa</a></div>'; return; }
-    document.title = p.kisa + ' · KOBİ Yorum Radarı';
+    document.title = p.kisa + ' · ReviewRadar';
     const on = getCmp().some((x) => x.id === p.id);
     const yt = p.yazili;
     app.innerHTML = `
