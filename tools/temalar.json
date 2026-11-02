@@ -1,0 +1,28 @@
+{
+  "_aciklama": "Termos kategorisinde kullanılan anahtar kelime sözlüğü (JavaScript regex, metin toLocaleLowerCase('tr') ile küçültülür). Ortak konular her kategoride kalır; kategoriye özel konular yeni kategoride yorumlar okunarak eklenir.",
+  "sikayet": {
+    "isi": "sıcak tut|sıcak kal|sıcaklı|soğu[tykm]|ılı[kdmy]|ılıyor|ılık|buz gibi|eridi|eriyor|ısı(yı|sını)? dışarı|dışı (çok |fazla )?ısın|dışı.{0,15}sıcak|tutmuyor",
+    "sizdirma": "sızd[ıi]r|ak[ıi]t|akıyor|aktı|sızıntı|sızıyor|damla|kaçır|döküldü|dökülüyor",
+    "kapak": "kapa[kğ]|conta|buton|düğme|kilit|mandal|menteşe|yay[ıi]|yalama|boşa dön|patla|pim",
+    "koku": "koku|kokuyor|kokmaya|tad[ıi]|tat ",
+    "kaplama": "boya|soyul|paslan(?!maz)|pas (tut|yap|att|oluş)|pas içinde|^pas",
+    "hasar": "ezik|ezil|yamul|göçü|hasar|kırık geldi|kırık çıktı|çizik|deforme|defolu|çökük|çatlak|kusurlu|hatalı",
+    "zamanla": "(ay|hafta|gün)\\s?(sonra|olmadan|içinde|geçmeden|oldu|dolmadı)|zamanla|bir süre sonra|ilk (başta|zamanlar|hafta|haftalar|kullanım)|başta güzel|başlarda|bozuldu|başladı",
+    "vaat": "(\\d+|sekiz|altı)\\s?saat.{0,30}(tutmuyor|yazıyor|diyor|yazılmış|denil|yok)|vaa?d|iddia|yalan|anlatıldığı gibi değil|denildiği gibi|söylendiği gibi",
+    "orijinal": "sahte|çakma|orijinal değil|orjinal değil|orijinal mi|orjinal mi|orijinalliğ|orjinalliğ|taklit|imitasyon|qr|karekod|garanti|amblem|logo",
+    "fiyat": "pahalı|değmez|paraya yazık|paranıza yazık|paramı|fiyatına göre|zam |fiyatı|para ver",
+    "paketSoz": "hediye paketi|not yaz|notta|kahve hediye|hediye kahve|ikram|paketleme (çok )?(kötü|özensiz|rezil)|kutusuz|özensiz|kutu(su)? (yok|yırtık)|paket yırtık",
+    "gosterge": "gösterge|ekran|dijital|derece"
+  },
+  "olumlu": {
+    "isi": "sıcak tut|soğuk tut|saat|sıcak kal|soğumuyor",
+    "sizdirmaz": "sızdırm(ıyor|az|a yapmıyor)|akıtm(ıyor|a yapmıyor)",
+    "kargo": "kargo|paket|teslim|sağlam geldi|hasarsız",
+    "hediye": "hediye",
+    "tasarim": "renk|tatlı|şık|görün|tasarım|zarif|güzel duruyor",
+    "boyut": "çanta|boyut|ideal|boyu",
+    "baglam": "okul|ofis|iş(e|te|yeri)|kütüp|üniversite|araba|araç|yolculuk|seyahat|kamp",
+    "bebek": "bebe|mama",
+    "orijinal": "orijinal|orjinal|garanti"
+  }
+}
