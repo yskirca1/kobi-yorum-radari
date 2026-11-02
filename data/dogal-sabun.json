@@ -1,0 +1,946 @@
+{
+ "id": "dogal-sabun",
+ "ad": "Doğal sabun",
+ "ust": "Kozmetik",
+ "toplama": "2 Kasım 2026",
+ "kaynak": "Trendyol",
+ "esanlam": [
+  "doğal sabun",
+  "sabun",
+  "el yapımı sabun",
+  "kabak lifli sabun",
+  "pirinç sabunu",
+  "keçi sütü sabunu",
+  "zeytinyağlı sabun",
+  "katı sabun"
+ ],
+ "temalar": [
+  {
+   "id": "tahris",
+   "ad": "Cildi kuruttu, yaktı, sivilce yaptı",
+   "unlem": "Cildi kurutuyor, yakıyor!"
+  },
+  {
+   "id": "etkisiz",
+   "ad": "Etkisi yok, normal sabun gibi",
+   "unlem": "Vaat edilen etkiyi göstermiyor!"
+  },
+  {
+   "id": "koku",
+   "ad": "Kokusu kötü ya da değişik",
+   "unlem": "Kokusu kötü!"
+  },
+  {
+   "id": "erime",
+   "ad": "Çabuk eriyor, küçük, hemen bitiyor",
+   "unlem": "Çabuk eriyip bitiyor!"
+  },
+  {
+   "id": "kopurme",
+   "ad": "Köpürmüyor",
+   "unlem": "Köpürmüyor!"
+  },
+  {
+   "id": "lif",
+   "ad": "Kabak lifi sert, az ya da dökülüyor",
+   "unlem": "Lifi sert, yüzü çiziyor!"
+  },
+  {
+   "id": "formul",
+   "ad": "Eskisi gibi değil, formül değişmiş",
+   "unlem": "Eskisi gibi değil!"
+  },
+  {
+   "id": "sahte",
+   "ad": "Orijinal mi, doğal mı şüphesi",
+   "unlem": "Orijinal mi, şüpheli!"
+  },
+  {
+   "id": "yanlis",
+   "ad": "Yanlış ürün gönderildi",
+   "unlem": "Yanlış ürün geliyor!"
+  },
+  {
+   "id": "eksik",
+   "ad": "Eksik ürün, hediye gelmedi",
+   "unlem": "Eksik geliyor!"
+  },
+  {
+   "id": "paket",
+   "ad": "Paketleme özensiz, ezik geldi",
+   "unlem": "Paketleme özensiz!"
+  },
+  {
+   "id": "kargo",
+   "ad": "Kargo ve teslimat sorunu",
+   "unlem": "Kargo ulaşmıyor!"
+  }
+ ],
+ "olumlu_konular": [
+  {
+   "id": "yumusak",
+   "ad": "Cildi yumuşattı"
+  },
+  {
+   "id": "temiz",
+   "ad": "İyi temizliyor, arındırıyor"
+  },
+  {
+   "id": "koku",
+   "ad": "Kokusu güzel"
+  },
+  {
+   "id": "parlak",
+   "ad": "Parlattı, aydınlattı, lekeleri açtı"
+  },
+  {
+   "id": "sivilce",
+   "ad": "Sivilce, kepek, egzamaya iyi geldi"
+  },
+  {
+   "id": "kurutmaz",
+   "ad": "Kurutmuyor, göz yakmıyor"
+  },
+  {
+   "id": "kopuk",
+   "ad": "Güzel köpürüyor"
+  },
+  {
+   "id": "fiyat",
+   "ad": "Fiyatı uygun"
+  },
+  {
+   "id": "paket",
+   "ad": "Özenli paket, hızlı kargo"
+  },
+  {
+   "id": "dogal",
+   "ad": "Doğal, zeytinyağlı"
+  },
+  {
+   "id": "sadakat",
+   "ad": "Yıllardır kullanıyor, stok yapıyor"
+  }
+ ],
+ "oneriler": [
+  {
+   "baslik": "Vaadi abartma, ne beklenir açıkça yaz",
+   "metin": "Etkisini görmediğini yazanların oranı %12 ile en büyük şikâyet; \"beyazlatıcı\" diye satılan pirinç sabunlarında %22-24'e çıkıyor. \"Bembeyaz olacağınızı sanmayın\" yorumu durumu özetliyor. Gerçekçi bir dil ve \"kaç haftalık düzenli kullanımda ne beklenir\" bilgisi hayal kırıklığını azaltır."
+  },
+  {
+   "baslik": "Hassas cilt uyarısı koy",
+   "metin": "Kurutma, yanma, kızarma ve sivilce şikâyeti tüm ürünlerde %9, Tala Pirinç'te %22. Etikete \"hassas ciltte önce küçük bir alanda deneyin, sonrasında nemlendirin\" yazmak hem müşteriyi korur hem 1 yıldızı önler."
+  },
+  {
+   "baslik": "Kabak lifini yumuşak ve bol yap",
+   "metin": "Kabak lifli sabunlarda lif şikâyeti oranı %12: lif sert gelip yüzü çiziyor, az konuyor ya da birkaç kullanımda dökülüyor. Lifi yumuşatmak ve sabuna sağlam gömmek bu ürün grubunda en net ayrışma noktası."
+  },
+  {
+   "baslik": "Gramajı ve sertliği koru",
+   "metin": "Çabuk erime, küçük ya da ince gelme şikâyeti %7; en ucuz sette %19, aynı ürünün 1-2 yıldız oranı da %23,8 ile kategorinin en yükseği. Gramajı ilanda net yazmak ve sabunu iyi kürlemek ucuz görünmenin bedelini önler."
+  },
+  {
+   "baslik": "Formülü değiştirirsen söyle",
+   "metin": "Rise and Shine'ın önerilen yorumlarının %40'ı \"yıllardır kullanıyorum\" diyor; bu sadık kitle koku ve yapı değişince hemen fark ediyor (\"eskisi gibi değil\" oranı %13-14). Formül değiştiyse ilanda ve pakette duyurmak sadık müşteriyi kaybetmemenin yolu."
+  },
+  {
+   "baslik": "Orijinallik ve paket güvencesi ver",
+   "metin": "Çok satıcılı ürünlerde logosuz ya da etiketsiz gelen sabun \"sahte mi?\" şüphesi doğuruyor (Rise and Shine'da %7-8). Naylona sarılı gönderim ise \"hijyenik değil\" yorumunu getiriyor (ASKA'da paket şikâyeti %18). Logolu, kapalı ambalaj iki sorunu birden çözer."
+  },
+  {
+   "baslik": "Büyük markalar ürünle değil gönderimle kaybediyor",
+   "metin": "Hacı Şakir ve Dalan'ın yazılı yorumlardaki payı yalnızca %4,5; pazar KOBİ'lerin elinde. Büyük markaların az sayıdaki şikâyeti de ürüne değil, yanlış ürün ve özensiz paketlemeye (Dalan'da yanlış ürün oranı %33). Doğru ürünü sağlam paketle göndermek bu pazarda kolay bir ayrışma."
+  }
+ ],
+ "urunler": [
+  {
+   "id": "314594757",
+   "kisa": "Rise and Shine Aloe Vera",
+   "marka": "Rise and Shine",
+   "ad": "Rise and Shine Kabak Lifli Aloe Vera Sabunu 130 g",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1599/prod/QC/20241108/14/c480cd93-7f6d-3be4-90a6-cbbaa3d1391d/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/rise-and-shine/dogal-kabak-lifli-aloe-vera-sabunu-130-gr-p-314594757",
+   "yazili": 3886,
+   "yildiz": [
+    385,
+    112,
+    214,
+    424,
+    2751
+   ],
+   "ort": 4.3,
+   "onerilen_ort": 4.94,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "tahris": 0.07,
+    "etkisiz": 0.07,
+    "koku": 0.06,
+    "erime": 0.08,
+    "kopurme": 0.06,
+    "lif": 0.16,
+    "formul": 0.13,
+    "sahte": 0.08,
+    "yanlis": 0.03,
+    "eksik": 0.01,
+    "paket": 0.01,
+    "kargo": 0.03
+   },
+   "olumlu": {
+    "yumusak": 0.27,
+    "temiz": 0.27,
+    "koku": 0.22,
+    "parlak": 0.09,
+    "sivilce": 0.08,
+    "kurutmaz": 0.05,
+    "kopuk": 0.02,
+    "fiyat": 0.11,
+    "paket": 0.05,
+    "dogal": 0,
+    "sadakat": 0.4
+   },
+   "dikkat": [
+    "Kabak lifinin sert gelip yüzü çizdiği ya da birkaç kullanımda döküldüğü yazılıyor (lif şikâyeti oranı %16).",
+    "\"Eskisi ile arasında dünya kadar fark var\": koku ve yapının değiştiğini söyleyen sadık müşteriler var (%13).",
+    "Logosuz ya da etiketsiz gelen sabun \"orijinal mi?\" şüphesi doğuruyor (%8); ürün 15 farklı satıcıdan satılıyor."
+   ],
+   "ders": [
+    "Kategorinin en çok yorum alan ürünü; önerilen yorumların %40'ı \"yıllardır kullanıyorum, stok yaptım\" diyor. Bu sadık kitle formül değişikliğini hemen fark ediyor."
+   ],
+   "alinti": [
+    {
+     "konu": "lif",
+     "yildiz": 2,
+     "metin": "Faydası çok ama çok çabuk içindeki lifler çıkıyor"
+    },
+    {
+     "konu": "formul",
+     "yildiz": 1,
+     "metin": "eskisi ile arasında dünya kadar fark var"
+    },
+    {
+     "konu": "sahte",
+     "yildiz": 2,
+     "metin": "Orjınal değildir sakın sipariş etmeyin"
+    }
+   ]
+  },
+  {
+   "id": "435041174",
+   "kisa": "Rise and Shine Pirinç Özlü",
+   "marka": "Rise and Shine",
+   "ad": "Rise and Shine Kabak Lifli Pirinç Özlü Sabun",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1600/prod/QC/20241108/14/2683585a-6da5-3e94-b87b-083e8a010617/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/rise-and-shine/dogal-kabak-lifli-princ-ozlu-sabun-p-435041174",
+   "yazili": 2571,
+   "yildiz": [
+    217,
+    73,
+    160,
+    248,
+    1873
+   ],
+   "ort": 4.36,
+   "onerilen_ort": 4.92,
+   "onerilen_dusuk": 1,
+   "onerilen_n": 100,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "tahris": 0.09,
+    "etkisiz": 0.13,
+    "koku": 0.12,
+    "erime": 0.05,
+    "kopurme": 0.07,
+    "lif": 0.07,
+    "formul": 0.14,
+    "sahte": 0.07,
+    "yanlis": 0.01,
+    "eksik": 0.01,
+    "paket": 0.01,
+    "kargo": 0.06
+   },
+   "olumlu": {
+    "yumusak": 0.25,
+    "temiz": 0.28,
+    "koku": 0.28,
+    "parlak": 0.21,
+    "sivilce": 0.01,
+    "kurutmaz": 0.05,
+    "kopuk": 0,
+    "fiyat": 0.1,
+    "paket": 0.08,
+    "dogal": 0,
+    "sadakat": 0.28
+   },
+   "dikkat": [
+    "\"Eskisi gibi değil\" şikâyeti bu üründe en yüksek (%14): koku değişmiş, köpürmüyor.",
+    "Etkisini görmediğini yazanların oranı %13.",
+    "Paketinde marka adı olmayan ürün gönderimi orijinallik şüphesi yaratıyor (%7)."
+   ],
+   "ders": [
+    "Sadık müşteri tabanı güçlü ama \"eskisi gibi değil\" şikâyeti büyüyor: başarılı bir formülü değiştirmek en riskli hamle."
+   ],
+   "alinti": [
+    {
+     "konu": "formul",
+     "yildiz": 1,
+     "metin": "Asla eski sabunun yapısı değil eskiden çok güzeldi ama hiç güzel değil"
+    },
+    {
+     "konu": "etkisiz",
+     "yildiz": 2,
+     "metin": "uzun süredir kullanıyorum hiç fark yok yüzümde"
+    },
+    {
+     "konu": "sahte",
+     "yildiz": 1,
+     "metin": "Paketin üzerinde DP falan yazmıyordu markanın adı yok ben nerden bilicem orijinal ürün gönderdiğinizi?"
+    }
+   ]
+  },
+  {
+   "id": "343078393",
+   "kisa": "Genel Markalar Kojik Asitli",
+   "marka": "Genel Markalar",
+   "ad": "El Yapımı Kabak Lifli Kojik Asitli Sabun, 2'li set 110 g",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1718/prod/QC_ENRICHMENT/20250729/12/04291875-607c-324c-8879-40cabd972c01/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/genel-markalar/el-yapimi-kabak-lifli-kojik-asitli-sabunu-2-li-set-110-gr-p-343078393",
+   "yazili": 1373,
+   "yildiz": [
+    227,
+    100,
+    161,
+    176,
+    709
+   ],
+   "ort": 3.76,
+   "onerilen_ort": 4.93,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "tahris": 0.03,
+    "etkisiz": 0.05,
+    "koku": 0.09,
+    "erime": 0.19,
+    "kopurme": 0.09,
+    "lif": 0.19,
+    "formul": 0,
+    "sahte": 0.02,
+    "yanlis": 0.01,
+    "eksik": 0.03,
+    "paket": 0.13,
+    "kargo": 0.01
+   },
+   "olumlu": {
+    "yumusak": 0.25,
+    "temiz": 0.11,
+    "koku": 0.22,
+    "parlak": 0.07,
+    "sivilce": 0.08,
+    "kurutmaz": 0.01,
+    "kopuk": 0.02,
+    "fiyat": 0.15,
+    "paket": 0.24,
+    "dogal": 0.02,
+    "sadakat": 0.15
+   },
+   "dikkat": [
+    "1-2 yıldız oranı %23,8 ile kategorinin en yükseği.",
+    "Çabuk erime, küçük ve ince gelme (%19) ile lifin az ya da sert olması (%19) başı çekiyor.",
+    "Ezik, erimiş ya da renkleri birbirine akmış gelen ürün şikâyeti var (paket %13)."
+   ],
+   "ders": [
+    "En ucuz set en çok 1 yıldızı alıyor: küçük, ince ve az lifli sabun fiyat avantajını siliyor."
+   ],
+   "alinti": [
+    {
+     "konu": "erime",
+     "yildiz": 1,
+     "metin": "Asla almayın köpürmüyor 3 günde bitiyor"
+    },
+    {
+     "konu": "lif",
+     "yildiz": 2,
+     "metin": "kullanmadım fakat lif kısmı aşırı az"
+    },
+    {
+     "konu": "paket",
+     "yildiz": 2,
+     "metin": "bakalım deneyip görücez ama biraz ezik geldi ürünler"
+    }
+   ]
+  },
+  {
+   "id": "353751631",
+   "kisa": "Agarta Pirinç",
+   "marka": "Agarta",
+   "ad": "Agarta Doğal El Yapımı Cilt Beyazlatıcı Pirinç Sabunu 150 g",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1715/product/media/images/prod/PIM/20250723/08/09b54c9b-a827-4211-b2fc-66739b3a1be2/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/agarta/dogal-el-yapimi-cilt-beyazlatici-pirinc-sabunu-150-gr-p-353751631",
+   "yazili": 1029,
+   "yildiz": [
+    41,
+    22,
+    82,
+    164,
+    720
+   ],
+   "ort": 4.46,
+   "onerilen_ort": 4.93,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 63,
+   "sikayet": {
+    "tahris": 0.1,
+    "etkisiz": 0.22,
+    "koku": 0.05,
+    "erime": 0.05,
+    "kopurme": 0,
+    "lif": 0,
+    "formul": 0,
+    "sahte": 0.02,
+    "yanlis": 0.1,
+    "eksik": 0.13,
+    "paket": 0.06,
+    "kargo": 0.05
+   },
+   "olumlu": {
+    "yumusak": 0.23,
+    "temiz": 0.11,
+    "koku": 0.27,
+    "parlak": 0.19,
+    "sivilce": 0,
+    "kurutmaz": 0.07,
+    "kopuk": 0.01,
+    "fiyat": 0.03,
+    "paket": 0.17,
+    "dogal": 0.02,
+    "sadakat": 0.11
+   },
+   "dikkat": [
+    "\"Beyazlatıcı\" vaadine rağmen etkisini görmediğini yazanların oranı %22.",
+    "Hediye krem vaat edilip gönderilmemesi ve eksik ürün şikâyeti sık (%13).",
+    "Pirinç sabunu yerine başka sabun gönderildiği yazılıyor (%10)."
+   ],
+   "ders": [
+    "Hediye vaadi yerine getirilmezse olumlu bir jest şikâyete dönüşüyor."
+   ],
+   "alinti": [
+    {
+     "konu": "etkisiz",
+     "yildiz": 2,
+     "metin": "düzenli kullanıyorum daha henüz bir faydasını görmedim"
+    },
+    {
+     "konu": "eksik",
+     "yildiz": 1,
+     "metin": "4 ürün sipariş verdim ama sadece 1 ürün testerını yollamışlar"
+    },
+    {
+     "konu": "yanlis",
+     "yildiz": 1,
+     "metin": "Pirinç sabunu istedim başka bir şey göndermişler bir yıldız bile çok"
+    }
+   ]
+  },
+  {
+   "id": "323299693",
+   "kisa": "Efsun Eşek Sütü & Aloe",
+   "marka": "Efsun",
+   "ad": "Efsun Kabak Lifli Eşek Sütü Ballı ve Aloe Vera Sabunu, 2'li set",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1272/product/media/images/prod/SPM/PIM/20240425/12/21b0f42f-b1fc-3542-9b5f-709388c54315/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/efsun/dogal-kabak-lifli-el-yapimi-2-li-esek-sutu-balli-aloe-vera-sabunu-premium-set-p-323299693",
+   "yazili": 981,
+   "yildiz": [
+    45,
+    22,
+    73,
+    148,
+    693
+   ],
+   "ort": 4.45,
+   "onerilen_ort": 4.9,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 67,
+   "sikayet": {
+    "tahris": 0.09,
+    "etkisiz": 0.09,
+    "koku": 0.19,
+    "erime": 0.1,
+    "kopurme": 0.07,
+    "lif": 0.03,
+    "formul": 0,
+    "sahte": 0.03,
+    "yanlis": 0.04,
+    "eksik": 0.04,
+    "paket": 0.03,
+    "kargo": 0.06
+   },
+   "olumlu": {
+    "yumusak": 0.17,
+    "temiz": 0.08,
+    "koku": 0.3,
+    "parlak": 0.09,
+    "sivilce": 0.02,
+    "kurutmaz": 0.02,
+    "kopuk": 0.01,
+    "fiyat": 0.06,
+    "paket": 0.24,
+    "dogal": 0.02,
+    "sadakat": 0.19
+   },
+   "dikkat": [
+    "Kokusunu kötü ya da ağır bulanların oranı %19, kategorinin en yükseği.",
+    "Sabunların küçük olduğu ve hemen eriyip bittiği yazılıyor (%10).",
+    "Yüzde sivilce yaptığını söyleyenler var."
+   ],
+   "ders": [
+    "Kokuyu sevenler (%30) de sevmeyenler de çok: güçlü koku ayrıştırıcı ama riskli; koku notası ilanda net yazılmalı."
+   ],
+   "alinti": [
+    {
+     "konu": "koku",
+     "yildiz": 1,
+     "metin": "Özür dilerim okadar kötü kokuyordu ki dayanamayıp 2. Gün çöpe attım"
+    },
+    {
+     "konu": "erime",
+     "yildiz": 2,
+     "metin": "Sabunlar küçük hemen bitiyor"
+    },
+    {
+     "konu": "tahris",
+     "yildiz": 1,
+     "metin": "Yüze kullanmayın ergen gibi sivilcelenirsiniz"
+    }
+   ]
+  },
+  {
+   "id": "93489485",
+   "kisa": "ASKA Çam Ardıç Katranı",
+   "marka": "ASKA",
+   "ad": "ASKA El Yapımı Çam Ardıç Katranı Kükürt Sabunu",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1753/prod/QC_ENRICHMENT/20250915/21/dffd9a12-cc8a-388f-9162-4ea02a148b62/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/aska/dogal-el-yapimi-cam-ardic-katrani-kukurt-sabun-p-93489485",
+   "yazili": 682,
+   "yildiz": [
+    65,
+    20,
+    60,
+    91,
+    446
+   ],
+   "ort": 4.22,
+   "onerilen_ort": 4.94,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 85,
+   "sikayet": {
+    "tahris": 0.08,
+    "etkisiz": 0.09,
+    "koku": 0.09,
+    "erime": 0.05,
+    "kopurme": 0,
+    "lif": 0,
+    "formul": 0,
+    "sahte": 0.02,
+    "yanlis": 0.11,
+    "eksik": 0.04,
+    "paket": 0.18,
+    "kargo": 0.07
+   },
+   "olumlu": {
+    "yumusak": 0.06,
+    "temiz": 0.05,
+    "koku": 0.14,
+    "parlak": 0.02,
+    "sivilce": 0.13,
+    "kurutmaz": 0.03,
+    "kopuk": 0.01,
+    "fiyat": 0.02,
+    "paket": 0.12,
+    "dogal": 0.12,
+    "sadakat": 0.11
+   },
+   "dikkat": [
+    "En sık şikâyet paketleme (%18): sabun naylona ya da kartona sarılıp gönderiliyor, \"hijyenik değil\" deniyor.",
+    "Görseldeki koyu renkli sabun yerine farklı bir sabun geldiği yazılıyor (%11).",
+    "Kargonun ulaşmadığı ya da teslim edilmiş görünüp gelmediği şikâyeti var (%7)."
+   ],
+   "ders": [
+    "Ürünü seven çok (uyuz ve egzamaya iyi geldiğini yazanlar var), ama hijyenik ambalaj olmayınca puan paketten gidiyor."
+   ],
+   "alinti": [
+    {
+     "konu": "paket",
+     "yildiz": 1,
+     "metin": "Ürün iyi ama paketleme kötü"
+    },
+    {
+     "konu": "yanlis",
+     "yildiz": 1,
+     "metin": "Gelen sabun ardıç katranı değil. Dandik bir poşete koyup göndermişler."
+    },
+    {
+     "konu": "etkisiz",
+     "yildiz": 1,
+     "metin": "normal sabun çok iyi değil"
+    }
+   ]
+  },
+  {
+   "id": "344172206",
+   "kisa": "Tala Pirinç",
+   "marka": "Tala",
+   "ad": "Tala Pirinç Sabunu, cilt aydınlatıcı 150 g",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1000447/product/media/images/prod/PIM/20260915/13/7a0aa679-896c-4afb-95a4-af033a9fd447/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/tala/pirinc-sabunu-dogal-cilt-beyazlatici-aydinlatici-150-gr-p-344172206",
+   "yazili": 1249,
+   "yildiz": [
+    68,
+    36,
+    95,
+    173,
+    877
+   ],
+   "ort": 4.41,
+   "onerilen_ort": 4.91,
+   "onerilen_dusuk": 2,
+   "onerilen_n": 100,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "tahris": 0.22,
+    "etkisiz": 0.24,
+    "koku": 0.04,
+    "erime": 0.03,
+    "kopurme": 0,
+    "lif": 0,
+    "formul": 0.01,
+    "sahte": 0.01,
+    "yanlis": 0.01,
+    "eksik": 0.02,
+    "paket": 0.05,
+    "kargo": 0.02
+   },
+   "olumlu": {
+    "yumusak": 0.25,
+    "temiz": 0.12,
+    "koku": 0.32,
+    "parlak": 0.22,
+    "sivilce": 0.02,
+    "kurutmaz": 0.05,
+    "kopuk": 0.02,
+    "fiyat": 0.05,
+    "paket": 0.19,
+    "dogal": 0.02,
+    "sadakat": 0.12
+   },
+   "dikkat": [
+    "Etkisini görmediğini yazanların oranı %24, cildini kuruttuğunu ya da yaktığını yazanların oranı %22.",
+    "\"Bembeyaz olacağınızı sanmayın\" gibi yorumlar beyazlatma vaadinin beklentiyi fazla yükselttiğini gösteriyor.",
+    "Hassas ciltte kızarıklık ve sivilce yaptığı yazılıyor."
+   ],
+   "ders": [
+    "\"Cilt beyazlatıcı\" vaadi en çok tıklamayı getiriyor ama en çok \"işe yaramadı\" ve \"yüzümü yaktı\" yorumunu da getiriyor."
+   ],
+   "alinti": [
+    {
+     "konu": "etkisiz",
+     "yildiz": 2,
+     "metin": "İyi ama normal sabun işte"
+    },
+    {
+     "konu": "tahris",
+     "yildiz": 1,
+     "metin": "Daha öncede kil sabununu kullandım çok güzeldi ama bu sabun resmen yüzümü yaktı kıpkırmızı oldu"
+    },
+    {
+     "konu": "paket",
+     "yildiz": 2,
+     "metin": "Kötü ve özensiz paketleme"
+    }
+   ]
+  },
+  {
+   "id": "344172164",
+   "kisa": "Tala Keçi Sütü",
+   "marka": "Tala",
+   "ad": "Tala Keçi Sütlü Sabun 150 g",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1000446/product/media/images/prod/PIM/20260915/13/e33c8943-c750-45ef-9870-2e6837120e55/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/tala/keci-sutu-sabunu-cilt-arindirici-besleyici-ve-yumusatici-dogal-keci-sutlu-sabun-150-gr-p-344172164",
+   "yazili": 215,
+   "yildiz": [
+    10,
+    6,
+    11,
+    33,
+    155
+   ],
+   "ort": 4.47,
+   "onerilen_ort": 4.75,
+   "onerilen_dusuk": 1,
+   "onerilen_n": 100,
+   "ornek_dusuk": 16,
+   "sikayet": {
+    "tahris": 0.13,
+    "etkisiz": 0.19,
+    "koku": 0.13,
+    "erime": 0,
+    "kopurme": 0,
+    "lif": 0,
+    "formul": 0,
+    "sahte": 0,
+    "yanlis": 0.06,
+    "eksik": 0,
+    "paket": 0,
+    "kargo": 0.06
+   },
+   "olumlu": {
+    "yumusak": 0.16,
+    "temiz": 0.09,
+    "koku": 0.33,
+    "parlak": 0.07,
+    "sivilce": 0.06,
+    "kurutmaz": 0.06,
+    "kopuk": 0,
+    "fiyat": 0.01,
+    "paket": 0.19,
+    "dogal": 0,
+    "sadakat": 0.05
+   },
+   "dikkat": [
+    "Az olumsuz yorum (16) var; bunların içinde etkisizlik (%19) ve yanma, kızarma (%13) öne çıkıyor.",
+    "Kokusunu yetersiz bulanlar var: \"koku falan bırakmıyor\"."
+   ],
+   "ders": [
+    "Aynı markanın pirinç sabununa göre daha az iddialı vaat, daha az şikâyet getiriyor."
+   ],
+   "alinti": [
+    {
+     "konu": "etkisiz",
+     "yildiz": 2,
+     "metin": "ürünü 3 haftadır kullanıyorum yüzümde değişen bir şey yok"
+    },
+    {
+     "konu": "tahris",
+     "yildiz": 1,
+     "metin": "ürünü kullandım yüzüm yandı ve kızardı"
+    },
+    {
+     "konu": "koku",
+     "yildiz": 1,
+     "metin": "Çöp , koku falan bırakmıyor no name sabunlar bundan daha iyi,"
+    }
+   ]
+  },
+  {
+   "id": "38939260",
+   "kisa": "Hacı Şakir Saf Beyaz",
+   "marka": "Hacı Şakir",
+   "ad": "Hacı Şakir Doğal Geleneksel Saf Beyaz Sabun 4x150 g, 3 paket",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1813/prod/QC_ENRICHMENT/20260120/20/613d8e0f-8937-34d1-b94c-17bd1ea355b0/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/haci-sakir/dogal-geleneksel-saf-beyaz-sabun-4x150-gr-x3-adet-p-38939260",
+   "yazili": 395,
+   "yildiz": [
+    15,
+    4,
+    13,
+    30,
+    333
+   ],
+   "ort": 4.68,
+   "onerilen_ort": 4.96,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 19,
+   "sikayet": {
+    "tahris": 0,
+    "etkisiz": 0,
+    "koku": 0,
+    "erime": 0,
+    "kopurme": 0.05,
+    "lif": 0,
+    "formul": 0,
+    "sahte": 0.05,
+    "yanlis": 0.05,
+    "eksik": 0.11,
+    "paket": 0.05,
+    "kargo": 0
+   },
+   "olumlu": {
+    "yumusak": 0.01,
+    "temiz": 0,
+    "koku": 0.19,
+    "parlak": 0.05,
+    "sivilce": 0.01,
+    "kurutmaz": 0,
+    "kopuk": 0,
+    "fiyat": 0.31,
+    "paket": 0.42,
+    "dogal": 0.02,
+    "sadakat": 0.32
+   },
+   "dikkat": [
+    "1-2 yıldız oranı yalnızca %4,8; şikâyetler ürüne değil satıcıya yönelik.",
+    "Eksik paket gönderimi (%11) ve \"bambaşka ürün geldi\" şikâyeti var."
+   ],
+   "ders": [
+    "Bilinen marka güveni yüksek: önerilen yorumların %32'si \"hep kullandığımız sabun\" diyor, %31'i fiyatı övüyor."
+   ],
+   "alinti": [
+    {
+     "konu": "eksik",
+     "yildiz": 1,
+     "metin": "1 paket eksik gönderdiler satıcıyla iletişime geçmeme rağmen de yollamadılar. Almayın."
+    },
+    {
+     "konu": "kopurme",
+     "yildiz": 1,
+     "metin": "marketlerden daha uyguna diye aldım ama pişmanım köpürmüyor bile sahte herhalde"
+    },
+    {
+     "konu": "yanlis",
+     "yildiz": 1,
+     "metin": "Bu ne dalgamı geçiyorsunuz bambaşka bişi göndermişsiniz"
+    }
+   ]
+  },
+  {
+   "id": "138018415",
+   "kisa": "Hacı Şakir Saf Doğal",
+   "marka": "Hacı Şakir",
+   "ad": "Hacı Şakir Saf Doğal Sabun 4x150 g",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1693/prod/QC_PREP/20250613/14/db568d9d-44a2-3c7b-9dac-27e0d862725b/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/haci-sakir/saf-dogal-sabun-4-x-150-gr-p-138018415",
+   "yazili": 40,
+   "yildiz": [
+    0,
+    0,
+    0,
+    3,
+    37
+   ],
+   "ort": 4.92,
+   "onerilen_ort": 4.76,
+   "onerilen_dusuk": 2,
+   "onerilen_n": 42,
+   "ornek_dusuk": 0,
+   "sikayet": {
+    "tahris": 0,
+    "etkisiz": 0,
+    "koku": 0,
+    "erime": 0,
+    "kopurme": 0,
+    "lif": 0,
+    "formul": 0,
+    "sahte": 0,
+    "yanlis": 0,
+    "eksik": 0,
+    "paket": 0,
+    "kargo": 0
+   },
+   "olumlu": {
+    "yumusak": 0,
+    "temiz": 0.12,
+    "koku": 0.24,
+    "parlak": 0.02,
+    "sivilce": 0,
+    "kurutmaz": 0,
+    "kopuk": 0.02,
+    "fiyat": 0.05,
+    "paket": 0.14,
+    "dogal": 0.02,
+    "sadakat": 0.07
+   },
+   "dikkat": [
+    "Yalnızca 40 yazılı yorumu var ve hiçbiri 1-2 yıldız değil.",
+    "Hacı Şakir'in bu paketi Trendyol'da az satıyor; marka asıl satışı diğer paketlerden yapıyor."
+   ],
+   "ders": [
+    "Az yorumla tam memnuniyet: büyük marka sabun şikâyet almıyor ama bu pazarda az satıyor."
+   ],
+   "alinti": []
+  },
+  {
+   "id": "31077902",
+   "kisa": "Dalan Antik Defneli",
+   "marka": "Dalan",
+   "ad": "Dalan Antik Defneli Zeytinyağlı Sabun 6x150 g",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1752/prod/QC_ENRICHMENT/20250912/18/ccb97c3a-50c4-3061-bbc7-d51f1c5f77d7/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/dalan/antik-defneli-zeytinyagi-el-yapimi-dogal-sabun-150-g-x-6-adet-900-g-p-31077902",
+   "yazili": 130,
+   "yildiz": [
+    12,
+    3,
+    9,
+    5,
+    101
+   ],
+   "ort": 4.38,
+   "onerilen_ort": 4.9,
+   "onerilen_dusuk": 1,
+   "onerilen_n": 100,
+   "ornek_dusuk": 15,
+   "sikayet": {
+    "tahris": 0,
+    "etkisiz": 0,
+    "koku": 0.07,
+    "erime": 0,
+    "kopurme": 0,
+    "lif": 0,
+    "formul": 0,
+    "sahte": 0,
+    "yanlis": 0.33,
+    "eksik": 0.07,
+    "paket": 0.27,
+    "kargo": 0
+   },
+   "olumlu": {
+    "yumusak": 0.01,
+    "temiz": 0.06,
+    "koku": 0.27,
+    "parlak": 0.01,
+    "sivilce": 0.01,
+    "kurutmaz": 0,
+    "kopuk": 0.07,
+    "fiyat": 0.1,
+    "paket": 0.17,
+    "dogal": 0.13,
+    "sadakat": 0.08
+   },
+   "dikkat": [
+    "Olumsuz yorum az (15), ama üçte biri yanlış ürün gönderiminden (zeytinyağlı yerine lavanta).",
+    "Paketin sabun tozuyla dolu ya da ezik geldiği yazılıyor (%27)."
+   ],
+   "ders": [
+    "Büyük marka ürünü sorun çıkarmıyor; puanı satıcının yanlış ve özensiz gönderimi düşürüyor."
+   ],
+   "alinti": [
+    {
+     "konu": "yanlis",
+     "yildiz": 1,
+     "metin": "istediklerimi gondermemis kafalarına göre göndermişlerdi o yüzden 1 yıldız"
+    },
+    {
+     "konu": "paket",
+     "yildiz": 1,
+     "metin": "Çok kötü. Satıcının paketlemesi daha da kötü."
+    }
+   ]
+  }
+ ]
+}

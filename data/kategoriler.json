@@ -95,6 +95,25 @@
   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1936/prod/QC_ENRICHMENT/20260722/03/3a866969-fb64-3f51-a941-fae219c092c8/1_org_zoom.jpg"
  },
  {
+  "id": "dogal-sabun",
+  "ad": "Doğal sabun",
+  "ust": "Kozmetik",
+  "durum": "hazir",
+  "esanlam": [
+   "doğal sabun",
+   "sabun",
+   "el yapımı sabun",
+   "kabak lifli sabun",
+   "pirinç sabunu",
+   "keçi sütü sabunu",
+   "zeytinyağlı sabun",
+   "katı sabun"
+  ],
+  "urun": 11,
+  "yorum": 1707,
+  "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1599/prod/QC/20241108/14/c480cd93-7f6d-3be4-90a6-cbbaa3d1391d/1_org_zoom.jpg"
+ },
+ {
   "id": "bebek-arabasi",
   "ad": "Bebek arabası",
   "ust": "Anne ve bebek",
@@ -103,17 +122,6 @@
    "bebek arabası",
    "puset",
    "travel sistem"
-  ]
- },
- {
-  "id": "dogal-sabun",
-  "ad": "Doğal sabun",
-  "ust": "Kozmetik",
-  "durum": "yakinda",
-  "esanlam": [
-   "doğal sabun",
-   "sabun",
-   "el yapımı sabun"
   ]
  },
  {

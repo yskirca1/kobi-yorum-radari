@@ -75,6 +75,14 @@
 - Apple silikon kılıfın 5 olumsuz yorumu elle sınıflandırıldı; 2'si "logo yok, çakma gibi".
 - Sitede `onerilen_n` alanı eklendi: önerilen yorum sayısı 100'den azsa "okunan" ve "ilk 100" sayıları buna göre hesaplanıyor.
 
+### Temel bulgular (doğal sabun, 2 Kasım 2026, 11 ürün; hepsi Claude tarayıcısında toplandı)
+- KOBİ: Rise and Shine (Aloe Vera, Pirinç Özlü), Genel Markalar Kojik Asitli, Agarta Pirinç, Efsun Eşek Sütü & Aloe, ASKA Çam Ardıç Katranı, Tala (Pirinç, Keçi Sütü). Büyük marka: Hacı Şakir (Saf Beyaz, Saf Doğal), Dalan Antik Defneli. Eyüp Sabri Tuncer keçi sütü sabunu yalnızca 12 yorumla çıkarıldı.
+- 12.551 yazılı yorumda büyük markaların payı %4,5: katı doğal sabun pazarı da KOBİ'lerin. 1-2 yıldız payı %11,8.
+- Etkisiz bulma %12 (1 numara; "beyazlatıcı" pirinç sabunlarında %22-24), kurutma/yanma/sivilce %9 (Tala Pirinç %22), koku %9 (Efsun %19), çabuk erime/küçük %7 (en ucuz Genel Markalar setinde %19, 1-2 yıldız %23,8).
+- Kabak lifli sabunlarda lif şikâyeti %12 (sert, az, dökülüyor). Rise and Shine'da "eskisi gibi değil" %13-14 ve orijinallik şüphesi %7-8; önerilen yorumlarının %40'ı "yıllardır kullanıyorum".
+- Büyük markaların az sayıdaki şikâyeti ürüne değil satıcıya: Dalan'da yanlış ürün %33, paket %27.
+- Sözlük tarayıcıda `rv_sozluk_sabun` olarak duruyor; araçlar `tools/dogal-sabun/`.
+
 ### Claude'un uygulama tarayıcısıyla toplama (kullanıcı istemezse dosya indirme YOK)
 - Kod `tools/toplama.js` sitedeki kopyasından (`https://yskirca1.github.io/kobi-yorum-radari/tools/toplama.js`) tarayıcının localStorage'ına `rvcode` olarak yüklenir, indirme satırı çıkarılır; her ürün `localStorage['rv_<id>']` içinde kalır. İndirme yapılınca uygulama kullanıcıdan izin istiyor; kullanıcı bunu istemedi.
 - Trendyol yeni yorumları ancak sayfada **gerçek bir kullanıcı kaydırması** olduktan sonra yüklüyor: her üründe sayfa açılınca küçük bir ekran görüntüsü (scale 0.1) + bir fare tekerleği kaydırması, sonra betik. Claude penceresi ekranda görünür olmalı.
@@ -105,7 +113,7 @@
 
 ## 5. Sıradaki adımlar
 
-0. **Sıradaki kategoriler:** termos ✓, sweatshirt ✓ (12 ürün), Bluetooth kulaklık ✓ (12 ürün), şal ✓ (12 ürün), telefon kılıfı ✓ (12 ürün). Sırada yakında listesi: doğal sabun, spor tayt, kamp sandalyesi, kedi tırmalama tahtası, filtre kahve, bebek arabası. Hedef: her kategoride 12 ürün. Önerilen: Bluetooth kulaklık (elektronik) ve yüz serumu / doğal sabun (kozmetik): ETBİS'e göre en büyük alanlar.
+0. **Sıradaki kategoriler:** termos ✓, sweatshirt ✓ (12 ürün), Bluetooth kulaklık ✓ (12 ürün), şal ✓ (12 ürün), telefon kılıfı ✓ (12 ürün), doğal sabun ✓ (11 ürün). Sırada yakında listesi: spor tayt, kamp sandalyesi, kedi tırmalama tahtası, filtre kahve, bebek arabası. Hedef: her kategoride 12 ürün. Önerilen: Bluetooth kulaklık (elektronik) ve yüz serumu / doğal sabun (kozmetik): ETBİS'e göre en büyük alanlar.
 1. **50 kategori listesi:** KOBİ'lerin rekabet ettiği, yorumu bol kategoriler. Taslak "yakında" listesi: bebek arabası, telefon kılıfı, doğal sabun, kedi tırmalama tahtası, spor tayt, filtre kahve, kamp sandalyesi. Liste kullanıcıyla netleştirilecek.
 2. **Veri toplama:** 5'erli partiler hâlinde, zamana yayarak. Her kategoride ortak konular (dayanıklılık, beden/ölçü, görselden farklı, kargo/paket, sahtelik, eksik parça, koku, fiyat) + kategoriye özel 2-4 konu.
 3. **Otomasyon (sunuma kadar "canlı MVP"):** bilgisayarda çalışan toplama programı (Python + Playwright), Claude API ile otomatik konu sınıflandırma ve not üretimi (kullanıcının Anthropic API anahtarı gerekir), sonuçların GitHub'a otomatik yüklenmesi, tarihli kayıtlarla zaman içinde değişim takibi.
