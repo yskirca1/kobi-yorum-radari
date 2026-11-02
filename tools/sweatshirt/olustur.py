@@ -107,8 +107,8 @@ def main(out):
         m, top, neg = d['meta'], d['top'], d['neg']
         y = [d['dist'][str(i)] for i in range(1, 6)]
         yaz = sum(y)
-        # Yorum sayfasında görseli bulunamayan ürün: ürün sayfasından elle alındı
-        g = m.get('gorsel', '') or {'343388614': 'https://cdn.dsmcdn.com/ty1597/prod/QC/20241103/22/c674d22e-2430-3eee-be4a-31f756dda112/1_org_zoom.jpg'}.get(uid, '')
+        # Yorum sayfasında görseli bulunamayan ürün: ürün sayfasının og:image değeri elle alındı
+        g = m.get('gorsel', '') or {'343388614': 'https://cdn.dsmcdn.com/ty510/product/media/images/20220820/12/163121250/548323425/1/1_org_zoom.jpg'}.get(uid, '')
         g = re.sub(r'^https://cdn\.dsmcdn\.com/', 'https://cdn.dsmcdn.com/mnresize/400/-/', g) if g else ''
         alinti = []
         for konu, bas in ALINTI[uid]:
