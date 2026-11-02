@@ -85,18 +85,27 @@
   }).join('')}</div>`;
 
   // views
-  function home() {
+  async function home() {
     document.title = 'ReviewRadar';
+    const ready = REG.filter((c) => c.durum === 'hazir'), soon = REG.filter((c) => c.durum !== 'hazir');
+    const data = await Promise.all(ready.map((c) => loadCat(c.id).catch(() => null)));
     app.innerHTML = `
-      <section class="hero"><h1>Ne <span>satmak</span> istiyorsun?</h1>
-      <p>Bir kategori ara. Rakip ürünlerin binlerce müşteri yorumundan çıkan en büyük şikâyetleri, müşterinin neyi sevdiğini ve bu pazara girerken neye dikkat etmen gerektiğini gör.</p></section>
-      <h2>Kategoriler</h2>
-      <div class="cats" style="padding-top:14px">${REG.map((c) => `
-        <a class="cat ${c.durum === 'hazir' ? '' : 'off'}" href="#/kategori/${c.id}">
-          <div class="cat-img ${c.gorsel ? '' : 'ph'}">${c.gorsel ? `<img src="${esc(c.gorsel)}" alt="" referrerpolicy="no-referrer" loading="lazy">` : `<span>${esc(c.ad[0])}</span>`}</div>
-          <div class="cat-body"><small>${esc(c.ust)}</small><h3>${esc(c.ad)}</h3>
-          ${c.durum === 'hazir' ? `<span class="tag">${int(c.urun)} ürün · ${int(c.yorum)} yorum</span>` : '<span class="tag grey">Yakında</span>'}</div>
-        </a>`).join('')}</div>`;
+      <section class="hero">
+        <span class="eyebrow">KOBİ'ler için müşteri yorumu analizi</span>
+        <h1>Satmak istediğin üründe müşteri neden memnun değil?</h1>
+        <p class="lead">Rakip ürünlerin binlerce yorumunu tek tek okuduk. Bir kategori seç; en sık şikâyetleri, müşterinin neyi sevdiğini ve pazara girerken neye dikkat etmen gerektiğini gör.</p>
+        <ol class="steps"><li><b>1</b>Kategori seç</li><li><b>2</b>Şikâyetleri gör</li><li><b>3</b>Ürünleri karşılaştır</li></ol>
+      </section>
+      <section class="sec"><div class="sec-top"><h2>Analiz edilen kategoriler</h2><span class="muted num">${ready.length} kategori</span></div>
+        <div class="cats">${ready.map((c, i) => { const d = data[i]; const t = d && d.tema[0]; return `
+          <a class="cat" href="#/kategori/${c.id}">
+            <div class="cat-img">${c.gorsel ? `<img src="${esc(c.gorsel)}" alt="" referrerpolicy="no-referrer" loading="lazy">` : ''}</div>
+            <div class="cat-body"><small>${esc(c.ust)}</small><h3>${esc(c.ad)}</h3>
+              <span class="muted num" style="font-size:.88rem">${int(c.urun)} ürün · ${int(c.yorum)} yorum incelendi</span>
+              ${t ? `<span class="cat-top">En sık şikâyet: ${esc(t.ad)} <b class="num">${pct(t.tum)}</b></span>` : ''}</div>
+          </a>`; }).join('')}</div>
+      </section>
+      ${soon.length ? `<section class="sec"><div class="sec-top"><h2>Yakında eklenecek</h2></div><ul class="soon">${soon.map((c) => `<li>${esc(c.ad)}</li>`).join('')}</ul></section>` : ''}`;
   }
 
   function search(term) {
@@ -122,12 +131,19 @@
       <div class="crumbs"><a href="#/">Ana sayfa</a> / ${esc(c.ust)} / ${esc(c.ad)}</div>
       <div class="chead"><h1>${esc(c.ad)}</h1>
         <p class="muted num">${c.urunler.length} ürün · ${int(c.top.yazili)} yazılı yorum · ${int(c.top.okunan)} yorum okundu · ${esc(c.kaynak)}, ${esc(c.toplama)}</p></div>
-      <section class="band" aria-labelledby="band-t">
-        <span class="band-title" id="band-t">Bu kategorinin en çok şikâyet edilen sorunları</span>
-        <ol class="bang">${top4.map((t) => `<li><span class="t">${esc(t.unlem)}</span><span class="p">${pct(t.tum)}</span><span class="bar"><i style="width:${(t.tum / max) * 100}%"></i></span></li>`).join('')}</ol>
-        <p class="band-note">Oran: 1-2 yıldızlı yorumların yüzde kaçında bu sorun geçiyor. Bir yorum birden fazla soruna girebilir.</p>
+      <section class="summary" aria-labelledby="sum-t">
+        <div class="sum-main">
+          <span class="label" id="sum-t">En sık şikâyetler</span>
+          <ol class="issues">${top4.map((t) => `<li><span class="t">${esc(t.unlem.replace(/!$/, ''))}</span><span class="p">${pct(t.tum)}</span><span class="bar"><i style="width:${(t.tum / max) * 100}%"></i></span></li>`).join('')}</ol>
+          <p class="note">Yüzde, 1-2 yıldızlı yorumların kaçında bu sorunun geçtiğini gösterir. Bir yorum birden fazla soruna girebilir.</p>
+        </div>
+        <div class="sum-side">
+          <div class="fact"><b class="neg">${pct(c.top.dusuk, 1)}</b><span>Yazılı yorumlarda 1-2 yıldız payı</span></div>
+          <div class="fact"><b>${c.top.onerilen}</b><span>Trendyol'un "Önerilen" sıralamasında ilk 100 yorumda görünen 1-2 yıldızlı yorum</span></div>
+          <div class="fact"><b>${esc(c.tema[0].ad)}</b><span>Kategorinin 1 numaralı sorunu</span></div>
+        </div>
       </section>
-      <div class="tools"><h2>Ürünler <span class="muted num" style="font-weight:400;font-size:1rem" id="pcount"></span></h2>
+      <div class="tools"><h2>Ürünler <span class="muted num" style="font-weight:400" id="pcount"></span></h2>
         <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
           <button type="button" class="btn ghost f-open" id="f-open">Filtrele</button>
           <label class="muted">Sırala <select id="sort">
@@ -139,15 +155,10 @@
       </div>
       <h2 class="sec-h">Kategori içgörüleri</h2>
       <div class="cgrid">
-        <section class="card"><h2>Görünmeyen şikâyetler</h2>
-          <div class="insight"><span class="big num">${pct(c.top.dusuk, 1)}</span><p>Bu kategorideki yazılı yorumların ${pct(c.top.dusuk, 1)} kadarı 1-2 yıldız.</p></div>
-          <div class="insight"><span class="big ok num">${c.top.onerilen}</span><p>Ama alışverişçinin ilk gördüğü "Önerilen" sıralamanın ilk 100 yorumunda, ${c.urunler.length} üründe toplam ${c.top.onerilen} adet 1-2 yıldızlı yorum var. Sorunlar sayfanın derinlerinde.</p></div>
-        </section>
         <section class="card"><h2>Müşteriler neyi seviyor?</h2><p class="muted">Olumlu yorumlarda en sık geçen konular.</p>${hbar(c.olk.slice(0, 6).map((k) => ({ ad: k.ad, v: k.tum })))}</section>
-        <section class="card"><h2>Büyük marka mı, KOBİ mi?</h2><p class="muted">Aynı sorunun iki gruptaki oranı. Üstteki çubuk büyük markalar, alttaki KOBİ'ler.</p>
-          <div class="hbars">${seg.map((t) => { const m = Math.max(...seg.map((x) => Math.max(x.buyuk, x.kobi))); return `<div class="hb"><span>${esc(t.ad)}</span><span style="display:grid;gap:3px"><span class="tr"><i style="width:${(t.buyuk / m) * 100}%;background:var(--muted)"></i></span><span class="tr"><i style="width:${(t.kobi / m) * 100}%;background:var(--alert)"></i></span></span><span class="v">${pct(t.buyuk)}<br>${pct(t.kobi)}</span></div>`; }).join('')}</div></section>
+        <section class="card"><h2>Büyük marka mı, KOBİ mi?</h2><p class="muted">Aynı sorunun iki gruptaki oranı.</p><div class="legend"><span><i style="background:var(--muted)"></i>Büyük marka</span><span><i style="background:var(--neg)"></i>KOBİ</span></div>
+          <div class="hbars">${seg.map((t) => { const m = Math.max(...seg.map((x) => Math.max(x.buyuk, x.kobi))); return `<div class="hb"><span>${esc(t.ad)}</span><span style="display:grid;gap:3px"><span class="tr"><i style="width:${(t.buyuk / m) * 100}%;background:var(--muted)"></i></span><span class="tr"><i style="width:${(t.kobi / m) * 100}%;background:var(--neg)"></i></span></span><span class="v">${pct(t.buyuk)}<br>${pct(t.kobi)}</span></div>`; }).join('')}</div></section>
         <section class="card" style="grid-column:1/-1"><h2>Bu kategoriye girecek KOBİ için öneriler</h2><ol class="recs" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))">${c.oneriler.map((o) => `<li><b>${esc(o.baslik)}</b><span>${esc(o.metin)}</span></li>`).join('')}</ol></section>
-      </div>
       </div>`;
     const sel = document.getElementById('sort'); sel.value = sort;
     const st = (filterState[id] ??= { segment: [], marka: [], sikayet: [], puan: '', dusuk: '' });
@@ -222,13 +233,15 @@
   const card = (c, p, cm) => `
     <article class="pc">
       <a class="pc-img" href="#/urun/${c.id}/${p.id}"><img src="${esc(p.gorsel)}" alt="${esc(p.ad)}" loading="lazy" referrerpolicy="no-referrer"></a>
-      <span class="pc-seg tag ${p.segment === 'KOBİ' ? '' : 'grey'}">${esc(p.segment)}</span>
-      <label class="pc-cmp"><input type="checkbox" data-cmp="${p.id}" data-cat="${c.id}" ${cm.some((x) => x.id === p.id) ? 'checked' : ''}>Karşılaştır</label>
       <div class="pc-body">
+        <span class="pc-seg">${esc(p.segment)}</span>
         <a class="pc-name" href="#/urun/${c.id}/${p.id}"><b>${esc(p.marka)}</b> ${esc(p.ad.replace(p.marka, '').trim())}</a>
-        <div class="stars"><span class="num">${dec(p.ort)}</span><span class="s" aria-hidden="true">${starStr(p.ort)}</span><span class="muted num">(${int(p.yazili)})</span></div>
-        <div class="pc-low">1-2 yıldız: <b class="num">${pct(p.dusuk, 1)}</b></div>
-        ${p.sik[0] ? `<span class="tag alert">En sık: ${esc(p.sik[0].ad)}</span>` : ''}
+        <div class="stars"><span class="s" aria-hidden="true">★</span><b class="num">${dec(p.ort)}</b><span class="muted num">(${int(p.yazili)} yorum)</span></div>
+        <dl class="pc-meta">
+          <div><dt>1-2 yıldız</dt><dd class="neg">${pct(p.dusuk, 1)}</dd></div>
+          <div class="stack"><dt>En sık şikâyet</dt><dd>${esc(p.sik[0]?.ad || '-')}</dd></div>
+        </dl>
+        <label class="pc-cmp"><input type="checkbox" data-cmp="${p.id}" data-cat="${c.id}" ${cm.some((x) => x.id === p.id) ? 'checked' : ''}>Karşılaştır</label>
       </div>
     </article>`;
 
@@ -245,7 +258,7 @@
         <div class="prod-info">
           <span class="tag ${p.segment === 'KOBİ' ? '' : 'grey'}">${esc(p.segment)}</span>
           <h1>${esc(p.ad)}</h1>
-          <div class="stars"><span class="num">${dec(p.ort)}</span><span class="s" aria-hidden="true">${starStr(p.ort)}</span><span class="muted num">${int(yt)} yazılı yorum</span></div>
+          <div class="stars"><span class="s" aria-hidden="true">★</span><b class="num">${dec(p.ort)}</b><span class="muted num">${int(yt)} yazılı yorum</span></div>
           <div class="stats">
             <div class="stat"><small>Ortalama puan</small><b>${dec(p.ort)}</b></div>
             <div class="stat"><small>"Önerilen" ilk 100</small><b>${dec(p.onerilen_ort)}</b></div>
@@ -254,7 +267,7 @@
           </div>
           <div style="display:flex;gap:10px;flex-wrap:wrap">
             <a class="btn out" href="${esc(p.link)}" target="_blank" rel="noopener">Trendyol'da gör</a>
-            <label class="btn ghost" style="gap:8px"><input type="checkbox" data-cmp="${p.id}" data-cat="${c.id}" ${on ? 'checked' : ''}>Karşılaştırmaya ekle</label>
+            <label class="btn ghost"><input type="checkbox" data-cmp="${p.id}" data-cat="${c.id}" ${on ? 'checked' : ''}>Karşılaştırmaya ekle</label>
           </div>
         </div>
       </div>
@@ -264,7 +277,7 @@
         <section class="card"><h2>Alırken dikkat edilmesi gerekenler</h2><ul class="ul">${p.dikkat.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></section>
         <section class="card"><h2>Rakip bir KOBİ için ders</h2><ul class="ul">${p.ders.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></section>
         <section class="card"><h2>Yıldız dağılımı</h2>${hbar([5, 4, 3, 2, 1].map((s) => ({ ad: s + ' yıldız', v: p.yildiz[s - 1] / yt })))}</section>
-        <section class="card"><h2>Müşterinin kendi sözleriyle</h2><div class="quotes">${p.alinti.map((a) => `<div class="q"><span>"${esc(a.metin)}"</span><small>${'★'.repeat(a.yildiz)} · ${esc(a.konu)}</small></div>`).join('')}</div></section>
+        <section class="card"><h2>Müşterinin kendi sözleriyle</h2><div class="quotes">${p.alinti.map((a) => `<div class="q"><span>"${esc(a.metin)}"</span><small>${a.yildiz} yıldız · ${esc(a.konu)}</small></div>`).join('')}</div></section>
       </div>`;
   }
 
@@ -302,7 +315,7 @@
       else if (h[0] === 'urun') await product(h[1], h[2]);
       else if (h[0] === 'karsilastir') await compare();
       else if (h[0] === 'ara') search(h.slice(1).join('/'));
-      else home();
+      else await home();
     } catch (e) {
       app.innerHTML = '<div class="empty"><p>Veri yüklenemedi. Sayfayı yenile.</p></div>';
       console.error(e);
