@@ -1,17 +1,17 @@
 /* Layout: marketplace shell — sticky search header, category insight band, product grid, sticky compare tray */
 :root {
-  --bg: #f6f7f5; --panel: #ffffff; --ink: #18211d; --muted: #5d6963; --line: #e2e6e3;
-  --brand: #0d9488; --brand-ink: #ffffff; --brand-soft: #dcf5f1; --logo-bubble: #14b8a6; --logo-fg: #ffffff;
+  --bg: #ffffff; --panel: #ffffff; --ink: #1b2422; --muted: #5f6b68; --line: #e6ebea; --tint: #effcfa;
+  --brand: #0d9488; --brand-ink: #ffffff; --brand-soft: #e3f8f5; --logo-bubble: #14b8a6; --logo-fg: #ffffff;
   --alert: #c2412d; --alert-soft: #fbece8; --ok: #2f7d4f; --star: #e0a21b;
   --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
   --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
   --img-bg: #ffffff; --r: 10px; color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) { --bg: #111614; --panel: #19201d; --ink: #e8eeea; --muted: #9aa8a1; --line: #2a3430;
+  :root:not([data-theme="light"]) { --bg: #111614; --panel: #19201d; --tint: #142422; --ink: #e8eeea; --muted: #9aa8a1; --line: #2a3430;
     --brand: #2dd4bf; --brand-ink: #0b1a18; --brand-soft: #12302d; --logo-bubble: #2dd4bf; --logo-fg: #0b1a18; --alert: #f07a64; --alert-soft: #33201c; --ok: #6cc690; --star: #f0b93a; --img-bg: #f4f5f3; color-scheme: dark; }
 }
-:root[data-theme="dark"] { --bg: #111614; --panel: #19201d; --ink: #e8eeea; --muted: #9aa8a1; --line: #2a3430;
+:root[data-theme="dark"] { --bg: #111614; --panel: #19201d; --tint: #142422; --ink: #e8eeea; --muted: #9aa8a1; --line: #2a3430;
     --brand: #2dd4bf; --brand-ink: #0b1a18; --brand-soft: #12302d; --logo-bubble: #2dd4bf; --logo-fg: #0b1a18; --alert: #f07a64; --alert-soft: #33201c; --ok: #6cc690; --star: #f0b93a; --img-bg: #f4f5f3; color-scheme: dark; }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.5; }
@@ -181,3 +181,28 @@ h3 { font-size: 1.05rem; font-weight: 700; }
   .theme-btn span { display: none; }
   .logo-svg { height: 32px; }
 }
+
+/* turquoise marketplace accents */
+.top { border-bottom: 1px solid var(--line); box-shadow: 0 1px 0 var(--line); }
+.top::before { content: ""; display: block; height: 4px; background: var(--logo-bubble); }
+.search input { border: 2px solid var(--logo-bubble); border-right: 0; background: var(--panel); }
+.search input:focus { border-color: var(--brand); }
+.search button { background: var(--logo-bubble); color: var(--logo-fg); font-size: 1rem; }
+:root:not([data-theme="dark"]) .search button { background: var(--brand); color: #fff; }
+.hero { background: var(--tint); border: 1px solid color-mix(in srgb, var(--logo-bubble) 30%, transparent); border-radius: 14px; padding: 32px 28px; margin-top: 20px; margin-bottom: 26px; }
+.hero h1 span { color: var(--brand); }
+.cat:hover, .pc:hover { border-color: var(--logo-bubble); }
+.cat { transition: border-color .15s, box-shadow .15s; }
+.cat:hover { box-shadow: 0 6px 20px rgb(13 148 136 / .12); }
+.pc:hover { box-shadow: 0 6px 20px rgb(13 148 136 / .14); }
+.tag { background: var(--brand-soft); color: var(--brand); }
+.filters { border-top: 3px solid var(--logo-bubble); }
+.fg h3 { color: var(--ink); }
+.chip { background: var(--logo-bubble); color: var(--logo-fg); border-color: var(--logo-bubble); }
+:root:not([data-theme="dark"]) .chip { background: var(--brand); border-color: var(--brand); color: #fff; }
+.tools h2::before { content: ""; display: inline-block; width: 6px; height: 1.1em; background: var(--logo-bubble); border-radius: 3px; margin-right: 10px; vertical-align: -2px; }
+.sec-h { padding-top: 8px; }
+.sec-h::before { content: ""; display: inline-block; width: 6px; height: 1.1em; background: var(--logo-bubble); border-radius: 3px; margin-right: 10px; vertical-align: -2px; }
+.crumbs a:hover { color: var(--brand); }
+.btn.out { border-color: var(--brand); color: var(--brand); }
+.pc-cmp:has(input:checked) { background: var(--brand-soft); border-color: var(--brand); color: var(--brand); }

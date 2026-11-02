@@ -88,7 +88,7 @@
   function home() {
     document.title = 'ReviewRadar';
     app.innerHTML = `
-      <section class="hero"><h1>Ne satmak istiyorsun?</h1>
+      <section class="hero"><h1>Ne <span>satmak</span> istiyorsun?</h1>
       <p>Bir kategori ara. Rakip ürünlerin binlerce müşteri yorumundan çıkan en büyük şikâyetleri, müşterinin neyi sevdiğini ve bu pazara girerken neye dikkat etmen gerektiğini gör.</p></section>
       <h2>Kategoriler</h2>
       <div class="cats" style="padding-top:14px">${REG.map((c) => `
@@ -127,6 +127,17 @@
         <ol class="bang">${top4.map((t) => `<li><span class="t">${esc(t.unlem)}</span><span class="p">${pct(t.tum)}</span><span class="bar"><i style="width:${(t.tum / max) * 100}%"></i></span></li>`).join('')}</ol>
         <p class="band-note">Oran: 1-2 yıldızlı yorumların yüzde kaçında bu sorun geçiyor. Bir yorum birden fazla soruna girebilir.</p>
       </section>
+      <div class="tools"><h2>Ürünler <span class="muted num" style="font-weight:400;font-size:1rem" id="pcount"></span></h2>
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+          <button type="button" class="btn ghost f-open" id="f-open">Filtrele</button>
+          <label class="muted">Sırala <select id="sort">
+          <option value="yorum">En çok yorum</option><option value="puan">En yüksek puan</option><option value="dusuk">En az 1-2 yıldız</option><option value="cok">En çok 1-2 yıldız</option></select></label>
+        </div></div>
+      <div class="plist">
+        <aside class="filters" id="filters" aria-label="Filtreler">${filterPanel(c)}</aside>
+        <div><div class="chips" id="chips"></div><div class="pgrid" id="pgrid"></div></div>
+      </div>
+      <h2 class="sec-h">Kategori içgörüleri</h2>
       <div class="cgrid">
         <section class="card"><h2>Görünmeyen şikâyetler</h2>
           <div class="insight"><span class="big num">${pct(c.top.dusuk, 1)}</span><p>Bu kategorideki yazılı yorumların ${pct(c.top.dusuk, 1)} kadarı 1-2 yıldız.</p></div>
@@ -137,15 +148,6 @@
           <div class="hbars">${seg.map((t) => { const m = Math.max(...seg.map((x) => Math.max(x.buyuk, x.kobi))); return `<div class="hb"><span>${esc(t.ad)}</span><span style="display:grid;gap:3px"><span class="tr"><i style="width:${(t.buyuk / m) * 100}%;background:var(--muted)"></i></span><span class="tr"><i style="width:${(t.kobi / m) * 100}%;background:var(--alert)"></i></span></span><span class="v">${pct(t.buyuk)}<br>${pct(t.kobi)}</span></div>`; }).join('')}</div></section>
         <section class="card" style="grid-column:1/-1"><h2>Bu kategoriye girecek KOBİ için öneriler</h2><ol class="recs" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))">${c.oneriler.map((o) => `<li><b>${esc(o.baslik)}</b><span>${esc(o.metin)}</span></li>`).join('')}</ol></section>
       </div>
-      <div class="tools"><h2>Ürünler <span class="muted num" style="font-weight:400;font-size:1rem" id="pcount"></span></h2>
-        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-          <button type="button" class="btn ghost f-open" id="f-open">Filtrele</button>
-          <label class="muted">Sırala <select id="sort">
-          <option value="yorum">En çok yorum</option><option value="puan">En yüksek puan</option><option value="dusuk">En az 1-2 yıldız</option><option value="cok">En çok 1-2 yıldız</option></select></label>
-        </div></div>
-      <div class="plist">
-        <aside class="filters" id="filters" aria-label="Filtreler">${filterPanel(c)}</aside>
-        <div><div class="chips" id="chips"></div><div class="pgrid" id="pgrid"></div></div>
       </div>`;
     const sel = document.getElementById('sort'); sel.value = sort;
     const st = (filterState[id] ??= { segment: [], marka: [], sikayet: [], puan: '', dusuk: '' });
