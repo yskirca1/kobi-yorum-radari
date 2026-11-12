@@ -2,7 +2,7 @@
 
 > Bu dosya, projeyi yeni bir Claude oturumunda (ya da yeni bir hesapta) kaldığı yerden devam ettirmek için yazıldı.
 > Yeni oturumda ilk mesaj: **"yskirca1/kobi-yorum-radari deposundaki PROJE_NOTLARI.md dosyasını oku, projeye devam edelim."**
-> Son güncelleme: 2 Kasım 2026 (sweatshirt eklendi)
+> Son güncelleme: 12 Kasım 2026 (site düzeltmeleri ve Yöntem sayfası, asset v=12)
 
 ## 1. Proje nedir?
 
@@ -106,19 +106,33 @@
 
 ### Site
 - Dosyalar: `index.html`, `style.css`, `app.js`, `favicon.svg`, `data/kategoriler.json` (kategori listesi + eş anlamlılar), `data/termos.json` (kategori verisi), `logo/` (logo dosyaları).
-- Sayfalar (hash yönlendirme): `#/` ana sayfa, `#/kategori/<id>`, `#/urun/<kategori>/<urunId>`, `#/karsilastir`, `#/ara/<terim>`.
+- Sayfalar (hash yönlendirme): `#/` ana sayfa, `#/kategori/<id>`, `#/urun/<kategori>/<urunId>`, `#/karsilastir`, `#/ara/<terim>`, `#/yontem`.
 - Özellikler: arama (eş anlamlılar), kategori özeti (en sık 4 şikâyet + 3 temel bilgi), sol filtre paneli (satıcı tipi, marka, en sık şikâyet, puan, 1-2 yıldız oranı), ürün kartları (Trendyol görselleri doğrudan bağlantıyla), ürün sayfası, 2-4 ürün karşılaştırma, açık/koyu tema.
 - Kategori başlığında toplama tarihi gösterilmiyor (kullanıcı isteği); tarih veri dosyasında `toplama` alanında duruyor.
 - Ana sayfada alan (üst kategori) filtresi var; arama sonuçları ana sayfayla aynı kartları kullanıyor (hazır olmayan kategoride görsel yerine yer tutucu). Marka filtresi yalnızca marka sayısı ürünlerin 3/4'ünü geçmiyorsa görünür.
 - **CSS ya da JS değişince `index.html` içindeki `?v=` numarası artırılmalı**, yoksa tarayıcılar eski dosyayı önbellekten okuyor. Veri dosyaları önbelleğe takılmadan çekiliyor.
 - Kategori görseli kartta kırpılmadan gösterilir; yine de ürünün ortada ve net olduğu bir fotoğraf seç.
 - Yeni kategori eklemek: `data/<id>.json` dosyasını `termos.json` ile aynı yapıda üret, `data/kategoriler.json` içinde durumunu `"hazir"` yap, `urun`/`yorum`/`gorsel` alanlarını doldur.
+- **12 Kasım 2026 (asset v=12):**
+  - Yeni sayfa `#/yontem` ("Yöntem: Bu rakamlar nasıl hesaplandı?"): kaynak, iki örnek, şikâyet oranı, ağırlıklı ortalama, 1-2 yıldız payı, dikkat/ders notları, sınırlar; 4 ana sayfa rakamı ve "Önerilen" sıralamadaki 1-2 yıldız sayısı veriden canlı hesaplanıyor. Altbilgiden ve kategori özetindeki nottan bağlantı var.
+  - Karşılaştırma: en fazla 4 ürün ve tek kategori kuralı görünür. 5. ürün reddedilir ve çubukta "En fazla 4 ürün karşılaştırılabilir" yazar; başka kategoriden ürün seçilince çubukta "Yeni karşılaştırma başlat / Vazgeç" sorulur (tarayıcı uyarı penceresi yok). Çubuktaki görsellerden ve tablodaki "Çıkar" düğmesinden ürün çıkarılabilir. Boş karşılaştırma sayfası son ziyaret edilen kategoriye döner.
+  - 1-2 yıldız örneği boş ürünlerde (Spigen Liquid Air, Apple Şeffaf MagSafe, Hacı Şakir Saf Doğal) şikâyet ve alıntı kartları gizlenir, tek nötr cümle görünür; kırmızı "%0,0" ve "-" yok.
+  - `onerilen_n` 100'den azsa ürün sayfasında "ilk 100" yerine gerçek sayı yazar; kategori özetinde toplam ürün×100 değilse "Önerilen sıralamada okunan N yorumda" denir. İşaretli farklar "+0,15 / −0,15" biçiminde.
+  - "Yakında" kategoriler hiçbir yerde bağlantı değil: ana sayfada ayrı küçük "Yakında" satırı, aramada soluk kart. Alan düğmeleri yalnızca hazır kategorisi olan alanları listeler.
+  - Arama: boş arama bir şey yapmaz; sonuç yoksa "… için sonuç bulunamadı" ve kategori bağlantıları; öneri listesinde ok tuşları, Enter, Esc çalışır.
+  - Yönlendirme: bilinmeyen kategori/ürün "Sayfa bulunamadı" gösterir; bozuk adresler (örn. `#/ara/%`) ana sayfaya düşer; yükleme hatası önbelleğe yazılmaz, hata ekranında "Tekrar dene" var; yüklenirken "Yükleniyor…" görünür. Her sayfanın sekme başlığı ayrı.
+  - Geri/ileri tuşunda sayfanın kaydırma yeri geri gelir; yeni sayfa en üstten açılır. Karşılaştır kutusu, "Temizle" ve sütun çıkarma sayfayı yukarı atmaz.
+  - Mobil filtre çekmecesi: kapalıyken odaklanılamaz, arka perde var, Esc ve perdeye dokunma kapatır, odak "Filtrele" düğmesine döner.
+  - Yüklenemeyen görsel yerine nötr "Görsel yok" kutusu (kırık simge yok). `head` içinde Open Graph/Twitter etiketleri ve açık/koyu `theme-color`. "İçeriğe geç" bağlantısı, tema düğmesinde `aria-pressed`.
 - `data/<id>.json` yapısı: `{id, ad, ust, esanlam[], toplama, kaynak, temalar[{id, ad, unlem}], olumlu_konular[{id, ad}], oneriler[{baslik, metin}], urunler[{id, kisa, marka, ad, segment ("Büyük marka"|"KOBİ"), gorsel, link, yazili, yildiz[1..5 sayıları], ort, onerilen_ort, onerilen_dusuk, ornek_dusuk, sikayet{temaId: oran}, olumlu{konuId: oran}, dikkat[], ders[], alinti[{konu, yildiz, metin}]}]}`
 
 ### Tasarım kararları
 - 3 Kasım 2026 yeniden tasarım (asset v=11): açık gri zemin (#f3f5f8) üzerinde gölgeli beyaz kartlar; ana sayfada koyu lacivert tanıtım bandı + 4'lü rakam şeridi (kategori, ürün, yazılı yorum, okunan yorum); iç sayfalarda beyaz başlık bandı; KOBİ/Büyük marka rozetleri; numaralı öneri kutuları; koyu altbilgi. Tam genişlik bantlar `.band::before` (100vw) ile yapılıyor.
 - Sade, kurumsal pazar yeri görünümü; "yapay zekâ havası" veren şeylerden (trend yazı tipleri, renkli kutular, her yerde etiket/gölge) kaçınılıyor.
 - Yazı tipi: IBM Plex Sans. Renkler: beyaz zemin, turkuaz marka rengi (logo balonu #14b8a6, buton/link #0d8a7f; koyu temada #2dd4bf), kırmızı yalnızca şikâyet oranlarında.
+- 12 Kasım 2026 (asset v=12): Görseller büyütüldü (Trendyol fotoğrafları dikey, yaklaşık 2:3). Kategori kartında görsel alanı 4:5 (telefonda 1:1), kenar boşluğu az, fotoğraf kırpılmıyor; ürün kartında 3:4 (telefonda 4:5); ürün sayfasında görsel sütunu 460 px (telefonda tam genişlik, tablette en fazla 480 px); karşılaştırma tablosunda 140×210 px, karşılaştırma çubuğunda 44 px.
+- 12 Kasım 2026: Karşılaştırma tablosunda kırmızı yalnızca 1-2 yıldız ve şikâyet satırlarında; en iyi değer yalnızca kalın. Telefonda ilk sütun sabit, tablo yana kayar; sağ kenarda solma ve "Tabloyu yana kaydır" ipucu var.
+- 12 Kasım 2026: Açık temada soluk yazı rengi #6b7684 → #5f6b78 (gri zeminde 4,5:1 kontrast).
 - Logo: turkuaz konuşma balonu içinde radar (halkalar + tarama dilimi + sinyal noktası) + tek satır "Review**Radar**" ("Radar" turkuaz). Dosyalar `logo/` klasöründe (açık, koyu, şeffaf, ikon; SVG + PNG).
 
 ## 4. Kararlar ve ilkeler
