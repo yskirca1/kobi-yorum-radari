@@ -369,8 +369,8 @@
       <h2 class="sec-h">Kategori içgörüleri</h2>
       <div class="cgrid">
         <section class="card prt-hide"${segIki ? '' : ' style="grid-column:1/-1"'}><h2>Müşteriler neyi seviyor?</h2><p class="muted">Olumlu yorumlarda en sık geçen konular.</p>${hbar(c.olk.slice(0, 6).map((k) => ({ ad: k.ad, v: k.tum })))}</section>
-        ${segIki ? `<section class="card"><h2>Büyük marka mı, KOBİ mi?</h2><p class="muted">Aynı sorunun iki gruptaki oranı.</p><div class="legend"><span><i style="background:var(--muted)"></i>Büyük marka</span><span><i style="background:var(--neg)"></i>KOBİ</span></div>
-          <div class="hbars">${seg.map((t) => { const m = Math.max(...seg.map((x) => Math.max(x.buyuk, x.kobi))); return `<div class="hb"><span>${esc(t.ad)}</span><span style="display:grid;gap:3px"><span class="tr"><i style="width:${(t.buyuk / m) * 100}%;background:var(--muted)"></i></span><span class="tr"><i style="width:${(t.kobi / m) * 100}%;background:var(--neg)"></i></span></span><span class="v">${pct(t.buyuk)}<br>${pct(t.kobi)}</span></div>`; }).join('')}</div></section>` : ''}
+        ${segIki ? `<section class="card"><h2>Büyük marka mı, KOBİ mi?</h2><p class="muted">Aynı sorunun iki gruptaki oranı.</p><div class="legend"><span><i style="background:var(--muted)"></i>Büyük marka</span><span><i style="background:var(--neg-bar)"></i>KOBİ</span></div>
+          <div class="hbars">${seg.map((t) => { const m = Math.max(...seg.map((x) => Math.max(x.buyuk, x.kobi))); return `<div class="hb"><span>${esc(t.ad)}</span><span style="display:grid;gap:3px"><span class="tr"><i style="width:${(t.buyuk / m) * 100}%;background:var(--muted)"></i></span><span class="tr"><i style="width:${(t.kobi / m) * 100}%;background:var(--neg-bar)"></i></span></span><span class="v">${pct(t.buyuk)}<br>${pct(t.kobi)}</span></div>`; }).join('')}</div></section>` : ''}
         <section class="card" style="grid-column:1/-1"><h2>Bu kategoriye girecek KOBİ için öneriler</h2><ol class="recs" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))">${c.oneriler.map((o) => `<li><b>${esc(o.baslik)}</b><span>${esc(o.metin)}</span></li>`).join('')}</ol></section>
       </div>
       ${printProducts(c)}`;
@@ -921,22 +921,49 @@
   }
   const syncNav = () => { const a = document.getElementById('nav-firsat'); if (!a) return; if (location.hash.startsWith('#/firsat')) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); };
 
-  // ---- tema ----
-  const themeBtn = document.getElementById('theme');
-  const isDark = () => { const t = document.documentElement.dataset.theme; return t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches; };
-  const syncTheme = () => {
-    const d = isDark();
-    themeBtn.setAttribute('aria-pressed', String(d));
-    if (document.documentElement.dataset.theme) document.querySelectorAll('meta[name="theme-color"]').forEach((m) => { m.content = d ? '#0f171e' : '#ffffff'; });
+  // ---- tema: Sistem + beş tema; seçim localStorage'da, uygulanan tema html[data-theme] ----
+  const THEMES = { sistem: 'Sistem', acik: 'Açık', krem: 'Krem', adacayi: 'Adaçayı', koyu: 'Koyu', gece: 'Gece mavisi' };
+  const root = document.documentElement, themeBtn = document.getElementById('theme'), themeMenu = document.getElementById('theme-menu'), themeCur = document.getElementById('theme-cur');
+  const darkMQ = matchMedia('(prefers-color-scheme: dark)');
+  const themeItems = () => [...themeMenu.querySelectorAll('[role="menuitemradio"]')];
+  const applyTheme = (choice, save) => {
+    if (!THEMES[choice]) choice = 'sistem';
+    root.dataset.themeChoice = choice;
+    root.dataset.theme = choice === 'sistem' ? (darkMQ.matches ? 'koyu' : 'acik') : choice;
+    if (save) { try { localStorage.setItem('rr_theme', choice); } catch {} }
+    themeItems().forEach((b) => b.setAttribute('aria-checked', String(b.dataset.themeV === choice)));
+    themeCur.textContent = `: ${THEMES[choice]}${choice === 'sistem' ? ` (${THEMES[root.dataset.theme]})` : ''}`;
+    const band = getComputedStyle(root).getPropertyValue('--band').trim();
+    document.querySelectorAll('meta[name="theme-color"]').forEach((m) => { m.content = band; });
   };
-  themeBtn.addEventListener('click', () => {
-    const root = document.documentElement;
-    root.dataset.theme = isDark() ? 'light' : 'dark';
-    try { localStorage.setItem('rr_theme', root.dataset.theme); } catch {}
-    syncTheme();
+  // Eski "light"/"dark" kaydı Açık/Koyu olarak yeniden yazılır
+  try { const old = localStorage.getItem('rr_theme'); if (old === 'light' || old === 'dark') localStorage.setItem('rr_theme', old === 'light' ? 'acik' : 'koyu'); } catch {}
+  applyTheme(root.dataset.themeChoice || 'sistem', false);
+  darkMQ.addEventListener('change', () => { if (root.dataset.themeChoice === 'sistem') applyTheme('sistem', false); });
+  const menuOpen = () => !themeMenu.hidden;
+  const openMenu = (focusLast) => {
+    themeMenu.hidden = false; themeBtn.setAttribute('aria-expanded', 'true');
+    const it = themeItems(), cur = it.find((b) => b.getAttribute('aria-checked') === 'true') || it[0];
+    (focusLast ? it[it.length - 1] : cur).focus();
+  };
+  const closeMenu = (refocus) => { if (!menuOpen()) return; themeMenu.hidden = true; themeBtn.setAttribute('aria-expanded', 'false'); if (refocus) themeBtn.focus(); };
+  themeBtn.addEventListener('click', () => (menuOpen() ? closeMenu(false) : openMenu()));
+  themeBtn.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); openMenu(e.key === 'ArrowUp'); }
   });
-  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', syncTheme);
-  syncTheme();
+  themeMenu.addEventListener('click', (e) => { const b = e.target.closest('[data-theme-v]'); if (!b) return; applyTheme(b.dataset.themeV, true); closeMenu(true); });
+  themeMenu.addEventListener('keydown', (e) => {
+    const it = themeItems(), i = it.indexOf(document.activeElement);
+    const go = (j) => { e.preventDefault(); it[(j + it.length) % it.length].focus(); };
+    if (e.key === 'ArrowDown') go(i + 1);
+    else if (e.key === 'ArrowUp') go(i - 1);
+    else if (e.key === 'Home') go(0);
+    else if (e.key === 'End') go(it.length - 1);
+    else if (e.key === 'Escape') { e.preventDefault(); closeMenu(true); }
+    else if (e.key === 'Tab') closeMenu(false);
+  });
+  document.addEventListener('pointerdown', (e) => { if (menuOpen() && !e.target.closest('.theme-pick')) closeMenu(false); });
+  themeMenu.addEventListener('focusout', (e) => { if (menuOpen() && e.relatedTarget && !e.relatedTarget.closest('.theme-pick')) closeMenu(false); });
 
   // İçeriğe geç bağlantısı: hash yönlendirmesini tetiklemeden ana içeriğe odaklan
   document.querySelector('.skip')?.addEventListener('click', (e) => { e.preventDefault(); app.focus(); });
