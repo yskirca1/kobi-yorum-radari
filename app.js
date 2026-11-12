@@ -236,6 +236,7 @@
         </div>
         ${kpiList(totals(data))}
       </section>
+      <section class="reads" id="reads" aria-labelledby="reads-t"></section>
       <div class="alan-f" role="group" aria-label="Alana göre filtrele"><span class="muted">Alan:</span>
         ${['', ...alanlar].map((a) => `<button type="button" class="chip${a === homeAlan ? ' on' : ''}" data-alan="${esc(a)}" aria-pressed="${a === homeAlan}">${a ? esc(a) : 'Tümü'}</button>`).join('')}</div>
       <div id="home-list"></div>`;
@@ -251,6 +252,16 @@
     };
     app.onclick = (e) => { const x = e.target.closest('[data-alan]'); if (x) { homeAlan = x.dataset.alan; draw(); } };
     draw();
+    fillReads(data);
+  }
+  // Ana sayfa okuma şeridi: kategori verisi geldikçe doldurulur, yüksekliği CSS'te ayrılmıştır
+  function fillReads(data) {
+    const el = document.getElementById('reads');
+    if (!el) return;
+    const reads = readings(catRows(data));
+    if (!reads.length) { el.remove(); return; }
+    el.innerHTML = `<div class="sec-top"><h2 id="reads-t" class="label">Kategoriler yan yana</h2><a class="reads-all" href="#/firsat">Tüm kategorileri karşılaştır <span aria-hidden="true">→</span></a></div>
+      <ul class="reads-list">${reads.map((x) => `<li><a href="#/firsat"><span class="label">${esc(x.k)}</span><span>${x.t}</span></a></li>`).join('')}</ul>`;
   }
 
   async function search(term, isStale) {
@@ -326,8 +337,9 @@
     app.innerHTML = `
       <div class="band phead">
         <div class="crumbs"><a href="#/">Ana sayfa</a> / ${esc(c.ust)} / ${esc(c.ad)}</div>
-        <div class="chead"><span class="eyebrow">${esc(c.ust)}</span><h1>${esc(c.ad)}</h1>
-          <ul class="meta num"><li><b>${c.urunler.length}</b> ürün</li><li><b>${int(c.top.yazili)}</b> yazılı yorum</li><li><b>${int(c.top.okunan)}</b> yorum okundu</li><li>Kaynak: <b>${esc(c.kaynak)}</b></li></ul></div>
+        <div class="chead"><p class="print-only prt-brand">${SITE} · Kategori raporu</p><span class="eyebrow">${esc(c.ust)}</span><h1>${esc(c.ad)}</h1>
+          <ul class="meta num"><li><b>${c.urunler.length}</b> ürün</li><li><b>${int(c.top.yazili)}</b> yazılı yorum</li><li><b>${int(c.top.okunan)}</b> yorum okundu</li><li>Kaynak: <b>${esc(c.kaynak)}</b></li></ul>
+          <div class="chead-act"><button type="button" class="btn ghost" id="print-btn">Raporu yazdır / PDF</button></div></div>
       </div>
       <section class="summary" aria-labelledby="sum-t">
         <div class="sum-main">
@@ -356,11 +368,12 @@
       </div>
       <h2 class="sec-h">Kategori içgörüleri</h2>
       <div class="cgrid">
-        <section class="card"${segIki ? '' : ' style="grid-column:1/-1"'}><h2>Müşteriler neyi seviyor?</h2><p class="muted">Olumlu yorumlarda en sık geçen konular.</p>${hbar(c.olk.slice(0, 6).map((k) => ({ ad: k.ad, v: k.tum })))}</section>
+        <section class="card prt-hide"${segIki ? '' : ' style="grid-column:1/-1"'}><h2>Müşteriler neyi seviyor?</h2><p class="muted">Olumlu yorumlarda en sık geçen konular.</p>${hbar(c.olk.slice(0, 6).map((k) => ({ ad: k.ad, v: k.tum })))}</section>
         ${segIki ? `<section class="card"><h2>Büyük marka mı, KOBİ mi?</h2><p class="muted">Aynı sorunun iki gruptaki oranı.</p><div class="legend"><span><i style="background:var(--muted)"></i>Büyük marka</span><span><i style="background:var(--neg)"></i>KOBİ</span></div>
           <div class="hbars">${seg.map((t) => { const m = Math.max(...seg.map((x) => Math.max(x.buyuk, x.kobi))); return `<div class="hb"><span>${esc(t.ad)}</span><span style="display:grid;gap:3px"><span class="tr"><i style="width:${(t.buyuk / m) * 100}%;background:var(--muted)"></i></span><span class="tr"><i style="width:${(t.kobi / m) * 100}%;background:var(--neg)"></i></span></span><span class="v">${pct(t.buyuk)}<br>${pct(t.kobi)}</span></div>`; }).join('')}</div></section>` : ''}
         <section class="card" style="grid-column:1/-1"><h2>Bu kategoriye girecek KOBİ için öneriler</h2><ol class="recs" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))">${c.oneriler.map((o) => `<li><b>${esc(o.baslik)}</b><span>${esc(o.metin)}</span></li>`).join('')}</ol></section>
-      </div>`;
+      </div>
+      ${printProducts(c)}`;
     const sel = document.getElementById('sort'); sel.value = sort;
     const st = (filterState[id] ??= { segment: [], marka: [], sikayet: [], puan: '', dusuk: '' });
     const aside = document.getElementById('filters');
@@ -399,12 +412,22 @@
         const inp = aside.querySelector(`input[name="${CSS.escape(k)}"][value="${CSS.escape(v)}"]`); if (inp) inp.checked = false;
         draw();
       }
+      if (e.target.closest('#print-btn')) { window.print(); return; }
       if (e.target.closest('#f-open')) openDrawer();
       if (e.target.closest('#f-close') || e.target.closest('#f-backdrop')) closeDrawer();
     };
     sel.addEventListener('change', () => { sessionSort[id] = sel.value; draw(); });
     draw();
   }
+  // Yazdırma raporu: ekranda gizli (display:none, ekran okuyucu da okumaz), yalnızca baskıda görünür
+  const SITE_URL = document.querySelector('meta[property="og:url"]')?.content || '';
+  const printProducts = (c) => `
+      <section class="print-only prt-products"><h2>Ürünler</h2>
+        <table class="ptable"><thead><tr><th>Ürün</th><th>Segment</th><th class="num">Ort. puan</th><th class="num">1-2 yıldız payı</th><th>En sık şikâyet</th></tr></thead><tbody>
+        ${[...c.urunler].sort((a, b) => b.yazili - a.yazili).map((p) => `<tr><td><b>${esc(markaAd(p.marka))}</b> ${esc(p.ad.replace(p.marka, '').trim())}</td><td>${esc(p.segment)}</td><td class="num">${dec(p.ort)}</td><td class="num ${negCls(p.dusuk)}">${pct(p.dusuk, 1)}</td>`
+          + `<td>${noLow(p) ? `<span class="muted">${esc(noLowShort(p))}</span>` : p.sik[0] ? `${esc(p.sik[0].ad)} <span class="neg num">${pct(p.sik[0].v)}</span>` : ''}</td></tr>`).join('')}
+        </tbody></table></section>
+      <p class="print-only prt-foot">${SITE} · ${esc(SITE_URL)}#/kategori/${esc(c.id)} · Şikâyet oranı, okunan 1-2 yıldızlı yorumların yüzde kaçında o konunun geçtiğini gösterir; konular anahtar kelimeyle bulunduğu için oranlar yaklaşıktır.</p>`;
   const filterState = {};
   const PUAN_L = [['4.5', '4,5 ve üzeri'], ['4.0', '4 ve üzeri'], ['3.5', '3,5 ve üzeri']];
   const PUAN = Object.fromEntries(PUAN_L);
@@ -531,15 +554,127 @@
       toggleCmp(c.id, b.dataset.rmCol, false);
       route({ keep: true });
     };
+    scrollTable();
+  }
+
+  // Yana kayan tablo: ipucu ve sağ kenar solması (karşılaştırma ve fırsat tablosu ortak)
+  let scrollUpd = null;
+  function scrollTable() {
     const box = document.getElementById('ctable-box'), wrap = document.getElementById('ctable-wrap'), hint = document.getElementById('scroll-hint');
+    if (!box) return;
     const upd = () => {
+      if (!box.isConnected) return;
       const over = box.scrollWidth > box.clientWidth + 1;
       hint.hidden = !over;
       wrap.classList.toggle('more', over && box.scrollLeft + box.clientWidth < box.scrollWidth - 2);
     };
     box.addEventListener('scroll', upd, { passive: true });
+    if (scrollUpd) window.removeEventListener('resize', scrollUpd);
+    scrollUpd = upd;
     window.addEventListener('resize', upd, { passive: true });
     upd();
+  }
+
+  // ---- kategoriler arası karşılaştırma (#/firsat) ----
+  // Her ölçü ayrı gösterilir; tek bir "fırsat puanı"na birleştirilmez.
+  const pts = (v) => (v * 100).toFixed(1).replace('.', ',') + ' puan';
+  const andJoin = (a) => (a.length < 2 ? a.join('') : a.slice(0, -1).join(', ') + ' ve ' + a[a.length - 1]);
+  const catStats = (id, c) => {
+    const P = c.urunler, big = P.filter((p) => !isKobi(p)), kobi = P.filter(isKobi);
+    const sum = (R, f) => R.reduce((a, p) => a + f(p), 0);
+    const low = (R) => { const y = sum(R, (p) => p.yazili); return R.length && y ? sum(R, (p) => p.yildiz[0] + p.yildiz[1]) / y : null; };
+    return { id, ad: c.ad, dusuk: c.top.dusuk, buyukPay: big.length ? sum(big, (p) => p.yazili) / c.top.yazili : null,
+      kobi: low(kobi), buyuk: low(big), sik: c.tema[0] || null, urun: P.length, okunan: c.top.okunan };
+  };
+  const catRows = (data) => ready().filter((r) => data[r.id]).map((r) => catStats(r.id, data[r.id]));
+  // Üç okuma satırı: ana sayfa şeridi ve fırsat sayfası ortak kullanır
+  function readings(rows) {
+    const out = [], B = (r) => `<b>${esc(r.ad)}</b>`;
+    if (rows.length >= 2) {
+      const s = [...rows].sort((a, b) => b.dusuk - a.dusuk), hi = s[0], lo = s[s.length - 1];
+      out.push({ k: 'Risk', t: `En riskli kategori ${B(hi)}: yazılı yorumlarda 1-2 yıldız oranı <b class="num">${pct(hi.dusuk, 1)}</b>. En sakin kategori ${B(lo)}: oranı <b class="num">${pct(lo.dusuk, 1)}</b>.` });
+    }
+    const under = rows.filter((r) => r.buyukPay != null && r.buyukPay < 0.1).sort((a, b) => a.buyukPay - b.buyukPay), none = rows.filter((r) => r.buyukPay == null);
+    if (under.length || none.length) {
+      out.push({ k: "Pazar KOBİ'lerin", t: [under.length ? `Büyük markaların yorum payı %10'un altında: ${andJoin(under.map((r) => `${B(r)} (oranı <span class="num">${pct(r.buyukPay, 1)}</span>)`))}.` : '',
+        none.length ? `${andJoin(none.map(B))} ${none.length > 1 ? 'örneklemlerinde' : 'örnekleminde'} büyük marka yok.` : ''].filter(Boolean).join(' ') });
+    } else if (rows.length) out.push({ k: 'Büyük markalar', t: "Her kategoride büyük markalar yorumların en az %10'unu alıyor." });
+    const both = rows.filter((r) => r.kobi != null && r.buyuk != null).sort((a, b) => (b.kobi - b.buyuk) - (a.kobi - a.buyuk));
+    if (both.length) {
+      const g = both[0];
+      out.push({ k: 'KOBİ farkı', t: g.kobi > g.buyuk
+        ? `KOBİ ile büyük marka arasındaki en büyük fark ${B(g)} kategorisinde: 1-2 yıldız oranı KOBİ ürünlerinde <b class="num">${pct(g.kobi, 1)}</b>, büyük markalarda <b class="num">${pct(g.buyuk, 1)}</b> (fark <span class="num">${pts(g.kobi - g.buyuk)}</span>).`
+        : 'Hiçbir kategoride KOBİ ürünlerinin 1-2 yıldız oranı büyük markalarınkinden yüksek değil.' });
+    }
+    return out;
+  }
+
+  const FCOLS = [
+    { k: 'ad', h: 'Kategori', txt: true },
+    { k: 'dusuk', h: '1-2 yıldız payı' },
+    { k: 'buyukPay', h: 'Büyük markaların yorum payı' },
+    { k: 'kobi', h: '1-2 yıldız payı: KOBİ' },
+    { k: 'buyuk', h: '1-2 yıldız payı: Büyük marka' },
+    { k: 'sik', h: '1 numaralı şikâyet', val: (r) => (r.sik ? r.sik.tum : null) },
+    { k: 'urun', h: 'Ürün' },
+    { k: 'okunan', h: 'Okunan yorum' },
+  ];
+  const fSort = { k: 'dusuk', dir: 'desc' };
+  async function firsat(isStale) {
+    const data = await loadAll();
+    if (isStale()) return;
+    const rows = catRows(data), failed = ready().length - rows.length;
+    if (!rows.length && ready().length) throw new Error('firsat: veri yok');
+    setTitle('Hangi kategoriye girmeli?');
+    const maxD = Math.max(...rows.map((r) => r.dusuk), 0.01);
+    const nU = rows.map((r) => r.urun), uMin = Math.min(...nU), uMax = Math.max(...nU);
+    const dash = '<span class="muted" title="Bu segmentte ürün yok">–</span>';
+    const cell = {
+      dusuk: (r) => `<span class="neg">${pct(r.dusuk, 1)}</span><span class="mbar neg" aria-hidden="true"><i style="width:${(r.dusuk / maxD) * 100}%"></i></span>`,
+      buyukPay: (r) => (r.buyukPay == null ? '<span class="muted">Büyük marka yok</span>' : `${pct(r.buyukPay, 1)}<span class="mbar" aria-hidden="true"><i style="width:${r.buyukPay * 100}%"></i></span>`),
+      kobi: (r) => (r.kobi == null ? dash : `<span class="neg">${pct(r.kobi, 1)}</span>`),
+      buyuk: (r) => (r.buyuk == null ? dash : `<span class="neg">${pct(r.buyuk, 1)}</span>`),
+      sik: (r) => (r.sik ? `${esc(r.sik.ad)} <span class="neg num">${pct(r.sik.tum)}</span>` : dash),
+      urun: (r) => int(r.urun),
+      okunan: (r) => int(r.okunan),
+    };
+    const reads = readings(rows);
+    app.innerHTML = `
+      <div class="band phead"><div class="crumbs"><a href="#/">Ana sayfa</a> / Kategorileri karşılaştır</div>
+        <div class="chead"><h1>Hangi kategoriye girmeli?</h1>
+          <p class="muted">Her satır bir kategori. Riski, büyük markaların ağırlığını ve ana şikâyeti yan yana gör; sütun başlığına tıklayarak sırala.</p></div></div>
+      ${reads.length ? `<ul class="reads-list fp-reads">${reads.map((x) => `<li><span class="label">${esc(x.k)}</span><span>${x.t}</span></li>`).join('')}</ul>` : ''}
+      <p class="scroll-hint muted" id="scroll-hint" hidden>Tabloyu yana kaydır <span aria-hidden="true">→</span></p>
+      <div class="ctable-wrap fp-wrap" id="ctable-wrap"><div class="ctable-box" id="ctable-box" tabindex="0" role="region" aria-label="Kategori karşılaştırma tablosu"><table class="ctable ftable">
+        <caption class="sr-only">Kategorilerin karşılaştırması. Sütun başlığındaki düğmeyle sıralanır.</caption>
+        <thead><tr>${FCOLS.map((c) => `<th scope="col" class="${c.txt || c.k === 'sik' ? 'txt' : ''}" data-col="${c.k}"><button type="button" class="ft-sort" data-sort="${c.k}">${esc(c.h)}<span class="ft-ar" aria-hidden="true"></span></button></th>`).join('')}</tr></thead>
+        <tbody id="ft-body"></tbody></table></div></div>
+      <p class="note fp-note">Her kategori ${uMin === uMax ? uMin : `${uMin}-${uMax}`} üründen oluşan bir örneklem. Bu tablo pazarın tamamını değil, örneklemdeki ürünleri karşılaştırır. 1-2 yıldız payları ürünlerin Trendyol'daki tüm yazılı yorumlarından, şikâyet oranı ise okunan 1-2 yıldızlı yorumlardan hesaplandı.${failed > 0 ? ` ${failed} kategorinin verisi yüklenemediği için tabloda yok.` : ''} <a href="#/yontem">Bu rakamlar nasıl hesaplandı?</a></p>`;
+    const body = document.getElementById('ft-body');
+    const draw = () => {
+      const col = FCOLS.find((c) => c.k === fSort.k), v = col.val || ((r) => r[col.k]), m = fSort.dir === 'asc' ? 1 : -1;
+      const list = [...rows].sort((a, b) => {
+        const x = v(a), y = v(b);
+        if (x == null || y == null) return x == null && y == null ? 0 : x == null ? 1 : -1;
+        return (col.txt ? x.localeCompare(y, 'tr') : x - y) * m || a.ad.localeCompare(b.ad, 'tr');
+      });
+      body.innerHTML = list.map((r) => `<tr><th scope="row"><a href="#/kategori/${esc(r.id)}">${esc(r.ad)}</a></th>${FCOLS.slice(1).map((c) => `<td class="${c.k === 'sik' ? 'txt' : 'num'}">${cell[c.k](r)}</td>`).join('')}</tr>`).join('');
+      app.querySelectorAll('th[data-col]').forEach((th) => {
+        const on = th.dataset.col === fSort.k;
+        if (on) th.setAttribute('aria-sort', fSort.dir === 'asc' ? 'ascending' : 'descending'); else th.removeAttribute('aria-sort');
+        th.querySelector('.ft-ar').textContent = on ? (fSort.dir === 'asc' ? '↑' : '↓') : '↕';
+      });
+    };
+    app.onclick = (e) => {
+      const b = e.target.closest('[data-sort]');
+      if (!b) return;
+      const k = b.dataset.sort, txt = FCOLS.find((c) => c.k === k).txt;
+      if (fSort.k === k) fSort.dir = fSort.dir === 'asc' ? 'desc' : 'asc';
+      else { fSort.k = k; fSort.dir = txt ? 'asc' : 'desc'; }
+      draw();
+    };
+    draw();
+    scrollTable();
   }
 
   async function method(isStale) {
@@ -604,10 +739,11 @@
     if (barMsg && barMsg.type === 'ask' && !opts.keep) barMsg = null;
     app.onclick = null;
     let h = parseHash();
-    if (!h || !['', 'kategori', 'urun', 'karsilastir', 'ara', 'yontem'].includes(h[0]) || (h[0] === 'ara' && !h.slice(1).join('/').trim())) {
+    if (!h || !['', 'kategori', 'urun', 'karsilastir', 'ara', 'yontem', 'firsat'].includes(h[0]) || (h[0] === 'ara' && !h.slice(1).join('/').trim())) {
       history.replaceState(history.state, '', '#/');
       h = [''];
     }
+    syncNav();
     let restoreY = 0;
     const keepY = scrollY;
     if (!opts.keep) {
@@ -623,6 +759,7 @@
       else if (h[0] === 'karsilastir') await compare(isStale);
       else if (h[0] === 'ara') await search(h.slice(1).join('/').trim(), isStale);
       else if (h[0] === 'yontem') await method(isStale);
+      else if (h[0] === 'firsat') await firsat(isStale);
       else await home(isStale);
     } catch (e) {
       if (!isStale()) showError();
@@ -637,6 +774,7 @@
     routing = false;
     drawBar();
   }
+  const syncNav = () => { const a = document.getElementById('nav-firsat'); if (!a) return; if (location.hash.startsWith('#/firsat')) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); };
 
   // ---- tema ----
   const themeBtn = document.getElementById('theme');
