@@ -12,6 +12,7 @@
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const norm = (s) => s.toLocaleLowerCase('tr').replace(/[ıİ]/g, 'i').replace(/ş/g, 's').replace(/ğ/g, 'g').replace(/ü/g, 'u').replace(/ö/g, 'o').replace(/ç/g, 'c').trim();
   const isKobi = (p) => p.segment === 'KOBİ';
+  const markaAd = (m) => (m === 'Genel Markalar' ? 'Markasız' : m);
   const onerN = (p) => p.onerilen_n ?? 100;
   const ready = () => REG.filter((c) => c.durum === 'hazir');
   const regOf = (id) => REG.find((c) => c.id === id);
@@ -425,7 +426,7 @@
     return `<div class="f-head"><h2 style="font-size:1.1rem">Filtreler</h2><button type="button" class="linkbtn f-close" id="f-close">Kapat</button></div>`
       + (segs.length > 1 ? group('Satıcı tipi', 'segment', segs.map((s) => [s, s, count((p) => p.segment === s)])) : '')
       // Markaların çoğundan tek ürün varken marka filtresi ürün listesini tekrarlar; marka sayısı ürünlerin 3/4'ünü geçmiyorsa göster
-      + (markalar.length <= P.length * 0.75 ? group('Marka', 'marka', markalar.map((m) => [m, m, count((p) => p.marka === m)])) : '')
+      + (markalar.length <= P.length * 0.75 ? group('Marka', 'marka', markalar.map((m) => [m, markaAd(m), count((p) => p.marka === m)])) : '')
       + group('En sık şikâyet', 'sikayet', tops.map((t) => [t, c.temaMap[t].ad, count((p) => p.sik[0]?.id === t)]))
       + group('Ortalama puan', 'puan', PUAN_L.map(([v, l]) => [v, l, count((p) => p.ort >= Number(v))]), 'radio')
       + group('1-2 yıldız oranı', 'dusuk', Object.entries(DUSUK).map(([v, [l, lo, hi]]) => [v, l, count((p) => p.dusuk >= lo && p.dusuk < hi)]), 'radio')
@@ -438,7 +439,7 @@
       <a class="pc-img" href="#/urun/${esc(c.id)}/${esc(p.id)}" tabindex="-1" aria-hidden="true"><img src="${esc(p.gorsel)}" alt="" loading="lazy" referrerpolicy="no-referrer"></a>
       <div class="pc-body">
         ${segBadge(p)}
-        <a class="pc-name" href="#/urun/${esc(c.id)}/${esc(p.id)}"><b>${esc(p.marka)}</b> ${esc(p.ad.replace(p.marka, '').trim())}</a>
+        <a class="pc-name" href="#/urun/${esc(c.id)}/${esc(p.id)}"><b>${esc(markaAd(p.marka))}</b> ${esc(p.ad.replace(p.marka, '').trim())}</a>
         <div class="stars"><span class="s" aria-hidden="true">★</span><b class="num">${dec(p.ort)}</b><span class="muted num">(${int(p.yazili)} yorum)</span></div>
         <dl class="pc-meta">
           <div><dt>1-2 yıldız</dt><dd class="${negCls(p.dusuk)} num">${pct(p.dusuk, 1)}</dd></div>
@@ -484,7 +485,7 @@
       <div class="cgrid">
         ${empty ? `<p class="nodata">${esc(noLowText(p))}</p>` : `<section class="card"><h2>En çok neden şikâyet ediyorlar?</h2><p class="muted">1-2 yıldızlı yorumlarda geçme oranı. İnce çizgi kategori ortalaması.</p>${hbar(p.sik.slice(0, 7).map((t) => ({ ad: t.ad, v: t.v, avg: t.tum })), 'neg', 'avg')}</section>`}
         <section class="card"><h2>Neyi seviyorlar?</h2><p class="muted">"Önerilen" sıralamanın ilk ${n} yorumunda geçme oranı.</p>${hbar(p.sev.slice(0, 7).map((k) => ({ ad: k.ad, v: k.v })))}</section>
-        <section class="card"><h2>Alırken dikkat edilmesi gerekenler</h2><ul class="ul">${p.dikkat.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></section>
+        <section class="card"><h2>Bu ürünün zayıf noktaları</h2><ul class="ul">${p.dikkat.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></section>
         <section class="card"><h2>Rakip bir KOBİ için ders</h2><ul class="ul">${p.ders.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></section>
         <section class="card"><h2>Yıldız dağılımı</h2>${hbar([5, 4, 3, 2, 1].map((s) => ({ ad: s + ' yıldız', v: p.yildiz[s - 1] / yt })))}</section>
         ${p.alinti.length ? `<section class="card"><h2>Müşterinin kendi sözleriyle</h2><div class="quotes">${p.alinti.map((a) => `<div class="q"><span>"${esc(a.metin)}"</span><small>${a.yildiz} yıldız · ${esc(c.temaMap[a.konu]?.ad || a.konu)}</small></div>`).join('')}</div></section>` : ''}
@@ -515,7 +516,7 @@
       <div class="ctable-wrap" id="ctable-wrap"><div class="ctable-box" id="ctable-box" tabindex="0" role="region" aria-label="Karşılaştırma tablosu"><table class="ctable">
         <tbody>
         ${row('<span class="sr-only">Ürün görseli</span>', P.map((p) => `<td><div class="ct-top"><a href="#/urun/${esc(c.id)}/${esc(p.id)}" class="ct-img"><img src="${esc(p.gorsel)}" alt="${esc(p.ad)}" referrerpolicy="no-referrer"></a><button type="button" class="ct-rm" data-rm-col="${esc(p.id)}" aria-label="${esc(p.kisa)}: karşılaştırmadan çıkar">Çıkar <span aria-hidden="true">×</span></button></div></td>`))}
-        ${row('Ürün', P.map((p) => `<td><b>${esc(p.marka)}</b><br>${esc(p.ad.replace(p.marka, '').trim())}</td>`))}
+        ${row('Ürün', P.map((p) => `<td><b>${esc(markaAd(p.marka))}</b><br>${esc(p.ad.replace(p.marka, '').trim())}</td>`))}
         ${row('Segment', P.map((p) => `<td>${esc(p.segment)}</td>`))}
         ${row('Ortalama puan', P.map((p, i) => `<td class="num${ortB[i] ? ' best' : ''}">${dec(p.ort)}</td>`))}
         ${row('1-2 yıldız payı', P.map((p, i) => `<td class="num ${negCls(p.dusuk)}${dusB[i] ? ' best' : ''}">${pct(p.dusuk, 1)}</td>`))}
@@ -566,7 +567,7 @@
         <section><h2>"Yazılı yorumlarda 1-2 yıldız payı"</h2>
           <p>Bu oran örneklemden değil, ürünün Trendyol'daki tüm yıldız dağılımından hesaplandı.</p></section>
         <section><h2>"Dikkat" ve "ders" notları</h2>
-          <p>Ürün sayfalarındaki "Alırken dikkat edilmesi gerekenler" ve "Rakip bir KOBİ için ders" notları, olumsuz yorumlar okunarak yazılmış yorumlardır. Ölçüm değildir.</p></section>
+          <p>Ürün sayfalarındaki "Bu ürünün zayıf noktaları" ve "Rakip bir KOBİ için ders" notları, olumsuz yorumlar okunarak yazılmış yorumlardır. Ölçüm değildir.</p></section>
         <section><h2>Sınırlar</h2>
           <ul class="ul"><li>Veri tek bir anın görüntüsü; zamanla değişebilir.</li><li>Tek pazar yeri: yalnızca Trendyol.</li><li>Az yorumu olan üründe örnek küçük; o ürünün oranlarını dikkatle oku.</li></ul></section>
         <p><a class="btn" href="#/">Kategorilere git</a></p>

@@ -135,6 +135,8 @@
 - 12 Kasım 2026: Açık temada soluk yazı rengi #6b7684 → #5f6b78 (gri zeminde 4,5:1 kontrast).
 - Logo: turkuaz konuşma balonu içinde radar (halkalar + tarama dilimi + sinyal noktası) + tek satır "Review**Radar**" ("Radar" turkuaz). Dosyalar `logo/` klasöründe (açık, koyu, şeffaf, ikon; SVG + PNG).
 
+- 12 Kasım 2026 (asset v=13): ürün sayfasındaki "Alırken dikkat edilmesi gerekenler" başlığı satıcı gözüyle "Bu ürünün zayıf noktaları" oldu; "Genel Markalar" arayüzde "Markasız" olarak gösteriliyor (veri aynı); KOBİ rozeti yazısı kontrast için koyulaştırıldı (#07635b).
+
 ## 4. Kararlar ve ilkeler
 
 - **Yasal yaklaşım:** Trendyol'dan otomatik veri çekmek kullanım koşullarına aykırı; proje için tek seferlik, yavaş ve az sayfayla "araştırma örneklemi" olarak toplanıyor. Kişisel veri (yorumcu adı) toplanmıyor. Sunumda sürekli sistem vizyonu yasal kanallarla anlatılacak: satıcının kendi mağazasını bağlaması (Trendyol Partner API), pazar yeri veri ortaklığı, lisanslı veri sağlayıcılar.
