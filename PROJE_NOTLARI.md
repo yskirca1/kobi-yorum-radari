@@ -2,7 +2,7 @@
 
 > Bu dosya, projeyi yeni bir Claude oturumunda (ya da yeni bir hesapta) kaldığı yerden devam ettirmek için yazıldı.
 > Yeni oturumda ilk mesaj: **"yskirca1/kobi-yorum-radari deposundaki PROJE_NOTLARI.md dosyasını oku, projeye devam edelim."**
-> Son güncelleme: 12 Kasım 2026 (site düzeltmeleri ve Yöntem sayfası, asset v=12)
+> Son güncelleme: 12 Kasım 2026 (kamp sandalyesi ve bebek arabası eklendi; site düzeltmeleri ve Yöntem sayfası, asset v=12)
 
 ## 1. Proje nedir?
 
@@ -98,6 +98,26 @@
 - KOBİ'lerde "yorumlara güvenip aldım" hayal kırıklığı %5. Deneme setlerinde hediye (klips, Türk kahvesi) %31-40 anılıyor.
 - Sözlük tarayıcıda `rv_sozluk_kahve`; araçlar `tools/filtre-kahve/`.
 
+### Temel bulgular (kamp sandalyesi, 12 Kasım 2026, 12 ürün; hepsi Claude tarayıcısında toplandı)
+- Büyük marka: Decathlon Quechua (mavi, XL bej 150 kg), Koçtaş (Deluks ekru, 2'li bordo). KOBİ: Moniev (Natura 2'li siyah ve gri, Litus şezlong), Goocamp XL, Shadow, Hastunç, Eksiksepeti 2'li, Funky Chairs tenteli. Koçtaş büyük perakende zincirinin kendi ürünü olduğu için büyük marka sayıldı.
+- 5.584 yazılı yorum, 1.658 okundu. 1-2 yıldız payı %10,2 (büyük marka %7,3, KOBİ %10,7); en yüksek Eksiksepeti 2'li (%23,0), en düşük Quechua mavi (%4,4). "Önerilen" ilk 100'lerde 1.200 yorumdan yalnızca 1'i 1-2 yıldız.
+- Kısa sürede kırılma/yamulma %25 (1 numara; KOBİ %28, büyük marka %6; Litus şezlong %38), kusurlu gelme %22, kalitesiz malzeme %15, fiyatına değmez / "markette daha ucuzu var" %11. Bardaklık ve kol plastikleri KOBİ'de %10, büyük markada %2.
+- Büyük markanın şikâyeti ürüne değil siparişe: eksik adet %18 (Koçtaş 2'li %26), yanlış renk (Koçtaş ekru %23); Quechua'da kırılma yok, şikâyet oturma açısı (%22) ve teslimat.
+- Renk varyantı bulgusu: Moniev Natura grisinde kumaş/dikiş yırtılması %20, siyahında %4 (1-2 yıldız payı %11,4 ve %8,6). Litus şezlongun oturur konumdayken aniden açılıp düşürdüğü yazılıyor (%15).
+- Hastunç'ta olumsuzların %31'i "çocuk sandalyesi gibi küçük"; aynı ürünün önerilen yorumlarının %10'u cami, namaz, umre için alındığını yazıyor. Goocamp'ı 17 satıcı satıyor; olumsuzların %26'sı ilandakinden farklı (ince, normal boy) sandalye gelmesinden.
+- Olumsuz yorumların %7'sinde kullanıcı kilosunu yazıyor (çoğu 55-90 kg ve sandalye yine kırılmış).
+- Sözlük tarayıcıda `rv_sozluk_kamp`; araçlar `tools/kamp-sandalyesi/`.
+
+### Temel bulgular (bebek arabası, 12 Kasım 2026, 12 ürün; hepsi Claude tarayıcısında toplandı)
+- Büyük marka (hepsi kabin boy): Cybex GB Pockit Plus, Maxi-Cosi Lara2 (grafit, siyah). KOBİ: Unal Two Koalas, Diamond Baby Sapphire, Tommybaby (Tornado Plus, Luppo baston), 4 Baby (Esse travel, Olympus, Drone Sky kabin), Bebegold travel, Baby Home Paris travel. Aramada çıkan "metal beşikli puset" oyuncak olduğu için çıkarıldı; Duux Siena segmenti belirsiz olduğu için alınmadı; Chicco ve Doona'nın yorumu çok az.
+- 7.159 yazılı yorum, 1.987 okundu. 1-2 yıldız payı %16,2 (büyük marka %14,7, KOBİ %16,3): kulaklıktan (%25) sonra termosla aynı düzeyde. En yüksek 4 Baby Drone Sky kabin (%25,9), en düşük Tommybaby Luppo baston (%5,4). "Önerilen" ilk 100'lerde 1.200 yorumdan 10'u 1-2 yıldız (4'ü Cybex'te).
+- Tekerlek %30 (1 numara; KOBİ %32, büyük marka %14; Diamond Baby %44, Olympus %41), kısa sürede kırılma %21 (Bebegold %40), kusurlu ya da kullanılmış gibi gelme %15, kalitesiz malzeme %15.
+- Büyük markanın şikâyeti farklı: bebeğin rahat etmemesi (dar, sığ oturma, ayak desteği yok) %21 (KOBİ %5), aldıktan sonra fiyatın 2-3 bin TL düşmesi %13 (KOBİ'de yok), kilit ve katlama %13. Cybex'in 1-2 yıldız payı %21,3.
+- Bebek içindeyken katlanma ya da devrilme şikâyeti %5 (büyük marka %9). 4 Baby Drone Sky'da olumsuzların %10'u başka marka gönderilmesinden (ilanı 9 satıcı satıyor).
+- Olumlu tarafta büyük markada hafiflik (%51) ve uçağa/bagaja sığma (%20), KOBİ'de sağlamlık (%40) ve hediye (%11; Baby Home %23) öne çıkıyor. Olumsuzların bir kısmı aylar sonra "yorumumu güncelliyorum" diye yazılıyor; arabayı hamileyken alanlar sorunun iade süresinden sonra çıktığını yazıyor.
+- Toplama notu: bu oturumda bir ara Trendyol yeni yorum yüklemedi (20'de kaldı); sayfa açılınca 3 sn bekleyip iki kez 10'ar tık tekerlek kaydırması yapınca düzeldi. Masaüstü uygulamasıyla bağlantı iki kez koptu; kopma anında biten bir ürünün kaydı localStorage'a yazılmamıştı, yeniden toplandı.
+- Sözlük tarayıcıda `rv_sozluk_bebek`; araçlar `tools/bebek-arabasi/`.
+
 ### Claude'un uygulama tarayıcısıyla toplama (kullanıcı istemezse dosya indirme YOK)
 - Kod `tools/toplama.js` sitedeki kopyasından (`https://yskirca1.github.io/kobi-yorum-radari/tools/toplama.js`) tarayıcının localStorage'ına `rvcode` olarak yüklenir, indirme satırı çıkarılır; her ürün `localStorage['rv_<id>']` içinde kalır. İndirme yapılınca uygulama kullanıcıdan izin istiyor; kullanıcı bunu istemedi.
 - Trendyol yeni yorumları ancak sayfada **gerçek bir kullanıcı kaydırması** olduktan sonra yüklüyor: her üründe sayfa açılınca küçük bir ekran görüntüsü (scale 0.1) + bir fare tekerleği kaydırması, sonra betik. Claude penceresi ekranda görünür olmalı.
@@ -137,6 +157,8 @@
 
 - 12 Kasım 2026 (asset v=13): ürün sayfasındaki "Alırken dikkat edilmesi gerekenler" başlığı satıcı gözüyle "Bu ürünün zayıf noktaları" oldu; "Genel Markalar" arayüzde "Markasız" olarak gösteriliyor (veri aynı); KOBİ rozeti yazısı kontrast için koyulaştırıldı (#07635b).
 
+- 12 Kasım 2026 yeniden ölçüm (veri değiştirilmedi): Spigen 169079728, Apple Şeffaf 858914651 ve Hacı Şakir 138018415 ürünlerinde Trendyol'un "Önerilen" listesi 1-2 yıldızlı yorum gösteriyor (1, 3, 2 adet), ama puan filtresinin yıldız sayıları bunları saymıyor ve filtrede 1-2 yıldız seçilince 0 yorum geliyor. Başlıktaki yazılı yorum sayısı (29, 18, 42) filtre toplamından (28, 14, 40) büyük. Yani çelişki toplama hatası değil, Trendyol'un iki sayımı arasındaki fark; site bu ürünlerde şikâyet oranını "Hesaplanmadı" gösteriyor.
+
 ## 4. Kararlar ve ilkeler
 
 - **Yasal yaklaşım:** Trendyol'dan otomatik veri çekmek kullanım koşullarına aykırı; proje için tek seferlik, yavaş ve az sayfayla "araştırma örneklemi" olarak toplanıyor. Kişisel veri (yorumcu adı) toplanmıyor. Sunumda sürekli sistem vizyonu yasal kanallarla anlatılacak: satıcının kendi mağazasını bağlaması (Trendyol Partner API), pazar yeri veri ortaklığı, lisanslı veri sağlayıcılar.
@@ -145,7 +167,7 @@
 
 ## 5. Sıradaki adımlar
 
-0. **Sıradaki kategoriler:** termos ✓, sweatshirt ✓ (12 ürün), Bluetooth kulaklık ✓ (12 ürün), şal ✓ (12 ürün), telefon kılıfı ✓ (12 ürün), doğal sabun ✓ (11 ürün), kedi tırmalama ✓ (12 ürün), filtre kahve ✓ (13 ürün). Sırada yakında listesi: kamp sandalyesi, bebek arabası. Hedef: her kategoride 12 ürün. Spor tayt kullanıcı isteğiyle listeden çıkarıldı, siteye eklenmeyecek. Önerilen: Bluetooth kulaklık (elektronik) ve yüz serumu / doğal sabun (kozmetik): ETBİS'e göre en büyük alanlar.
+0. **Sıradaki kategoriler:** termos ✓, sweatshirt ✓ (12 ürün), Bluetooth kulaklık ✓ (12 ürün), şal ✓ (12 ürün), telefon kılıfı ✓ (12 ürün), doğal sabun ✓ (11 ürün), kedi tırmalama ✓ (12 ürün), filtre kahve ✓ (13 ürün), kamp sandalyesi ✓ (12 ürün), bebek arabası ✓ (12 ürün). "Yakında" listesi boşaldı; 10 kategori hazır. Telefon kılıfı 169079728 ve 858914651 ile doğal sabun 138018415'te yıldız dağılımı ile `onerilen_dusuk`/`onerilen_n` tutarsızdı; 12 Kasım'da yeniden toplandı, ham sayılar karar için raporlandı (veri dosyaları değiştirilmedi). Hedef: her kategoride 12 ürün. Spor tayt kullanıcı isteğiyle listeden çıkarıldı, siteye eklenmeyecek. Önerilen: Bluetooth kulaklık (elektronik) ve yüz serumu / doğal sabun (kozmetik): ETBİS'e göre en büyük alanlar.
 1. **50 kategori listesi:** KOBİ'lerin rekabet ettiği, yorumu bol kategoriler. Taslak "yakında" listesi: bebek arabası, telefon kılıfı, doğal sabun, kedi tırmalama tahtası, filtre kahve, kamp sandalyesi. Liste kullanıcıyla netleştirilecek.
 2. **Veri toplama:** 5'erli partiler hâlinde, zamana yayarak. Her kategoride ortak konular (dayanıklılık, beden/ölçü, görselden farklı, kargo/paket, sahtelik, eksik parça, koku, fiyat) + kategoriye özel 2-4 konu.
 3. **Otomasyon (sunuma kadar "canlı MVP"):** bilgisayarda çalışan toplama programı (Python + Playwright), Claude API ile otomatik konu sınıflandırma ve not üretimi (kullanıcının Anthropic API anahtarı gerekir), sonuçların GitHub'a otomatik yüklenmesi, tarihli kayıtlarla zaman içinde değişim takibi.

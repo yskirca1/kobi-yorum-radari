@@ -155,22 +155,38 @@
   "id": "bebek-arabasi",
   "ad": "Bebek arabası",
   "ust": "Anne ve bebek",
-  "durum": "yakinda",
+  "durum": "hazir",
   "esanlam": [
    "bebek arabası",
    "puset",
-   "travel sistem"
-  ]
+   "travel sistem",
+   "kabin boy bebek arabası",
+   "baston puset",
+   "çift yönlü bebek arabası",
+   "bebek arabası seti",
+   "seyahat sistemi"
+  ],
+  "urun": 12,
+  "yorum": 1987,
+  "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1521/product/media/images/prod/QC/20240904/19/d6fa595c-18b7-3523-93cb-4bd2a2d20f23/1_org_zoom.jpg"
  },
  {
   "id": "kamp-sandalyesi",
   "ad": "Kamp sandalyesi",
   "ust": "Outdoor",
-  "durum": "yakinda",
+  "durum": "hazir",
   "esanlam": [
    "kamp sandalyesi",
    "katlanır sandalye",
-   "kamp"
-  ]
+   "kamp",
+   "piknik sandalyesi",
+   "plaj sandalyesi",
+   "kamp koltuğu",
+   "katlanır şezlong",
+   "rejisör sandalye"
+  ],
+  "urun": 12,
+  "yorum": 1658,
+  "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1575/prod/QC/20241002/14/cfc35eb2-4cc9-3350-8fbf-5e79a777d095/1_org_zoom.jpg"
  }
 ]

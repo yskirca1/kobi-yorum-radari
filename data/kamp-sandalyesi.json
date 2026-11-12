@@ -1,0 +1,1117 @@
+{
+ "id": "kamp-sandalyesi",
+ "ad": "Kamp sandalyesi",
+ "ust": "Outdoor",
+ "toplama": "12 Kasım 2026",
+ "kaynak": "Trendyol",
+ "esanlam": [
+  "kamp sandalyesi",
+  "katlanır sandalye",
+  "kamp",
+  "piknik sandalyesi",
+  "plaj sandalyesi",
+  "kamp koltuğu",
+  "katlanır şezlong",
+  "rejisör sandalye"
+ ],
+ "temalar": [
+  {
+   "id": "kirilma",
+   "ad": "Kısa sürede kırıldı, yamuldu",
+   "unlem": "Kısa sürede kırılıyor, yamuluyor!"
+  },
+  {
+   "id": "kumas",
+   "ad": "Kumaşı yırtıldı, dikişi attı",
+   "unlem": "Kumaşı çabuk yırtılıyor!"
+  },
+  {
+   "id": "hasarli",
+   "ad": "Kırık, yamuk, lekeli, kusurlu geldi",
+   "unlem": "Kusurlu ürün gönderiliyor!"
+  },
+  {
+   "id": "rahatsiz",
+   "ad": "Rahat değil, sırtı ve beli ağrıtıyor",
+   "unlem": "Oturumu rahat değil!"
+  },
+  {
+   "id": "kucuk",
+   "ad": "Küçük, dar, çocuk boyu",
+   "unlem": "Göründüğünden küçük!"
+  },
+  {
+   "id": "kilo",
+   "ad": "Kilosunu yazarak şikâyet ediyor",
+   "unlem": "Normal kilodaki kullanıcı bile şikâyetçi!"
+  },
+  {
+   "id": "kapaniyor",
+   "ad": "Kendiliğinden kapanıyor, dengesiz, düşürüyor",
+   "unlem": "Kendiliğinden kapanıp düşürüyor!"
+  },
+  {
+   "id": "yanlis",
+   "ad": "Yanlış ürün / renk / model geldi",
+   "unlem": "Yanlış ürün ya da renk geliyor!"
+  },
+  {
+   "id": "eksik",
+   "ad": "Eksik parça / adet geldi",
+   "unlem": "Parçası ya da adedi eksik geliyor!"
+  },
+  {
+   "id": "bardaklik",
+   "ad": "Bardaklık ve kol plastikleri dandik",
+   "unlem": "Plastik parçaları dandik!"
+  },
+  {
+   "id": "pas",
+   "ad": "Paslanıyor, boyası soyuluyor",
+   "unlem": "Paslanıyor, boyası kalkıyor!"
+  },
+  {
+   "id": "kalitesiz",
+   "ad": "Kalitesiz, dandik malzeme",
+   "unlem": "Malzemesi kalitesiz!"
+  },
+  {
+   "id": "agir",
+   "ad": "Ağır, çok yer kaplıyor, kurması zor",
+   "unlem": "Ağır ve hantal!"
+  },
+  {
+   "id": "paket",
+   "ad": "Özensiz paket, poşetle gönderilmiş",
+   "unlem": "Paketleme özensiz!"
+  },
+  {
+   "id": "kargo",
+   "ad": "Kargo gecikti, ulaşmadı",
+   "unlem": "Kargo gecikiyor!"
+  },
+  {
+   "id": "fiyat",
+   "ad": "Fiyatına değmez, markettekinden farksız",
+   "unlem": "Fiyatına değmiyor!"
+  },
+  {
+   "id": "yorum",
+   "ad": "Yorumlara güvendi, hayal kırıklığı",
+   "unlem": "Yorumlar beklentiyi yükseltiyor!"
+  }
+ ],
+ "olumlu_konular": [
+  {
+   "id": "rahat",
+   "ad": "Rahat, konforlu"
+  },
+  {
+   "id": "saglam",
+   "ad": "Sağlam, kaliteli"
+  },
+  {
+   "id": "hafif",
+   "ad": "Hafif, kolay katlanıyor ve taşınıyor"
+  },
+  {
+   "id": "bardaklik",
+   "ad": "Bardaklık, yan sehpa kullanışlı"
+  },
+  {
+   "id": "fiyat",
+   "ad": "Fiyatı uygun"
+  },
+  {
+   "id": "paket",
+   "ad": "Özenli paket, hızlı kargo"
+  },
+  {
+   "id": "yer",
+   "ad": "Balkon, bahçe, piknik, plaj"
+  },
+  {
+   "id": "hediye",
+   "ad": "Ailesine / hediye aldı"
+  },
+  {
+   "id": "ibadet",
+   "ad": "Namaz, cami, umre için"
+  },
+  {
+   "id": "tekrar",
+   "ad": "Uzun süredir kullanıyor, tekrar aldı"
+  },
+  {
+   "id": "gorsel",
+   "ad": "Görseldeki gibi, şık"
+  }
+ ],
+ "oneriler": [
+  {
+   "baslik": "Dayanıklılığı kanıtla: taşıma kapasitesini yaz",
+   "metin": "KOBİ ürünlerinde kısa sürede kırılma ve yamulma şikâyetinin oranı %28, büyük markalarda %6. Kırılan sandalye yorumlarında kullanıcılar sık sık 55-90 kg olduğunu yazıyor. Decathlon'un yaptığı gibi taşıma kapasitesini (110 kg, 150 kg), profil kalınlığını ve kumaş cinsini ilanda açıkça yazmak ve buna uygun malzeme kullanmak en büyük şikâyetin karşılığı."
+  },
+  {
+   "baslik": "Kalite kontrol: kusurlu gönderme",
+   "metin": "Kırık, yamuk, yırtık, lekeli ya da kullanılmış gibi gelen ürün şikâyetinin oranı %22 (KOBİ %23, büyük marka %16). Naylon poşetle gönderilen sandalyeler kargoda eziliyor. Göndermeden önce açıp kontrol etmek ve kutuyla göndermek bu şikâyeti doğrudan azaltır."
+  },
+  {
+   "baslik": "Plastik parçalar zayıf halka",
+   "metin": "KOBİ sandalyelerinde bardaklık ve kol plastiklerinin kırıldığı şikâyetinin oranı %10, büyük markalarda %2. Yan bardaklık müşterinin sevdiği bir detay (Moniev Natura'nın önerilen yorumlarının %11'i övüyor); bu parçanın sağlam olması ürünün tamamının sağlam algılanmasını sağlar."
+  },
+  {
+   "baslik": "Siparişi doğru hazırla: renk ve adet",
+   "metin": "Yanlış ürün ya da renk şikâyetinin oranı %7, eksik adet ya da parça %6. Büyük markalarda eksik adet %18 (Koçtaş 2'li %26), Eksiksepeti setinde yanlış renk %30. Çoklu adet ve renk seçenekli siparişlerde paketlemeden önce son kontrol, müşterinin \"aynı renk gelmedi\" şikâyetini önler."
+  },
+  {
+   "baslik": "Market sandalyesiyle kıyaslanıyorsun",
+   "metin": "Fiyatına değmediği ya da \"markette daha ucuzu var\" şikâyetinin oranı %11. Alıcılar ürünü BİM, A101 ve Migros'taki katlanır sandalyelerle karşılaştırıyor. Fiyat farkını haklı çıkaran özellik (kalın profil, taşıma kapasitesi, kilitli mekanizma, sağlam bardaklık) ilanda görünür olmalı."
+  }
+ ],
+ "urunler": [
+  {
+   "id": "816485347",
+   "kisa": "Quechua Katlanır Mavi",
+   "marka": "Decathlon",
+   "ad": "Decathlon Quechua Katlanır Kamp Sandalyesi, mavi, 110 kg",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1575/prod/QC/20241002/14/cfc35eb2-4cc9-3350-8fbf-5e79a777d095/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/decathlon/quechua-katlanir-kamp-sandalye-mavi-110kg-p-816485347",
+   "yazili": 408,
+   "yildiz": [
+    13,
+    5,
+    9,
+    23,
+    358
+   ],
+   "ort": 4.74,
+   "onerilen_ort": 5,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 18,
+   "sikayet": {
+    "kirilma": 0,
+    "kumas": 0.06,
+    "hasarli": 0.11,
+    "rahatsiz": 0.22,
+    "kucuk": 0,
+    "kilo": 0,
+    "kapaniyor": 0,
+    "yanlis": 0,
+    "eksik": 0.17,
+    "bardaklik": 0,
+    "pas": 0,
+    "kalitesiz": 0,
+    "agir": 0,
+    "paket": 0.11,
+    "kargo": 0.17,
+    "fiyat": 0.11,
+    "yorum": 0
+   },
+   "olumlu": {
+    "rahat": 0.21,
+    "saglam": 0.64,
+    "hafif": 0.09,
+    "bardaklik": 0,
+    "fiyat": 0.09,
+    "paket": 0.25,
+    "yer": 0.02,
+    "hediye": 0.02,
+    "ibadet": 0,
+    "tekrar": 0.07,
+    "gorsel": 0.11
+   },
+   "dikkat": [
+    "1-2 yıldız oranı %4,4 ile kategorinin en düşüğü; 18 olumsuz yorumda kırılma şikâyeti yok.",
+    "Olumsuz yorumların %22'si oturuştan: sırtın dik olduğu, arkaya yatmadığı, uzun oturuşta beli ağrıttığı yazılıyor.",
+    "Eksik adet ya da kolsuz model gönderimi (%17) ve geç teslimat (%17) şikâyeti var; ürünü 7 satıcı satıyor."
+   ],
+   "ders": [
+    "Büyük marka kamp sandalyesinde şikâyet ürünün dayanıklılığına değil teslimata ve oturma açısına gidiyor; önerilen yorumların %64'ü sağlamlığı övüyor."
+   ],
+   "alinti": [
+    {
+     "konu": "rahatsiz",
+     "yildiz": 1,
+     "metin": "Hiç rahat bir sandalye değil. Bimden aldıklarım bile daha rahat. Bir saat oturunca beliniz ağrıyor"
+    },
+    {
+     "konu": "eksik",
+     "yildiz": 1,
+     "metin": "Üç ürün almama rağmen iki ürün teslim edildi"
+    },
+    {
+     "konu": "kargo",
+     "yildiz": 1,
+     "metin": "Ertesi gün teslim diye satılan ürün 5 günde teslim edildi"
+    }
+   ]
+  },
+  {
+   "id": "816491110",
+   "kisa": "Quechua XL Bej 150 kg",
+   "marka": "Decathlon",
+   "ad": "Decathlon Quechua Katlanabilir Kamp Sandalyesi XL, bej, 150 kg",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1576/prod/QC/20241002/14/e76b8c30-ae61-3974-ac2f-e9f2953f78d2/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/decathlon/quechua-katlanabilir-kamp-sandalyesi-bej-xl-boy-150kg-p-816491110",
+   "yazili": 174,
+   "yildiz": [
+    5,
+    3,
+    4,
+    13,
+    149
+   ],
+   "ort": 4.71,
+   "onerilen_ort": 4.97,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 8,
+   "sikayet": {
+    "kirilma": 0,
+    "kumas": 0,
+    "hasarli": 0.13,
+    "rahatsiz": 0.25,
+    "kucuk": 0.13,
+    "kilo": 0.13,
+    "kapaniyor": 0,
+    "yanlis": 0.13,
+    "eksik": 0,
+    "bardaklik": 0.13,
+    "pas": 0,
+    "kalitesiz": 0,
+    "agir": 0,
+    "paket": 0.13,
+    "kargo": 0,
+    "fiyat": 0.13,
+    "yorum": 0
+   },
+   "olumlu": {
+    "rahat": 0.39,
+    "saglam": 0.6,
+    "hafif": 0.01,
+    "bardaklik": 0,
+    "fiyat": 0.07,
+    "paket": 0.06,
+    "yer": 0.06,
+    "hediye": 0.04,
+    "ibadet": 0,
+    "tekrar": 0.03,
+    "gorsel": 0.1
+   },
+   "dikkat": [
+    "Az olumsuz yorum (8); ikisi sırt ve bel kısmının rahatsız olduğunu yazıyor.",
+    "Kolları sünmüş, lekeli ya da kullanılmış gibi gelen ürün şikâyetleri var."
+   ],
+   "ders": [
+    "150 kg taşıyan XL modelde kırılma şikâyeti yok; önerilen yorumların %39'u rahatlığı övüyor (kategorinin en yükseği)."
+   ],
+   "alinti": [
+    {
+     "konu": "rahatsiz",
+     "yildiz": 2,
+     "metin": "HİÇ BEĞENMEDİM KALİTELİ RAHAT OLUR DİYE DÜŞÜNMÜŞTÜM AMA SIRT RESMEN KAMBUR OLUYOR"
+    },
+    {
+     "konu": "hasarli",
+     "yildiz": 2,
+     "metin": "Kolu lekeli geldi özensiz"
+    }
+   ]
+  },
+  {
+   "id": "1047715589",
+   "kisa": "Koçtaş Deluks Ekru",
+   "marka": "Koçtaş",
+   "ad": "Koçtaş Deluks Kamp Sandalyesi, ekru",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1980/prod/QC_ENRICHMENT/20261016/14/f9d72448-d7c1-3d6f-b214-a222db7f3b03/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/koctas/deluks-kamp-sandalyesi-ekru-p-1047715589",
+   "yazili": 167,
+   "yildiz": [
+    20,
+    2,
+    7,
+    22,
+    116
+   ],
+   "ort": 4.27,
+   "onerilen_ort": 4.92,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 22,
+   "sikayet": {
+    "kirilma": 0.14,
+    "kumas": 0.05,
+    "hasarli": 0.14,
+    "rahatsiz": 0,
+    "kucuk": 0,
+    "kilo": 0.05,
+    "kapaniyor": 0.05,
+    "yanlis": 0.23,
+    "eksik": 0.18,
+    "bardaklik": 0,
+    "pas": 0,
+    "kalitesiz": 0.14,
+    "agir": 0.09,
+    "paket": 0.05,
+    "kargo": 0.09,
+    "fiyat": 0.09,
+    "yorum": 0.05
+   },
+   "olumlu": {
+    "rahat": 0.32,
+    "saglam": 0.45,
+    "hafif": 0.17,
+    "bardaklik": 0.02,
+    "fiyat": 0.07,
+    "paket": 0.1,
+    "yer": 0.05,
+    "hediye": 0.03,
+    "ibadet": 0,
+    "tekrar": 0.02,
+    "gorsel": 0.05
+   },
+   "dikkat": [
+    "Olumsuz yorumların %23'ü yanlış ürün ya da renkten: ekru yerine yeşil, sandalye yerine masa gönderilmiş.",
+    "Eksik adet ya da parça oranı %18: iki sandalyeden biri ya da yastık gelmemiş.",
+    "Kılıfın iskelete takılmasının zor olduğu ve ilk kullanımda kırıldığı yazılıyor."
+   ],
+   "ders": [
+    "Büyük perakende markasında da 1-2 yıldızların önemli kısmı sipariş hazırlamadan (yanlış renk, eksik adet); ürünün kendisi önerilen yorumların %45'inde sağlam bulunuyor."
+   ],
+   "alinti": [
+    {
+     "konu": "yanlis",
+     "yildiz": 1,
+     "metin": "ekru aldım yeşil geldi"
+    },
+    {
+     "konu": "eksik",
+     "yildiz": 1,
+     "metin": "Yastık birisinden çıkmadı tedarik edilmesini istiyorum"
+    },
+    {
+     "konu": "hasarli",
+     "yildiz": 1,
+     "metin": "Bu kadar para verip teşhir ürünü gönderiyorsunuz kirli bi şekilde"
+    }
+   ]
+  },
+  {
+   "id": "1117395473",
+   "kisa": "Koçtaş 2'li Kamp Sandalyesi",
+   "marka": "Koçtaş",
+   "ad": "Koçtaş 2'li Kamp Sandalyesi, bordo",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1980/prod/QC_ENRICHMENT/20261016/14/5c877b4f-edf4-3c74-81ab-9a0c2c981c79/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/koctas/2-li-kamp-sandalyesi-p-1117395473",
+   "yazili": 163,
+   "yildiz": [
+    14,
+    5,
+    5,
+    10,
+    129
+   ],
+   "ort": 4.44,
+   "onerilen_ort": 4.96,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 19,
+   "sikayet": {
+    "kirilma": 0.05,
+    "kumas": 0.05,
+    "hasarli": 0.26,
+    "rahatsiz": 0.11,
+    "kucuk": 0.11,
+    "kilo": 0.05,
+    "kapaniyor": 0,
+    "yanlis": 0,
+    "eksik": 0.26,
+    "bardaklik": 0,
+    "pas": 0,
+    "kalitesiz": 0,
+    "agir": 0,
+    "paket": 0.11,
+    "kargo": 0.05,
+    "fiyat": 0,
+    "yorum": 0
+   },
+   "olumlu": {
+    "rahat": 0.1,
+    "saglam": 0.48,
+    "hafif": 0.03,
+    "bardaklik": 0,
+    "fiyat": 0.11,
+    "paket": 0.21,
+    "yer": 0.06,
+    "hediye": 0.02,
+    "ibadet": 0,
+    "tekrar": 0.03,
+    "gorsel": 0.17
+   },
+   "dikkat": [
+    "Olumsuz yorumların %26'sı eksik adetten: dört sandalye sipariş edilip üç ya da iki tane gelmiş.",
+    "Kusurlu, yırtık ya da kılıfı sökük gelme oranı da %26.",
+    "Uzun boylu ve kilolu kullanıcılar küçük ve rahatsız buluyor (%11)."
+   ],
+   "ders": [
+    "Çoklu adetle sipariş edilen sandalyede eksik adet olumsuzların %26'sı; adet ve renk kontrolü bu şikâyetin doğrudan karşılığı."
+   ],
+   "alinti": [
+    {
+     "konu": "eksik",
+     "yildiz": 1,
+     "metin": "4 adet sipariş verdim 3 adet geldi iletişime geçebilir misiniz"
+    },
+    {
+     "konu": "hasarli",
+     "yildiz": 2,
+     "metin": "abi her şey iyi güzelde kılıfını niye sökük gönderiyorsunuz?"
+    },
+    {
+     "konu": "rahatsiz",
+     "yildiz": 2,
+     "metin": "1,80 boy 93 kiloyum maalesef rahat değil biraz küçük"
+    }
+   ]
+  },
+  {
+   "id": "129882972",
+   "kisa": "Moniev Natura 2'li Siyah",
+   "marka": "Moniev",
+   "ad": "Moniev Natura 2 Adet Katlanır Kamp Sandalyesi, bardaklıklı, siyah",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1000450/product/media/images/prod/PIM/20260922/13/e53f2179-b64d-4ebf-80ff-9c00573e9688/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/moniev/natura-2-adet-kamp-sandalyesi-katlanir-piknik-sandalye-dikdortgen-bardaklikli-siyah-p-129882972",
+   "yazili": 2423,
+   "yildiz": [
+    157,
+    52,
+    131,
+    283,
+    1800
+   ],
+   "ort": 4.45,
+   "onerilen_ort": 4.92,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "kirilma": 0.27,
+    "kumas": 0.04,
+    "hasarli": 0.25,
+    "rahatsiz": 0.07,
+    "kucuk": 0.01,
+    "kilo": 0.07,
+    "kapaniyor": 0.08,
+    "yanlis": 0,
+    "eksik": 0.06,
+    "bardaklik": 0.14,
+    "pas": 0.03,
+    "kalitesiz": 0.23,
+    "agir": 0.04,
+    "paket": 0.04,
+    "kargo": 0.04,
+    "fiyat": 0.18,
+    "yorum": 0.03
+   },
+   "olumlu": {
+    "rahat": 0.28,
+    "saglam": 0.63,
+    "hafif": 0.02,
+    "bardaklik": 0.11,
+    "fiyat": 0.14,
+    "paket": 0.39,
+    "yer": 0.07,
+    "hediye": 0.01,
+    "ibadet": 0,
+    "tekrar": 0.04,
+    "gorsel": 0.06
+   },
+   "dikkat": [
+    "Kategorinin en çok yorum alan ürünü (2.423 yazılı yorum); 1-2 yıldız oranı %8,6.",
+    "Olumsuz yorumların %27'si kısa sürede kırılma ve yamulmadan; 55-70 kg kullanıcıların sandalyesinin çöktüğü yazılıyor.",
+    "Kusurlu gelme oranı %25: ayağı eğri, kol vidası kırık, kumaşı yırtık.",
+    "Bardaklık ve kol plastiklerinin dandik olduğu yazılıyor (%14); market sandalyesiyle aynı kalitede bulunuyor."
+   ],
+   "ders": [
+    "Yan bardaklık ve sehpa satışı getiren detay (önerilen yorumların %11'i övüyor); aynı plastik parça olumsuzlarda kırık ya da sallantılı diye anılıyor."
+   ],
+   "alinti": [
+    {
+     "konu": "kirilma",
+     "yildiz": 1,
+     "metin": "Çok güzel ve sağlam bir ürün. 5 ay sonra güncelleme: ürün yamuldu maalesef ve çöp oldu 55 kiloyum başka da bi şey demiyorum."
+    },
+    {
+     "konu": "hasarli",
+     "yildiz": 1,
+     "metin": "bir tanesinin plastik ayak kısmı kırık geldi yapıştırmaya çalıştım ama tutmadı onun dışında ürün sağlama benziyor"
+    },
+    {
+     "konu": "fiyat",
+     "yildiz": 2,
+     "metin": "Çok kaliteli değil. 3 harfli magzalarda aynı kalite daha ucuza alınabilir."
+    }
+   ]
+  },
+  {
+   "id": "208518948",
+   "kisa": "Moniev Natura 2'li Gri",
+   "marka": "Moniev",
+   "ad": "Moniev Natura 2 Adet Katlanır Kamp Sandalyesi, bardaklıklı, gri",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1000450/product/media/images/prod/PIM/20260922/13/117db672-d62e-4510-afe8-2f3f89518ead/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/moniev/natura-2-adet-kamp-sandalyesi-katlanir-piknik-sandalye-dikdortgen-bardaklikli-gri-p-208518948",
+   "yazili": 649,
+   "yildiz": [
+    56,
+    18,
+    50,
+    72,
+    453
+   ],
+   "ort": 4.31,
+   "onerilen_ort": 4.95,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 74,
+   "sikayet": {
+    "kirilma": 0.32,
+    "kumas": 0.2,
+    "hasarli": 0.24,
+    "rahatsiz": 0.01,
+    "kucuk": 0.03,
+    "kilo": 0.09,
+    "kapaniyor": 0.05,
+    "yanlis": 0,
+    "eksik": 0.04,
+    "bardaklik": 0.12,
+    "pas": 0.03,
+    "kalitesiz": 0.18,
+    "agir": 0,
+    "paket": 0.14,
+    "kargo": 0.04,
+    "fiyat": 0.11,
+    "yorum": 0.01
+   },
+   "olumlu": {
+    "rahat": 0.23,
+    "saglam": 0.57,
+    "hafif": 0.04,
+    "bardaklik": 0.06,
+    "fiyat": 0.13,
+    "paket": 0.28,
+    "yer": 0.03,
+    "hediye": 0.01,
+    "ibadet": 0,
+    "tekrar": 0.04,
+    "gorsel": 0.09
+   },
+   "dikkat": [
+    "Aynı modelin siyahına göre 1-2 yıldız oranı daha yüksek (%11,4; siyahta %8,6).",
+    "Kırılma ve yamulma oranı %32; kumaşın ya da dikişin ilk kullanımlarda yırtılması %20 (siyahta %4).",
+    "Paketleme şikâyeti %14: naylon poşet içinde, demiri yamuk gelen sandalyeler."
+   ],
+   "ders": [
+    "Aynı modelin renkleri ayrı ilanda ayrı sonuç veriyor; gri modelde kumaş ve dikiş şikâyeti siyahın 5 katı."
+   ],
+   "alinti": [
+    {
+     "konu": "kirilma",
+     "yildiz": 1,
+     "metin": "alalı 2 gün oldu az önce balkonda otururken bir anda yamuldu ve düştüm tavsiye etmem yazık verdiğim paraya"
+    },
+    {
+     "konu": "kumas",
+     "yildiz": 1,
+     "metin": "ürünü alıp ikinci kez kullandığımda dikişleri hemen açıldı ve söküldü kaliteli olarak almıştım ama bu ücrete değmezmiş"
+    },
+    {
+     "konu": "hasarli",
+     "yildiz": 1,
+     "metin": "iki defa sipariş ettim ikisinde de ürünler kusurlu gönderildi alacakların bilgisine"
+    }
+   ]
+  },
+  {
+   "id": "655222185",
+   "kisa": "Moniev Litus Şezlong Gri",
+   "marka": "Moniev",
+   "ad": "Moniev Litus Katlanır Şezlong ve Kamp Sandalyesi, gri",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1000450/product/media/images/prod/PIM/20260922/13/00a9619c-f0af-44f4-9d7b-1c4cbb122284/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/moniev/litus-katlanir-sezlong-plaj-sezlongu-portatif-kamp-sandalyesi-ve-bahce-sezlongu-gri-p-655222185",
+   "yazili": 426,
+   "yildiz": [
+    39,
+    16,
+    34,
+    46,
+    291
+   ],
+   "ort": 4.25,
+   "onerilen_ort": 4.96,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 55,
+   "sikayet": {
+    "kirilma": 0.38,
+    "kumas": 0.11,
+    "hasarli": 0.16,
+    "rahatsiz": 0.13,
+    "kucuk": 0.04,
+    "kilo": 0.11,
+    "kapaniyor": 0.15,
+    "yanlis": 0.02,
+    "eksik": 0.02,
+    "bardaklik": 0.15,
+    "pas": 0.04,
+    "kalitesiz": 0.24,
+    "agir": 0.09,
+    "paket": 0.02,
+    "kargo": 0.02,
+    "fiyat": 0.05,
+    "yorum": 0.04
+   },
+   "olumlu": {
+    "rahat": 0.2,
+    "saglam": 0.36,
+    "hafif": 0.08,
+    "bardaklik": 0,
+    "fiyat": 0.1,
+    "paket": 0.27,
+    "yer": 0.11,
+    "hediye": 0.05,
+    "ibadet": 0,
+    "tekrar": 0.04,
+    "gorsel": 0.07
+   },
+   "dikkat": [
+    "Kırılma oranı %38 ile kategorinin en yükseği: kol dayamaları birkaç kullanımda eğilip kırılıyor.",
+    "Oturur konumdayken aniden açılıp kullanıcıyı düşürdüğü yazılıyor (%15); yaşlılar için tehlikeli bulunuyor.",
+    "Oturup kalkmanın zor olduğu, demir bağlantıların bacağı kestiği yazılıyor."
+   ],
+   "ders": [
+    "Sandalye ve şezlong bir arada ilgi çekiyor; mekanizma kilitlenmezse şikâyet konforu değil güvenliği konu alıyor."
+   ],
+   "alinti": [
+    {
+     "konu": "kapaniyor",
+     "yildiz": 1,
+     "metin": "Ürün cok kötü ayakları tutmuyor koltuk olarak kullandığımızda aniden kapanıp insanı yere düşürebiliyor"
+    },
+    {
+     "konu": "kirilma",
+     "yildiz": 1,
+     "metin": "Şezlongum 4. Kullanımda kolundaki silikon yırtıldı ve altındaki plastik kırıldı."
+    },
+    {
+     "konu": "hasarli",
+     "yildiz": 1,
+     "metin": "yorumlara güvenerek aldıĝım bir ürün ama kumaşı lekeli ve demir kısımları defolu geldi"
+    }
+   ]
+  },
+  {
+   "id": "70777674",
+   "kisa": "Goocamp XL Kalın Profil Mavi",
+   "marka": "Goocamp",
+   "ad": "Goocamp XL Kalın Profil Kamp Sandalyesi, mavi",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1649/prod/QC/20250310/18/12a60861-a9be-3b56-b595-d0b18bdaeb50/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/dora/goocamp-camp-kamp-sandalyesi-kamp-koltugu-xl-kalin-profil-mavi-p-70777674",
+   "yazili": 284,
+   "yildiz": [
+    40,
+    6,
+    23,
+    31,
+    184
+   ],
+   "ort": 4.1,
+   "onerilen_ort": 4.92,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 46,
+   "sikayet": {
+    "kirilma": 0.15,
+    "kumas": 0.11,
+    "hasarli": 0.2,
+    "rahatsiz": 0.07,
+    "kucuk": 0.02,
+    "kilo": 0.07,
+    "kapaniyor": 0,
+    "yanlis": 0.26,
+    "eksik": 0,
+    "bardaklik": 0.09,
+    "pas": 0.02,
+    "kalitesiz": 0.11,
+    "agir": 0.02,
+    "paket": 0.04,
+    "kargo": 0.09,
+    "fiyat": 0.15,
+    "yorum": 0
+   },
+   "olumlu": {
+    "rahat": 0.37,
+    "saglam": 0.54,
+    "hafif": 0,
+    "bardaklik": 0.01,
+    "fiyat": 0.04,
+    "paket": 0.22,
+    "yer": 0.09,
+    "hediye": 0.06,
+    "ibadet": 0,
+    "tekrar": 0.05,
+    "gorsel": 0.06
+   },
+   "dikkat": [
+    "Olumsuz yorumların %26'sı görseldekinden farklı ürün gelmesinden: XL kalın profil yerine ince ya da normal boy sandalye.",
+    "Ürünü 17 farklı satıcı satıyor; bir yorumda aynı ürünün başka satıcıdan beğenilerek alındığı, bu satıcıdan farklı renk geldiği yazılıyor.",
+    "Kumaşın demirden ayrılması ve birkaç ayda dağılma (%15) şikâyeti var."
+   ],
+   "ders": [
+    "Önerilen yorumların %37'si rahatlığı övüyor; 1-2 yıldızlı yorumlarda ise en sık konu ilandakinden ucuz bir modelin gönderilmesi. Çok satıcılı ilanda gönderilen ürünün aynı olması puanı doğrudan etkiliyor."
+   ],
+   "alinti": [
+    {
+     "konu": "yanlis",
+     "yildiz": 1,
+     "metin": "İndirime girmiş ama görseldeki ürün gönderilmedi. Daha ucuz olan bir model gönderildi. İade."
+    },
+    {
+     "konu": "hasarli",
+     "yildiz": 1,
+     "metin": "Ürün göndermeden once kalite kontrol yapmiyormusunuz yırtık geldi iade ile uğraşmak zorunda mıyız"
+    },
+    {
+     "konu": "kirilma",
+     "yildiz": 1,
+     "metin": "ürünü 4 kere zor kullandım kırıldı 120 kg a kadar garanti veriyorlar ama yalan"
+    }
+   ]
+  },
+  {
+   "id": "121658522",
+   "kisa": "Shadow Katlanabilir Lacivert",
+   "marka": "Shadow",
+   "ad": "Shadow Katlanabilir Kamp Sandalyesi, taşıma çantalı, lacivert",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1748/prod/QC_ENRICHMENT/20250904/10/6a2a4921-565f-3932-8858-24cb22e6deba/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/shadow/lacivert-katlanabilir-kamp-sandalyesi-piknik-sandalyesi-plaj-sandalyesi-tasima-cantali-p-121658522",
+   "yazili": 263,
+   "yildiz": [
+    22,
+    7,
+    9,
+    36,
+    189
+   ],
+   "ort": 4.38,
+   "onerilen_ort": 4.89,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 29,
+   "sikayet": {
+    "kirilma": 0.34,
+    "kumas": 0.14,
+    "hasarli": 0.28,
+    "rahatsiz": 0.03,
+    "kucuk": 0,
+    "kilo": 0.1,
+    "kapaniyor": 0,
+    "yanlis": 0.03,
+    "eksik": 0.03,
+    "bardaklik": 0,
+    "pas": 0.03,
+    "kalitesiz": 0.1,
+    "agir": 0,
+    "paket": 0.07,
+    "kargo": 0.03,
+    "fiyat": 0.1,
+    "yorum": 0
+   },
+   "olumlu": {
+    "rahat": 0.14,
+    "saglam": 0.57,
+    "hafif": 0,
+    "bardaklik": 0,
+    "fiyat": 0.17,
+    "paket": 0.22,
+    "yer": 0.02,
+    "hediye": 0.04,
+    "ibadet": 0,
+    "tekrar": 0.02,
+    "gorsel": 0.08
+   },
+   "dikkat": [
+    "Olumsuz yorumların %34'ü birkaç kullanımda yamulma ve kırılmadan; 56-72 kg kullanıcılar yazıyor.",
+    "Yırtık, kirli ya da kullanılmış gibi gelme oranı %28; kutuya konmadan gönderildiği yazılıyor.",
+    "Kumaşın kolay yırtılması %14."
+   ],
+   "ders": [
+    "Ucuz katlanır sandalyede alıcı ürünü market sandalyesiyle kıyaslıyor; önerilen yorumların %17'si fiyatı övüyor, ama olumsuzların üçte biri birkaç kullanımda kırılmadan."
+   ],
+   "alinti": [
+    {
+     "konu": "kirilma",
+     "yildiz": 1,
+     "metin": "kısa sürede yamuldu oturan en kilolu kişi 72 kg lik benim"
+    },
+    {
+     "konu": "kumas",
+     "yildiz": 1,
+     "metin": "2 kullanmaya yırtıldı kesinlikle almayın. Paranız çöpe gider"
+    },
+    {
+     "konu": "hasarli",
+     "yildiz": 1,
+     "metin": "Ürünün çantası yırtık geldi"
+    }
+   ]
+  },
+  {
+   "id": "43151156",
+   "kisa": "Hastunç Katlanır Siyah",
+   "marka": "Hastunç",
+   "ad": "Hastunç Katlanır Kamp ve Piknik Sandalyesi, siyah",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1382/product/media/images/prod/QC/20240625/10/434dba67-0269-3ef3-b9f0-dff6c6c63a73/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/hastunc/katlanir-kamp-ve-piknik-sandalyesi-siyah-portatif-sandalye-p-43151156",
+   "yazili": 249,
+   "yildiz": [
+    25,
+    7,
+    23,
+    27,
+    167
+   ],
+   "ort": 4.22,
+   "onerilen_ort": 4.96,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 32,
+   "sikayet": {
+    "kirilma": 0.13,
+    "kumas": 0,
+    "hasarli": 0.25,
+    "rahatsiz": 0.13,
+    "kucuk": 0.31,
+    "kilo": 0.06,
+    "kapaniyor": 0.06,
+    "yanlis": 0.03,
+    "eksik": 0.06,
+    "bardaklik": 0,
+    "pas": 0.09,
+    "kalitesiz": 0.09,
+    "agir": 0,
+    "paket": 0.06,
+    "kargo": 0.09,
+    "fiyat": 0.03,
+    "yorum": 0.03
+   },
+   "olumlu": {
+    "rahat": 0.16,
+    "saglam": 0.49,
+    "hafif": 0.27,
+    "bardaklik": 0,
+    "fiyat": 0.1,
+    "paket": 0.18,
+    "yer": 0.13,
+    "hediye": 0.21,
+    "ibadet": 0.1,
+    "tekrar": 0.04,
+    "gorsel": 0.09
+   },
+   "dikkat": [
+    "Olumsuz yorumların %31'i boyuttan: \"çocuk sandalyesi gibi\", yetişkine küçük ve rahatsız.",
+    "Boyası soyulmuş, ezik ya da defolu gelme oranı %25.",
+    "Bağlantı yerlerinden çatlama ve yamulma yazılıyor (%13)."
+   ],
+   "ders": [
+    "Küçük boyut hem övülüyor hem şikâyet ediliyor: dar mutfak, balkon ve namaz için alanlar seviyor (önerilen yorumların %10'u cami, namaz ya da umreden söz ediyor), kamp sandalyesi bekleyenler küçük buluyor. Ölçüyü ilanda net yazmak beklentiyi doğru kurar."
+   ],
+   "alinti": [
+    {
+     "konu": "kucuk",
+     "yildiz": 1,
+     "metin": "O kadar küçük ki 11 yaşındaki kızıma bile küçük. Hangi arzın talebi bu anlayamadım"
+    },
+    {
+     "konu": "hasarli",
+     "yildiz": 2,
+     "metin": "ürün boyaları soyulmuş demir kısmı ezilmiş halde geldi iade edeceğim"
+    },
+    {
+     "konu": "kirilma",
+     "yildiz": 1,
+     "metin": "80 kg birisiyim oturdugumda bacakları ikiye ayrılacak gibi bağlantı mekanizmasi ayakları yamuldu hemen"
+    }
+   ]
+  },
+  {
+   "id": "899676379",
+   "kisa": "Eksiksepeti 2'li Mavi",
+   "marka": "Eksiksepeti",
+   "ad": "Eksiksepeti 2 Adet Katlanır Kamp Sandalyesi, taşıma çantalı, mavi",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1788/prod/QC_ENRICHMENT/20251113/17/9171cd06-67d6-3c98-bffc-e76599c12548/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/eksiksepeti/2-adet-katlanir-kamp-sandalyesi-tasima-cantali-bardaklikli-mavi-p-899676379",
+   "yazili": 187,
+   "yildiz": [
+    38,
+    5,
+    12,
+    27,
+    105
+   ],
+   "ort": 3.83,
+   "onerilen_ort": 4.85,
+   "onerilen_dusuk": 1,
+   "onerilen_n": 100,
+   "ornek_dusuk": 43,
+   "sikayet": {
+    "kirilma": 0.37,
+    "kumas": 0.07,
+    "hasarli": 0.14,
+    "rahatsiz": 0.05,
+    "kucuk": 0,
+    "kilo": 0.05,
+    "kapaniyor": 0,
+    "yanlis": 0.3,
+    "eksik": 0.02,
+    "bardaklik": 0.09,
+    "pas": 0,
+    "kalitesiz": 0.12,
+    "agir": 0.02,
+    "paket": 0.02,
+    "kargo": 0.02,
+    "fiyat": 0.09,
+    "yorum": 0
+   },
+   "olumlu": {
+    "rahat": 0.06,
+    "saglam": 0.51,
+    "hafif": 0.02,
+    "bardaklik": 0,
+    "fiyat": 0.12,
+    "paket": 0.33,
+    "yer": 0.04,
+    "hediye": 0,
+    "ibadet": 0,
+    "tekrar": 0.02,
+    "gorsel": 0.05
+   },
+   "dikkat": [
+    "1-2 yıldız oranı %23,0 ile kategorinin en yükseği.",
+    "Olumsuz yorumların %37'si ilk kullanımlarda kırılmadan: plastik bağlantılar ve vidalar ayrılıyor.",
+    "Yanlış renk gelme oranı %30: mavi yerine lacivert ya da yeşil, sandalye ve kılıf farklı renk."
+   ],
+   "ders": [
+    "Renk seçenekli çoklu sette yanlış renk olumsuzların yaklaşık üçte biri; \"sax mavi\" gibi tonların fotoğrafta da doğru görünmesi gerekiyor."
+   ],
+   "alinti": [
+    {
+     "konu": "kirilma",
+     "yildiz": 1,
+     "metin": "ürün aşırı kalitesiz 2 kullanmaya kırıldı. ucuz etin yahnisi yenmez."
+    },
+    {
+     "konu": "yanlis",
+     "yildiz": 1,
+     "metin": "istediğim ürün gelmedi farklı bir renk ürün geldi."
+    },
+    {
+     "konu": "hasarli",
+     "yildiz": 1,
+     "metin": "Ürünlerden birinin üzerinde delik var, iade"
+    }
+   ]
+  },
+  {
+   "id": "836348315",
+   "kisa": "Funky Chairs Tenteli Haki",
+   "marka": "Funky Chairs",
+   "ad": "Funky Chairs Tenteli Gölgelikli Kamp Sandalyesi, haki",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1928/prod/QC_ENRICHMENT/20260515/12/b7b3c06e-c727-32f4-b5c4-64c8e7411040/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/funky-chairs/tenteli-golgelikli-kamp-sandalyesi-haki-p-836348315",
+   "yazili": 191,
+   "yildiz": [
+    7,
+    5,
+    9,
+    16,
+    154
+   ],
+   "ort": 4.6,
+   "onerilen_ort": 5,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 12,
+   "sikayet": {
+    "kirilma": 0.17,
+    "kumas": 0.25,
+    "hasarli": 0.5,
+    "rahatsiz": 0,
+    "kucuk": 0,
+    "kilo": 0,
+    "kapaniyor": 0,
+    "yanlis": 0,
+    "eksik": 0.08,
+    "bardaklik": 0,
+    "pas": 0.08,
+    "kalitesiz": 0.17,
+    "agir": 0.17,
+    "paket": 0.08,
+    "kargo": 0,
+    "fiyat": 0.17,
+    "yorum": 0
+   },
+   "olumlu": {
+    "rahat": 0.19,
+    "saglam": 0.54,
+    "hafif": 0.09,
+    "bardaklik": 0.04,
+    "fiyat": 0.08,
+    "paket": 0.15,
+    "yer": 0.12,
+    "hediye": 0.06,
+    "ibadet": 0,
+    "tekrar": 0.02,
+    "gorsel": 0.07
+   },
+   "dikkat": [
+    "Az olumsuz yorum (12); yarısı kusurlu ürün gelmesinden: tentede delik, kopuk ip, kullanılmış gibi görünen ayaklar.",
+    "Tente kumaşının ve omuz bantlarının ince olduğu, kısa sürede koptuğu yazılıyor.",
+    "Ağır olduğu için her gün sahile taşımanın zor olduğu yazılıyor."
+   ],
+   "ders": [
+    "Tenteli, üst segment sandalyede 1-2 yıldız oranı %6,3 ile KOBİ'ler arasında en düşük; şikâyet kalite kontrol ve kumaş inceliğinde toplanıyor."
+   ],
+   "alinti": [
+    {
+     "konu": "hasarli",
+     "yildiz": 1,
+     "metin": "Siperlik kısmında delik var maalesef. Değişim olmaz ise iade edeceğim"
+    },
+    {
+     "konu": "kumas",
+     "yildiz": 2,
+     "metin": "hemen sapı koptu tentesinin kumaşı çok inceymis"
+    },
+    {
+     "konu": "hasarli",
+     "yildiz": 1,
+     "metin": "Ürün kullanılmış gibi geldi. Ayakları kir pas içindeydi. Paketleme özensizdi. Hayal kırıklığı"
+    }
+   ]
+  }
+ ]
+}
