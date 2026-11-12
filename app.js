@@ -260,7 +260,7 @@
     if (!el) return;
     const reads = readings(catRows(data));
     if (!reads.length) { el.remove(); return; }
-    el.innerHTML = `<div class="sec-top"><h2 id="reads-t" class="label">Kategoriler yan yana</h2><a class="reads-all" href="#/firsat">Tüm kategorileri karşılaştır <span aria-hidden="true">→</span></a></div>
+    el.innerHTML = `<div class="sec-top"><h2 id="reads-t" class="label">Kategoriler yan yana</h2><a class="reads-all" href="#/firsat">Kategorileri puanla ve karşılaştır <span aria-hidden="true">→</span></a></div>
       <ul class="reads-list">${reads.map((x) => `<li><a href="#/firsat"><span class="label">${esc(x.k)}</span><span>${x.t}</span></a></li>`).join('')}</ul>`;
   }
 
@@ -576,14 +576,13 @@
   }
 
   // ---- kategoriler arası karşılaştırma (#/firsat) ----
-  // Her ölçü ayrı gösterilir; tek bir "fırsat puanı"na birleştirilmez.
   const pts = (v) => (v * 100).toFixed(1).replace('.', ',') + ' puan';
   const andJoin = (a) => (a.length < 2 ? a.join('') : a.slice(0, -1).join(', ') + ' ve ' + a[a.length - 1]);
   const catStats = (id, c) => {
     const P = c.urunler, big = P.filter((p) => !isKobi(p)), kobi = P.filter(isKobi);
     const sum = (R, f) => R.reduce((a, p) => a + f(p), 0);
     const low = (R) => { const y = sum(R, (p) => p.yazili); return R.length && y ? sum(R, (p) => p.yildiz[0] + p.yildiz[1]) / y : null; };
-    return { id, ad: c.ad, dusuk: c.top.dusuk, buyukPay: big.length ? sum(big, (p) => p.yazili) / c.top.yazili : null,
+    return { id, ad: c.ad, ust: c.ust, yazili: c.top.yazili, dusuk: c.top.dusuk, buyukPay: big.length ? sum(big, (p) => p.yazili) / c.top.yazili : null,
       kobi: low(kobi), buyuk: low(big), sik: c.tema[0] || null, urun: P.length, okunan: c.top.okunan };
   };
   const catRows = (data) => ready().filter((r) => data[r.id]).map((r) => catStats(r.id, data[r.id]));
@@ -609,27 +608,84 @@
     return out;
   }
 
+  // ---- Giriş puanı: beş ölçütün ağırlıklı ortalaması (0-100). Ölçütler ve ağırlıklar sayfada ve Yöntem'de açıkça yazılı. ----
+  const COMPS = [
+    { k: 'rekabet', ad: 'Büyük marka baskısı az', acik: 'Büyük markaların yorum payı ne kadar düşükse o kadar yüksek: 100 × (1 − büyük marka payı). Büyük marka ürünü yoksa 100.' },
+    { k: 'risk', ad: 'Memnuniyetsizlik düşük', acik: '1-2 yıldız payı en düşük kategori 100, en yüksek kategori 0; arası doğrusal.' },
+    { k: 'sorun', ad: 'Çözülecek sorun net', acik: '1 numaralı şikâyetin oranı en yüksek kategori 100, en düşük 0. Tek baskın şikâyet, çözülecek ve reklamda söylenecek net bir şey demek.' },
+    { k: 'kobi', ad: 'KOBİ büyük markaya yakın', acik: "KOBİ ürünlerinin 1-2 yıldız payı eksi büyük markalarınki: fark en küçük (KOBİ en iyi durumda) kategori 100, en büyük 0. Kategoride iki gruptan biri yoksa bu ölçüt atlanır, ağırlığı diğer ölçütlere dağılır." },
+    { k: 'talep', ad: 'Yorum hacmi yüksek', acik: 'Örneklemdeki ürün başına yazılı yorum sayısı, logaritmik ölçekte; en yüksek 100, en düşük 0. Talebin kaba bir işaretidir, satış rakamı değildir.' },
+  ];
+  const PRESETS = [
+    { k: 'dengeli', ad: 'Dengeli', w: [1, 1, 1, 1, 1], acik: 'Beş ölçüt eşit ağırlıkta.' },
+    { k: 'guvenli', ad: 'Güvenli giriş', w: [1, 3, 1, 2, 1], acik: "Müşterinin az şikâyet ettiği ve KOBİ'lerin büyük markalara yakın durduğu kategorileri öne çıkarır." },
+    { k: 'rakipsiz', ad: 'Rakibi az pazar', w: [3, 1, 1, 2, 1], acik: "Konuşmanın büyük markalarda değil KOBİ'lerde olduğu kategorileri öne çıkarır." },
+    { k: 'fark', ad: 'Fark yaratmak istiyorum', w: [1, 1, 3, 1, 2], acik: 'Tek bir baskın şikâyeti olan ve yorum hacmi yüksek kategorileri öne çıkarır: o sorunu çözersen öne çıkabileceğin yerler.' },
+  ];
+  const OZEL = { k: 'ozel', ad: 'Kendin ayarla', acik: 'Her ölçütün ağırlığını 0 ile 5 arasında kendin seç.' };
+  const WK = 'rr_firsat_w', FK = 'rr_firsat_f';
+  const getW = () => { try { const v = JSON.parse(localStorage.getItem(WK)); if (v && (PRESETS.some((p) => p.k === v.p) || v.p === 'ozel') && Array.isArray(v.w) && v.w.length === 5) return { p: v.p, w: v.w.map((x) => Math.max(0, Math.min(5, Math.round(+x) || 0))), c: !!v.c }; } catch {} return { p: 'dengeli', w: [1, 1, 1, 1, 1], c: false }; };
+  const setW = (v) => { try { localStorage.setItem(WK, JSON.stringify(v)); } catch {} };
+  const F0 = () => ({ ust: '', buyuk20: false, kobiOk: false, maxD: '' });
+  const getF = () => { try { return { ...F0(), ...JSON.parse(sessionStorage.getItem(FK)) }; } catch { return F0(); } };
+  const setF = (v) => { try { sessionStorage.setItem(FK, JSON.stringify(v)); } catch {} };
+  const weightsOf = (st) => (st.p === 'ozel' ? st.w : PRESETS.find((p) => p.k === st.p).w);
+
+  // Ham değerler ve ölçüt puanları. Min-max ölçekleme HER ZAMAN yüklü tüm kategorilerle yapılır (filtre puanı değiştirmez).
+  function scoreBase(rows) {
+    const mm = (vals) => { const v = vals.filter((x) => x != null), lo = Math.min(...v), hi = Math.max(...v); return (x) => (x == null ? null : hi === lo ? 50 : ((x - lo) / (hi - lo)) * 100); };
+    rows.forEach((r) => {
+      r.raw = { rekabet: r.buyukPay, risk: r.dusuk, sorun: r.sik ? r.sik.tum : null, kobi: r.kobi != null && r.buyuk != null ? r.kobi - r.buyuk : null, talep: r.yazili / r.urun };
+    });
+    const sRisk = mm(rows.map((r) => r.raw.risk)), sSorun = mm(rows.map((r) => r.raw.sorun)), sKobi = mm(rows.map((r) => r.raw.kobi)), sTalep = mm(rows.map((r) => Math.log(r.raw.talep)));
+    rows.forEach((r) => {
+      r.comp = { rekabet: 100 * (1 - (r.buyukPay ?? 0)), risk: 100 - sRisk(r.raw.risk), sorun: sSorun(r.raw.sorun), kobi: r.raw.kobi == null ? null : 100 - sKobi(r.raw.kobi), talep: sTalep(Math.log(r.raw.talep)) };
+      r.eksik = COMPS.filter((c) => r.comp[c.k] == null).length;
+    });
+  }
+  // Ağırlıklı ortalama; eksik ölçütün ağırlığı satırda diğerlerine orantılı dağılır. Ağırlıkların hepsi 0 ise eşit ağırlık.
+  function scoreApply(rows, w) {
+    const allZero = w.every((x) => !x), W = allZero ? [1, 1, 1, 1, 1] : w;
+    rows.forEach((r) => {
+      let ws = COMPS.map((c, i) => (r.comp[c.k] == null ? 0 : W[i]));
+      if (!ws.some(Boolean)) ws = COMPS.map((c) => (r.comp[c.k] == null ? 0 : 1)); // kalan ölçütlerin hepsi 0 ağırlıklıysa eşit ağırlık
+      const t = ws.reduce((a, x) => a + x, 0);
+      r.puanTam = COMPS.reduce((a, c, i) => a + (ws[i] ? ws[i] * r.comp[c.k] : 0), 0) / t;
+      r.puan = Math.round(r.puanTam);
+    });
+    [...rows].sort((a, b) => b.puan - a.puan || a.dusuk - b.dusuk).forEach((r, i) => { r.sira = i + 1; });
+    return allZero;
+  }
+
   const FCOLS = [
     { k: 'ad', h: 'Kategori', txt: true },
+    { k: 'puan', h: 'Giriş puanı' },
     { k: 'dusuk', h: '1-2 yıldız payı' },
     { k: 'buyukPay', h: 'Büyük markaların yorum payı' },
     { k: 'kobi', h: '1-2 yıldız payı: KOBİ' },
     { k: 'buyuk', h: '1-2 yıldız payı: Büyük marka' },
     { k: 'sik', h: '1 numaralı şikâyet', val: (r) => (r.sik ? r.sik.tum : null) },
-    { k: 'urun', h: 'Ürün' },
+    { k: 'urun', h: 'Ürün', cls: 'c-urun' },
     { k: 'okunan', h: 'Okunan yorum' },
   ];
-  const fSort = { k: 'dusuk', dir: 'desc' };
+  const fSort = { k: 'puan', dir: 'desc' };
+  const fOpen = new Set();
+  const fNum = (v, d = 1) => Number(v).toFixed(d).replace('.', ',');
   async function firsat(isStale) {
     const data = await loadAll();
     if (isStale()) return;
     const rows = catRows(data), failed = ready().length - rows.length;
     if (!rows.length && ready().length) throw new Error('firsat: veri yok');
     setTitle('Hangi kategoriye girmeli?');
+    scoreBase(rows);
+    let ws = getW(), fl = getF();
+    const alanlar = [...new Set(rows.map((r) => r.ust))].sort((a, b) => a.localeCompare(b, 'tr'));
+    if (fl.ust && !alanlar.includes(fl.ust)) fl.ust = '';
     const maxD = Math.max(...rows.map((r) => r.dusuk), 0.01);
     const nU = rows.map((r) => r.urun), uMin = Math.min(...nU), uMax = Math.max(...nU);
     const dash = '<span class="muted" title="Bu segmentte ürün yok">–</span>';
     const cell = {
+      puan: (r) => `<b class="ft-score">${r.puan}</b>${r.eksik ? `<small class="ft-eksik" title="KOBİ ile büyük marka karşılaştırılamadı; puan ${5 - r.eksik} ölçütle hesaplandı">${5 - r.eksik} ölçüt</small>` : ''}<span class="mbar" aria-hidden="true"><i style="width:${r.puanTam}%"></i></span>`,
       dusuk: (r) => `<span class="neg">${pct(r.dusuk, 1)}</span><span class="mbar neg" aria-hidden="true"><i style="width:${(r.dusuk / maxD) * 100}%"></i></span>`,
       buyukPay: (r) => (r.buyukPay == null ? '<span class="muted">Büyük marka yok</span>' : `${pct(r.buyukPay, 1)}<span class="mbar" aria-hidden="true"><i style="width:${r.buyukPay * 100}%"></i></span>`),
       kobi: (r) => (r.kobi == null ? dash : `<span class="neg">${pct(r.kobi, 1)}</span>`),
@@ -638,43 +694,125 @@
       urun: (r) => int(r.urun),
       okunan: (r) => int(r.okunan),
     };
+    const rawTxt = {
+      rekabet: (r) => (r.buyukPay == null ? 'Büyük marka yok' : `Büyük marka yorum payı ${pct(r.buyukPay, 1)}`),
+      risk: (r) => `1-2 yıldız payı ${pct(r.dusuk, 1)}`,
+      sorun: (r) => (r.sik ? `${esc(r.sik.ad)}: oranı ${pct(r.sik.tum)}` : '–'),
+      kobi: (r) => (r.raw.kobi == null ? (r.buyuk == null ? 'Büyük marka yok, ölçüt atlandı' : 'KOBİ ürünü yok, ölçüt atlandı') : `KOBİ ${pct(r.kobi, 1)}, büyük marka ${pct(r.buyuk, 1)} (fark ${r.raw.kobi > 0 ? '+' : r.raw.kobi < 0 ? '−' : ''}${pts(Math.abs(r.raw.kobi))})`),
+      talep: (r) => `Ürün başına ${int(Math.round(r.raw.talep))} yazılı yorum`,
+    };
     const reads = readings(rows);
+    const NC = FCOLS.length;
     app.innerHTML = `
       <div class="band phead"><div class="crumbs"><a href="#/">Ana sayfa</a> / Kategorileri karşılaştır</div>
         <div class="chead"><h1>Hangi kategoriye girmeli?</h1>
-          <p class="muted">Her satır bir kategori. Riski, büyük markaların ağırlığını ve ana şikâyeti yan yana gör; sütun başlığına tıklayarak sırala.</p></div></div>
+          <p class="muted">Her satır bir kategori. Giriş puanı beş ölçütü tek sayıda toplar; ağırlıkları sen seçersin. Satırı açınca puanın nereden geldiğini görürsün.</p></div></div>
       ${reads.length ? `<ul class="reads-list fp-reads">${reads.map((x) => `<li><span class="label">${esc(x.k)}</span><span>${x.t}</span></li>`).join('')}</ul>` : ''}
+      <section class="fs-ctrl" aria-labelledby="fs-t">
+        <div class="fs-row"><h2 class="label" id="fs-t">Giriş puanı ağırlığı</h2>
+          <fieldset class="segctl"><legend class="sr-only">Ağırlık seçimi</legend>${[...PRESETS, OZEL].map((p) => `<label><input type="radio" name="fs-preset" value="${p.k}"><span>${esc(p.ad)}</span></label>`).join('')}</fieldset></div>
+        <p class="fs-desc" id="fs-desc" aria-live="polite"></p>
+        <div class="fs-sliders" id="fs-sliders" hidden>${COMPS.map((c, i) => `<label class="fs-sl"><span>${esc(c.ad)}</span><input type="range" min="0" max="5" step="1" data-wi="${i}" aria-valuetext=""><output class="num" data-wo="${i}"></output></label>`).join('')}
+          <p class="fs-zero muted" id="fs-zero" hidden>Tüm ağırlıklar 0; puan eşit ağırlıklarla hesaplandı.</p></div>
+        <p class="note fs-note">Giriş puanı bir okuma kolaylığıdır: bu sitedeki kategorileri, örneklemdeki ürünlere bakarak birbirine göre sıralar. Pazar tahmini değildir; ağırlığı değiştirirsen sıra da değişir. <a href="#/yontem">Giriş puanı nasıl hesaplanıyor?</a></p>
+      </section>
+      <div class="ff" role="group" aria-label="Kategori filtreleri">
+        <div class="ff-alan"><span class="muted">Alan:</span>${['', ...alanlar].map((a) => `<button type="button" class="chip" data-fust="${esc(a)}">${a ? esc(a) : 'Tümü'}</button>`).join('')}</div>
+        <label class="ff-c"><input type="checkbox" id="ff-b20">Büyük marka payı %20'nin altında</label>
+        <label class="ff-c"><input type="checkbox" id="ff-kobi">KOBİ, büyük markadan geride değil</label>
+        <label class="ff-c">1-2 yıldız payı en fazla <select id="ff-d"><option value="">Tümü</option><option value="0.1">%10</option><option value="0.15">%15</option><option value="0.2">%20</option></select></label>
+        <span class="ff-n muted num" id="ff-n" aria-live="polite"></span><button type="button" class="linkbtn" id="ff-clear">Filtreleri temizle</button>
+      </div>
+      <p class="print-only prt-w" id="prt-w"></p>
       <p class="scroll-hint muted" id="scroll-hint" hidden>Tabloyu yana kaydır <span aria-hidden="true">→</span></p>
       <div class="ctable-wrap fp-wrap" id="ctable-wrap"><div class="ctable-box" id="ctable-box" tabindex="0" role="region" aria-label="Kategori karşılaştırma tablosu"><table class="ctable ftable">
-        <caption class="sr-only">Kategorilerin karşılaştırması. Sütun başlığındaki düğmeyle sıralanır.</caption>
-        <thead><tr>${FCOLS.map((c) => `<th scope="col" class="${c.txt || c.k === 'sik' ? 'txt' : ''}" data-col="${c.k}"><button type="button" class="ft-sort" data-sort="${c.k}">${esc(c.h)}<span class="ft-ar" aria-hidden="true"></span></button></th>`).join('')}</tr></thead>
+        <caption class="sr-only">Kategorilerin karşılaştırması. Sütun başlığındaki düğmeyle sıralanır; satırdaki "Puan ayrıntısı" düğmesi ölçütleri açar.</caption>
+        <thead><tr>${FCOLS.map((c) => `<th scope="col" class="${c.txt || c.k === 'sik' ? 'txt' : ''} ${c.cls || ''}" data-col="${c.k}"><button type="button" class="ft-sort" data-sort="${c.k}">${esc(c.h)}<span class="ft-ar" aria-hidden="true"></span></button></th>`).join('')}</tr></thead>
         <tbody id="ft-body"></tbody></table></div></div>
-      <p class="note fp-note">Her kategori ${uMin === uMax ? uMin : `${uMin}-${uMax}`} üründen oluşan bir örneklem. Bu tablo pazarın tamamını değil, örneklemdeki ürünleri karşılaştırır. 1-2 yıldız payları ürünlerin Trendyol'daki tüm yazılı yorumlarından, şikâyet oranı ise okunan 1-2 yıldızlı yorumlardan hesaplandı.${failed > 0 ? ` ${failed} kategorinin verisi yüklenemediği için tabloda yok.` : ''} <a href="#/yontem">Bu rakamlar nasıl hesaplandı?</a></p>`;
-    const body = document.getElementById('ft-body');
+      <div class="empty ff-empty" id="ff-empty" hidden><p>Bu filtrelere uyan kategori yok.</p><button type="button" class="btn ghost" data-ffclear>Filtreleri temizle</button></div>
+      <p class="note fp-note"><span id="ft-foot"></span>Her kategori ${uMin === uMax ? uMin : `${uMin}-${uMax}`} üründen oluşan bir örneklem. Bu tablo pazarın tamamını değil, örneklemdeki ürünleri karşılaştırır. 1-2 yıldız payları ürünlerin Trendyol'daki tüm yazılı yorumlarından, şikâyet oranı ise okunan 1-2 yıldızlı yorumlardan hesaplandı.${failed > 0 ? ` ${failed} kategorinin verisi yüklenemediği için tabloda yok.` : ''} <a href="#/yontem">Bu rakamlar nasıl hesaplandı?</a></p>`;
+    const $ = (id) => document.getElementById(id);
+    const body = $('ft-body'), sliders = [...app.querySelectorAll('[data-wi]')];
+    const passes = (r) => (!fl.ust || r.ust === fl.ust) && (!fl.buyuk20 || r.buyukPay == null || r.buyukPay < 0.2)
+      && (!fl.kobiOk || r.buyuk == null || (r.kobi != null && r.kobi <= r.buyuk)) && (!fl.maxD || r.dusuk <= Number(fl.maxD) + 1e-12);
+    const syncCtl = () => {
+      app.querySelectorAll('input[name="fs-preset"]').forEach((i) => { i.checked = i.value === ws.p; });
+      const pr = ws.p === 'ozel' ? OZEL : PRESETS.find((p) => p.k === ws.p), w = weightsOf(ws);
+      $('fs-desc').textContent = pr.acik;
+      $('fs-sliders').hidden = ws.p !== 'ozel';
+      sliders.forEach((s) => { const i = +s.dataset.wi; s.value = ws.w[i]; s.setAttribute('aria-valuetext', `${ws.w[i]} / 5`); app.querySelector(`[data-wo="${i}"]`).textContent = ws.w[i]; });
+      $('prt-w').textContent = `Giriş puanı ağırlığı: ${pr.ad} (${COMPS.map((c, i) => `${c.ad} ${w[i]}`).join(', ')})`;
+      app.querySelectorAll('[data-fust]').forEach((b) => { const on = b.dataset.fust === fl.ust; b.classList.toggle('on', on); b.setAttribute('aria-pressed', String(on)); });
+      $('ff-b20').checked = fl.buyuk20; $('ff-kobi').checked = fl.kobiOk; $('ff-d').value = fl.maxD;
+    };
+    const detail = (r, w) => {
+      let ws2 = COMPS.map((c, i) => (r.comp[c.k] == null ? 0 : w[i]));
+      if (!ws2.some(Boolean)) ws2 = COMPS.map((c) => (r.comp[c.k] == null ? 0 : 1));
+      const t = ws2.reduce((a, x) => a + x, 0);
+      return `<tr class="ft-detail" id="ftd-${esc(r.id)}"><td colspan="${NC}"><div class="ft-dbox">
+        <table class="ft-comp"><caption class="sr-only">${esc(r.ad)}: giriş puanının ölçütleri</caption><thead><tr><th scope="col">Ölçüt</th><th scope="col">Ham değer</th><th scope="col" class="num">Ölçüt puanı</th><th scope="col" class="num">Ağırlık</th></tr></thead><tbody>
+        ${COMPS.map((c, i) => `<tr${r.comp[c.k] == null ? ' class="muted"' : ''}><th scope="row">${esc(c.ad)}</th><td>${rawTxt[c.k](r)}</td><td class="num" data-l="Ölçüt puanı " data-comp="${c.k}">${r.comp[c.k] == null ? '–' : Math.round(r.comp[c.k])}</td><td class="num" data-l="Ağırlık ">${r.comp[c.k] == null ? '–' : `${w[i]}${t ? ` <span class="muted">(%${Math.round((ws2[i] / t) * 100)})</span>` : ''}`}</td></tr>`).join('')}
+        </tbody></table><p class="muted">Giriş puanı = ölçüt puanlarının ağırlıklı ortalaması = <b class="num">${fNum(r.puanTam)}</b>, yuvarlanınca <b class="num">${r.puan}</b>.</p></div></td></tr>`;
+    };
     const draw = () => {
+      const w = weightsOf(ws), allZero = scoreApply(rows, w), wEff = allZero ? [1, 1, 1, 1, 1] : w;
+      $('fs-zero').hidden = !(ws.p === 'ozel' && allZero);
       const col = FCOLS.find((c) => c.k === fSort.k), v = col.val || ((r) => r[col.k]), m = fSort.dir === 'asc' ? 1 : -1;
-      const list = [...rows].sort((a, b) => {
+      const vis = rows.filter(passes).sort((a, b) => {
+        if (col.k === 'puan') return (a.sira - b.sira) * (m === -1 ? 1 : -1);
         const x = v(a), y = v(b);
         if (x == null || y == null) return x == null && y == null ? 0 : x == null ? 1 : -1;
         return (col.txt ? x.localeCompare(y, 'tr') : x - y) * m || a.ad.localeCompare(b.ad, 'tr');
       });
-      body.innerHTML = list.map((r) => `<tr><th scope="row"><a href="#/kategori/${esc(r.id)}">${esc(r.ad)}</a></th>${FCOLS.slice(1).map((c) => `<td class="${c.k === 'sik' ? 'txt' : 'num'}">${cell[c.k](r)}</td>`).join('')}</tr>`).join('');
+      const rank = col.k === 'puan';
+      body.innerHTML = vis.map((r) => `<tr data-row="${esc(r.id)}"><th scope="row"><div class="ft-name">${rank ? `<span class="ft-rank num" aria-label="${r.sira}. sıra">${r.sira}</span>` : ''}<a href="#/kategori/${esc(r.id)}">${esc(r.ad)}</a></div>`
+        + `<button type="button" class="ft-exp" data-exp="${esc(r.id)}" aria-expanded="${fOpen.has(r.id)}" aria-controls="ftd-${esc(r.id)}">Puan ayrıntısı<span class="sr-only">: ${esc(r.ad)}</span></button></th>`
+        + `${FCOLS.slice(1).map((c) => `<td class="${c.k === 'sik' ? 'txt' : 'num'} ${c.cls || ''}">${cell[c.k](r)}</td>`).join('')}</tr>${fOpen.has(r.id) ? detail(r, wEff) : ''}`).join('');
+      $('ctable-wrap').hidden = !vis.length; $('ff-empty').hidden = !!vis.length; $('scroll-hint').hidden = true;
+      $('ff-n').textContent = `${vis.length} / ${rows.length} kategori`;
+      $('ff-clear').hidden = !(fl.ust || fl.buyuk20 || fl.kobiOk || fl.maxD);
+      const ek = vis.filter((r) => r.eksik);
+      $('ft-foot').textContent = ek.length ? `"${5 - ek[0].eksik} ölçüt" işaretli satırda KOBİ ile büyük marka karşılaştırılamadığı için puan kalan ölçütlerle hesaplandı. ` : '';
       app.querySelectorAll('th[data-col]').forEach((th) => {
         const on = th.dataset.col === fSort.k;
         if (on) th.setAttribute('aria-sort', fSort.dir === 'asc' ? 'ascending' : 'descending'); else th.removeAttribute('aria-sort');
         th.querySelector('.ft-ar').textContent = on ? (fSort.dir === 'asc' ? '↑' : '↓') : '↕';
       });
+      syncCtl();
+      if (vis.length) scrollTable();
+    };
+    const keepFocus = (sel) => { const y = scrollY; draw(); const el = sel && app.querySelector(sel); if (el && document.activeElement !== el) el.focus({ preventScroll: true }); scrollTo(scrollX, y); };
+    app.onchange = (e) => {
+      const t = e.target;
+      if (t.name === 'fs-preset') {
+        // "Kendin ayarla" ilk kez açılınca o anki hazır ayardan başlar; sonra kendi ağırlıkları saklanır, hazır ayara geçip dönünce kaybolmaz
+        ws = t.value === 'ozel' ? { p: 'ozel', w: ws.c ? ws.w : [...weightsOf(ws)], c: true } : { ...ws, p: t.value };
+        setW(ws); keepFocus(`input[name="fs-preset"][value="${t.value}"]`); return;
+      }
+      if (t.id === 'ff-b20') fl.buyuk20 = t.checked; else if (t.id === 'ff-kobi') fl.kobiOk = t.checked; else if (t.id === 'ff-d') fl.maxD = t.value; else return;
+      setF(fl); keepFocus('#' + t.id);
+    };
+    app.oninput = (e) => {
+      const s = e.target.closest('[data-wi]');
+      if (!s) return;
+      ws = { p: 'ozel', w: ws.w.map((x, i) => (i === +s.dataset.wi ? +s.value : x)), c: true };
+      setW(ws); keepFocus(`[data-wi="${s.dataset.wi}"]`);
     };
     app.onclick = (e) => {
       const b = e.target.closest('[data-sort]');
-      if (!b) return;
-      const k = b.dataset.sort, txt = FCOLS.find((c) => c.k === k).txt;
-      if (fSort.k === k) fSort.dir = fSort.dir === 'asc' ? 'desc' : 'asc';
-      else { fSort.k = k; fSort.dir = txt ? 'asc' : 'desc'; }
-      draw();
+      if (b) {
+        const k = b.dataset.sort, txt = FCOLS.find((c) => c.k === k).txt;
+        if (fSort.k === k) fSort.dir = fSort.dir === 'asc' ? 'desc' : 'asc';
+        else { fSort.k = k; fSort.dir = txt ? 'asc' : 'desc'; }
+        keepFocus(`[data-sort="${k}"]`); return;
+      }
+      const x = e.target.closest('[data-exp]');
+      if (x) { const id = x.dataset.exp; if (fOpen.has(id)) fOpen.delete(id); else fOpen.add(id); keepFocus(`[data-exp="${CSS.escape(id)}"]`); return; }
+      const u = e.target.closest('[data-fust]');
+      if (u) { fl.ust = u.dataset.fust; setF(fl); keepFocus(`[data-fust="${CSS.escape(fl.ust)}"]`); return; }
+      if (e.target.closest('#ff-clear') || e.target.closest('[data-ffclear]')) { fl = F0(); setF(fl); keepFocus('[data-fust=""]'); }
     };
     draw();
-    scrollTable();
   }
 
   async function method(isStale) {
@@ -703,6 +841,13 @@
           <p>Bu oran örneklemden değil, ürünün Trendyol'daki tüm yıldız dağılımından hesaplandı.</p></section>
         <section><h2>"Dikkat" ve "ders" notları</h2>
           <p>Ürün sayfalarındaki "Bu ürünün zayıf noktaları" ve "Rakip bir KOBİ için ders" notları, olumsuz yorumlar okunarak yazılmış yorumlardır. Ölçüm değildir.</p></section>
+        <section id="giris-puani"><h2>Giriş puanı nasıl hesaplanıyor?</h2>
+          <p><a href="#/firsat">Kategori karşılaştırma</a> sayfasındaki giriş puanı 0 ile 100 arasındadır; yüksek puan, küçük bir satıcı için daha çekici bir kategori demektir. Beş ölçütün her biri 0-100 arası puanlanır, sonra seçtiğin ağırlıklarla ortalaması alınır:</p>
+          <ul class="ul">${COMPS.map((c) => `<li><b>${esc(c.ad)}:</b> ${esc(c.acik)}</li>`).join('')}</ul>
+          <p>"En yüksek" ve "en düşük" bu sitedeki tüm kategorilere göre belirlenir; tablodaki filtreler puanı değiştirmez. Bütün kategoriler bir ölçütte eşitse herkes o ölçütten 50 alır. Puan tam sayıya yuvarlanır; eşitlikte 1-2 yıldız payı düşük olan öne geçer.</p>
+          <p>Hazır ağırlıklar (sırasıyla: ${COMPS.map((c) => esc(c.ad.toLocaleLowerCase('tr'))).join(', ')}):</p>
+          <ul class="ul">${PRESETS.map((p) => `<li><b>${esc(p.ad)}:</b> <span class="num">${p.w.join(', ')}</span>. ${esc(p.acik)}</li>`).join('')}<li><b>${esc(OZEL.ad)}:</b> her ölçüt 0-5. Hepsini 0 yaparsan eşit ağırlık kullanılır.</li></ul>
+          <p>Giriş puanı bir okuma kolaylığıdır, pazar tahmini değildir: kategorileri yalnızca örneklemdeki ürünlere bakarak birbirine göre sıralar.</p></section>
         <section><h2>Sınırlar</h2>
           <ul class="ul"><li>Veri tek bir anın görüntüsü; zamanla değişebilir.</li><li>Tek pazar yeri: yalnızca Trendyol.</li><li>Az yorumu olan üründe örnek küçük; o ürünün oranlarını dikkatle oku.</li></ul></section>
         <p><a class="btn" href="#/">Kategorilere git</a></p>
@@ -737,7 +882,7 @@
     routing = true;
     closeDrawer(false);
     if (barMsg && barMsg.type === 'ask' && !opts.keep) barMsg = null;
-    app.onclick = null;
+    app.onclick = app.onchange = app.oninput = null;
     let h = parseHash();
     if (!h || !['', 'kategori', 'urun', 'karsilastir', 'ara', 'yontem', 'firsat'].includes(h[0]) || (h[0] === 'ara' && !h.slice(1).join('/').trim())) {
       history.replaceState(history.state, '', '#/');
