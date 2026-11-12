@@ -1,0 +1,1234 @@
+{
+ "id": "yuz-serumu",
+ "ad": "Yüz serumu",
+ "ust": "Kozmetik",
+ "toplama": "12 Kasım 2026",
+ "kaynak": "Trendyol",
+ "esanlam": [
+  "yüz serumu",
+  "serum",
+  "cilt serumu",
+  "c vitamini serumu",
+  "niacinamide serum",
+  "hyaluronik asit serumu",
+  "leke serumu",
+  "ampul serum"
+ ],
+ "temalar": [
+  {
+   "id": "etkisiz",
+   "ad": "Etkisini görmedi, fark yok",
+   "unlem": "Etkisini görmediğini yazanlar çok!"
+  },
+  {
+   "id": "sivilce",
+   "ad": "Sivilce, komedon yaptığı yazılıyor",
+   "unlem": "Sivilce yaptığını yazanlar var!"
+  },
+  {
+   "id": "tahris",
+   "ad": "Yaktı, kızartı, kaşındırdı (tahriş)",
+   "unlem": "Yanma ve kızarıklık yazılıyor!"
+  },
+  {
+   "id": "kotulesme",
+   "ad": "Lekeleri ya da cildi kötüleştirdiğini yazıyor",
+   "unlem": "Cildi kötüleştirdiğini yazanlar var!"
+  },
+  {
+   "id": "bozuk",
+   "ad": "Rengi, kokusu, kıvamı bozuk geldi ya da bozuldu",
+   "unlem": "Rengi ve kıvamı bozuk geliyor!"
+  },
+  {
+   "id": "koku",
+   "ad": "Kokusu ağır ya da kötü",
+   "unlem": "Kokusu rahatsız ediyor!"
+  },
+  {
+   "id": "doku",
+   "ad": "Yapışkan, su gibi, makyaj altında topaklanıyor",
+   "unlem": "Dokusu yapışkan ya da cıvık!"
+  },
+  {
+   "id": "miktar",
+   "ad": "Az geldi, çabuk bitti, şişe yarım",
+   "unlem": "Şişe yarım ya da çok az geliyor!"
+  },
+  {
+   "id": "bant",
+   "ad": "Ambalajı açık, bantsız ya da kullanılmış gibi geldi",
+   "unlem": "Ambalajı açık ya da bantsız geliyor!"
+  },
+  {
+   "id": "orijinal",
+   "ad": "Orijinal olmadığından şüphe ediyor",
+   "unlem": "Orijinalliği sorgulanıyor!"
+  },
+  {
+   "id": "hasarli",
+   "ad": "Kırık, akmış, kapağı ya da damlalığı eksik geldi",
+   "unlem": "Şişe kırık ya da akmış geliyor!"
+  },
+  {
+   "id": "ambalaj",
+   "ad": "Şişe ya da damlalık kullanışsız",
+   "unlem": "Şişesi kullanışsız!"
+  },
+  {
+   "id": "yanlis",
+   "ad": "Yanlış ya da farklı ürün geldi",
+   "unlem": "Yanlış ürün geliyor!"
+  },
+  {
+   "id": "skt",
+   "ad": "Son kullanma tarihi yakın",
+   "unlem": "Son kullanma tarihi yakın geliyor!"
+  },
+  {
+   "id": "hediye",
+   "ad": "Hediye ya da deneme ürünü gelmedi",
+   "unlem": "Hediye beklentisi karşılanmıyor!"
+  },
+  {
+   "id": "reklam",
+   "ad": "Reklama, fenomene ya da yorumlara güvenip hayal kırıklığı",
+   "unlem": "Övgüler beklentiyi yükseltiyor!"
+  },
+  {
+   "id": "boykot",
+   "ad": "Boykot ya da marka hakkındaki haberler yüzünden düşük puan",
+   "unlem": "Boykot ve marka haberleri puanı düşürüyor!"
+  },
+  {
+   "id": "fiyat",
+   "ad": "Fiyatına değmez",
+   "unlem": "Fiyatına değmiyor!"
+  },
+  {
+   "id": "kargo",
+   "ad": "Kargo gecikti ya da ulaşmadı",
+   "unlem": "Kargo gecikiyor!"
+  },
+  {
+   "id": "paket",
+   "ad": "Paketleme özensiz",
+   "unlem": "Paketleme özensiz!"
+  }
+ ],
+ "olumlu_konular": [
+  {
+   "id": "leke",
+   "ad": "Lekeleri açtı, ton eşitledi"
+  },
+  {
+   "id": "isilti",
+   "ad": "Parlaklık, canlılık verdi"
+  },
+  {
+   "id": "nem",
+   "ad": "Nemlendirip yumuşattı"
+  },
+  {
+   "id": "sivilce",
+   "ad": "Sivilce, gözenek azaldı diyor"
+  },
+  {
+   "id": "doku",
+   "ad": "Hafif, çabuk emiliyor, yapıştırmıyor"
+  },
+  {
+   "id": "tekrar",
+   "ad": "Tekrar alıyor, yıllardır kullanıyor"
+  },
+  {
+   "id": "fiyat",
+   "ad": "Fiyatına göre iyi"
+  },
+  {
+   "id": "paket",
+   "ad": "Özenli paket, hızlı kargo"
+  },
+  {
+   "id": "hediye",
+   "ad": "Hediye ya da deneme ürünü sevindirdi"
+  },
+  {
+   "id": "tavsiye",
+   "ad": "Tavsiye ya da sosyal medya ile aldı"
+  }
+ ],
+ "oneriler": [
+  {
+   "baslik": "En büyük şikâyet etki beklentisi: kullanım süresini açık yaz",
+   "metin": "Olumsuz yorumlarda etkisini görmeme oranı %21 (büyük marka %26, KOBİ %19). Birçok olumsuz yorum birkaç gün ya da birkaç hafta kullandıktan sonra yazılmış. Ürünün nasıl ve ne kadar süre kullanılacağını ilanda ve kutuda açıkça yazmak beklentiyi gerçekçi tutar. (Bu site ürünlerin etkisi hakkında değerlendirme yapmaz; oranlar yorumcuların yazdıklarıdır.)"
+  },
+  {
+   "baslik": "Cilt tepkisi yazan yorumlar: kullanım talimatı ve uyarılar görünür olsun",
+   "metin": "Yorumcuların bir kısmı sivilce, komedon, yanma, kızarıklık ya da soyulma yazıyor (sivilce ve komedon %4, tahriş %5; büyük markada tahriş %7). İçerik oranlarını, hangi cilt tipi için olduğunu, üreticinin kullanım talimatını ve uyarılarını ilanda ve kutuda net göstermek bu yorumlarla karşılaşmayı azaltır."
+  },
+  {
+   "baslik": "Sızdırmaz şişe, mühürlü kutu",
+   "metin": "Kırık, akmış ya da kapağı açık gelen şişe şikâyetinin oranı %3 (KOBİ %4); The Purest Solutions C Vit ve Cream Co. Peptit serumda %12-14. Büyük markalarda ise kutunun açık ya da bantsız gelmesi (%6,2) ve orijinallik şüphesi (%3,5) KOBİ'deki oranların (%1,3 ve %0,6) yaklaşık beş katı. Koruma bandı ve sızdırmaz paketleme hem hasarı hem güven sorusunu karşılar."
+  },
+  {
+   "baslik": "Renk ve koku değişimi: saklama bilgisini ver",
+   "metin": "Rengin değiştiği, sarardığı ya da kokunun bozulduğu şikâyetinin oranı %3; C vitamini ve arbutin serumlarında daha sık (L'Oréal C vitamini %12, The Ceel %9, Rimu %8). Işık geçirmeyen şişe, açıldıktan sonraki kullanım süresi ve saklama koşulunu ilanda ve etikette göstermek \"bozuk geldi\" şikâyetini azaltır."
+  },
+  {
+   "baslik": "Yıldıza değil metne bak; hediye beklenti yaratıyor",
+   "metin": "1-2 yıldızlı yorumların ortalama %51 kadarında sözlükteki hiçbir şikâyet geçmiyor; Koreaco ürünlerinde bu oran %75-82 ve okunan metinlerin çoğu övgü ya da \"henüz kullanmadım\". Rakibin puanı tek başına yanıltıcı. Ayrıca KOBİ önerilen yorumlarının %10 kadarı hediyeden söz ediyor (büyük marka %2); hediye gönderen markada hediyenin gelmemesi 1-2 yıldıza dönüyor (The Ceel %5)."
+  }
+ ],
+ "urunler": [
+  {
+   "id": "157360249",
+   "kisa": "Vitamin C+ Süper Parlaklık Serumu",
+   "marka": "Garnier",
+   "ad": "Garnier Vitamin C+ Süper Parlaklık Yüz Serumu 30 ml (niasinamid, salisilik asit)",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1000391/product/media/images/prod/PIM/20260421/06/a2f73dfb-3eee-4336-91bb-15c1b0cb818b/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/garnier/vitamin-c-super-parlaklik-yuz-serumu-30-ml-niasinamid-salisilik-asit-melasyl-aydinlatici-serum-p-157360249",
+   "yazili": 8414,
+   "yildiz": [
+    419,
+    195,
+    610,
+    1239,
+    5951
+   ],
+   "ort": 4.44,
+   "onerilen_ort": 4.92,
+   "onerilen_dusuk": 1,
+   "onerilen_n": 100,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "etkisiz": 0.2,
+    "sivilce": 0.0,
+    "tahris": 0.02,
+    "kotulesme": 0.0,
+    "bozuk": 0.02,
+    "koku": 0.0,
+    "doku": 0.03,
+    "miktar": 0.01,
+    "bant": 0.03,
+    "orijinal": 0.01,
+    "hasarli": 0.02,
+    "ambalaj": 0.0,
+    "yanlis": 0.0,
+    "skt": 0.0,
+    "hediye": 0.01,
+    "reklam": 0.05,
+    "boykot": 0.02,
+    "fiyat": 0.02,
+    "kargo": 0.03,
+    "paket": 0.01
+   },
+   "olumlu": {
+    "leke": 0.21,
+    "isilti": 0.37,
+    "nem": 0.14,
+    "sivilce": 0,
+    "doku": 0.03,
+    "tekrar": 0.4,
+    "fiyat": 0.06,
+    "paket": 0.08,
+    "hediye": 0,
+    "tavsiye": 0.03
+   },
+   "dikkat": [
+    "Olumsuz yorumların %20'si etkisini görmediğini yazıyor; bazı yorumlar parlaklığın anlık olduğunu, kalıcı olmadığını söylüyor.",
+    "Olumsuz yorumların %5'i övgülere ya da yorumlara güvenip aldığını ve beklentisinin karşılanmadığını yazıyor; 3 yorum yapışkan his bıraktığını söylüyor.",
+    "1-2 yıldızlı yorumların %59'unda sözlükteki şikâyetlerden hiçbiri geçmiyor."
+   ],
+   "ders": [
+    "Önerilen yorumların %37'si parlaklık ve canlılıktan, %40'ı tekrar aldığından söz ediyor; olumsuzlar ise \"anlık etki\" ile \"kalıcı sonuç\" beklentisi arasındaki farktan doğuyor."
+   ],
+   "alinti": [
+    {
+     "konu": "etkisiz",
+     "yildiz": 2,
+     "metin": "Anlık parlaklık veriyor kullanmayı bırakınca gidiyor kalıcılık yok anlık yüüzm parlasın diorsan al ama bakım vitamin hikaye"
+    },
+    {
+     "konu": "reklam",
+     "yildiz": 1,
+     "metin": "iki aydır kullandım serum bitti ama bir etkisini gördüğüm söylenemez, bu kadar iyi yorumu görüp almıştım ama nafile"
+    },
+    {
+     "konu": "doku",
+     "yildiz": 2,
+     "metin": "Ben açıkçası beğenmedim kaç haftadır kullanıyorum hiç bir etkisi yok ve yapış yapış bi his bırakıyor yüzümde"
+    }
+   ]
+  },
+  {
+   "id": "150725523",
+   "kisa": "Luminous630 Leke Karşıtı Serum",
+   "marka": "Nivea",
+   "ad": "Nivea Luminous630 Leke Karşıtı Cilt Serumu 30 ml",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1000442/product/media/images/prod/PIM/20260908/08/984a0813-0e75-4f32-8c7d-82004c52bf48/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/nivea/luminous630-leke-karsiti-cilt-serumu-30-ml-lekeli-ciltler-p-150725523",
+   "yazili": 3215,
+   "yildiz": [
+    190,
+    121,
+    283,
+    464,
+    2157
+   ],
+   "ort": 4.33,
+   "onerilen_ort": 4.95,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "etkisiz": 0.38,
+    "sivilce": 0.02,
+    "tahris": 0.02,
+    "kotulesme": 0.01,
+    "bozuk": 0.0,
+    "koku": 0.02,
+    "doku": 0.01,
+    "miktar": 0.05,
+    "bant": 0.04,
+    "orijinal": 0.03,
+    "hasarli": 0.02,
+    "ambalaj": 0.0,
+    "yanlis": 0.01,
+    "skt": 0.0,
+    "hediye": 0.01,
+    "reklam": 0.03,
+    "boykot": 0.0,
+    "fiyat": 0.02,
+    "kargo": 0.0,
+    "paket": 0.02
+   },
+   "olumlu": {
+    "leke": 0.27,
+    "isilti": 0.06,
+    "nem": 0.11,
+    "sivilce": 0,
+    "doku": 0.08,
+    "tekrar": 0.3,
+    "fiyat": 0.1,
+    "paket": 0.11,
+    "hediye": 0.04,
+    "tavsiye": 0.04
+   },
+   "dikkat": [
+    "Olumsuz yorumların %38'i lekelerde açılma ya da değişiklik görmediğini yazıyor; büyük markalar arasında en yüksek oran.",
+    "Şişenin az olduğu ve çabuk bittiği şikâyeti %5; kutunun açık ya da bantsız geldiği %4, orijinallik şüphesi %3."
+   ],
+   "ders": [
+    "Önerilen yorumların %27'si lekelerde açılma, %30'u tekrar alım anlatıyor; leke serumunda vaat edilen süre ile kullanıcının beklediği süre arasındaki fark olumsuz yorumu belirliyor."
+   ],
+   "alinti": [
+    {
+     "konu": "etkisiz",
+     "yildiz": 2,
+     "metin": "sanirim etkisini görmek için uzun süre kullanmak gerekiyor. Ben 1 aydir kullanıyorum henüz bi gelişme göremedim."
+    },
+    {
+     "konu": "miktar",
+     "yildiz": 2,
+     "metin": "Üründen çok bir şey anlayamadım çünkü hemen bitti ben bu kadar az beklemiyordum şişesinin büyük göründüğüne aldanmayın"
+    },
+    {
+     "konu": "bant",
+     "yildiz": 2,
+     "metin": "ürünlerim geldi ama ambalaj resimde görüldüğü gibi sanki açılmış koruma bandrolü üzerinde yok"
+    }
+   ]
+  },
+  {
+   "id": "906055076",
+   "kisa": "Niacinamide %10 + Zinc %1 Serum",
+   "marka": "The Ordinary",
+   "ad": "The Ordinary Niacinamide %10 + Zinc %1 Serum 30 ml",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1744/product/media/images/prod/PIM/20251015/09/4d9fa0f4-f850-4ce7-b0fe-dc86a05ac533/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/the-ordinary/niacinamide-10-zinc-1-leke-ve-gozenek-gorunumu-karsiti-serum-30ml-p-906055076",
+   "yazili": 2918,
+   "yildiz": [
+    316,
+    87,
+    228,
+    375,
+    1912
+   ],
+   "ort": 4.19,
+   "onerilen_ort": 4.99,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "etkisiz": 0.26,
+    "sivilce": 0.04,
+    "tahris": 0.12,
+    "kotulesme": 0.02,
+    "bozuk": 0.01,
+    "koku": 0.01,
+    "doku": 0.02,
+    "miktar": 0.06,
+    "bant": 0.08,
+    "orijinal": 0.06,
+    "hasarli": 0.03,
+    "ambalaj": 0.0,
+    "yanlis": 0.01,
+    "skt": 0.0,
+    "hediye": 0.04,
+    "reklam": 0.06,
+    "boykot": 0.01,
+    "fiyat": 0.0,
+    "kargo": 0.07,
+    "paket": 0.0
+   },
+   "olumlu": {
+    "leke": 0.13,
+    "isilti": 0.12,
+    "nem": 0.09,
+    "sivilce": 0.14,
+    "doku": 0.03,
+    "tekrar": 0.07,
+    "fiyat": 0.03,
+    "paket": 0.02,
+    "hediye": 0.01,
+    "tavsiye": 0.04
+   },
+   "dikkat": [
+    "1-2 yıldız oranı %13,8 ile büyük markalar arasında en yüksek.",
+    "Olumsuz yorumların %12'si kuruluk, pul pul soyulma, yanma ya da kızarıklık yazıyor; %26'sı etkisini görmediğini söylüyor.",
+    "Kutunun açık ya da kullanılmış gibi gelmesi %8, orijinallik şüphesi %6 (koruma bandı olmadığını yazanlar var), kargo gecikmesi %7."
+   ],
+   "ders": [
+    "Mühürsüz ya da açık gelen kutu, ithal markada bile orijinallik şüphesine dönüyor; önerilen yorumların yalnızca %7'si tekrar alımdan söz ediyor (kategorinin en düşüğü). Koruma bandı ve kutu mührü kozmetikte güvenin ilk adımı."
+   ],
+   "alinti": [
+    {
+     "konu": "etkisiz",
+     "yildiz": 1,
+     "metin": "paketleme ve kargo iyiydi yaklaşık bir aydır düzenli kullanıyorum ama hiçbir faydasını göremedim"
+    },
+    {
+     "konu": "tahris",
+     "yildiz": 2,
+     "metin": "Hassas ciltlerde pul pul dökülme yapıyor çok çok iyi ve sürekli nemlendirmek lazım"
+    },
+    {
+     "konu": "bant",
+     "yildiz": 1,
+     "metin": "Ürün hemen hemen yarıya kadar kullanılmış gibiydi umarım etkilerinden memnun kalabilirim"
+    }
+   ]
+  },
+  {
+   "id": "475277782",
+   "kisa": "Revitalift Clinical %12 C Vitamini Serum",
+   "marka": "L'Oréal Paris",
+   "ad": "L'Oréal Paris Revitalift Clinical %12 Saf C Vitamini Serum 30 ml",
+   "segment": "Büyük marka",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1000418/product/media/images/prod/PIM/20260717/08/409408d9-86d1-41c5-9f19-ab8f28b13e50/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/l-oreal-paris/revitalift-clinical-12-saf-c-vitamini-aydinlatici-ton-esitleyici-gozenek-karsiti-serum-30-ml-p-475277782",
+   "yazili": 1971,
+   "yildiz": [
+    144,
+    58,
+    141,
+    254,
+    1374
+   ],
+   "ort": 4.35,
+   "onerilen_ort": 4.94,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "etkisiz": 0.22,
+    "sivilce": 0.06,
+    "tahris": 0.13,
+    "kotulesme": 0.02,
+    "bozuk": 0.12,
+    "koku": 0.1,
+    "doku": 0.05,
+    "miktar": 0.01,
+    "bant": 0.1,
+    "orijinal": 0.04,
+    "hasarli": 0.01,
+    "ambalaj": 0.0,
+    "yanlis": 0.0,
+    "skt": 0.02,
+    "hediye": 0.02,
+    "reklam": 0.02,
+    "boykot": 0.01,
+    "fiyat": 0.04,
+    "kargo": 0.04,
+    "paket": 0.0
+   },
+   "olumlu": {
+    "leke": 0.18,
+    "isilti": 0.26,
+    "nem": 0.15,
+    "sivilce": 0.02,
+    "doku": 0.03,
+    "tekrar": 0.27,
+    "fiyat": 0.1,
+    "paket": 0.08,
+    "hediye": 0.04,
+    "tavsiye": 0.02
+   },
+   "dikkat": [
+    "Olumsuz yorumların %12'si serumun kısa sürede bozulduğunu, renginin sarardığını ya da turuncuya döndüğünü yazıyor; biri buzdolabında sakladığı halde.",
+    "Soyulma ve yanma gibi tahriş şikâyeti %13; koku şikâyeti %10 (pas kokusu yazılıyor).",
+    "Kutunun açık ya da mühürsüz gelmesi %10."
+   ],
+   "ders": [
+    "Hassas içerikte bozulma, renk ve koku değişimi etkisizlik kadar puan düşürüyor; önerilen yorumların %26'sı parlaklıktan söz ediyor."
+   ],
+   "alinti": [
+    {
+     "konu": "bozuk",
+     "yildiz": 2,
+     "metin": "Hemen bozuluyor rengi değişti şuan turuncu renkte buzdolabında saklamama rağmen onun için tavsiye etmiyorum"
+    },
+    {
+     "konu": "tahris",
+     "yildiz": 2,
+     "metin": "hemen sarardi ve silgi gibi soyuldu."
+    },
+    {
+     "konu": "koku",
+     "yildiz": 1,
+     "metin": "Demir pas kokusu var aşırı rahatsız edici. Faydası var mı bilmiyorum kokudan dolayı kullanmaya devam edemiyorsunuz zaten"
+    }
+   ]
+  },
+  {
+   "id": "754862327",
+   "kisa": "Leke Karşıtı Aydınlatıcı Ampul",
+   "marka": "Koreaco",
+   "ad": "Koreaco Leke Karşıtı Cilt Tonu Eşitleyen Aydınlatıcı Ampul (arbutin)",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1928/prod/QC_ENRICHMENT/20260716/18/8b836190-f02e-33ea-9dfa-5dcf84ed0cc9/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/koreaco/leke-karsiti-cilt-tonu-esitleyen-aydinlatici-ampul-p-754862327",
+   "yazili": 39208,
+   "yildiz": [
+    5706,
+    1955,
+    3848,
+    5450,
+    22249
+   ],
+   "ort": 3.93,
+   "onerilen_ort": 4.98,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "etkisiz": 0.07,
+    "sivilce": 0.05,
+    "tahris": 0.03,
+    "kotulesme": 0.03,
+    "bozuk": 0.0,
+    "koku": 0.0,
+    "doku": 0.02,
+    "miktar": 0.04,
+    "bant": 0.0,
+    "orijinal": 0.0,
+    "hasarli": 0.0,
+    "ambalaj": 0.0,
+    "yanlis": 0.0,
+    "skt": 0.0,
+    "hediye": 0.0,
+    "reklam": 0.03,
+    "boykot": 0.0,
+    "fiyat": 0.01,
+    "kargo": 0.01,
+    "paket": 0.0
+   },
+   "olumlu": {
+    "leke": 0.33,
+    "isilti": 0.18,
+    "nem": 0.12,
+    "sivilce": 0.03,
+    "doku": 0.04,
+    "tekrar": 0.33,
+    "fiyat": 0.17,
+    "paket": 0.02,
+    "hediye": 0.03,
+    "tavsiye": 0.05
+   },
+   "dikkat": [
+    "1-2 yıldız oranı %19,5 ile kategorinin en yükseği; ama 1-2 yıldızlı yorumların %75'inde sözlükteki hiçbir şikâyet geçmiyor. Okununca çoğunun övgü ya da \"henüz kullanmadım\" olduğu görülüyor (13 yorum henüz kullanmadığını yazıyor).",
+    "Şikâyet içeren yorumlarda etkisini görmeme %7, sivilce ya da komedon %5, şişenin yarım ya da küçük gelmesi %4."
+   ],
+   "ders": [
+    "Kategorinin en çok yorum alan ürünü (39.208 yazılı yorum). Puan dağılımı memnuniyeti doğru göstermiyor: 1-2 yıldız veren pek çok kullanıcı ürünü övüyor. Rakibi değerlendirirken yıldıza değil yorum metnine bakmak gerekiyor."
+   ],
+   "alinti": [
+    {
+     "konu": "etkisiz",
+     "yildiz": 1,
+     "metin": "Cilde bir faydası yok; düzenli kullanmama rağmen bir faydasını göremedim."
+    },
+    {
+     "konu": "sivilce",
+     "yildiz": 2,
+     "metin": "kapalı komediler oluşturdu"
+    },
+    {
+     "konu": "miktar",
+     "yildiz": 1,
+     "metin": "malesef ürün yarım gibi güvensizlik oluştuğu için iade edeceğim"
+    }
+   ]
+  },
+  {
+   "id": "754863810",
+   "kisa": "AHA %10 + BHA %2 Ampul",
+   "marka": "Koreaco",
+   "ad": "Koreaco AHA %10 + BHA %2 Gözenek Sıkılaştırıcı Ampul",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1521/product/media/images/prod/QC/20240904/17/b0e217a3-a8af-3111-8b06-5a8a8ac1e789/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/koreaco/aha-bha-canlandirici-gozenek-sikilastirici-ve-nemlendirici-aha-10-bha-2-ampoule-p-754863810",
+   "yazili": 28557,
+   "yildiz": [
+    3810,
+    1356,
+    2847,
+    4163,
+    16381
+   ],
+   "ort": 3.98,
+   "onerilen_ort": 4.87,
+   "onerilen_dusuk": 2,
+   "onerilen_n": 100,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "etkisiz": 0.06,
+    "sivilce": 0.02,
+    "tahris": 0.0,
+    "kotulesme": 0.03,
+    "bozuk": 0.0,
+    "koku": 0.0,
+    "doku": 0.02,
+    "miktar": 0.01,
+    "bant": 0.0,
+    "orijinal": 0.01,
+    "hasarli": 0.01,
+    "ambalaj": 0.0,
+    "yanlis": 0.0,
+    "skt": 0.0,
+    "hediye": 0.0,
+    "reklam": 0.07,
+    "boykot": 0.0,
+    "fiyat": 0.0,
+    "kargo": 0.01,
+    "paket": 0.0
+   },
+   "olumlu": {
+    "leke": 0.06,
+    "isilti": 0.18,
+    "nem": 0.16,
+    "sivilce": 0.22,
+    "doku": 0.02,
+    "tekrar": 0.22,
+    "fiyat": 0.13,
+    "paket": 0.09,
+    "hediye": 0.03,
+    "tavsiye": 0.03
+   },
+   "dikkat": [
+    "1-2 yıldız oranı %18,1; 1-2 yıldızlı yorumların %82'sinde şikâyet konusu yok, 17 yorum ürünü henüz kullanmadığını yazıyor.",
+    "Şikâyet içeren yorumlarda \"sosyal medya şişirmesi\" (%7) ve etkisizlik (%6) öne çıkıyor; 3 yorum gözeneklerinin daha da açıldığını yazıyor."
+   ],
+   "ders": [
+    "Önerilen yorumların %22'si sivilce, gözenek ve siyah noktada iyileşme gördüğünü yazıyor; yorumlarda serinin farklı renkteki şişelerini birlikte alanlar var."
+   ],
+   "alinti": [
+    {
+     "konu": "kotulesme",
+     "yildiz": 2,
+     "metin": "gözeneklerim daha da açıldı"
+    },
+    {
+     "konu": "reklam",
+     "yildiz": 2,
+     "metin": "Sadece mavi şişesinin iyi oldugunu düşünüyorum kesinlikle şişirme bi ürün"
+    },
+    {
+     "konu": "etkisiz",
+     "yildiz": 2,
+     "metin": "10% AHA bilirsiz nedir yüzü nasıl parlatmalı amma bu su hiç bir etkisi yok"
+    }
+   ]
+  },
+  {
+   "id": "44174819",
+   "kisa": "Arbutin Aydınlatıcı Serum",
+   "marka": "The Purest Solutions",
+   "ad": "The Purest Solutions Arbutin Aydınlatıcı Cilt Bakım Serumu 30 ml",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1855/prod/QC_ENRICHMENT/20260413/13/4c33c89a-0b8d-33de-a373-8d1def4d9a0c/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/the-purest-solutions/aydinlatici-ve-leke-gorunumu-azaltici-arbutin-cilt-bakim-serumu-30-ml-p-44174819",
+   "yazili": 15828,
+   "yildiz": [
+    640,
+    449,
+    1190,
+    2422,
+    11127
+   ],
+   "ort": 4.45,
+   "onerilen_ort": 4.91,
+   "onerilen_dusuk": 2,
+   "onerilen_n": 100,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "etkisiz": 0.15,
+    "sivilce": 0.04,
+    "tahris": 0.04,
+    "kotulesme": 0.02,
+    "bozuk": 0.01,
+    "koku": 0.04,
+    "doku": 0.02,
+    "miktar": 0.01,
+    "bant": 0.02,
+    "orijinal": 0.01,
+    "hasarli": 0.0,
+    "ambalaj": 0.0,
+    "yanlis": 0.02,
+    "skt": 0.0,
+    "hediye": 0.02,
+    "reklam": 0.04,
+    "boykot": 0.0,
+    "fiyat": 0.04,
+    "kargo": 0.01,
+    "paket": 0.0
+   },
+   "olumlu": {
+    "leke": 0.3,
+    "isilti": 0.1,
+    "nem": 0.08,
+    "sivilce": 0.03,
+    "doku": 0.01,
+    "tekrar": 0.37,
+    "fiyat": 0.17,
+    "paket": 0.11,
+    "hediye": 0.1,
+    "tavsiye": 0.03
+   },
+   "dikkat": [
+    "Olumsuz yorumların %15'i lekelerde açılma görmediğini yazıyor; bazıları birkaç şişe bitirdiğini belirtiyor.",
+    "Ağır ya da ilaç gibi koku (%4) ve soyulma, pütürlenme (%4) şikâyeti var.",
+    "Aldıktan sonra fiyatın düştüğü ya da fiyatına değmediği şikâyeti %4."
+   ],
+   "ders": [
+    "Önerilen yorumların %37'si tekrar aldığını yazıyor (Garnier'den sonra en yüksek); büyüyen yerli marka sadakatle satıyor. Örneklenen yorumlarda 18 farklı satıcı adı geçiyor."
+   ],
+   "alinti": [
+    {
+     "konu": "etkisiz",
+     "yildiz": 2,
+     "metin": "Ağustos ayından itibaren kullanıyorum, lekelerimde açılma olmadı 3 şişe aldım, 2. Yi bitirmek üzereyim."
+    },
+    {
+     "konu": "koku",
+     "yildiz": 2,
+     "metin": "Agır ılac gıbı bır kokusu var kullanmaya yenı başladım umarım iyidir"
+    },
+    {
+     "konu": "tahris",
+     "yildiz": 2,
+     "metin": "Soyuluyor krem sürünce pütür pütür yapıyor"
+    }
+   ]
+  },
+  {
+   "id": "147528362",
+   "kisa": "C Vit %10 Serum",
+   "marka": "The Purest Solutions",
+   "ad": "The Purest Solutions C Vit %10 Aydınlatıcı Bakım Serumu 30 ml (askorbik asit, ferulik asit)",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1855/prod/QC_ENRICHMENT/20260413/14/785b196a-2a6f-3622-9131-adf5dd5edf00/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/the-purest-solutions/c-vit-aydinlatici-ve-ton-esitleyici-bakim-serumu-30-ml-10-ascorbic-acid-ferulic-acid-0-5-p-147528362",
+   "yazili": 13935,
+   "yildiz": [
+    698,
+    303,
+    902,
+    1977,
+    10055
+   ],
+   "ort": 4.46,
+   "onerilen_ort": 4.75,
+   "onerilen_dusuk": 6,
+   "onerilen_n": 100,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "etkisiz": 0.17,
+    "sivilce": 0.05,
+    "tahris": 0.06,
+    "kotulesme": 0.02,
+    "bozuk": 0.06,
+    "koku": 0.04,
+    "doku": 0.02,
+    "miktar": 0.02,
+    "bant": 0.04,
+    "orijinal": 0.0,
+    "hasarli": 0.12,
+    "ambalaj": 0.0,
+    "yanlis": 0.0,
+    "skt": 0.0,
+    "hediye": 0.02,
+    "reklam": 0.05,
+    "boykot": 0.0,
+    "fiyat": 0.01,
+    "kargo": 0.02,
+    "paket": 0.01
+   },
+   "olumlu": {
+    "leke": 0.25,
+    "isilti": 0.3,
+    "nem": 0.11,
+    "sivilce": 0.01,
+    "doku": 0.01,
+    "tekrar": 0.32,
+    "fiyat": 0.22,
+    "paket": 0.04,
+    "hediye": 0.09,
+    "tavsiye": 0.05
+   },
+   "dikkat": [
+    "Olumsuz yorumların %12'si şişenin kapağı açık, akmış ya da kutuya dökülmüş geldiğinden.",
+    "Rengin sarardığı ya da bozulduğu şikâyeti %6; yanma, kuruluk gibi tahriş şikâyeti %6.",
+    "\"Önerilen\" ilk 100 yorumda 6 tane 1-2 yıldızlı yorum var (kategoride en fazla)."
+   ],
+   "ders": [
+    "Önerilen yorumların %30'u parlaklık, %32'si tekrar alım yazıyor. Sıvı serumda kargodaki sızıntı en kolay önlenebilecek şikâyet."
+   ],
+   "alinti": [
+    {
+     "konu": "hasarli",
+     "yildiz": 1,
+     "metin": "Çok severek kullandığım bir ürün ama kapağı açılmış ve kutuya dökülmüş maalesef biraz daha paketleme özenli olmalıydı"
+    },
+    {
+     "konu": "bozuk",
+     "yildiz": 1,
+     "metin": "serumun rengi sararmisti daha önce başka marka c vitamini kullandım rengi böyle değildi normalmi rengi"
+    },
+    {
+     "konu": "etkisiz",
+     "yildiz": 2,
+     "metin": "İlk sürünce verdiği hissiyat güzel ama çok da bir faydasını görmedim"
+    }
+   ]
+  },
+  {
+   "id": "44292035",
+   "kisa": "Niacinamide %5 Serum",
+   "marka": "The Purest Solutions",
+   "ad": "The Purest Solutions Niacinamide %5 + Zinc PCA %1 Serum 30 ml",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1923/prod/QC_ENRICHMENT/20260812/13/b441c1ed-6b8e-3f2f-97fa-0bcfb14b048e/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/the-purest-solutions/gozenek-ve-siyah-nokta-karsiti-niacinamide-serum-30-ml-niacinamide-5-zinc-pca-1-p-44292035",
+   "yazili": 8575,
+   "yildiz": [
+    427,
+    221,
+    691,
+    1352,
+    5884
+   ],
+   "ort": 4.4,
+   "onerilen_ort": 4.95,
+   "onerilen_dusuk": 1,
+   "onerilen_n": 100,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "etkisiz": 0.32,
+    "sivilce": 0.06,
+    "tahris": 0.03,
+    "kotulesme": 0.04,
+    "bozuk": 0.01,
+    "koku": 0.0,
+    "doku": 0.0,
+    "miktar": 0.0,
+    "bant": 0.02,
+    "orijinal": 0.0,
+    "hasarli": 0.01,
+    "ambalaj": 0.0,
+    "yanlis": 0.02,
+    "skt": 0.0,
+    "hediye": 0.03,
+    "reklam": 0.01,
+    "boykot": 0.0,
+    "fiyat": 0.01,
+    "kargo": 0.0,
+    "paket": 0.01
+   },
+   "olumlu": {
+    "leke": 0.08,
+    "isilti": 0.03,
+    "nem": 0.14,
+    "sivilce": 0.19,
+    "doku": 0.03,
+    "tekrar": 0.26,
+    "fiyat": 0.1,
+    "paket": 0.11,
+    "hediye": 0.11,
+    "tavsiye": 0.02
+   },
+   "dikkat": [
+    "Olumsuz yorumların %32'si etkisini görmediğini yazıyor (KOBİ ürünleri arasında ikinci en yüksek).",
+    "Sivilcelenme ya da komedon yazan yorumlar %6, cildini ya da cilt bariyerini kötüleştirdiğini yazanlar %4, kızarıklık ve yanma %3.",
+    "12 olumsuz yorum ürünü henüz kullanmadan yazılmış."
+   ],
+   "ders": [
+    "Aynı içerikte yerli KOBİ markası büyük markayla yarışabiliyor: 1-2 yıldız oranı %7,6, The Ordinary niasinamid serumunda %13,8. Önerilen yorumların %19'u sivilce ve gözenekte iyileşme yazıyor."
+   ],
+   "alinti": [
+    {
+     "konu": "etkisiz",
+     "yildiz": 2,
+     "metin": "düzenli kullanmak lazım ben pek bir faydasını gormedim"
+    },
+    {
+     "konu": "sivilce",
+     "yildiz": 1,
+     "metin": "Fazlasıyla sivilcelendim teşekkürler"
+    },
+    {
+     "konu": "tahris",
+     "yildiz": 2,
+     "metin": "hassas bi cilde sahibim ve kızarttı yüzümü siyah noktalarıma da bi etkisi olmadı begenemdim"
+    }
+   ]
+  },
+  {
+   "id": "696216899",
+   "kisa": "Vitamin C Glutatyon Serum",
+   "marka": "The Ceel",
+   "ad": "The Ceel Vitamin C Serum 30 ml (glutatyon, ferulik asit, askorbik asit)",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1000319/product/media/images/prod/PIM/20260225/08/ce066cd3-ac2a-41c0-99b0-3fa726d30060/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/the-ceel/leke-karsiti-aydinlatici-vitamin-c-serum-glutatyon-ferulic-asit-ascorbic-asit-30-ml-p-696216899",
+   "yazili": 9341,
+   "yildiz": [
+    516,
+    187,
+    540,
+    1092,
+    7006
+   ],
+   "ort": 4.49,
+   "onerilen_ort": 4.81,
+   "onerilen_dusuk": 4,
+   "onerilen_n": 100,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "etkisiz": 0.18,
+    "sivilce": 0.03,
+    "tahris": 0.02,
+    "kotulesme": 0.0,
+    "bozuk": 0.09,
+    "koku": 0.06,
+    "doku": 0.03,
+    "miktar": 0.03,
+    "bant": 0.0,
+    "orijinal": 0.0,
+    "hasarli": 0.02,
+    "ambalaj": 0.0,
+    "yanlis": 0.0,
+    "skt": 0.0,
+    "hediye": 0.05,
+    "reklam": 0.03,
+    "boykot": 0.0,
+    "fiyat": 0.01,
+    "kargo": 0.0,
+    "paket": 0.01
+   },
+   "olumlu": {
+    "leke": 0.22,
+    "isilti": 0.23,
+    "nem": 0.09,
+    "sivilce": 0,
+    "doku": 0.01,
+    "tekrar": 0.15,
+    "fiyat": 0.06,
+    "paket": 0.08,
+    "hediye": 0.19,
+    "tavsiye": 0.03
+   },
+   "dikkat": [
+    "Rengin değiştiği ya da koyulaştığı şikâyeti %9; balık gibi ya da ağır koku %6.",
+    "Olumsuz yorumların %5'i başkalarına gönderilen hediyenin kendisine gelmediğini yazıyor.",
+    "14 olumsuz yorum ürünü henüz kullanmadan yazılmış."
+   ],
+   "ders": [
+    "Önerilen yorumların %19'u hediyeden söz ediyor; hediye alışkanlık yaratınca gelmeyen hediye 1-2 yıldıza dönüyor."
+   ],
+   "alinti": [
+    {
+     "konu": "bozuk",
+     "yildiz": 1,
+     "metin": "ürün bir süre sonra rengi değişti normal mi?"
+    },
+    {
+     "konu": "koku",
+     "yildiz": 1,
+     "metin": "Bayat balık gibi kokuyor resmen 😳"
+    },
+    {
+     "konu": "hediye",
+     "yildiz": 2,
+     "metin": "Bana hediye gelmedi üzücü"
+    }
+   ]
+  },
+  {
+   "id": "318277648",
+   "kisa": "Peptit Serum",
+   "marka": "Cream Co.",
+   "ad": "Cream Co. Peptit Serum (niacinamide, hyaluronik asit)",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1000452/product/media/images/prod/PIM/20261007/06/b90c625b-c4ef-4f9e-9738-fe2b77fa42db/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/cream-co/kirisiklik-karsiti-peptit-serum-aydinlatici-niacinamide-hyaluronik-asit-tum-cilt-tipleri-p-318277648",
+   "yazili": 6883,
+   "yildiz": [
+    276,
+    189,
+    526,
+    1042,
+    4850
+   ],
+   "ort": 4.45,
+   "onerilen_ort": 4.96,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "etkisiz": 0.13,
+    "sivilce": 0.06,
+    "tahris": 0.01,
+    "kotulesme": 0.0,
+    "bozuk": 0.0,
+    "koku": 0.01,
+    "doku": 0.04,
+    "miktar": 0.06,
+    "bant": 0.03,
+    "orijinal": 0.01,
+    "hasarli": 0.14,
+    "ambalaj": 0.0,
+    "yanlis": 0.0,
+    "skt": 0.0,
+    "hediye": 0.04,
+    "reklam": 0.05,
+    "boykot": 0.0,
+    "fiyat": 0.01,
+    "kargo": 0.0,
+    "paket": 0.02
+   },
+   "olumlu": {
+    "leke": 0.06,
+    "isilti": 0.17,
+    "nem": 0.36,
+    "sivilce": 0,
+    "doku": 0.06,
+    "tekrar": 0.32,
+    "fiyat": 0.18,
+    "paket": 0.09,
+    "hediye": 0.09,
+    "tavsiye": 0.01
+   },
+   "dikkat": [
+    "Olumsuz yorumların %14'ü şişenin kırık ya da akmış gelmesinden; %6'sı şişenin bir kısmının boş geldiğini yazıyor.",
+    "Etkisiz ya da \"su gibi\" bulma %13; komedon ve sivilcelenme yazan yorumlar %6."
+   ],
+   "ders": [
+    "Önerilen yorumların %36'sı nemlendirmeyi övüyor; olumsuzların en büyük kısmı ürünün kendisinden değil kargodaki sızıntıdan geliyor (%14)."
+   ],
+   "alinti": [
+    {
+     "konu": "hasarli",
+     "yildiz": 2,
+     "metin": "Akmıştı paketlemeler daha sağlam yapılsa yazık"
+    },
+    {
+     "konu": "miktar",
+     "yildiz": 2,
+     "metin": "Öncelikle gönderilen hediyeler için teşekkür ederim fakat serumun bir kısmı boş geldi."
+    },
+    {
+     "konu": "sivilce",
+     "yildiz": 2,
+     "metin": "yüzümde komedon yaptığını düşünüyorum"
+    }
+   ]
+  },
+  {
+   "id": "449122769",
+   "kisa": "Papaya Peeling Serumu",
+   "marka": "eliamora",
+   "ad": "eliamora Papaya Özlü Peeling Serumu",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1680/prod/QC/20250520/20/f028a381-3fda-34e3-ae94-064754174cb3/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/eliamora/papaya-ozlu-gozenek-sikilastirici-peeling-serumu-p-449122769",
+   "yazili": 7932,
+   "yildiz": [
+    888,
+    369,
+    639,
+    1005,
+    5031
+   ],
+   "ort": 4.12,
+   "onerilen_ort": 4.95,
+   "onerilen_dusuk": 1,
+   "onerilen_n": 100,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "etkisiz": 0.18,
+    "sivilce": 0.01,
+    "tahris": 0.03,
+    "kotulesme": 0.01,
+    "bozuk": 0.0,
+    "koku": 0.01,
+    "doku": 0.02,
+    "miktar": 0.0,
+    "bant": 0.01,
+    "orijinal": 0.01,
+    "hasarli": 0.0,
+    "ambalaj": 0.02,
+    "yanlis": 0.0,
+    "skt": 0.0,
+    "hediye": 0.0,
+    "reklam": 0.01,
+    "boykot": 0.02,
+    "fiyat": 0.01,
+    "kargo": 0.0,
+    "paket": 0.0
+   },
+   "olumlu": {
+    "leke": 0.02,
+    "isilti": 0.11,
+    "nem": 0.15,
+    "sivilce": 0.1,
+    "doku": 0.01,
+    "tekrar": 0.26,
+    "fiyat": 0.09,
+    "paket": 0.1,
+    "hediye": 0.18,
+    "tavsiye": 0.01
+   },
+   "dikkat": [
+    "1-2 yıldız oranı %15,8; 1-2 yıldızlı yorumların %70'inde şikâyet konusu yok, bir kısmı ürünü öven ya da hediye aldığını yazan yorumlar.",
+    "Şikâyet içeren yorumlarda etkisizlik öne çıkıyor (%18): \"ölü deri\" diye görülen şeyin serumun kendisi olduğu yazılıyor.",
+    "2 yorum şişeden ürünü almanın zor olduğunu, 2 yorum marka hakkında çıkan haberler yüzünden bir daha almayacağını yazıyor."
+   ],
+   "ders": [
+    "Önerilen yorumların %18'i hediyeden söz ediyor. \"Gözle görülen etki\" vaadi, kullanıcı etkinin kaynağını sorgulayınca güvensizliğe dönüyor."
+   ],
+   "alinti": [
+    {
+     "konu": "etkisiz",
+     "yildiz": 1,
+     "metin": "İlk sürüldüğünde a ne güzel diyosun sonrası tırt."
+    },
+    {
+     "konu": "etkisiz",
+     "yildiz": 2,
+     "metin": "yüzünüzden çıkan ölü deri değil ben etkisini görmedim o kadar çok beğeni almiski şaşırdım"
+    },
+    {
+     "konu": "ambalaj",
+     "yildiz": 2,
+     "metin": "keşke şişe bu şekilde olmasaydı ürünü içinden almak zulum"
+    }
+   ]
+  },
+  {
+   "id": "241614313",
+   "kisa": "Arbutin Serum",
+   "marka": "Rimu",
+   "ad": "Rimu Arbutin Leke Karşıtı Serum 30 ml",
+   "segment": "KOBİ",
+   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1943/prod/QC_ENRICHMENT/20260628/22/5bd25cb8-abfe-3e5d-a604-1dbab5265a90/1_org_zoom.jpg",
+   "link": "https://www.trendyol.com/rimu-health-products/leke-karsiti-cilt-tonu-esitleyici-ve-aydinlatici-arbutin-serum-30ml-p-241614313",
+   "yazili": 2915,
+   "yildiz": [
+    98,
+    82,
+    218,
+    427,
+    2090
+   ],
+   "ort": 4.49,
+   "onerilen_ort": 4.96,
+   "onerilen_dusuk": 0,
+   "onerilen_n": 100,
+   "ornek_dusuk": 100,
+   "sikayet": {
+    "etkisiz": 0.45,
+    "sivilce": 0.05,
+    "tahris": 0.11,
+    "kotulesme": 0.0,
+    "bozuk": 0.08,
+    "koku": 0.02,
+    "doku": 0.05,
+    "miktar": 0.01,
+    "bant": 0.0,
+    "orijinal": 0.01,
+    "hasarli": 0.02,
+    "ambalaj": 0.0,
+    "yanlis": 0.0,
+    "skt": 0.0,
+    "hediye": 0.01,
+    "reklam": 0.09,
+    "boykot": 0.0,
+    "fiyat": 0.01,
+    "kargo": 0.0,
+    "paket": 0.0
+   },
+   "olumlu": {
+    "leke": 0.21,
+    "isilti": 0.12,
+    "nem": 0.09,
+    "sivilce": 0.01,
+    "doku": 0.03,
+    "tekrar": 0.21,
+    "fiyat": 0.1,
+    "paket": 0.11,
+    "hediye": 0.08,
+    "tavsiye": 0.13
+   },
+   "dikkat": [
+    "1-2 yıldız oranı %6,2 ile kategorinin en düşüğü; ama olumsuz yorumların %45'i etkisini görmediğini yazıyor (kategorinin en yükseği).",
+    "Kuruluk ve \"silgi gibi\" soyulma %11; rengin değişip bozulduğu %8.",
+    "Olumsuzların %9'u övgülere ya da tavsiyeye güvenip beklentisinin karşılanmadığını yazıyor."
+   ],
+   "ders": [
+    "Önerilen yorumların %13'ü tavsiye ya da sosyal medya üzerine aldığını yazıyor (kategorinin en yükseği); tavsiyeyle gelen müşteri hızlı sonuç bekliyor, görmeyince \"abartılmış\" diyor."
+   ],
+   "alinti": [
+    {
+     "konu": "tahris",
+     "yildiz": 1,
+     "metin": "Uzun zamandır düzenli kullanıyorum maalesef lekelerde bi fark göremedim cildimi kuruttuğunu gözlemledim"
+    },
+    {
+     "konu": "bozuk",
+     "yildiz": 1,
+     "metin": "İlk ayda bozuldu, rengi değişti bir daha kullanamadım tavsiye etmiyorum"
+    },
+    {
+     "konu": "reklam",
+     "yildiz": 2,
+     "metin": "Abartıldığı kadar güzel bi ürün değil ufak lekeler için belki olabilir"
+    }
+   ]
+  }
+ ]
+}

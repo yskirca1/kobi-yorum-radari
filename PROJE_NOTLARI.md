@@ -2,7 +2,7 @@
 
 > Bu dosya, projeyi yeni bir Claude oturumunda (ya da yeni bir hesapta) kaldığı yerden devam ettirmek için yazıldı.
 > Yeni oturumda ilk mesaj: **"yskirca1/kobi-yorum-radari deposundaki PROJE_NOTLARI.md dosyasını oku, projeye devam edelim."**
-> Son güncelleme: 12 Kasım 2026 (kamp sandalyesi ve bebek arabası eklendi; site düzeltmeleri ve Yöntem sayfası, asset v=12)
+> Son güncelleme: 12 Kasım 2026 (yüz serumu eklendi; nevresim takımı toplaması yarıda, bkz. Sıradaki adımlar 0; önceki: kamp sandalyesi, bebek arabası, Yöntem sayfası)
 
 ## 1. Proje nedir?
 
@@ -118,6 +118,16 @@
 - Toplama notu: bu oturumda bir ara Trendyol yeni yorum yüklemedi (20'de kaldı); sayfa açılınca 3 sn bekleyip iki kez 10'ar tık tekerlek kaydırması yapınca düzeldi. Masaüstü uygulamasıyla bağlantı iki kez koptu; kopma anında biten bir ürünün kaydı localStorage'a yazılmamıştı, yeniden toplandı.
 - Sözlük tarayıcıda `rv_sozluk_bebek`; araçlar `tools/bebek-arabasi/`.
 
+### Temel bulgular (yüz serumu, 12 Kasım 2026, 13 ürün; hepsi Claude tarayıcısında toplandı)
+- Büyük marka (uluslararası kozmetik grupları): Garnier Vitamin C+, Nivea Luminous630, The Ordinary Niacinamide %10, L'Oréal Revitalift Clinical %12 C vitamini. KOBİ (Trendyol'da büyüyen yerli markalar): Koreaco (leke ampulü, AHA/BHA ampulü), The Purest Solutions (arbutin, C vit, niacinamide), The Ceel C vitamini, Cream Co. peptit, eliamora papaya peeling, Rimu arbutin. The Purest Solutions, Cream Co., The Ceel ve Koreaco artık büyük hacimli markalar; mağazada da satılsalar yerli ve internetten büyüdükleri için KOBİ sayıldı (tartışmaya açık karar). L'Oréal'in en çok yorumlu "serumu" göz serumu olduğu için yerine C vitamini serumu alındı; üçüncü Koreaco ampulü ve 2. sayfadaki diğer TPS serumları alınmadı.
+- 149.692 yazılı yorum, 2.600 okundu. 1-2 yıldız payı %13,2 (büyük marka %9,3, KOBİ %13,6); en yüksek Koreaco leke ampulü (%19,5) ve AHA/BHA ampulü (%18,1), en düşük Rimu (%6,2). "Önerilen" ilk 100'lerde 1.300 yorumdan 17'si 1-2 yıldız (6'sı TPS C Vit'te).
+- Yıldız yanıltıcı: 1-2 yıldızlı yorumların ortalama %51'inde sözlükteki hiçbir şikâyet geçmiyor; Koreaco'da %75-82 ve okununca çoğu övgü ya da "henüz kullanmadım" (Koreaco AHA'da 17, leke ampulünde 13 yorum). Koreaco'nun yüksek 1-2 yıldız payı memnuniyetsizliği değil puanlama alışkanlığını gösteriyor.
+- Etkisini görmeme %21 (1 numara; büyük marka %26, KOBİ %19; Rimu %45, Nivea %38, TPS Niacinamide %32), tahriş (yanma, kızarıklık, soyulma) %5 (büyük %7; L'Oréal %13, The Ordinary %12, Rimu %11), övgüye/fenomene güvenip hayal kırıklığı %4, sivilce/komedon yazan %4, renk/koku bozulması %3 (L'Oréal %12, The Ceel %9), kırık/akmış şişe %3 (TPS C Vit %12, Cream Co. %14).
+- Büyük markanın açığı güven: kutunun açık/bantsız gelmesi %6,2 ve orijinallik şüphesi %3,5 (KOBİ %1,3 ve %0,6); The Ordinary'de bant %8, orijinallik %6, kargo %7.
+- KOBİ önerilen yorumlarının %10'u hediyeden söz ediyor (büyük marka %2; The Ceel %19, eliamora %18); The Ceel'de olumsuzların %5'i hediyenin gelmemesinden. Önerilen yorumların %26-27'si tekrar alım (Garnier %40, TPS Arbutin %37).
+- Site etki ya da sağlık iddiasında bulunmuyor; sivilce, tahriş gibi konular "yorumcunun yazdığı" olarak veriliyor. Boykot ya da marka haberleri yüzünden düşük puan ayrı konu (%0,5).
+- Sözlük tarayıcıda `rv_sozluk_serum`, özet `rv_ozet_serum`, alıntılar `rv_alinti_serum`; araçlar `tools/yuz-serumu/`.
+
 ### Claude'un uygulama tarayıcısıyla toplama (kullanıcı istemezse dosya indirme YOK)
 - Kod `tools/toplama.js` sitedeki kopyasından (`https://yskirca1.github.io/kobi-yorum-radari/tools/toplama.js`) tarayıcının localStorage'ına `rvcode` olarak yüklenir, indirme satırı çıkarılır; her ürün `localStorage['rv_<id>']` içinde kalır. İndirme yapılınca uygulama kullanıcıdan izin istiyor; kullanıcı bunu istemedi.
 - Trendyol yeni yorumları ancak sayfada **gerçek bir kullanıcı kaydırması** olduktan sonra yüklüyor: her üründe sayfa açılınca küçük bir ekran görüntüsü (scale 0.1) + bir fare tekerleği kaydırması, sonra betik. Claude penceresi ekranda görünür olmalı.
@@ -159,6 +169,8 @@
 
 - 12 Kasım 2026 yeniden ölçüm (veri değiştirilmedi): Spigen 169079728, Apple Şeffaf 858914651 ve Hacı Şakir 138018415 ürünlerinde Trendyol'un "Önerilen" listesi 1-2 yıldızlı yorum gösteriyor (1, 3, 2 adet), ama puan filtresinin yıldız sayıları bunları saymıyor ve filtrede 1-2 yıldız seçilince 0 yorum geliyor. Başlıktaki yazılı yorum sayısı (29, 18, 42) filtre toplamından (28, 14, 40) büyük. Yani çelişki toplama hatası değil, Trendyol'un iki sayımı arasındaki fark; site bu ürünlerde şikâyet oranını "Hesaplanmadı" gösteriyor.
 
+- 12 Kasım 2026 (asset v=14): `#/firsat` sayfası ("Hangi kategoriye girmeli?": kategoriler tek tabloda; 1-2 yıldız payı, büyük markaların yorum payı, KOBİ/büyük marka ayrımı, 1 numaralı şikâyet; sütunlar sıralanabilir; bileşik puan yok). Ana sayfada veriden hesaplanan üç tespit satırı. Kategori sayfasında "Raporu yazdır / PDF" düğmesi ve yazdırma stili (2-3 sayfalık satıcı raporu). Termosun alanı "Mutfak" oldu. Testler `/home/claude/test` altındaydı (oturuma özel; depoda değil).
+
 ## 4. Kararlar ve ilkeler
 
 - **Yasal yaklaşım:** Trendyol'dan otomatik veri çekmek kullanım koşullarına aykırı; proje için tek seferlik, yavaş ve az sayfayla "araştırma örneklemi" olarak toplanıyor. Kişisel veri (yorumcu adı) toplanmıyor. Sunumda sürekli sistem vizyonu yasal kanallarla anlatılacak: satıcının kendi mağazasını bağlaması (Trendyol Partner API), pazar yeri veri ortaklığı, lisanslı veri sağlayıcılar.
@@ -167,7 +179,7 @@
 
 ## 5. Sıradaki adımlar
 
-0. **Sıradaki kategoriler:** termos ✓, sweatshirt ✓ (12 ürün), Bluetooth kulaklık ✓ (12 ürün), şal ✓ (12 ürün), telefon kılıfı ✓ (12 ürün), doğal sabun ✓ (11 ürün), kedi tırmalama ✓ (12 ürün), filtre kahve ✓ (13 ürün), kamp sandalyesi ✓ (12 ürün), bebek arabası ✓ (12 ürün). "Yakında" listesi boşaldı; 10 kategori hazır. Telefon kılıfı 169079728 ve 858914651 ile doğal sabun 138018415'te yıldız dağılımı ile `onerilen_dusuk`/`onerilen_n` tutarsızdı; 12 Kasım'da yeniden toplandı, ham sayılar karar için raporlandı (veri dosyaları değiştirilmedi). Hedef: her kategoride 12 ürün. Spor tayt kullanıcı isteğiyle listeden çıkarıldı, siteye eklenmeyecek. Önerilen: Bluetooth kulaklık (elektronik) ve yüz serumu / doğal sabun (kozmetik): ETBİS'e göre en büyük alanlar.
+0. **Sıradaki kategoriler:** termos ✓, sweatshirt ✓ (12 ürün), Bluetooth kulaklık ✓ (12 ürün), şal ✓ (12 ürün), telefon kılıfı ✓ (12 ürün), doğal sabun ✓ (11 ürün), kedi tırmalama ✓ (12 ürün), filtre kahve ✓ (13 ürün), kamp sandalyesi ✓ (12 ürün), bebek arabası ✓ (12 ürün), yüz serumu ✓ (13 ürün; 11 kategori hazır). **Nevresim takımı yarıda:** çift kişilik 12 ürün seçildi (büyük marka: Karaca Home Loretta 764006134 ve Neos 35128537, Özdilek Floraison 746220566, Bella Maison Lauren 934098058; KOBİ: conzaliza antrasit 467443838 ve mürdüm 655477600, İQON gri-siyah 69768503 ve bordo-gri 271943142, MyStory Home Viola 182714625, Rimo Home çift taraflı 635703472, Sarah Anderson Malia 798612173, Berolige Sunday 38976172). İlk 11'i toplandı (localStorage `rv_<id>`, adresler `rv_urls_nevresim`); Berolige toplanırken masaüstü bağlantısı koptu, önce localStorage'da `rv_38976172` var mı ve 100+100 mü bakılmalı. Sözlük, analiz, `data/nevresim-takimi.json` ve kategoriler girişi henüz yok. Telefon kılıfı 169079728 ve 858914651 ile doğal sabun 138018415'te yıldız dağılımı ile `onerilen_dusuk`/`onerilen_n` tutarsızdı; 12 Kasım'da yeniden toplandı, ham sayılar karar için raporlandı (veri dosyaları değiştirilmedi). Hedef: her kategoride 12 ürün. Spor tayt kullanıcı isteğiyle listeden çıkarıldı, siteye eklenmeyecek. Önerilen: Bluetooth kulaklık (elektronik) ve yüz serumu / doğal sabun (kozmetik): ETBİS'e göre en büyük alanlar.
 1. **50 kategori listesi:** KOBİ'lerin rekabet ettiği, yorumu bol kategoriler. Taslak "yakında" listesi: bebek arabası, telefon kılıfı, doğal sabun, kedi tırmalama tahtası, filtre kahve, kamp sandalyesi. Liste kullanıcıyla netleştirilecek.
 2. **Veri toplama:** 5'erli partiler hâlinde, zamana yayarak. Her kategoride ortak konular (dayanıklılık, beden/ölçü, görselden farklı, kargo/paket, sahtelik, eksik parça, koku, fiyat) + kategoriye özel 2-4 konu.
 3. **Otomasyon (sunuma kadar "canlı MVP"):** bilgisayarda çalışan toplama programı (Python + Playwright), Claude API ile otomatik konu sınıflandırma ve not üretimi (kullanıcının Anthropic API anahtarı gerekir), sonuçların GitHub'a otomatik yüklenmesi, tarihli kayıtlarla zaman içinde değişim takibi.

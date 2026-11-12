@@ -188,5 +188,24 @@
   "urun": 12,
   "yorum": 1658,
   "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1575/prod/QC/20241002/14/cfc35eb2-4cc9-3350-8fbf-5e79a777d095/1_org_zoom.jpg"
+ },
+ {
+  "id": "yuz-serumu",
+  "ad": "Yüz serumu",
+  "ust": "Kozmetik",
+  "durum": "hazir",
+  "esanlam": [
+   "yüz serumu",
+   "serum",
+   "cilt serumu",
+   "c vitamini serumu",
+   "niacinamide serum",
+   "hyaluronik asit serumu",
+   "leke serumu",
+   "ampul serum"
+  ],
+  "urun": 13,
+  "yorum": 2600,
+  "gorsel": "https://cdn.dsmcdn.com/mnresize/400/-/ty1855/prod/QC_ENRICHMENT/20260413/14/785b196a-2a6f-3622-9131-adf5dd5edf00/1_org_zoom.jpg"
  }
 ]
