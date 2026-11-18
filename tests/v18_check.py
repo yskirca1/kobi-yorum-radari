@@ -72,7 +72,8 @@ async def main():
     check('S: no-result state', 'sonuç bulunamadı' in await pg.inner_text('h1') and await pg.locator('.cat-links a').count() == len(READY))
     await pg.goto(B + '#/ara/t%C3%BCylenme'); await pg.wait_for_timeout(800)
     await pg.locator('.sr-list a').first.click(); await pg.wait_for_timeout(800)
-    check('S: topic hit opens category with the topic box', pg.url.endswith('#/kategori/sweatshirt/konu/tuylenme') and 'Tüylenme' in await pg.inner_text('#konu h2'))
+    # v19: konu kutusu yerine tam konu görünümü (başlığı konunun adı)
+    check('S: topic hit opens the topic view', pg.url.endswith('#/kategori/sweatshirt/konu/tuylenme') and 'Tüylenme' in await pg.inner_text('h1'))
     # Veri gecikirken öneri listesi "yükleniyor" der, veri gelince yenilenir
     pg2 = await ctx.new_page(); await stub(pg2)
     await pg2.add_init_script("(()=>{const f=window.fetch;window.fetch=(u,o)=>/data\\/(?!kategoriler)/.test(String(u))?new Promise(r=>setTimeout(r,2500)).then(()=>f(u,o)):f(u,o);})()")

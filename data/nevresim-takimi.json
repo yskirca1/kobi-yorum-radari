@@ -151,27 +151,58 @@
  "oneriler": [
   {
    "baslik": "Kumaş içeriğini oranıyla yaz",
-   "metin": "En sık şikâyet kumaşın pamuklu olmaması, naylon çıkması ya da terletmesi; olumsuz yorumlardaki oranı %19 (büyük marka %20, KOBİ %18). Adında \"%100 pamuk\" ya da \"pamuklu\" geçen beş üründe de bu oran %10-33. Pamuk ve polyester oranını ilanda, etikette ve pakette açıkça yazmak, \"pamuklu diye aldım\" diye başlayan 1-2 yıldızın doğrudan karşılığı."
+   "metin": "En sık şikâyet kumaşın pamuklu olmaması, naylon çıkması ya da terletmesi; olumsuz yorumlardaki oranı %19 (büyük marka %20, KOBİ %18). Adında \"%100 pamuk\" ya da \"pamuklu\" geçen beş üründe de bu oran %10-33. Pamuk ve polyester oranını ilanda, etikette ve pakette açıkça yazmak, \"pamuklu diye aldım\" diye başlayan 1-2 yıldızın doğrudan karşılığı.",
+   "konular": [
+    "naylon"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Kumaşın kalınlığını göster",
-   "metin": "İnce kumaş şikâyetinin oranı %15; büyük markalarda %24 (Karaca Home Loretta %51), KOBİ'de %11 (MyStory Home %30). Kalitesiz kumaş şikâyeti iki grupta da %13. Kumaşın dokusunu ve kalınlığını yakın çekim fotoğrafla, ışığa tutulmuş haliyle göstermek beklentiyi doğru kurar."
+   "metin": "İnce kumaş şikâyetinin oranı %15; büyük markalarda %24 (Karaca Home Loretta %51), KOBİ'de %11 (MyStory Home %30). Kalitesiz kumaş şikâyeti iki grupta da %13. Kumaşın dokusunu ve kalınlığını yakın çekim fotoğrafla, ışığa tutulmuş haliyle göstermek beklentiyi doğru kurar.",
+   "konular": [
+    "ince",
+    "kalitesiz"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Tüylenme ve ölçü: KOBİ setlerinin zayıf noktası",
-   "metin": "Tüylenme ve pamuklanma şikâyeti KOBİ ürünlerinde %11, büyük markalarda %3 (İQON gri-siyah %22). Ölçü ve çarşafın oturmaması KOBİ'de %7, büyük markada %3 (Rimo Home %18). KOBİ ürünlerinde 1-2 yıldız oranı %17,9, büyük markalarda %10,0; KOBİ'yi büyük markadan en çok ayıran iki şikâyet bunlar. Lastikli çarşafın hangi yatak ölçüsüne uyduğunu ve parçaların ölçülerini ilanda yazmak, yıkamada tüylenmeyen kumaş seçmek bu farkı kapatmanın yolu."
+   "metin": "Tüylenme ve pamuklanma şikâyeti KOBİ ürünlerinde %11, büyük markalarda %3 (İQON gri-siyah %22). Ölçü ve çarşafın oturmaması KOBİ'de %7, büyük markada %3 (Rimo Home %18). KOBİ ürünlerinde 1-2 yıldız oranı %17,9, büyük markalarda %10,0; KOBİ'yi büyük markadan en çok ayıran iki şikâyet bunlar. Lastikli çarşafın hangi yatak ölçüsüne uyduğunu ve parçaların ölçülerini ilanda yazmak, yıkamada tüylenmeyen kumaş seçmek bu farkı kapatmanın yolu.",
+   "konular": [
+    "tuylenme",
+    "olcu"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Her renk ayrı ilan, ayrı sınav",
-   "metin": "Rengin ya da desenin görseldekinden farklı gelmesi şikâyetinin oranı %8. Aynı modelde fark büyük: conzaliza mürdümde renk şikâyeti %17, antrasitte %2 (1-2 yıldız oranı %33,0 ve %20,7); İQON bordo-gride %9, gri-siyahta %3. Rengi ve deseni öven önerilen yorumların oranı ortalama %30; renk satışı getiriyor, fotoğrafla tutmayınca puanı da götürüyor."
+   "metin": "Rengin ya da desenin görseldekinden farklı gelmesi şikâyetinin oranı %8. Aynı modelde fark büyük: conzaliza mürdümde renk şikâyeti %17, antrasitte %2 (1-2 yıldız oranı %33,0 ve %20,7); İQON bordo-gride %9, gri-siyahta %3. Rengi ve deseni öven önerilen yorumların oranı ortalama %30; renk satışı getiriyor, fotoğrafla tutmayınca puanı da götürüyor.",
+   "konular": [
+    "renk"
+   ],
+   "sevilenler": [
+    "renk"
+   ]
   },
   {
    "baslik": "Büyük marka ilanında doğru marka, eksiksiz takım",
-   "metin": "Büyük marka ürünlerinde markaya yakışmadığını ya da başka marka geldiğini yazan yorumların oranı %11 (KOBİ %1); Özdilek Floraison'da %30 ve ilanı 20 satıcı satıyor. Eksik parça büyük markada %7, yanlış ürün ya da beden %4. Bayi olarak büyük marka satan KOBİ için paketi açıp markayı, parça sayısını ve ölçüyü kontrol etmek en ucuz önlem."
+   "metin": "Büyük marka ürünlerinde markaya yakışmadığını ya da başka marka geldiğini yazan yorumların oranı %11 (KOBİ %1); Özdilek Floraison'da %30 ve ilanı 20 satıcı satıyor. Eksik parça büyük markada %7, yanlış ürün ya da beden %4. Bayi olarak büyük marka satan KOBİ için paketi açıp markayı, parça sayısını ve ölçüyü kontrol etmek en ucuz önlem.",
+   "konular": [
+    "marka",
+    "eksik",
+    "yanlis"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Hediye ve çeyiz alıcısı, fiyat alıcısı",
-   "metin": "Hediye ya da çeyiz için aldığını yazan önerilen yorumların oranı ortalama %27 (büyük marka %34, KOBİ %23; Berolige %43). Fiyatı anan önerilen yorumlar KOBİ'de %25, büyük markada %10. Hediye alıcısı için kutulu ve özenli paket, fiyat alıcısı için kumaş bilgisi öne çıkarılmalı."
+   "metin": "Hediye ya da çeyiz için aldığını yazan önerilen yorumların oranı ortalama %27 (büyük marka %34, KOBİ %23; Berolige %43). Fiyatı anan önerilen yorumlar KOBİ'de %25, büyük markada %10. Hediye alıcısı için kutulu ve özenli paket, fiyat alıcısı için kumaş bilgisi öne çıkarılmalı.",
+   "konular": [],
+   "sevilenler": [
+    "hediye",
+    "fiyat"
+   ]
   }
  ],
  "urunler": [

@@ -130,27 +130,55 @@
  "oneriler": [
   {
    "baslik": "Setlerde her rengi tek tek kontrol et",
-   "metin": "Olumsuz yorumlarda yanlış renk ya da ürün gönderimi %16, rengin fotoğraftan farklı gelmesi %14 oranında; en yüksek değerler 3'lü ve 4'lü setlerde. Organic Scarfs setinde renk farkı şikâyeti oranı %39. Paketlemeden önce her rengi sipariş kodlarıyla eşleştir; stokta olmayan rengi satıştan kaldır."
+   "metin": "Olumsuz yorumlarda yanlış renk ya da ürün gönderimi %16, rengin fotoğraftan farklı gelmesi %14 oranında; en yüksek değerler 3'lü ve 4'lü setlerde. Organic Scarfs setinde renk farkı şikâyeti oranı %39. Paketlemeden önce her rengi sipariş kodlarıyla eşleştir; stokta olmayan rengi satıştan kaldır.",
+   "konular": [
+    "yanlis",
+    "renk"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Rengi gün ışığında çek, tonu doğru adlandır",
-   "metin": "\"Kakao renk istedim, kahverenginin hiç sevmediğim tonu geldi\", \"karamel değil turuncu\" yorumları tonun yanlış adlandırıldığını gösteriyor. Filtresiz gün ışığında fotoğraf, yakın çekim kumaş ve tonu tarif eden bir cümle (ör. \"sütlü kahveye yakın\") beklentiyi doğru kurar."
+   "metin": "\"Kakao renk istedim, kahverenginin hiç sevmediğim tonu geldi\", \"karamel değil turuncu\" yorumları tonun yanlış adlandırıldığını gösteriyor. Filtresiz gün ışığında fotoğraf, yakın çekim kumaş ve tonu tarif eden bir cümle (ör. \"sütlü kahveye yakın\") beklentiyi doğru kurar.",
+   "konular": [],
+   "sevilenler": []
   },
   {
    "baslik": "Kenarları kontrol et, iade dönen ürünü yeniden satma",
-   "metin": "Büyük markaların olumsuz yorumlarında defo oranı %28, KOBİ'lerde %10. Büyük marka şallarını çoğunlukla bayiler satıyor ve şikâyetler \"kenarları sökük\", \"başkasının iadesini göndermişler\" şeklinde. Her şalı katlamadan önce kenar dikişini ve ipleri kontrol eden bir KOBİ, büyük markaya karşı burada öne geçer."
+   "metin": "Büyük markaların olumsuz yorumlarında defo oranı %28, KOBİ'lerde %10. Büyük marka şallarını çoğunlukla bayiler satıyor ve şikâyetler \"kenarları sökük\", \"başkasının iadesini göndermişler\" şeklinde. Her şalı katlamadan önce kenar dikişini ve ipleri kontrol eden bir KOBİ, büyük markaya karşı burada öne geçer.",
+   "konular": [
+    "defo"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Kumaşı fotoğraftaki gibi anlat",
-   "metin": "Kumaşın sert ya da kalın olması (%8), naylon ve polyester çıkması (%7) ve çok ince olması (%7) şikâyetleri birlikte önemli bir pay tutuyor. Kumaş içeriğini, kalınlığı ve mevsimini (yazlık mı, dört mevsim mi) açıkça yaz; \"pamuk\" yazıp karışım göndermek güveni bozuyor."
+   "metin": "Kumaşın sert ya da kalın olması (%8), naylon ve polyester çıkması (%7) ve çok ince olması (%7) şikâyetleri birlikte önemli bir pay tutuyor. Kumaş içeriğini, kalınlığı ve mevsimini (yazlık mı, dört mevsim mi) açıkça yaz; \"pamuk\" yazıp karışım göndermek güveni bozuyor.",
+   "konular": [
+    "sert",
+    "sentetik",
+    "ince"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Yıkama dayanımını test et",
-   "metin": "Büyük markalarda yıkamada solma, tiftiklenme ve boya bırakma şikâyeti %10 (KOBİ'de %2); Modakaşmir Neo Pamuk'ta %18. Her renk için renk haslığı testi yap, ürünle birlikte kısa bir yıkama talimatı gönder."
+   "metin": "Büyük markalarda yıkamada solma, tiftiklenme ve boya bırakma şikâyeti %10 (KOBİ'de %2); Modakaşmir Neo Pamuk'ta %18. Her renk için renk haslığı testi yap, ürünle birlikte kısa bir yıkama talimatı gönder.",
+   "konular": [
+    "yikama"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Büyük markayla aynı ligdesin: farkı hizmette yarat",
-   "metin": "Şalda 1-2 yıldız payı büyük markalarda %9,5, KOBİ'lerde %8,8; ürün kalitesinde açık bir fark yok. Olumlu yorumlarda renk canlılığı (%28), kumaş kalitesi ve kaymaması öne çıkıyor. Hediye paketi ve not gibi küçük hizmetler fark yaratıyor; ama istenen paket gönderilmezse sipariş iadeye dönüyor."
+   "metin": "Şalda 1-2 yıldız payı büyük markalarda %9,5, KOBİ'lerde %8,8; ürün kalitesinde açık bir fark yok. Olumlu yorumlarda renk canlılığı (%28), kumaş kalitesi ve kaymaması öne çıkıyor. Hediye paketi ve not gibi küçük hizmetler fark yaratıyor; ama istenen paket gönderilmezse sipariş iadeye dönüyor.",
+   "konular": [],
+   "sevilenler": [
+    "renk",
+    "kalite",
+    "kaymaz",
+    "not"
+   ]
   }
  ],
  "urunler": [

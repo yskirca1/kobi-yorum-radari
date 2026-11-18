@@ -126,27 +126,58 @@
  "oneriler": [
   {
    "baslik": "Beden tablosunu boy ve kiloyla ver",
-   "metin": "Olumsuz yorumlarda beden ve kalıp sorunu oranı %32: dar, bol, \"oversize değil\", yıkayınca çekme ya da yanlış beden. Olumlu yorumlarda kendi boy-kilo-bedenini yazanların oranı %19; müşteri bu bilgiyi arıyor. Ürün sayfasına \"170 cm, 65 kg → M\" tarzı bir tablo ve mankenin ölçülerini koy."
+   "metin": "Olumsuz yorumlarda beden ve kalıp sorunu oranı %32: dar, bol, \"oversize değil\", yıkayınca çekme ya da yanlış beden. Olumlu yorumlarda kendi boy-kilo-bedenini yazanların oranı %19; müşteri bu bilgiyi arıyor. Ürün sayfasına \"170 cm, 65 kg → M\" tarzı bir tablo ve mankenin ölçülerini koy.",
+   "konular": [
+    "dar",
+    "bol",
+    "yanlis",
+    "cekme"
+   ],
+   "sevilenler": [
+    "boykilo"
+   ]
   },
   {
    "baslik": "Tüylenmeyi yıkamadan önce çöz",
-   "metin": "Tek başına en sık şikâyet tüylenme (%18). Bu şikâyetlerin yaklaşık yarısı ilk yıkamalardan sonra yazılmış. Tüylenme testinden geçmiş kumaş seç; içi polarlıysa ürünle birlikte yıkama kartı gönder (ters çevir, 30°, kurutma makinesi yok)."
+   "metin": "Tek başına en sık şikâyet tüylenme (%18). Bu şikâyetlerin yaklaşık yarısı ilk yıkamalardan sonra yazılmış. Tüylenme testinden geçmiş kumaş seç; içi polarlıysa ürünle birlikte yıkama kartı gönder (ters çevir, 30°, kurutma makinesi yok).",
+   "konular": [
+    "tuylenme"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Kumaşı fotoğrafta abartma, kalınlığını yaz",
-   "metin": "KOBİ ürünlerinde \"ince, kalitesiz kumaş\" şikâyeti büyük markaların yaklaşık üç katı (%18 ve %6). Kalın görünen fotoğraf ince ürünle buluşunca 1 yıldız geliyor. İplik sayısını ya da gramajı yaz, yakın çekim kumaş fotoğrafı ekle."
+   "metin": "KOBİ ürünlerinde \"ince, kalitesiz kumaş\" şikâyeti büyük markaların yaklaşık üç katı (%18 ve %6). Kalın görünen fotoğraf ince ürünle buluşunca 1 yıldız geliyor. İplik sayısını ya da gramajı yaz, yakın çekim kumaş fotoğrafı ekle.",
+   "konular": [
+    "ince"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Doğru bedeni, doğru ürünü gönder",
-   "metin": "Büyük markaların olumsuz yorumlarında yanlış beden ya da ürün gönderimi oranı %13: S yerine XL, füme yerine bej, hatta başka marka. Paketlemede etiket kontrolü basit ama güçlü bir ayrışma noktası."
+   "metin": "Büyük markaların olumsuz yorumlarında yanlış beden ya da ürün gönderimi oranı %13: S yerine XL, füme yerine bej, hatta başka marka. Paketlemede etiket kontrolü basit ama güçlü bir ayrışma noktası.",
+   "konular": [
+    "yanlis"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Renkler arasında kalıbı ve kumaşı eşitle",
-   "metin": "Aynı modelin farklı renkleri farklı şikâyet alıyor: Grimelange'ın aynı modelinde tüylenme vanilya renkte %26, siyahta %51; Tudors'un siyahı dar, hakisi bol geliyor, bordosu boya akıtıyor; 3'lü setlerde parçalar farklı kalıpta. Müşteri bunu \"tutarsız\" diye okuyor. Her renk ve üretim partisinde ölçü, kumaş ve renk haslığı kontrolü yap; renk tonunu gün ışığında, filtresiz çek."
+   "metin": "Aynı modelin farklı renkleri farklı şikâyet alıyor: Grimelange'ın aynı modelinde tüylenme vanilya renkte %26, siyahta %51; Tudors'un siyahı dar, hakisi bol geliyor, bordosu boya akıtıyor; 3'lü setlerde parçalar farklı kalıpta. Müşteri bunu \"tutarsız\" diye okuyor. Her renk ve üretim partisinde ölçü, kumaş ve renk haslığı kontrolü yap; renk tonunu gün ışığında, filtresiz çek.",
+   "konular": [
+    "tuylenme",
+    "dar",
+    "bol"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Hediye alıcısını hedefle",
-   "metin": "Önerilen yorumlarda eş, sevgili ya da çocuk için hediye alımı oranı %23 (Tudors'ta yaklaşık yarısı). Hediye notu, kolay beden değişimi ve hediye paketi bu kitleyi kazanır; ama paket söz verildiyse mutlaka gönderilmeli."
+   "metin": "Önerilen yorumlarda eş, sevgili ya da çocuk için hediye alımı oranı %23 (Tudors'ta yaklaşık yarısı). Hediye notu, kolay beden değişimi ve hediye paketi bu kitleyi kazanır; ama paket söz verildiyse mutlaka gönderilmeli.",
+   "konular": [],
+   "sevilenler": [
+    "hediye"
+   ]
   }
  ],
  "urunler": [

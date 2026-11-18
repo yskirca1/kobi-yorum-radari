@@ -125,27 +125,52 @@
  "oneriler": [
   {
    "baslik": "KOBİ'nin rakibi damak tadı: tadı net anlat",
-   "metin": "KOBİ kahvelerinde olumsuz yorumların %44'ü tattan (\"aroma yok\", \"su gibi\", \"ekşi\"); büyük markalarda bu oran %13. Tat beklentisi kişiye göre değiştiği için kavrum derecesini, asiditeyi, gövdeyi ve tat notalarını ilanda açıkça yazmak doğru müşteriyi getirir."
+   "metin": "KOBİ kahvelerinde olumsuz yorumların %44'ü tattan (\"aroma yok\", \"su gibi\", \"ekşi\"); büyük markalarda bu oran %13. Tat beklentisi kişiye göre değiştiği için kavrum derecesini, asiditeyi, gövdeyi ve tat notalarını ilanda açıkça yazmak doğru müşteriyi getirir.",
+   "konular": [
+    "tat"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Taze kahve en güçlü kozun",
-   "metin": "Büyük markalarda olumsuz yorumların %30'u son kullanma tarihinden; Tchibo Profesional'da %59. KOBİ'lerde bu oran %2. Kavrum tarihini paketin üstüne ve ilana yazmak, KOBİ'nin büyük markaya karşı en kolay farkı."
+   "metin": "Büyük markalarda olumsuz yorumların %30'u son kullanma tarihinden; Tchibo Profesional'da %59. KOBİ'lerde bu oran %2. Kavrum tarihini paketin üstüne ve ilana yazmak, KOBİ'nin büyük markaya karşı en kolay farkı.",
+   "konular": [
+    "skt"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Paketi kargoya dayanıklı yap",
-   "metin": "Büyük marka kahvelerde patlak ve vakumu kaçmış paket şikâyeti %17 (Jacobs %32, Tchibo Gold %26). Naylon poşete konan 4'lü paketler kargoda patlıyor. Kutu, balonlu naylon ve valfli paket bu şikâyeti bitirir; KOBİ'lerde paket şikâyeti yalnızca %2."
+   "metin": "Büyük marka kahvelerde patlak ve vakumu kaçmış paket şikâyeti %17 (Jacobs %32, Tchibo Gold %26). Naylon poşete konan 4'lü paketler kargoda patlıyor. Kutu, balonlu naylon ve valfli paket bu şikâyeti bitirir; KOBİ'lerde paket şikâyeti yalnızca %2.",
+   "konular": [
+    "paket_hasar"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Öğütmeyi müşteriye sor, doğru öğüt",
-   "metin": "Öğütme şikâyeti %3: French press seçen müşteriye ince çekim, çekirdek isteyene öğütülmüş kahve gidiyor. Demleme yöntemine göre öğütme seçeneği sunmak ve siparişte doğru öğütmek iade sebebini ortadan kaldırır."
+   "metin": "Öğütme şikâyeti %3: French press seçen müşteriye ince çekim, çekirdek isteyene öğütülmüş kahve gidiyor. Demleme yöntemine göre öğütme seçeneği sunmak ve siparişte doğru öğütmek iade sebebini ortadan kaldırır.",
+   "konular": [
+    "ogutme"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Yorum beklentisini yönet",
-   "metin": "KOBİ kahvelerinde olumsuz yorumların %5'i \"yorumlara güvenip aldım, hayal kırıklığı\" diyor. Çok sayıda 5 yıldız beklentiyi yükseltiyor; tat profilini dürüst anlatmak ve küçük deneme paketi sunmak bu hayal kırıklığını azaltır."
+   "metin": "KOBİ kahvelerinde olumsuz yorumların %5'i \"yorumlara güvenip aldım, hayal kırıklığı\" diyor. Çok sayıda 5 yıldız beklentiyi yükseltiyor; tat profilini dürüst anlatmak ve küçük deneme paketi sunmak bu hayal kırıklığını azaltır.",
+   "konular": [
+    "yorum"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Deneme seti ve hediye kapıyı açar",
-   "metin": "Deneme ve tanışma setleri çeşit merakıyla satılıyor; Bongardi'nin önerilen yorumlarının %40'ı, Addis Ababa'nınkilerin %31'i hediyeden (klips, Türk kahvesi) söz ediyor. Yeni müşteri için küçük gramajlı set iyi bir giriş ürünü."
+   "metin": "Deneme ve tanışma setleri çeşit merakıyla satılıyor; Bongardi'nin önerilen yorumlarının %40'ı, Addis Ababa'nınkilerin %31'i hediyeden (klips, Türk kahvesi) söz ediyor. Yeni müşteri için küçük gramajlı set iyi bir giriş ürünü.",
+   "konular": [],
+   "sevilenler": [
+    "cesit",
+    "hediye"
+   ]
   }
  ],
  "urunler": [

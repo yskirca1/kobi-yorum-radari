@@ -161,23 +161,48 @@
  "oneriler": [
   {
    "baslik": "En büyük şikâyet etki beklentisi: kullanım süresini açık yaz",
-   "metin": "Olumsuz yorumlarda etkisini görmeme oranı %21 (büyük marka %26, KOBİ %19). Birçok olumsuz yorum birkaç gün ya da birkaç hafta kullandıktan sonra yazılmış. Ürünün nasıl ve ne kadar süre kullanılacağını ilanda ve kutuda açıkça yazmak beklentiyi gerçekçi tutar. (Bu site ürünlerin etkisi hakkında değerlendirme yapmaz; oranlar yorumcuların yazdıklarıdır.)"
+   "metin": "Olumsuz yorumlarda etkisini görmeme oranı %21 (büyük marka %26, KOBİ %19). Birçok olumsuz yorum birkaç gün ya da birkaç hafta kullandıktan sonra yazılmış. Ürünün nasıl ve ne kadar süre kullanılacağını ilanda ve kutuda açıkça yazmak beklentiyi gerçekçi tutar. (Bu site ürünlerin etkisi hakkında değerlendirme yapmaz; oranlar yorumcuların yazdıklarıdır.)",
+   "konular": [
+    "etkisiz"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Cilt tepkisi yazan yorumlar: kullanım talimatı ve uyarılar görünür olsun",
-   "metin": "Yorumcuların bir kısmı sivilce, komedon, yanma, kızarıklık ya da soyulma yazıyor (sivilce ve komedon %4, tahriş %5; büyük markada tahriş %7). İçerik oranlarını, hangi cilt tipi için olduğunu, üreticinin kullanım talimatını ve uyarılarını ilanda ve kutuda net göstermek bu yorumlarla karşılaşmayı azaltır."
+   "metin": "Yorumcuların bir kısmı sivilce, komedon, yanma, kızarıklık ya da soyulma yazıyor (sivilce ve komedon %4, tahriş %5; büyük markada tahriş %7). İçerik oranlarını, hangi cilt tipi için olduğunu, üreticinin kullanım talimatını ve uyarılarını ilanda ve kutuda net göstermek bu yorumlarla karşılaşmayı azaltır.",
+   "konular": [
+    "sivilce",
+    "tahris"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Sızdırmaz şişe, mühürlü kutu",
-   "metin": "Kırık, akmış ya da kapağı açık gelen şişe şikâyetinin oranı %3 (KOBİ %4); The Purest Solutions C Vit ve Cream Co. Peptit serumda %12-14. Büyük markalarda ise kutunun açık ya da bantsız gelmesi (%6,2) ve orijinallik şüphesi (%3,5) KOBİ'deki oranların (%1,3 ve %0,6) yaklaşık beş katı. Koruma bandı ve sızdırmaz paketleme hem hasarı hem güven sorusunu karşılar."
+   "metin": "Kırık, akmış ya da kapağı açık gelen şişe şikâyetinin oranı %3 (KOBİ %4); The Purest Solutions C Vit ve Cream Co. Peptit serumda %12-14. Büyük markalarda ise kutunun açık ya da bantsız gelmesi (%6,2) ve orijinallik şüphesi (%3,5) KOBİ'deki oranların (%1,3 ve %0,6) yaklaşık beş katı. Koruma bandı ve sızdırmaz paketleme hem hasarı hem güven sorusunu karşılar.",
+   "konular": [
+    "hasarli",
+    "bant",
+    "orijinal"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Renk ve koku değişimi: saklama bilgisini ver",
-   "metin": "Rengin değiştiği, sarardığı ya da kokunun bozulduğu şikâyetinin oranı %3; C vitamini ve arbutin serumlarında daha sık (L'Oréal C vitamini %12, The Ceel %9, Rimu %8). Işık geçirmeyen şişe, açıldıktan sonraki kullanım süresi ve saklama koşulunu ilanda ve etikette göstermek \"bozuk geldi\" şikâyetini azaltır."
+   "metin": "Rengin değiştiği, sarardığı ya da kokunun bozulduğu şikâyetinin oranı %3; C vitamini ve arbutin serumlarında daha sık (L'Oréal C vitamini %12, The Ceel %9, Rimu %8). Işık geçirmeyen şişe, açıldıktan sonraki kullanım süresi ve saklama koşulunu ilanda ve etikette göstermek \"bozuk geldi\" şikâyetini azaltır.",
+   "konular": [
+    "bozuk"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Yıldıza değil metne bak; hediye beklenti yaratıyor",
-   "metin": "1-2 yıldızlı yorumların ortalama %51 kadarında sözlükteki hiçbir şikâyet geçmiyor; Koreaco ürünlerinde bu oran %75-82 ve okunan metinlerin çoğu övgü ya da \"henüz kullanmadım\". Rakibin puanı tek başına yanıltıcı. Ayrıca KOBİ önerilen yorumlarının %10 kadarı hediyeden söz ediyor (büyük marka %2); hediye gönderen markada hediyenin gelmemesi 1-2 yıldıza dönüyor (The Ceel %5)."
+   "metin": "1-2 yıldızlı yorumların ortalama %51 kadarında sözlükteki hiçbir şikâyet geçmiyor; Koreaco ürünlerinde bu oran %75-82 ve okunan metinlerin çoğu övgü ya da \"henüz kullanmadım\". Rakibin puanı tek başına yanıltıcı. Ayrıca KOBİ önerilen yorumlarının %10 kadarı hediyeden söz ediyor (büyük marka %2); hediye gönderen markada hediyenin gelmemesi 1-2 yıldıza dönüyor (The Ceel %5).",
+   "konular": [
+    "hediye"
+   ],
+   "sevilenler": [
+    "hediye"
+   ]
   }
  ],
  "urunler": [

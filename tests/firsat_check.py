@@ -176,7 +176,8 @@ async def main():
         check(f'{tag}-{theme}: no page overflow (sliders open, row expanded)', sw[0]<=sw[1], str(sw))
         if tag=='m':
           # v17: telefonda tablo yerine kategori kartları; sıralama seçimi ve "Puan ayrıntısı" kartta
-          st=await pg.evaluate("(()=>{const d=document.querySelector('#fcards .ft-dbox').getBoundingClientRect(); return {cards:document.querySelectorAll('#fcards .fc').length, table:document.getElementById('ctable-wrap').hidden, sort:!document.getElementById('fsort-m').hidden, comps:document.querySelectorAll('#fcards .ft-dbox [data-comp]').length, dbox:[Math.round(d.left), Math.round(d.right), innerWidth]}})()")
+          # v19: tablo ve kartlar ikisi de çizilir, CSS telefonda tabloyu gizler (yazdırırken tablo basılır)
+          st=await pg.evaluate("(()=>{const d=document.querySelector('#fcards .ft-dbox').getBoundingClientRect(); return {cards:document.querySelectorAll('#fcards .fc').length, table:document.getElementById('ctable-wrap').getClientRects().length===0, sort:document.getElementById('fsort-m').getClientRects().length>0, comps:document.querySelectorAll('#fcards .ft-dbox [data-comp]').length, dbox:[Math.round(d.left), Math.round(d.right), innerWidth]}})()")
           check(f'm-{theme}: one card per category, table hidden, sort control, detail box in view', st['cards']==N and st['table'] and st['sort'] and st['comps']==5 and st['dbox'][0]>=0 and st['dbox'][1]<=st['dbox'][2], str(st))
           sc=await pg.evaluate("[...document.querySelectorAll('#fcards .ft-score')].map(x=>+x.innerText)")
           s_ref,order,_=F.scores(rows,[5,0,2,0,1])

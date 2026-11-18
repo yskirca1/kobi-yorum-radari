@@ -18,6 +18,17 @@
   const isKobi = (p) => p.segment === 'KOBİ';
   const markaAd = (m) => (m === 'Genel Markalar' ? 'Markasız' : m);
   const onerN = (p) => p.onerilen_n ?? 100;
+  // Adresler. Konu görünümü: #/kategori/<id>/konu/<temaId> (şikâyet) ve /sevilen/<konuId> (olumlu);
+  // ürün sayfası bir konuda: #/urun/<kategori>/<urunId>/konu/<temaId> ya da /sevilen/<konuId>
+  const H = {
+    cat: (cid, qs) => `#/kategori/${cid}${qs ? '?' + qs : ''}`,
+    konu: (cid, kind, kid) => `#/kategori/${cid}/${kind}/${kid}`,
+    urun: (cid, pid, kind, kid) => `#/urun/${cid}/${pid}${kind ? `/${kind}/${kid}` : ''}`,
+  };
+  // Tıklanabilir rakam: tek tip görünüm (noktalı alt çizgi ve ok, stil .go)
+  const go = (href, inner, cls = '', label) => `<a class="go${cls ? ' ' + cls : ''}" href="${esc(href)}"${label ? ` aria-label="${esc(label)}"` : ''}>${inner}</a>`;
+  // Yaklaşık yorum adedi = oran × okunan yorum. Tam sayıya yakınsa tam sayı, değilse tek ondalık (oranlar yuvarlandığı için)
+  const approx = (x) => (Math.abs(x - Math.round(x)) < 0.05 ? int(Math.round(x)) : x.toFixed(1).replace('.', ','));
   const ready = () => REG.filter((c) => c.durum === 'hazir');
   const regOf = (id) => REG.find((c) => c.id === id);
 
@@ -42,9 +53,24 @@
       p.dusuk = (p.yildiz[0] + p.yildiz[1]) / p.yazili;
       p.sik = Object.entries(p.sikayet).filter(([, v]) => v > 0).sort((a, b) => b[1] - a[1]).map(([k, v]) => ({ ...c.temaMap[k], v }));
       p.sev = Object.entries(p.olumlu).filter(([, v]) => v > 0).sort((a, b) => b[1] - a[1]).map(([k, v]) => ({ ...c.olkMap[k], v }));
+      // Alıntının konusu: yeni kategorilerde konu kimliği, 5 eski kategoride konu adı ya da "Olumlu: …" etiketi.
+      // Olumlu etiket yalnızca bir olumlu konunun kimliği ya da adıyla birebir aynıysa (aksansız) o konuya bağlanır; değilse hiçbir konuya bağlanmaz.
+      p.alinti.forEach((a) => {
+        const k = String(a.konu || ''), m = /^Olumlu:\s*(.+)$/.exec(k);
+        if (m) {
+          const f = fold(m[1]), o = c.olumlu_konular.find((x) => fold(x.id) === f || fold(x.ad) === f);
+          Object.assign(a, { pos: true, kid: o ? o.id : null, lab: o ? 'Olumlu: ' + o.ad : k });
+        } else {
+          const t = c.temaMap[k] || c.temalar.find((x) => x.ad === k);
+          Object.assign(a, { pos: false, kid: t ? t.id : null, lab: t ? t.ad : k });
+        }
+      });
     });
     return c;
   }
+  // Bir konuya bağlı alıntılar (kind: 'konu' şikâyet, 'sevilen' olumlu); başka konuya etiketli alıntı asla gösterilmez
+  const quotesOf = (p, kind, kid) => p.alinti.filter((a) => a.kid === kid && a.pos === (kind === 'sevilen'));
+  const topicOf = (c, kind, kid) => (kind === 'konu' ? c.temaMap[kid] : kind === 'sevilen' ? c.olkMap[kid] : null) || null;
 
   // 1-2 yıldız örneği boş olan ürünler: kırmızı %0 ya da "-" yerine tek nötr cümle
   const noLow = (p) => p.ornek_dusuk === 0;
@@ -60,6 +86,9 @@
     sikayet: ['şikâyet oranı', 'Okunan 1-2 yıldızlı yorumların yüzde kaçında bu sorunun geçtiği. Bir yorum birden çok soruna girebilir, bu yüzden toplamı 100 etmez.', 'sikayet'],
     onerilen: ['"Önerilen" sıralama', 'Trendyol ürün sayfasında yorumları önce "Önerilen" sırasıyla gösterir. Müşterinin ilk okuduğu yorumlar bunlar. Her üründe bu sıranın ilk 100 yorumu okundu; yorumu az olan üründe daha azı.', 'iki-ornek'],
     segment: ['KOBİ ve büyük marka', 'Büyük marka: herkesin bildiği ulusal ya da uluslararası markalar ve büyük mağaza zincirlerinin kendi ürünleri. KOBİ: küçük ve orta ölçekli satıcılar; internetten büyüyen yerli markalar da bu grupta.', 'segment'],
+    yaklasik: ['yaklaşık yorum', 'Ürünün oranı çarpı okunan yorum sayısı. Bu konunun kaç yorumda geçtiğini yaklaşık gösterir. Oranlar yuvarlandığı için küsuratlı çıkabilir.', 'oran'],
+    sevilen: ['olumlu konu oranı', 'Trendyol\'un "Önerilen" sıralamasında okunan yorumların yüzde kaçında bu konunun geçtiği. Kategori oranı, ürünlerin oranlarının basit ortalamasıdır.', 'oran'],
+    alinti: ['örnek yorum', 'Her ürün için okunan yorumlardan 3-4 tanesi kelimesi kelimesine saklandı. Tarihleri yok. Yorumların tamamı ürünün Trendyol sayfasında.', 'alinti'],
   };
   let tipN = 0;
   const tip = (k, inline) => {
@@ -227,7 +256,7 @@
     return { cats, prods: prods.slice(0, MAXR), topics: topics.slice(0, MAXR), nProd: prods.length, nTopic: topics.length, pending: r.length - loaded.length };
   }
   const prodName = (p) => `${markaAd(p.marka)} ${p.ad.replace(p.marka, '').trim()}`;
-  const konuHref = (c, t) => `#/kategori/${c.id}/konu/${t.id}`;
+  const konuHref = (c, t) => H.konu(c.id, 'konu', t.id);
   // Ürün ve şikâyet dizini kategori dosyalarına bağlı: kutuya odaklanınca hepsi istenir, geldikçe öneriler yenilenir
   let warm = null;
   const warmIndex = () => { if (warm || !REG.length) return; warm = Promise.all(ready().map((c) => loadCat(c.id).then(() => { if (document.activeElement === q && q.value.trim()) drawSug(true); }).catch(() => null))).then(() => { warm = null; if (document.activeElement === q && q.value.trim()) drawSug(true); }); };
@@ -293,23 +322,26 @@
     q.blur();
   });
 
+  // Yatay çubuklar. Satırda href varsa satırın tamamı bağlantıdır (ad noktalı alt çizgili, değerin yanında ok); cur: vurgulanan satır
   const hbar = (rows, cls = '', avgKey) => `<div class="hbars">${rows.map((r) => {
     const max = Math.max(...rows.map((x) => Math.max(x.v, avgKey ? x[avgKey] || 0 : 0)), 0.01);
-    return `<div class="hb ${cls}"><span>${esc(r.ad)}</span><span class="tr"><i style="width:${(r.v / max) * 100}%"></i>${avgKey && r[avgKey] != null ? `<s style="left:${(r[avgKey] / max) * 100}%" title="Kategori ortalaması ${pct(r[avgKey])}"></s>` : ''}</span><span class="v">${pct(r.v)}</span></div>`;
+    const inner = `<span class="hb-t">${esc(r.ad)}</span><span class="tr"><i style="width:${(r.v / max) * 100}%"></i>${avgKey && r[avgKey] != null ? `<s style="left:${(r[avgKey] / max) * 100}%" title="Kategori ortalaması ${pct(r[avgKey])}"></s>` : ''}</span><span class="v">${pct(r.v)}</span>`;
+    return r.href ? `<a class="hb go-row ${cls}${r.cur ? ' cur' : ''}" href="${esc(r.href)}"${r.cur ? ' aria-current="true"' : ''}>${inner}</a>` : `<div class="hb ${cls}">${inner}</div>`;
   }).join('')}</div>`;
 
   // ---- görünümler ----
   // Kategori kartı (ana sayfa ve arama ortak). Hazır olmayan kategori tıklanamaz, soluk kart olarak görünür.
+  // v19: kart bir <article>; kategori bağlantısı başlıkta ve kartın tamamını kaplar, "En sık şikâyet" kutusu ayrı bağlantı (konu görünümü)
   const catCard = (c, d) => c.durum !== 'hazir' ? soonCard(c) : `
-          <a class="cat" href="#/kategori/${esc(c.id)}" data-cat="${esc(c.id)}">
+          <article class="cat" data-cat="${esc(c.id)}">
             <div class="cat-img">${c.gorsel ? `<img src="${esc(c.gorsel)}" alt="" width="400" height="600" referrerpolicy="no-referrer" loading="lazy" decoding="async">` : `<span class="cat-ph">${esc(c.ad)}</span>`}</div>
-            <div class="cat-body"><small>${esc(c.ust)}</small><h3>${esc(c.ad)}</h3>
+            <div class="cat-body"><small>${esc(c.ust)}</small><h3><a class="cat-a" href="#/kategori/${esc(c.id)}">${esc(c.ad)}</a></h3>
               <span class="muted num cat-n">${int(c.urun)} ürün · ${int(c.yorum)} yorum incelendi</span>${catTop(d)}
-              <span class="cat-go">Analizi incele <span aria-hidden="true">→</span></span></div>
-          </a>`;
+              <span class="cat-go" aria-hidden="true">Analizi incele <span>→</span></span></div>
+          </article>`;
   // Kategori verisi gelmeden yeri ayrılmış boş kutu; veri gelince doldurulur (sayfa zıplamaz)
   const catTop = (d) => (d === undefined ? '<span class="cat-top wait" aria-hidden="true"></span>'
-    : d && d.tema[0] ? `<span class="cat-top">En sık şikâyet: ${esc(d.tema[0].ad)} <b class="num">${pct(d.tema[0].tum)}</b></span>` : '');
+    : d && d.tema[0] ? `<a class="cat-top go-row" href="${esc(H.konu(d.id, 'konu', d.tema[0].id))}"><span>En sık şikâyet: <span class="go-t">${esc(d.tema[0].ad)}</span></span> <b class="num go-v">${pct(d.tema[0].tum)}</b></a>` : '');
   const soonCard = (c) => `<div class="soon-card" aria-label="${esc(c.ad)}, yakında"><small>${esc(c.ust)}</small><b>${esc(c.ad)}</b><span class="tag">Yakında</span></div>`;
 
   const loadAll = async () => { const r = ready(); return Object.fromEntries((await Promise.all(r.map((c) => loadCat(c.id).catch(() => null)))).map((d, i) => [r[i].id, d])); };
@@ -320,12 +352,18 @@
       dusukN: s((d) => d.top.dusukN), onerilenN: s((d) => d.top.onerilenN), onerilen: s((d) => d.top.onerilen), ornek: s((d) => d.top.ornek), tam: D.length === r.length };
   };
   // yazili null ise (kategori dosyaları henüz gelmedi) yeri ayrılmış "…" gösterilir, sonra doldurulur
-  const kpiList = (t, cls = 'kpis') => `<dl class="${cls}">
-          <div><dt>Analiz edilen kategori</dt><dd class="num">${t.kat}</dd></div>
-          <div><dt>İncelenen ürün</dt><dd class="num">${int(t.urun)}</dd></div>
-          <div><dt>Yazılı yorum</dt><dd class="num" id="kpi-yazili">${t.yazili == null ? '<span aria-hidden="true">…</span><span class="sr-only">yükleniyor</span>' : int(t.yazili)}</dd></div>
-          <div><dt>Tek tek okunan yorum</dt><dd class="num">${int(t.okunan)}</dd></div>
+  // links: ana sayfada rakamlar Yöntem'deki ilgili bölüme gider (Yöntem sayfasının kendisinde bağlantı yok)
+  const kpiList = (t, cls = 'kpis', links) => {
+    const f = (v, sec, id) => (links ? `<a class="go" href="#/yontem${sec ? '/' + sec : ''}"${id ? ` id="${id}"` : ''}>${v}</a>` : `<span${id ? ` id="${id}"` : ''}>${v}</span>`);
+    return `<dl class="${cls}">
+          <div><dt>Analiz edilen kategori</dt><dd class="num">${f(t.kat, 'veri')}</dd></div>
+          <div><dt>İncelenen ürün</dt><dd class="num">${f(int(t.urun), 'veri')}</dd></div>
+          <div><dt>Yazılı yorum</dt><dd class="num">${f(t.yazili == null ? '<span aria-hidden="true">…</span><span class="sr-only">yükleniyor</span>' : int(t.yazili), 'yildiz', 'kpi-yazili')}</dd></div>
+          <div><dt>Tek tek okunan yorum</dt><dd class="num">${f(int(t.okunan), 'iki-ornek')}</dd></div>
         </dl>`;
+  };
+  // Jüri ve ilk ziyaret için örnek kategori: alıntıları en çok şikâyeti kapsayan kategori (DEMO.md)
+  const DEMO_CAT = 'filtre-kahve';
 
   let homeAlan = '';
   // Ana sayfa yalnızca kategoriler.json ile hemen çizilir; kategori dosyalarına bağlı rakamlar geldikçe yerine yazılır.
@@ -336,6 +374,7 @@
     const alanlar = [...new Set(r0.map((c) => c.ust))].sort((a, b) => a.localeCompare(b, 'tr'));
     if (homeAlan && !alanlar.includes(homeAlan)) homeAlan = '';
     const t0 = { kat: r0.length, urun: r0.reduce((a, c) => a + (c.urun || 0), 0), okunan: r0.reduce((a, c) => a + (c.yorum || 0), 0), yazili: null };
+    const demo = regOf(DEMO_CAT)?.durum === 'hazir' ? regOf(DEMO_CAT) : r0[0];
     app.innerHTML = `
       <section class="band hero-band">
         <div class="hero">
@@ -343,8 +382,9 @@
           <h1>Satmak istediğin üründe müşteri neden memnun değil?</h1>
           <p class="lead">Rakip ürünlerin binlerce yorumunu tek tek okuduk. Bir kategori seç; en sık şikâyetleri, müşterinin neyi sevdiğini ve pazara girerken neye dikkat etmen gerektiğini gör.</p>
           <p class="steps"><span class="sr-only">Nasıl kullanılır: </span><span><b>1.</b> Kategori seç</span><span><b>2.</b> Şikâyetleri gör</span><span><b>3.</b> Ürünleri karşılaştır</span></p>
+          ${demo ? `<p class="hero-cta"><a class="btn" href="#/kategori/${esc(demo.id)}">Örnekle başla: ${esc(demo.ad)} <span aria-hidden="true">→</span></a><span>Her rakamın üstüne tıklayıp hangi yorumdan geldiğini görebilirsin.</span></p>` : ''}
         </div>
-        ${kpiList(t0)}
+        ${kpiList(t0, 'kpis', true)}
       </section>
       <div class="alan-f" role="group" aria-label="Alana göre filtrele"><span class="muted">Alan:</span>
         ${['', ...alanlar].map((a) => `<button type="button" class="chip${a === homeAlan ? ' on' : ''}" data-alan="${esc(a)}" aria-pressed="${a === homeAlan}">${a ? esc(a) : 'Tümü'}</button>`).join('')}</div>
@@ -409,7 +449,7 @@
       ${nHit ? `${failNote}
         ${m.length ? `<section class="sres" aria-labelledby="sr-k"><h2 id="sr-k">Kategoriler</h2><div class="cats search-res">${m.map((c) => catCard(c, data[c.id])).join('')}</div></section>` : ''}
         ${R.nProd ? `<section class="sres" aria-labelledby="sr-u"><h2 id="sr-u">Ürünler ve markalar</h2><ul class="sr-list">${R.prods.map(prodRow).join('')}</ul>${more(R.nProd, R.prods.length)}</section>` : ''}
-        ${R.nTopic ? `<section class="sres" aria-labelledby="sr-s"><h2 id="sr-s">Şikâyet konuları ${tip('sikayet')}</h2><p class="muted">Konuya tıklayınca kategori sayfası o şikâyetle açılır.</p><ul class="sr-list">${R.topics.map(topicRow).join('')}</ul>${more(R.nTopic, R.topics.length)}</section>` : ''}`
+        ${R.nTopic ? `<section class="sres" aria-labelledby="sr-s"><h2 id="sr-s">Şikâyet konuları ${tip('sikayet')}</h2><p class="muted">Konuya tıklayınca oranın hangi ürünlerden geldiğini ve müşterinin ne yazdığını görürsün.</p><ul class="sr-list">${R.topics.map(topicRow).join('')}</ul>${more(R.nTopic, R.topics.length)}</section>` : ''}`
       : `<div class="empty"><p>Kategori, ürün, marka ya da şikâyet adıyla arayabilirsin. Örneğin "Karaca", "tüylenme", "sızdırıyor".</p>${failNote}<p>Şu an analiz edilen kategoriler:</p><ul class="cat-links">${avail.map((c) => `<li><a href="#/kategori/${esc(c.id)}">${esc(c.ad)}</a></li>`).join('')}</ul></div>`}`;
   }
 
@@ -468,13 +508,23 @@
     return new Set(ckMem[cid] || []);
   };
   const ckSet = (cid, s) => { ckMem[cid] = [...s]; if (ckCanStore()) { try { if (s.size) localStorage.setItem(CKP + cid, JSON.stringify([...s])); else localStorage.removeItem(CKP + cid); } catch {} } };
+  // Önerinin dayandığı konular (veride isteğe bağlı `konular` ve `sevilenler` alanları). Oranlar veriden canlı hesaplanır; alan yoksa "Genel öneri".
+  const recTopics = (c, o) => ({ ks: (Array.isArray(o.konular) ? o.konular : []).map((id) => c.temaMap[id]).filter(Boolean),
+    ss: (Array.isArray(o.sevilenler) ? o.sevilenler : []).map((id) => c.olkMap[id]).filter(Boolean) });
+  const recEv = (c, o, cls = 'rec-ev') => {
+    const { ks, ss } = recTopics(c, o);
+    if (!ks.length && !ss.length) return `<span class="${cls} rec-gen">Genel öneri</span>`;
+    const lk = (kind, t) => go(H.konu(c.id, kind, t.id), `${esc(t.ad)} <b class="num${kind === 'konu' ? ' neg' : ''}">${pct(t.tum)}</b>`);
+    return `<span class="${cls}">${ks.length ? `<span class="rec-l">Dayandığı şikâyet:</span> ${ks.map((t) => lk('konu', t)).join('<span class="rec-sep" aria-hidden="true"> · </span>')}` : ''}`
+      + `${ks.length && ss.length ? '<br>' : ''}${ss.length ? `<span class="rec-l">Müşterinin sevdiği:</span> ${ss.map((t) => lk('sevilen', t)).join('<span class="rec-sep" aria-hidden="true"> · </span>')}` : ''}</span>`;
+  };
   const ckItems = (c) => [
-    ...c.tema.filter((t) => t.tum > 0).slice(0, 5).map((t) => ({ k: 't:' + t.id, g: 's', t: t.unlem.replace(/!$/, ''), sub: `şikâyet oranı ${pct(t.tum)}` })),
-    ...c.oneriler.map((o) => ({ k: 'o:' + fold(o.baslik).slice(0, 48), g: 'o', t: o.baslik })),
+    ...c.tema.filter((t) => t.tum > 0).slice(0, 5).map((t) => ({ k: 't:' + t.id, g: 's', t: t.unlem.replace(/!$/, ''), ev: `<span class="ck-ev">${go(H.konu(c.id, 'konu', t.id), `şikâyet oranı <b class="num neg">${pct(t.tum)}</b>`)}</span>` })),
+    ...c.oneriler.map((o) => ({ k: 'o:' + fold(o.baslik).slice(0, 48), g: 'o', t: o.baslik, ev: recEv(c, o, 'ck-ev') })),
   ];
   function checklist(c) {
     const items = ckItems(c), on = ckGet(c.id);
-    const li = (it) => `<li${on.has(it.k) ? ' data-on=""' : ''}><label><input type="checkbox" data-ck="${esc(it.k)}"${on.has(it.k) ? ' checked' : ''}><span class="ck-prt" aria-hidden="true"></span><span class="ck-t">${esc(it.t)}${it.sub ? ` <small class="muted num">${esc(it.sub)}</small>` : ''}</span></label></li>`;
+    const li = (it) => `<li${on.has(it.k) ? ' data-on=""' : ''}><label><input type="checkbox" data-ck="${esc(it.k)}"${on.has(it.k) ? ' checked' : ''}><span class="ck-prt" aria-hidden="true"></span><span class="ck-t">${esc(it.t)}</span></label>${it.ev || ''}</li>`;
     const g = (k, title, hint) => `<fieldset class="ck-g"><legend>${title}</legend><p class="muted ck-hint">${hint}</p><ul>${items.filter((it) => it.g === k).map(li).join('')}</ul></fieldset>`;
     return `<section class="card ck-card jump" id="sec-kontrol" tabindex="-1" aria-labelledby="ck-t">
         <div class="ck-head"><h2 id="ck-t">Giriş kontrol listesi</h2><p class="ck-prog"><b class="num" id="ck-n"></b> <span id="ck-of"></span></p></div>
@@ -496,35 +546,145 @@
     document.getElementById('ck-store').textContent = ckCanStore() ? 'İşaretler bu tarayıcıda saklanır.' : 'Bu tarayıcı işaretleri saklamıyor; sayfayı kapatınca silinir.';
   }
 
-  // Aramadan gelen şikâyet konusu (#/kategori/<id>/konu/<tema>): sayfanın başında o konunun rakamları
-  function konuBox(c, t) {
-    const rank = c.tema.indexOf(t) + 1, segIki = new Set(c.urunler.map((p) => p.segment)).size > 1;
-    const top = c.urunler.filter((p) => p.ornek_dusuk >= GAP.minN && (p.sikayet[t.id] || 0) > 0).sort((a, b) => b.sikayet[t.id] - a.sikayet[t.id]).slice(0, 3);
-    return `<section class="konu-box prt-hide" id="konu" tabindex="-1" aria-labelledby="konu-t">
-        <div class="konu-top"><span class="label">Aradığın şikâyet</span><a class="linkbtn" href="#/kategori/${esc(c.id)}">Kapat<span class="sr-only">: şikâyet kutusunu kapat</span></a></div>
-        <h2 id="konu-t">${esc(t.ad)}</h2>
-        <p>Şikâyet oranı <b class="neg num">${pct(t.tum)}</b>: okunan <span class="nowrap">1-2 yıldızlı</span> yorumların bu kadarında geçiyor. Bu kategorinin en sık ${rank}. şikâyeti (${c.tema.length} konu içinde).${segIki ? ` Büyük marka ürünlerinde <b class="neg num">${pct(t.buyuk)}</b>, KOBİ ürünlerinde <b class="neg num">${pct(t.kobi)}</b>.` : ''}</p>
-        ${top.length ? `<div class="konu-p"><h3>En çok geçtiği ürünler</h3><ol>${top.map((p) => `<li><a href="#/urun/${esc(c.id)}/${esc(p.id)}">${esc(prodName(p))}</a> <b class="neg num">${pct(p.sikayet[t.id])}</b></li>`).join('')}</ol><p class="muted">En az ${GAP.minN} adet 1-2 yıldızlı yorumu okunan ürünler arasında.</p></div>` : ''}
-      </section>`;
+  // ---- konu görünümü (#/kategori/<id>/konu/<temaId> ve /sevilen/<konuId>): kategori oranı hangi ürünlerden oluşuyor + eldeki alıntılar ----
+  // Şikâyet: kategori oranı = Σ(ürün oranı × okunan 1-2 yıldızlı yorum) ÷ Σ okunan (enrich ile aynı ağırlık). Olumlu: ürün oranlarının basit ortalaması (enrich ile aynı).
+  const qFig = (c, p, a) => `<figure class="q${a.pos ? ' pos' : ''}"><blockquote>"${esc(a.metin)}"</blockquote><figcaption>${a.yildiz} yıldız · <a href="${esc(H.urun(c.id, p.id, a.pos ? 'sevilen' : 'konu', a.kid))}">${esc(prodName(p))}</a></figcaption></figure>`;
+  const trLink = (p, txt = "Yorumların tamamı Trendyol'da") => `<a class="ext" href="${esc(p.link)}" target="_blank" rel="noopener">${txt}<span class="sr-only"> (yeni sekmede açılır)</span><span aria-hidden="true"> ↗</span></a>`;
+  function topicPage(c, kind, t) {
+    const neg = kind === 'konu', P = c.urunler, kid = t.id;
+    const segIki = new Set(P.map((p) => p.segment)).size > 1;
+    const val = (p) => (neg ? p.sikayet[kid] : p.olumlu[kid]) || 0, base = (p) => (neg ? p.ornek_dusuk : onerN(p)), part = (p) => val(p) * base(p);
+    const has = (p) => val(p) > 0 && base(p) > 0;
+    const byPart = (a, b) => part(b) - part(a) || val(b) - val(a) || b.yazili - a.yazili;
+    const rank = (neg ? c.tema : c.olk).indexOf(t) + 1, nT = (neg ? c.tema : c.olk).length;
+    const nq = (p) => quotesOf(p, kind, kid).length;
+    setTitle(`${t.ad}: ${c.ad}`, `${c.ad} kategorisinde "${t.ad}": ${neg ? 'şikâyet oranı' : 'olumlu yorumlarda geçme oranı'} ${pct(t.tum)}, hangi ürünlerden geldiği ve müşterinin kendi sözleri.`);
+    const sum = (R, f) => R.reduce((a, p) => a + f(p), 0);
+    const row = (p) => `<tr><th scope="row">${go(H.urun(c.id, p.id, kind, kid), esc(prodName(p)))}<small class="tp-sub">${segIki && !neg ? `${esc(p.segment)} · ` : ''}${nq(p) ? `${nq(p)} örnek yorum` : 'örnek yorum yok'}</small></th>`
+      + `<td class="num" data-l="${neg ? 'Şikâyet oranı' : 'Oran'}"><span class="${neg ? 'neg' : 'pos-v'}">${pct(val(p))}</span></td><td class="num" data-l="Okunan">${int(base(p))}</td><td class="num" data-l="Yaklaşık yorum">≈ ${approx(part(p))}</td></tr>`;
+    const offRow = (R) => (R.length ? `<tr class="tp-off"><th scope="row">Bu konunun geçmediği ${R.length} ürün<small class="tp-sub">${R.map((p) => `<a href="${esc(H.urun(c.id, p.id))}">${esc(prodName(p))}</a>${base(p) ? '' : ' (1-2 yıldızlı yorum okunmadı)'}`).join(', ')}</small></th>`
+      + `<td class="num" data-l="${neg ? 'Şikâyet oranı' : 'Oran'}">%0</td><td class="num" data-l="Okunan">${int(sum(R, base))}</td><td class="num" data-l="Yaklaşık yorum">0</td></tr>` : '');
+    let body;
+    if (neg && segIki) {
+      body = [['Büyük marka', (p) => !isKobi(p), t.buyuk], ['KOBİ', isKobi, t.kobi]].map(([name, f, rate]) => {
+        const R = P.filter(f), on = R.filter(has).sort(byPart);
+        return `<tbody><tr class="tp-g"><th scope="rowgroup" colspan="4">${name}</th></tr>${on.map(row).join('')}${offRow(R.filter((p) => !has(p)))}`
+          + `<tr class="tp-tot"><th scope="row">${name} toplamı</th><td class="num" data-l="Şikâyet oranı"><b class="neg">${pct(rate)}</b></td><td class="num" data-l="Okunan">${int(sum(R, base))}</td><td class="num" data-l="Yaklaşık yorum">≈ ${approx(sum(R, part))}</td></tr></tbody>`;
+      }).join('');
+    } else {
+      const on = P.filter(has).sort(byPart);
+      body = `<tbody>${on.map(row).join('')}${offRow(P.filter((p) => !has(p)))}</tbody>`;
+    }
+    const N = sum(P, base), K = sum(P, part), S = Math.round(sum(P, val) * 100);
+    const foot = neg
+      ? `<tr class="tp-tot tp-all"><th scope="row">Kategori</th><td class="num" data-l="Şikâyet oranı"><b class="neg">${pct(t.tum)}</b></td><td class="num" data-l="Okunan">${int(N)}</td><td class="num" data-l="Yaklaşık yorum">≈ ${approx(K)}</td></tr>`
+      : `<tr class="tp-tot tp-all"><th scope="row">Kategori ortalaması</th><td class="num" data-l="Oran"><b>${pct(t.tum)}</b></td><td class="num" data-l="Okunan">${int(N)}</td><td class="num" data-l="Yaklaşık yorum">≈ ${approx(K)}</td></tr>`;
+    const how = neg
+      ? `Kategori oranı, ürünlerin şikâyet oranlarının okunan <span class="nowrap">1-2 yıldızlı</span> yorum sayısıyla ağırlıklı ortalamasıdır: yaklaşık <b class="num">${approx(K)}</b> ÷ <b class="num">${int(N)}</b> okunan yorum = <b class="num neg">${pct(t.tum)}</b>.`
+      : `Kategori oranı, ${P.length} ürünün oranlarının basit ortalamasıdır: oranların toplamı <b class="num">${int(S)}</b> puan ÷ <b class="num">${P.length}</b> ürün = <b class="num">${pct(t.tum)}</b>. Yorumu az olan ürün de bir ürün sayılır.`;
+    // Alıntılar: önce tablodaki sırayla konunun geçtiği ürünler
+    const order = [...P.filter(has).sort(byPart), ...P.filter((p) => !has(p))];
+    const withQ = order.filter((p) => nq(p)), noQ = order.filter((p) => has(p) && !nq(p));
+    const recs = c.oneriler.filter((o) => recTopics(c, o)[neg ? 'ks' : 'ss'].includes(t));
+    const others = (neg ? c.tema : c.olk).filter((x) => x !== t && x.tum > 0);
+    const segLine = neg && segIki ? ` Büyük marka ürünlerinde <b class="neg num">${pct(t.buyuk)}</b>, KOBİ ürünlerinde <b class="neg num">${pct(t.kobi)}</b>.` : '';
+    const lead = neg
+      ? `Şikâyet oranı <b class="neg num">${pct(t.tum)}</b>: okunan ${int(N)} adet <span class="nowrap">1-2 yıldızlı</span> yorumun yaklaşık ${int(Math.round(K))} tanesinde geçiyor. Bu kategorinin en sık ${rank}. şikâyeti (${nT} konu içinde).${segLine}`
+      : `Ürünlerin "Önerilen" sıralamada okunan yorumlarında ortalama <b class="num">${pct(t.tum)}</b> oranında geçiyor. Müşterinin en sık andığı ${rank}. olumlu konu (${nT} konu içinde).`;
+    app.innerHTML = `
+      <div class="band phead">
+        <div class="crumbs"><a href="#/">Ana sayfa</a> / <a href="${esc(H.cat(c.id))}">${esc(c.ad)}</a> / ${neg ? 'Şikâyet konusu' : 'Müşterinin sevdiği konu'}</div>
+        <div class="chead"><span class="eyebrow">${neg ? 'Şikâyet konusu' : 'Müşterinin sevdiği konu'} · ${esc(c.ad)}</span><h1>${esc(t.ad)}</h1>
+          <p class="tp-lead">${lead} ${tip(neg ? 'sikayet' : 'sevilen')}</p>
+          <p class="tp-back"><a href="${esc(H.cat(c.id))}"><span aria-hidden="true">←</span> ${esc(c.ad)}: kategori özeti</a></p></div>
+      </div>
+      <section class="card tp-card" aria-labelledby="tp-how-t">
+        <h2 id="tp-how-t">Bu oran hangi ürünlerden oluşuyor?</h2>
+        <p class="muted">Bir ürüne tıkla: o ürünün bu konudaki oranını ve yorumlarını gör.</p>
+        <div class="tp-wrap"><table class="tp-table"><caption class="sr-only">${esc(t.ad)}: ürün ürün ${neg ? 'şikâyet oranı' : 'oran'}, okunan yorum ve yaklaşık yorum sayısı</caption>
+          <thead><tr><th scope="col">Ürün</th><th scope="col" class="num">${neg ? 'Şikâyet oranı' : 'Oran'}</th><th scope="col" class="num">${neg ? 'Okunan <span class="nowrap">1-2 yıldızlı</span> yorum' : 'Okunan "Önerilen" yorum'}</th><th scope="col" class="num">Yaklaşık yorum ${tip('yaklasik')}</th></tr></thead>
+          ${body}<tfoot>${foot}</tfoot></table></div>
+        <p class="tp-how">${how} <a href="#/yontem/oran">Bir oran nasıl oluşuyor?</a></p>
+      </section>
+      <section class="card tp-card" id="tp-q" aria-labelledby="tp-q-t">
+        <h2 id="tp-q-t">Müşterinin kendi sözleriyle ${tip('alinti')}</h2>
+        <p class="muted">${neg ? 'Bu konuya etiketli saklanan örnek yorumlar.' : 'Bu olumlu konuya etiketli saklanan örnek yorumlar.'} Her üründe yalnızca 3-4 yorum saklandı; tarihleri yok.</p>
+        ${withQ.length ? `<div class="quotes">${withQ.flatMap((p) => quotesOf(p, kind, kid).map((a) => qFig(c, p, a))).join('')}</div>`
+          : `<p class="tp-none">${neg ? 'Bu şikâyete etiketli saklanan örnek yorum yok.' : 'Bu olumlu konuya etiketli saklanan örnek yorum yok. Saklanan yorumların çoğu 1-2 yıldızlı yorumlardan.'}</p>`}
+        ${noQ.length ? `<div class="tp-noq"><h3>${withQ.length ? 'Örnek yorumu saklanmayan ürünler' : 'Yorumları Trendyol\'da oku'}</h3><p class="muted">Bu ürünlerde konu geçiyor ama saklanan örnek yorum yok. Yorumların tamamı ürünün Trendyol sayfasında.</p>
+          <ul>${noQ.map((p) => `<li><a href="${esc(H.urun(c.id, p.id, kind, kid))}">${esc(prodName(p))}</a> <span class="num ${neg ? 'neg' : ''}">${pct(val(p))}</span> ${trLink(p, "Trendyol'da yorumlar")}</li>`).join('')}</ul></div>` : ''}
+        <p class="note"><a href="#/yontem/alinti">Örnek yorumlar nasıl seçildi, neden az?</a></p>
+      </section>
+      ${recs.length ? `<section class="card tp-card" aria-labelledby="tp-r-t"><h2 id="tp-r-t">Bu ${neg ? 'şikâyete' : 'konuya'} dayanan öneriler</h2><ol class="recs tp-recs">${recs.map((o) => `<li><b>${esc(o.baslik)}</b><span>${esc(o.metin)}</span>${recEv(c, o)}</li>`).join('')}</ol></section>` : ''}
+      ${others.length ? `<section class="tp-others" aria-labelledby="tp-o-t"><h2 id="tp-o-t" class="label">${neg ? 'Bu kategorideki diğer şikâyetler' : 'Müşterinin sevdiği diğer konular'}</h2>
+        <ul>${others.map((x) => `<li>${go(H.konu(c.id, kind, x.id), `${esc(x.ad)} <b class="num${neg ? ' neg' : ''}">${pct(x.tum)}</b>`)}</li>`).join('')}</ul></section>` : ''}`;
   }
 
-  async function category(id, isStale, konu) {
+  // ---- kategori sayfasının süzgeç ve sıralaması adreste: #/kategori/<id>?sirala=cok&tip=kobi ----
+  // sirala: yorum|puan|dusuk|cok; tip: kobi,buyuk; marka: marka adının aksansız kısaltması; sikayet: ürünün en sık şikâyetinin konu kimliği;
+  // puan: 4.5|4.0|3.5; dusuk: 10-alti|10-20|20-ustu. Geçersiz ya da bu kategoride olmayan değer "Sayfa bulunamadı" gösterir.
+  const SORTS = ['yorum', 'puan', 'dusuk', 'cok'];
+  const DUSUK_Q = { a: '10-alti', b: '10-20', c: '20-ustu' };
+  const SEG_Q = { 'KOBİ': 'kobi', 'Büyük marka': 'buyuk' };
+  const slug = (s) => fold(s).replace(/ /g, '-');
+  const ST0 = () => ({ segment: [], marka: [], sikayet: [], puan: '', dusuk: '' });
+  function readCatQ(c, q) {
+    const st = ST0(), keys = [...q.keys()];
+    let sort = 'yorum';
+    if (new Set(keys).size !== keys.length) return null;
+    const P = c.urunler, segs = [...new Set(P.map((p) => p.segment))], marks = [...new Set(P.map((p) => p.marka))], tops = new Set(P.map((p) => p.sik[0]?.id).filter(Boolean));
+    const list = (v, find) => { const a = v.split(','); if (a.some((x) => !x) || new Set(a).size !== a.length) return null; const out = a.map(find); return out.every((x) => x != null) ? out : null; };
+    for (const [k, v] of q) {
+      let ok = true;
+      if (k === 'sirala') { ok = SORTS.includes(v); sort = v; }
+      else if (k === 'tip') { const a = list(v, (x) => segs.find((s) => SEG_Q[s] === x)); ok = !!a; st.segment = a || []; }
+      else if (k === 'marka') { const a = list(v, (x) => marks.find((m) => slug(m) === x)); ok = !!a; st.marka = a || []; }
+      else if (k === 'sikayet') { const a = list(v, (x) => (tops.has(x) ? x : null)); ok = !!a; st.sikayet = a || []; }
+      else if (k === 'puan') { ok = Object.hasOwn(PUAN, v); st.puan = v; }
+      else if (k === 'dusuk') { const d = Object.keys(DUSUK_Q).find((x) => DUSUK_Q[x] === v); ok = !!d; st.dusuk = d || ''; }
+      else ok = false;
+      if (!ok) return null;
+    }
+    return { sort, st };
+  }
+  const catQ = (sort, st) => [sort !== 'yorum' && 'sirala=' + sort, st.segment.length && 'tip=' + st.segment.map((s) => SEG_Q[s]).join(','),
+    st.marka.length && 'marka=' + st.marka.map(slug).join(','), st.sikayet.length && 'sikayet=' + st.sikayet.join(','),
+    st.puan && 'puan=' + st.puan, st.dusuk && 'dusuk=' + DUSUK_Q[st.dusuk]].filter(Boolean).join('&');
+  const catQS = {}; // kategori başına son görülen süzgeç adresi (ürün sayfasından "tüm ürünler"e dönüşte korunur)
+
+  const yakinda = (r) => {
+    setTitle(`${r.ad} (yakında)`);
+    app.innerHTML = `<div class="band phead"><div class="crumbs"><a href="#/">Ana sayfa</a> / ${esc(r.ad)}</div><div class="chead"><h1>${esc(r.ad)}</h1></div></div><div class="empty"><p class="muted">Bu kategorinin yorumları henüz toplanmadı.</p><a class="btn" href="#/">Kategorilere dön</a></div>`;
+  };
+  // Konu görünümü yönlendirmesi: bilinmeyen kategori ya da konu "Sayfa bulunamadı"
+  async function topicRoute(id, kind, kid, isStale) {
     const r = regOf(id);
     if (!r) { notFound('Bu kategori bu sitede yok.'); return; }
-    if (r.durum !== 'hazir') {
-      setTitle(`${r.ad} (yakında)`);
-      app.innerHTML = `<div class="band phead"><div class="crumbs"><a href="#/">Ana sayfa</a> / ${esc(r.ad)}</div><div class="chead"><h1>${esc(r.ad)}</h1></div></div><div class="empty"><p class="muted">Bu kategorinin yorumları henüz toplanmadı.</p><a class="btn" href="#/">Kategorilere dön</a></div>`;
-      return;
-    }
+    if (r.durum !== 'hazir') { yakinda(r); return; }
     const c = await loadCat(id);
     if (isStale()) return;
+    const t = topicOf(c, kind, kid);
+    if (!t) { notFound(kind === 'konu' ? 'Bu şikâyet konusu bu kategoride yok.' : 'Bu olumlu konu bu kategoride yok.', `<a class="btn" href="${esc(H.cat(c.id))}">${esc(c.ad)} sayfasına dön</a>`); return; }
     rememberCat(id);
-    const kt = konu ? c.temaMap[konu] : null;
-    setTitle(kt ? `${kt.ad}: ${c.ad}` : c.ad, `${c.ad}: ${c.urunler.length} ürünün ${int(c.top.yazili)} yazılı yorumundan en sık şikâyetler, satıcı için öneriler ve giriş kontrol listesi.`);
+    topicPage(c, kind, t);
+  }
+
+  async function category(id, isStale, q) {
+    const r = regOf(id);
+    if (!r) { notFound('Bu kategori bu sitede yok.'); return; }
+    if (r.durum !== 'hazir') { yakinda(r); return; }
+    const c = await loadCat(id);
+    if (isStale()) return;
+    const cq = readCatQ(c, q);
+    if (!cq) { notFound('Bu adresteki süzgeç ya da sıralama bu kategoride yok.', `<a class="btn" href="${esc(H.cat(c.id))}">${esc(c.ad)} sayfasına dön</a>`); return; }
+    rememberCat(id);
+    setTitle(c.ad, `${c.ad}: ${c.urunler.length} ürünün ${int(c.top.yazili)} yazılı yorumundan en sık şikâyetler, satıcı için öneriler ve giriş kontrol listesi.`);
     const top4 = c.tema.slice(0, 4), max = top4[0].tum;
     const seg = c.tema.filter((t) => t.id !== 'gosterge').slice(0, 5);
     const segIki = new Set(c.urunler.map((p) => p.segment)).size > 1;
-    const sort = sessionSort[id] || 'yorum';
+    const sort = cq.sort;
+    sessionSort[id] = sort; filterState[id] = cq.st; catQS[id] = catQ(sort, cq.st);
+    if ([...q.keys()].length) pendingFocus = 'sec-urun';
     const tamYuz = c.top.onerilenN === c.urunler.length * 100;
     const sl = segLow(c), on = c.top.onerilen;
     const SECS = [['sec-ozet', 'Özet'], ['sec-oneri', 'Ne yapmalı?'], ['sec-icgoru', 'İçgörüler'], ['sec-urun', 'Ürünler'], ['sec-kontrol', 'Kontrol<span class="sn-long"> listesi</span>']];
@@ -536,29 +696,30 @@
           <div class="chead-act"><button type="button" class="btn ghost" id="print-btn">Raporu yazdır / PDF</button></div></div>
       </div>
       <nav class="band secnav" id="secnav" aria-label="Sayfanın bölümleri"><div class="secnav-in">${SECS.map(([id, t]) => `<button type="button" data-jump="${id}">${t}</button>`).join('')}</div></nav>
-      ${kt ? konuBox(c, kt) : ''}
       <section class="summary jump" id="sec-ozet" tabindex="-1" aria-labelledby="sum-t">
         <div class="sum-main">
           <h2 class="label" id="sum-t">En sık şikâyetler ${tip('sikayet')}</h2>
-          <ol class="issues">${top4.map((t) => `<li><span class="t">${esc(t.unlem.replace(/!$/, ''))}</span><span class="p">${pct(t.tum)}</span><span class="bar"><i style="width:${(t.tum / max) * 100}%"></i></span></li>`).join('')}</ol>
+          <ol class="issues">${top4.map((t) => `<li><a class="go-row" href="${esc(H.konu(c.id, 'konu', t.id))}"><span class="t go-t">${esc(t.unlem.replace(/!$/, ''))}</span><span class="p go-v">${pct(t.tum)}</span><span class="bar"><i style="width:${(t.tum / max) * 100}%"></i></span></a></li>`).join('')}</ol>
+          <p class="hint">Bir şikâyete tıkla: hangi ürünlerden geldiğini ve müşterinin ne yazdığını gör.</p>
           <p class="note">Yüzde, şikâyet oranıdır: 1-2 yıldızlı yorumların kaçında bu sorunun geçtiğini gösterir. Bir yorum birden fazla soruna girebilir. <a href="#/yontem">Bu rakamlar nasıl hesaplandı?</a></p>
         </div>
         <div class="sum-side">
-          <div class="fact"><span class="fact-h">Tüm yazılı yorumlar ${tip('yildiz')}</span><b class="neg">${pct(c.top.dusuk, 1)}</b>
+          <div class="fact"><span class="fact-h">Tüm yazılı yorumlar ${tip('yildiz')}</span>${go(H.cat(c.id, 'sirala=cok'), pct(c.top.dusuk, 1), 'fig neg', `${pct(c.top.dusuk, 1)}: ürünleri 1-2 yıldız payına göre sırala`)}
             <span>1-2 yıldız payı: ${int(c.top.yazili)} yorumdan ${int(c.top.dusukN)} tanesi 1 ya da 2 yıldız.</span></div>
-          <div class="fact"><span class="fact-h">Müşterinin ilk gördüğü yorumlar ${tip('onerilen')}</span><b>${int(on)} / ${int(c.top.onerilenN)}</b>
+          <div class="fact"><span class="fact-h">Müşterinin ilk gördüğü yorumlar ${tip('onerilen')}</span>${go('#/yontem/iki-ornek', `${int(on)} / ${int(c.top.onerilenN)}`, 'fig', `${int(on)} / ${int(c.top.onerilenN)}: Yöntem, iki ayrı örnek`)}
             <span>${tamYuz ? `Trendyol'un "Önerilen" sıralamasında her ürünün ilk 100 yorumu.` : `Trendyol'un "Önerilen" sıralamasında okunan yorumlar (yorumu az olan üründe 100'den az).`} ${on ? `${int(on)} tanesi 1-2 yıldızlı.` : 'Hiçbiri 1-2 yıldızlı değil.'}</span></div>
           ${segIki ? `<div class="fact"><span class="fact-h">1-2 yıldız payı, satıcı tipine göre ${tip('segment')}</span>
-            <dl class="fact-seg"><div><dt>Büyük marka</dt><dd class="neg num">${pct(sl.buyuk, 1)}</dd></div><div><dt>KOBİ</dt><dd class="neg num">${pct(sl.kobi, 1)}</dd></div></dl></div>` : ''}
+            <dl class="fact-seg"><div><dt>Büyük marka</dt><dd class="neg num">${go(H.cat(c.id, 'sirala=cok&tip=buyuk'), pct(sl.buyuk, 1), '', `Büyük marka ${pct(sl.buyuk, 1)}: büyük marka ürünlerini 1-2 yıldız payına göre göster`)}</dd></div><div><dt>KOBİ</dt><dd class="neg num">${go(H.cat(c.id, 'sirala=cok&tip=kobi'), pct(sl.kobi, 1), '', `KOBİ ${pct(sl.kobi, 1)}: KOBİ ürünlerini 1-2 yıldız payına göre göster`)}</dd></div></dl></div>` : ''}
         </div>
       </section>
-      <section class="card recs-card jump" id="sec-oneri" tabindex="-1" aria-labelledby="oneri-t"><h2 id="oneri-t">Ne yapmalı? Bu kategoriye girecek KOBİ için öneriler</h2><ol class="recs" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))">${c.oneriler.map((o) => `<li><b>${esc(o.baslik)}</b><span>${esc(o.metin)}</span></li>`).join('')}</ol></section>
+      <section class="card recs-card jump" id="sec-oneri" tabindex="-1" aria-labelledby="oneri-t"><h2 id="oneri-t">Ne yapmalı? Bu kategoriye girecek KOBİ için öneriler</h2><ol class="recs" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))">${c.oneriler.map((o) => `<li><b>${esc(o.baslik)}</b><span>${esc(o.metin)}</span>${recEv(c, o)}</li>`).join('')}</ol>
+        <p class="note">Öneriler yorumlar okunarak yazıldı; altındaki oranlar dayandıkları konuların bu sayfadaki oranlarıdır. <a href="#/yontem/oneri">Öneriler hangi şikâyete dayanıyor?</a></p></section>
       <section class="jump" id="sec-icgoru" tabindex="-1" aria-labelledby="icgoru-t">
       <h2 class="sec-h" id="icgoru-t">Kategori içgörüleri</h2>
       <div class="cgrid">
-        <section class="card prt-hide"${segIki ? '' : ' style="grid-column:1/-1"'}><h3>Müşteriler neyi seviyor?</h3><p class="muted">Olumlu yorumlarda en sık geçen konular.</p>${hbar(c.olk.slice(0, 6).map((k) => ({ ad: k.ad, v: k.tum })))}</section>
+        <section class="card prt-hide"${segIki ? '' : ' style="grid-column:1/-1"'}><h3>Müşteriler neyi seviyor? ${tip('sevilen')}</h3><p class="muted">Olumlu yorumlarda en sık geçen konular.</p>${hbar(c.olk.slice(0, 6).map((k) => ({ ad: k.ad, v: k.tum, href: H.konu(c.id, 'sevilen', k.id) })))}</section>
         ${segIki ? `<section class="card"><h3>Büyük marka mı, KOBİ mi? ${tip('segment')}</h3><p class="muted">Aynı sorunun iki gruptaki şikâyet oranı.</p><div class="legend"><span><i style="background:var(--muted)"></i>Büyük marka</span><span><i style="background:var(--neg-bar)"></i>KOBİ</span></div>
-          <div class="hbars">${seg.map((t) => { const m = Math.max(...seg.map((x) => Math.max(x.buyuk, x.kobi))); return `<div class="hb"><span>${esc(t.ad)}</span><span style="display:grid;gap:3px"><span class="tr"><i style="width:${(t.buyuk / m) * 100}%;background:var(--muted)"></i></span><span class="tr"><i style="width:${(t.kobi / m) * 100}%;background:var(--neg-bar)"></i></span></span><span class="v">${pct(t.buyuk)}<br>${pct(t.kobi)}</span></div>`; }).join('')}</div></section>` : ''}
+          <div class="hbars">${seg.map((t) => { const m = Math.max(...seg.map((x) => Math.max(x.buyuk, x.kobi))); return `<a class="hb go-row" href="${esc(H.konu(c.id, 'konu', t.id))}" aria-label="${esc(t.ad)}: büyük marka ${pct(t.buyuk)}, KOBİ ${pct(t.kobi)}"><span class="hb-t">${esc(t.ad)}</span><span style="display:grid;gap:3px"><span class="tr"><i style="width:${(t.buyuk / m) * 100}%;background:var(--muted)"></i></span><span class="tr"><i style="width:${(t.kobi / m) * 100}%;background:var(--neg-bar)"></i></span></span><span class="v">${pct(t.buyuk)}<br>${pct(t.kobi)}</span></a>`; }).join('')}</div></section>` : ''}
       </div></section>
       <section class="jump" id="sec-urun" tabindex="-1" aria-labelledby="urun-t">
       <div class="tools"><h2 id="urun-t">Ürünler <span class="muted num" style="font-weight:400" id="pcount"></span></h2>
@@ -578,7 +739,13 @@
     secSpy();
     ckSync(c);
     const sel = document.getElementById('sort'); sel.value = sort;
-    const st = (filterState[id] ??= { segment: [], marka: [], sikayet: [], puan: '', dusuk: '' });
+    const st = cq.st;
+    // Süzgeç ya da sıralama değişince adres güncellenir (yeni geçmiş kaydı: geri tuşu önceki görünüme döner, sayfa yeniden çizilmez)
+    const syncURL = () => {
+      const qs = catQ(sel.value, st), url = H.cat(id, qs);
+      sessionSort[id] = sel.value; catQS[id] = qs;
+      if (location.hash !== url) pushHist(url);
+    };
     const aside = document.getElementById('filters');
     aside.inert = drawerMQ.matches;
     aside.querySelectorAll('input').forEach((i) => {
@@ -599,12 +766,12 @@
       document.getElementById('chips').innerHTML = chips.map(([k, v, t]) => `<button type="button" class="chip" data-k="${k}" data-v="${esc(v)}" aria-label="${esc(t)} filtresini kaldır">${esc(t)} ×</button>`).join('')
         + (chips.length ? '<button type="button" class="linkbtn" data-clear>Tümünü temizle</button>' : '');
     };
-    const clear = () => { Object.assign(st, { segment: [], marka: [], sikayet: [], puan: '', dusuk: '' }); aside.querySelectorAll('input').forEach((i) => { i.checked = false; }); draw(); };
+    const clear = () => { Object.assign(st, ST0()); aside.querySelectorAll('input').forEach((i) => { i.checked = false; }); draw(); syncURL(); };
     aside.addEventListener('change', (e) => {
       const i = e.target;
       if (i.type === 'checkbox') st[i.name] = [...aside.querySelectorAll(`input[name="${CSS.escape(i.name)}"]:checked`)].map((x) => x.value);
       else st[i.name] = i.value;
-      draw();
+      draw(); syncURL();
     });
     app.onclick = (e) => {
       const j = e.target.closest('[data-jump]');
@@ -615,7 +782,7 @@
         const { k, v } = ch.dataset;
         if (Array.isArray(st[k])) st[k] = st[k].filter((x) => x !== v); else st[k] = '';
         const inp = aside.querySelector(`input[name="${CSS.escape(k)}"][value="${CSS.escape(v)}"]`); if (inp) inp.checked = false;
-        draw();
+        draw(); syncURL();
       }
       if (e.target.closest('#print-btn')) { window.print(); return; }
       if (e.target.closest('#ck-reset')) {
@@ -628,7 +795,7 @@
       if (e.target.closest('#f-open')) openDrawer();
       if (e.target.closest('#f-close') || e.target.closest('#f-backdrop')) closeDrawer();
     };
-    sel.addEventListener('change', () => { sessionSort[id] = sel.value; draw(); });
+    sel.addEventListener('change', () => { draw(); syncURL(); });
     app.onchange = (e) => {
       const i = e.target.closest('[data-ck]');
       if (!i) return;
@@ -722,7 +889,7 @@
         <div class="stars"><span class="s" aria-hidden="true">★</span><b class="num">${dec(p.ort)}</b><span class="muted num">(${int(p.yazili)} yorum)</span></div>
         <dl class="pc-meta">
           <div><dt>1-2 yıldız payı</dt><dd class="${negCls(p.dusuk)} num">${pct(p.dusuk, 1)}</dd></div>
-          <div class="stack"><dt>En sık şikâyet</dt><dd${noLow(p) ? ' class="none"' : ''}>${esc(noLow(p) ? noLowShort(p) : p.sik[0]?.ad || '')}</dd></div>
+          <div class="stack"><dt>En sık şikâyet</dt><dd${noLow(p) ? ' class="none"' : ''}>${noLow(p) ? esc(noLowShort(p)) : p.sik[0] ? go(H.urun(c.id, p.id, 'konu', p.sik[0].id), esc(p.sik[0].ad), '', `En sık şikâyet: ${p.sik[0].ad}, ${pct(p.sik[0].v)}. Bu üründeki yorumları gör`) : ''}</dd></div>
         </dl>
         <label class="pc-cmp"><input type="checkbox" data-cmp="${esc(p.id)}" data-cat="${esc(c.id)}" ${inCmp(cm, c.id, p.id) ? 'checked' : ''}>Karşılaştır</label>
       </div>
@@ -747,7 +914,7 @@
   const dPts = (v, a) => { const d = Math.round(v * 100) - Math.round(a * 100); return (d > 0 ? '+' : d < 0 ? '−' : '') + Math.abs(d) + ' puan'; };
   function gapCard(c, p) {
     const g = gaps(c, p), n = p.ornek_dusuk;
-    const row = (x, bad) => `<li><span class="gp-t">${esc(x.t.ad)}</span><span class="gp-v num"><b${bad ? ' class="neg"' : ''}>${pct(x.v)}</b> <span class="muted">kategoride ${pct(x.a)}</span></span><span class="gp-d num">${dPts(x.v, x.a)}</span></li>`;
+    const row = (x, bad) => `<li><span class="gp-t">${go(H.urun(c.id, p.id, 'konu', x.t.id), esc(x.t.ad))}</span><span class="gp-v num"><b${bad ? ' class="neg"' : ''}>${pct(x.v)}</b> <span class="muted">kategoride ${pct(x.a)}</span></span><span class="gp-d num">${dPts(x.v, x.a)}</span></li>`;
     const col = (title, hint, list, bad) => `<div class="gp-col"><h3>${title}</h3><p class="muted">${hint}</p>${list.length ? `<ul class="gp-list">${list.map((x) => row(x, bad)).join('')}</ul>` : '<p class="gp-none">Belirgin fark yok.</p>'}</div>`;
     const body = !g
       ? `<p class="gp-none">Bu üründe yalnızca ${n} adet <span class="nowrap">1-2 yıldızlı</span> yorum okundu. Konu konu karşılaştırma için en az ${GAP.minN} gerekiyor; bu yüzden fark gösterilmedi.</p>`
@@ -762,15 +929,36 @@
         <p class="note">Küçük farklar sayılmaz: en az ${Math.round(GAP.pts * 100)} puan ve ortalamanın belirgin üstü ya da altı gerekir. <a href="#/yontem/rakip">Bu karşılaştırma nasıl yapıldı?</a></p></section>`;
   }
 
-  async function product(cid, pid, isStale) {
+  // Ürün sayfasında konu kartı (#/urun/<k>/<id>/konu/<tema> ya da /sevilen/<konu>): ürünün o konudaki oranı ve yalnızca o konuya etiketli alıntılar
+  function focusCard(c, p, kind, t) {
+    const neg = kind === 'konu', n = neg ? p.ornek_dusuk : onerN(p), v = (neg ? p.sikayet[t.id] : p.olumlu[t.id]) || 0, Q = quotesOf(p, kind, t.id);
+    const all = H.urun(c.id, p.id);
+    const fig = neg
+      ? (noLow(p) ? esc(noLowText(p)) : `Bu üründe şikâyet oranı <b class="num ${negCls(v)}">${pct(v)}</b>: okunan ${int(n)} adet <span class="nowrap">1-2 yıldızlı</span> yorumun yaklaşık ${int(Math.round(v * n))} tanesinde geçiyor. Kategoride ${go(H.konu(c.id, kind, t.id), `<b class="num neg">${pct(t.tum)}</b>`, '', `Kategoride ${pct(t.tum)}: bu oran hangi ürünlerden oluşuyor`)}.`)
+      : `"Önerilen" sıralamada okunan ${int(n)} yorumun <b class="num">${pct(v)}</b> kadarında geçiyor (yaklaşık ${int(Math.round(v * n))} yorum). Kategori ortalaması ${go(H.konu(c.id, kind, t.id), `<b class="num">${pct(t.tum)}</b>`, '', `Kategori ortalaması ${pct(t.tum)}: bu oran hangi ürünlerden oluşuyor`)}.`;
+    return `<section class="card pk-card${neg ? '' : ' pos'}" id="p-konu" tabindex="-1" aria-labelledby="pk-t">
+        <div class="pk-top"><span class="label">${neg ? 'Şikâyet konusu' : 'Müşterinin sevdiği konu'}</span><a class="linkbtn" href="${esc(all)}">Bütün alıntıları göster (${p.alinti.length})</a></div>
+        <h2 id="pk-t">${esc(t.ad)}</h2>
+        <p class="pk-fig">${fig}</p>
+        <h3>Müşterinin kendi sözleriyle ${tip('alinti')}</h3>
+        ${Q.length ? `<div class="quotes">${Q.map((a) => `<figure class="q${a.pos ? ' pos' : ''}"><blockquote>"${esc(a.metin)}"</blockquote><figcaption>${a.yildiz} yıldız · ${esc(a.lab)}</figcaption></figure>`).join('')}</div>`
+          : `<p class="tp-none">Bu üründe bu konuya etiketli saklanan örnek yorum yok.</p>`}
+        <p class="pk-more">${trLink(p, Q.length ? "Bu ürünün bütün yorumları Trendyol'da" : "Yorumların tamamı Trendyol'da")}</p>
+      </section>`;
+  }
+
+  async function product(cid, pid, isStale, kind, kid) {
     const r = regOf(cid);
     if (!r || r.durum !== 'hazir') { notFound('Bu ürün ya da kategori bu sitede yok.'); return; }
     const c = await loadCat(cid);
     if (isStale()) return;
     const p = c.urunler.find((u) => u.id === pid);
     if (!p) { notFound('Bu ürün bu kategoride yok.', `<a class="btn" href="#/kategori/${esc(c.id)}">${esc(c.ad)} sayfasına dön</a>`); return; }
+    const ft = kind ? topicOf(c, kind, kid) : null;
+    if (kind && !ft) { notFound(kind === 'konu' ? 'Bu şikâyet konusu bu kategoride yok.' : 'Bu olumlu konu bu kategoride yok.', `<a class="btn" href="${esc(H.urun(c.id, p.id))}">Ürün sayfasına dön</a>`); return; }
     rememberCat(cid);
-    setTitle(p.kisa, `${p.ad} (${c.ad}): 1-2 yıldız payı ${pct(p.dusuk, 1)}${noLow(p) || !p.sik[0] ? '' : `, en sık şikâyet "${p.sik[0].ad}"`}. Rakibin açık verdiği konular ve müşteri yorumları.`);
+    if (ft) pendingFocus = 'p-konu';
+    setTitle(ft ? `${p.kisa}: ${ft.ad}` : p.kisa, `${p.ad} (${c.ad}): 1-2 yıldız payı ${pct(p.dusuk, 1)}${noLow(p) || !p.sik[0] ? '' : `, en sık şikâyet "${p.sik[0].ad}"`}. Rakibin açık verdiği konular ve müşteri yorumları.`);
     const on = inCmp(getCmp(), c.id, p.id);
     const yt = p.yazili, n = onerN(p), empty = noLow(p);
     // Önceki / sonraki ürün: kategori sayfasındaki sıralama ve (bu ürün içindeyse) filtreler
@@ -780,14 +968,20 @@
     if (filt) list = fl;
     list.sort(PSORT[sessionSort[c.id] || 'yorum']);
     const i = list.indexOf(p), L = list.length, prev = list[(i - 1 + L) % L], next = list[(i + 1) % L];
+    // Konu açıkken önceki/sonraki ürün de aynı konuda açılır; "tüm ürünler" kategori sayfasındaki son süzgeçle döner
+    const back = H.cat(c.id, catQS[c.id] || '');
     const pnav = (where) => `<nav class="pnav pnav-${where}" aria-label="${where === 'top' ? 'Aynı kategorideki ürünler' : 'Aynı kategorideki ürünler (sayfa sonu)'}">
-        <a class="pnav-back" href="#/kategori/${esc(c.id)}"><span aria-hidden="true">←</span> ${esc(c.ad)}: tüm ürünler</a>
-        ${L > 1 ? `<span class="pnav-step"><a href="#/urun/${esc(c.id)}/${esc(prev.id)}" aria-label="Önceki ürün: ${esc(prev.kisa)}"><span aria-hidden="true">‹</span> Önceki</a>
+        <a class="pnav-back" href="${esc(back)}"><span aria-hidden="true">←</span> ${esc(c.ad)}: tüm ürünler</a>
+        ${L > 1 ? `<span class="pnav-step"><a href="${esc(H.urun(c.id, prev.id, kind, kid))}" aria-label="Önceki ürün: ${esc(prev.kisa)}"><span aria-hidden="true">‹</span> Önceki</a>
         <span class="muted num">${i + 1} / ${L}${filt ? ' (filtreli)' : ''}</span>
-        <a href="#/urun/${esc(c.id)}/${esc(next.id)}" aria-label="Sonraki ürün: ${esc(next.kisa)}">Sonraki <span aria-hidden="true">›</span></a></span>` : ''}</nav>`;
+        <a href="${esc(H.urun(c.id, next.id, kind, kid))}" aria-label="Sonraki ürün: ${esc(next.kisa)}">Sonraki <span aria-hidden="true">›</span></a></span>` : ''}</nav>`;
+    const sikRows = p.sik.slice(0, 7);
+    if (ft && kind === 'konu' && !sikRows.some((x) => x.id === ft.id) && (p.sikayet[ft.id] || 0) > 0) sikRows.push(p.sik.find((x) => x.id === ft.id));
+    const sevRows = p.sev.slice(0, 7);
+    if (ft && kind === 'sevilen' && !sevRows.some((x) => x.id === ft.id) && (p.olumlu[ft.id] || 0) > 0) sevRows.push(p.sev.find((x) => x.id === ft.id));
     app.innerHTML = `
       <div class="band phead">
-      <div class="crumbs"><a href="#/">Ana sayfa</a> / <a href="#/kategori/${esc(c.id)}">${esc(c.ad)}</a> / ${esc(p.kisa)}</div>
+      <div class="crumbs"><a href="#/">Ana sayfa</a> / <a href="${esc(H.cat(c.id))}">${esc(c.ad)}</a> / ${ft ? `<a href="${esc(H.konu(c.id, kind, ft.id))}">${esc(ft.ad)}</a> / ` : ''}${esc(p.kisa)}</div>
       ${pnav('top')}
       <div class="prod">
         <div class="prod-img"><img src="${esc(p.gorsel)}" alt="${esc(p.ad)}" width="400" height="600" decoding="async" fetchpriority="high" referrerpolicy="no-referrer"></div>
@@ -801,7 +995,7 @@
             <div class="stat"><small>Ortalama puan</small><b>${dec(p.ort)}</b></div>
             <div class="stat"><small>"Önerilen" ilk ${n} ${tip('onerilen')}</small><b>${dec(p.onerilen_ort)}</b></div>
             <div class="stat"><small>1-2 yıldız payı ${tip('yildiz')}</small><b class="${p.dusuk > 0 ? 'alert' : ''}">${pct(p.dusuk, 1)}</b></div>
-            ${empty ? '' : `<div class="stat"><small>En sık şikâyet</small><b class="stat-t">${esc(p.sik[0]?.ad || '')}</b></div>`}
+            ${empty || !p.sik[0] ? '' : `<div class="stat"><small>En sık şikâyet</small><b class="stat-t">${go(H.urun(c.id, p.id, 'konu', p.sik[0].id), esc(p.sik[0].ad), '', `En sık şikâyet: ${p.sik[0].ad}, ${pct(p.sik[0].v)}. Yorumları gör`)}</b></div>`}
           </div>
           <div class="pact">
             <a class="btn out" href="${esc(p.link)}" target="_blank" rel="noopener">Trendyol'da gör</a>
@@ -811,13 +1005,17 @@
       </div>
       </div>
       <div class="cgrid">
+        ${ft ? focusCard(c, p, kind, ft) : ''}
         ${empty ? `<p class="nodata">${esc(noLowText(p))}</p>` : gapCard(c, p)}
-        ${empty ? '' : `<section class="card"><h2>En çok neden şikâyet ediyorlar? ${tip('sikayet')}</h2><p class="muted">Şikâyet oranı: 1-2 yıldızlı yorumların yüzde kaçında geçtiği. İnce çizgi kategori ortalaması.</p>${hbar(p.sik.slice(0, 7).map((t) => ({ ad: t.ad, v: t.v, avg: t.tum })), 'neg', 'avg')}</section>`}
-        <section class="card"><h2>Neyi seviyorlar?</h2><p class="muted">"Önerilen" sıralamanın ilk ${n} yorumunda geçme oranı.</p>${hbar(p.sev.slice(0, 7).map((k) => ({ ad: k.ad, v: k.v })))}</section>
+        ${empty ? '' : `<section class="card"><h2>En çok neden şikâyet ediyorlar? ${tip('sikayet')}</h2><p class="muted">Şikâyet oranı: 1-2 yıldızlı yorumların yüzde kaçında geçtiği. İnce çizgi kategori ortalaması. Bir konuya tıkla: yorumları gör.</p>${hbar(sikRows.map((t) => ({ ad: t.ad, v: t.v, avg: t.tum, href: H.urun(c.id, p.id, 'konu', t.id), cur: ft && kind === 'konu' && t.id === ft.id })), 'neg', 'avg')}</section>`}
+        <section class="card"><h2>Neyi seviyorlar? ${tip('sevilen')}</h2><p class="muted">"Önerilen" sıralamanın ilk ${n} yorumunda geçme oranı.</p>${hbar(sevRows.map((k) => ({ ad: k.ad, v: k.v, href: H.urun(c.id, p.id, 'sevilen', k.id), cur: ft && kind === 'sevilen' && k.id === ft.id })))}</section>
         <section class="card"><h2>Bu ürünün zayıf noktaları</h2><ul class="ul">${p.dikkat.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></section>
         <section class="card"><h2>Rakip bir KOBİ için ders</h2><ul class="ul">${p.ders.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></section>
         <section class="card"><h2>Yıldız dağılımı</h2>${hbar([5, 4, 3, 2, 1].map((s) => ({ ad: s + ' yıldız', v: p.yildiz[s - 1] / yt })))}</section>
-        ${p.alinti.length ? `<section class="card"><h2>Müşterinin kendi sözleriyle</h2><div class="quotes">${p.alinti.map((a) => `<div class="q"><span>"${esc(a.metin)}"</span><small>${a.yildiz} yıldız · ${esc(c.temaMap[a.konu]?.ad || a.konu)}</small></div>`).join('')}</div></section>` : ''}
+        ${ft ? '' : `<section class="card" id="p-alinti"><h2>Müşterinin kendi sözleriyle ${tip('alinti')}</h2>
+          ${p.alinti.length ? `<p class="muted">Okunan yorumlardan saklanan ${p.alinti.length} örnek. Konuya tıklarsan o konunun oranını da görürsün.</p><div class="quotes">${p.alinti.map((a) => `<figure class="q${a.pos ? ' pos' : ''}"><blockquote>"${esc(a.metin)}"</blockquote><figcaption>${a.yildiz} yıldız · ${a.kid ? `<a href="${esc(H.urun(c.id, p.id, a.pos ? 'sevilen' : 'konu', a.kid))}">${esc(a.lab)}</a>` : esc(a.lab)}</figcaption></figure>`).join('')}</div>`
+            : '<p class="tp-none">Bu ürün için saklanan örnek yorum yok.</p>'}
+          <p class="pk-more">${trLink(p, "Bu ürünün bütün yorumları Trendyol'da")}</p></section>`}
       </div>
       ${pnav('bottom')}`;
   }
@@ -852,8 +1050,8 @@
         ${row('1-2 yıldız payı', P.map((p, i) => `<td class="num ${negCls(p.dusuk)}${dusB[i] ? ' best' : ''}">${pct(p.dusuk, 1)}</td>`))}
         ${row('"Önerilen" ile gerçek arası fark', P.map((p, i) => `<td class="num${gapB[i] ? ' best' : ''}">${sgn(p.onerilen_ort - p.ort)} puan</td>`))}
         ${row('Yazılı yorum', P.map((p) => `<td class="num">${int(p.yazili)}</td>`))}
-        ${row('En büyük 3 şikâyet', P.map((p) => noLow(p) ? `<td class="muted">${esc(noLowShort(p))}</td>` : `<td><ol>${p.sik.slice(0, 3).map((t) => `<li>${esc(t.ad)} <span class="neg num">${pct(t.v)}</span></li>`).join('')}</ol></td>`))}
-        ${row('En çok sevilen 3 konu', P.map((p) => `<td><ol>${p.sev.slice(0, 3).map((k) => `<li>${esc(k.ad)} <span class="muted num">${pct(k.v)}</span></li>`).join('')}</ol></td>`))}
+        ${row('En büyük 3 şikâyet', P.map((p) => noLow(p) ? `<td class="muted">${esc(noLowShort(p))}</td>` : `<td><ol>${p.sik.slice(0, 3).map((t) => `<li>${go(H.urun(c.id, p.id, 'konu', t.id), `${esc(t.ad)} <span class="neg num">${pct(t.v)}</span>`)}</li>`).join('')}</ol></td>`))}
+        ${row('En çok sevilen 3 konu', P.map((p) => `<td><ol>${p.sev.slice(0, 3).map((k) => `<li>${go(H.urun(c.id, p.id, 'sevilen', k.id), `${esc(k.ad)} <span class="muted num">${pct(k.v)}</span>`)}</li>`).join('')}</ol></td>`))}
         </tbody></table></div></div>`;
     app.onclick = (e) => {
       const b = e.target.closest('[data-rm-col]');
@@ -990,13 +1188,14 @@
     const maxD = Math.max(...rows.map((r) => r.dusuk), 0.01);
     const nU = rows.map((r) => r.urun), uMin = Math.min(...nU), uMax = Math.max(...nU);
     const dash = '<span class="muted" title="Bu segmentte ürün yok">–</span>';
+    // Hücreler kanıta gider: 1-2 yıldız payı → ürünler 1-2 yıldız payına göre; satıcı tipi → o tipin ürünleri; 1 numaralı şikâyet → konu görünümü
     const cell = {
       puan: (r) => `<b class="ft-score">${r.puan}</b>${r.eksik ? `<small class="ft-eksik" title="KOBİ ile büyük marka karşılaştırılamadı; puan ${5 - r.eksik} ölçütle hesaplandı">${5 - r.eksik} ölçüt</small>` : ''}<span class="mbar" aria-hidden="true"><i style="width:${r.puanTam}%"></i></span>`,
-      dusuk: (r) => `<span class="neg">${pct(r.dusuk, 1)}</span><span class="mbar neg" aria-hidden="true"><i style="width:${(r.dusuk / maxD) * 100}%"></i></span>`,
-      buyukPay: (r) => (r.buyukPay == null ? '<span class="muted">Büyük marka yok</span>' : `${pct(r.buyukPay, 1)}<span class="mbar" aria-hidden="true"><i style="width:${r.buyukPay * 100}%"></i></span>`),
-      kobi: (r) => (r.kobi == null ? dash : `<span class="neg">${pct(r.kobi, 1)}</span>`),
-      buyuk: (r) => (r.buyuk == null ? dash : `<span class="neg">${pct(r.buyuk, 1)}</span>`),
-      sik: (r) => (r.sik ? `${esc(r.sik.ad)} <span class="neg num">${pct(r.sik.tum)}</span>` : dash),
+      dusuk: (r) => `${go(H.cat(r.id, 'sirala=cok'), `<span class="neg">${pct(r.dusuk, 1)}</span>`, '', `${r.ad}, 1-2 yıldız payı ${pct(r.dusuk, 1)}: ürünleri gör`)}<span class="mbar neg" aria-hidden="true"><i style="width:${(r.dusuk / maxD) * 100}%"></i></span>`,
+      buyukPay: (r) => (r.buyukPay == null ? '<span class="muted">Büyük marka yok</span>' : `${go(H.cat(r.id, 'tip=buyuk'), pct(r.buyukPay, 1), '', `${r.ad}, büyük markaların yorum payı ${pct(r.buyukPay, 1)}: büyük marka ürünlerini gör`)}<span class="mbar" aria-hidden="true"><i style="width:${r.buyukPay * 100}%"></i></span>`),
+      kobi: (r) => (r.kobi == null ? dash : go(H.cat(r.id, 'sirala=cok&tip=kobi'), `<span class="neg">${pct(r.kobi, 1)}</span>`, '', `${r.ad}, KOBİ 1-2 yıldız payı ${pct(r.kobi, 1)}: KOBİ ürünlerini gör`)),
+      buyuk: (r) => (r.buyuk == null ? dash : go(H.cat(r.id, 'sirala=cok&tip=buyuk'), `<span class="neg">${pct(r.buyuk, 1)}</span>`, '', `${r.ad}, büyük marka 1-2 yıldız payı ${pct(r.buyuk, 1)}: büyük marka ürünlerini gör`)),
+      sik: (r) => (r.sik ? go(H.konu(r.id, 'konu', r.sik.id), `${esc(r.sik.ad)} <span class="neg num">${pct(r.sik.tum)}</span>`) : dash),
       urun: (r) => int(r.urun),
       okunan: (r) => int(r.okunan),
     };
@@ -1054,12 +1253,12 @@
       app.querySelectorAll('[data-fust]').forEach((b) => { const on = b.dataset.fust === fl.ust; b.classList.toggle('on', on); b.setAttribute('aria-pressed', String(on)); });
       $('ff-b20').checked = fl.buyuk20; $('ff-kobi').checked = fl.kobiOk; $('ff-d').value = fl.maxD;
     };
-    const detail = (r, w) => `<tr class="ft-detail"><td colspan="${NC}">${dbox(r, w)}</td></tr>`;
-    const dbox = (r, w) => {
+    const detail = (r, w) => `<tr class="ft-detail"><td colspan="${NC}">${dbox(r, w, 'ftd-')}</td></tr>`;
+    const dbox = (r, w, pre) => {
       let ws2 = COMPS.map((c, i) => (r.comp[c.k] == null ? 0 : w[i]));
       if (!ws2.some(Boolean)) ws2 = COMPS.map((c) => (r.comp[c.k] == null ? 0 : 1));
       const t = ws2.reduce((a, x) => a + x, 0);
-      return `<div class="ft-dbox" id="ftd-${esc(r.id)}">
+      return `<div class="ft-dbox" id="${pre}${esc(r.id)}">
         <table class="ft-comp"><caption class="sr-only">${esc(r.ad)}: giriş puanının ölçütleri</caption><thead><tr><th scope="col">Ölçüt</th><th scope="col">Ham değer</th><th scope="col" class="num">Ölçüt puanı</th><th scope="col" class="num">Ağırlık</th></tr></thead><tbody>
         ${COMPS.map((c, i) => `<tr${r.comp[c.k] == null ? ' class="muted"' : ''}><th scope="row">${esc(c.ad)}</th><td>${rawTxt[c.k](r)}</td><td class="num" data-l="Ölçüt puanı " data-comp="${c.k}">${r.comp[c.k] == null ? '–' : Math.round(r.comp[c.k])}</td><td class="num" data-l="Ağırlık ">${r.comp[c.k] == null ? '–' : `${w[i]}${t ? ` <span class="muted">(%${Math.round((ws2[i] / t) * 100)})</span>` : ''}`}</td></tr>`).join('')}
         </tbody></table><p class="muted">Giriş puanı = ölçüt puanlarının ağırlıklı ortalaması = <b class="num">${fNum(r.puanTam)}</b>, yuvarlanınca <b class="num">${r.puan}</b>.</p></div>`;
@@ -1069,14 +1268,14 @@
         <div class="fc-top"><div class="fc-name">${rank ? `<span class="ft-rank num" aria-label="${r.sira}. sıra">${r.sira}</span>` : ''}<span><a href="#/kategori/${esc(r.id)}">${esc(r.ad)}</a><small class="muted num">${esc(r.ust)} · ${int(r.urun)} ürün · ${int(r.okunan)} okunan yorum</small></span></div>
           <div class="fc-score"><b class="ft-score num">${r.puan}</b><small class="muted">Giriş puanı${r.eksik ? ` (${5 - r.eksik} ölçüt)` : ''}</small></div></div>
         <dl class="fc-m">
-          <div><dt>1-2 yıldız payı</dt><dd class="num"><span class="neg">${pct(r.dusuk, 1)}</span></dd></div>
+          <div><dt>1-2 yıldız payı</dt><dd class="num">${go(H.cat(r.id, 'sirala=cok'), `<span class="neg">${pct(r.dusuk, 1)}</span>`, '', `${r.ad}, 1-2 yıldız payı ${pct(r.dusuk, 1)}: ürünleri gör`)}</dd></div>
           <div><dt>KOBİ'de</dt><dd class="num">${cell.kobi(r)}</dd></div>
           <div><dt>Büyük markada</dt><dd class="num">${cell.buyuk(r)}</dd></div>
           <div class="fc-w2"><dt>1 numaralı şikâyet</dt><dd>${cell.sik(r)}</dd></div>
-          <div><dt>Büyük marka yorum payı</dt><dd class="num">${r.buyukPay == null ? '<span class="muted">Yok</span>' : pct(r.buyukPay, 1)}</dd></div>
+          <div><dt>Büyük marka yorum payı</dt><dd class="num">${r.buyukPay == null ? '<span class="muted">Yok</span>' : go(H.cat(r.id, 'tip=buyuk'), pct(r.buyukPay, 1), '', `${r.ad}, büyük markaların yorum payı ${pct(r.buyukPay, 1)}: büyük marka ürünlerini gör`)}</dd></div>
         </dl>
-        <button type="button" class="ft-exp" data-exp="${esc(r.id)}" aria-expanded="${fOpen.has(r.id)}" aria-controls="ftd-${esc(r.id)}">Puan ayrıntısı<span class="sr-only">: ${esc(r.ad)}</span></button>
-        ${fOpen.has(r.id) ? dbox(r, w) : ''}</li>`;
+        <button type="button" class="ft-exp" data-exp="${esc(r.id)}" aria-expanded="${fOpen.has(r.id)}" aria-controls="ftc-${esc(r.id)}">Puan ayrıntısı<span class="sr-only">: ${esc(r.ad)}</span></button>
+        ${fOpen.has(r.id) ? dbox(r, w, 'ftc-') : ''}</li>`;
     const draw = () => {
       const w = weightsOf(ws), allZero = scoreApply(rows, w), wEff = allZero ? [1, 1, 1, 1, 1] : w;
       $('fs-zero').hidden = !(ws.p === 'ozel' && allZero);
@@ -1087,16 +1286,17 @@
         if (x == null || y == null) return x == null && y == null ? 0 : x == null ? 1 : -1;
         return (col.txt ? x.localeCompare(y, 'tr') : x - y) * m || a.ad.localeCompare(b.ad, 'tr');
       });
-      const rank = col.k === 'puan', mob = fMQ.matches;
-      $('fcards').innerHTML = mob ? vis.map((r) => fcard(r, rank, wEff)).join('') : '';
-      $('fcards').hidden = !mob || !vis.length; $('fsort-m').hidden = !mob;
+      // Tablo ve telefon kartları ikisi de çizilir; hangisinin görüneceğini CSS seçer (telefonda kartlar, yazdırırken her zaman tablo)
+      const rank = col.k === 'puan';
+      $('fcards').innerHTML = vis.map((r) => fcard(r, rank, wEff)).join('');
+      $('fcards').hidden = !vis.length; $('fsort-m').hidden = false;
       $('fm-sort').value = fSort.k;
       $('fm-dir').textContent = col.txt ? (fSort.dir === 'asc' ? "A'dan Z'ye" : "Z'den A'ya") : (fSort.dir === 'asc' ? 'Küçükten büyüğe' : 'Büyükten küçüğe');
       $('fm-dir').setAttribute('aria-label', `Sıralama yönü: ${$('fm-dir').textContent}. Tersine çevir`);
-      body.innerHTML = mob ? '' : vis.map((r) => `<tr data-row="${esc(r.id)}"><th scope="row"><div class="ft-name">${rank ? `<span class="ft-rank num" aria-label="${r.sira}. sıra">${r.sira}</span>` : ''}<a href="#/kategori/${esc(r.id)}">${esc(r.ad)}</a></div>`
+      body.innerHTML = vis.map((r) => `<tr data-row="${esc(r.id)}"><th scope="row"><div class="ft-name">${rank ? `<span class="ft-rank num" aria-label="${r.sira}. sıra">${r.sira}</span>` : ''}<a href="#/kategori/${esc(r.id)}">${esc(r.ad)}</a></div>`
         + `<button type="button" class="ft-exp" data-exp="${esc(r.id)}" aria-expanded="${fOpen.has(r.id)}" aria-controls="ftd-${esc(r.id)}">Puan ayrıntısı<span class="sr-only">: ${esc(r.ad)}</span></button></th>`
         + `${FCOLS.slice(1).map((c) => `<td class="${c.k === 'sik' ? 'txt' : 'num'} ${c.cls || ''}">${cell[c.k](r)}</td>`).join('')}</tr>${fOpen.has(r.id) ? detail(r, wEff) : ''}`).join('');
-      $('ctable-wrap').hidden = mob || !vis.length; $('ff-empty').hidden = !!vis.length; $('scroll-hint').hidden = true;
+      $('ctable-wrap').hidden = !vis.length; $('ff-empty').hidden = !!vis.length; $('scroll-hint').hidden = true;
       $('ff-n').textContent = `${vis.length} / ${rows.length} kategori`;
       $('ff-clear').hidden = !(fl.ust || fl.buyuk20 || fl.kobiOk || fl.maxD);
       const ek = vis.filter((r) => r.eksik);
@@ -1107,10 +1307,11 @@
         th.querySelector('.ft-ar').textContent = on ? (fSort.dir === 'asc' ? '↑' : '↓') : '↕';
       });
       syncCtl();
-      if (vis.length && !mob) scrollTable();
+      if (vis.length) scrollTable();
     };
-    fMQ.onchange = () => { if ($('fcards')) keepFocus(null); };
-    const keepFocus = (sel) => { const y = scrollY; draw(); const el = sel && app.querySelector(sel); if (el && document.activeElement !== el) el.focus({ preventScroll: true }); scrollTo(scrollX, y); };
+    fMQ.onchange = () => { if ($('fcards')) scrollTable(); };
+    // Odak, aynı seçiciye uyan öğelerden görünür olana (tablo ya da telefon kartı) geri verilir
+    const keepFocus = (sel) => { const y = scrollY; draw(); const el = sel && [...app.querySelectorAll(sel)].find((x) => x.getClientRects().length); if (el && document.activeElement !== el) el.focus({ preventScroll: true }); scrollTo(scrollX, y); };
     app.onchange = (e) => {
       const t = e.target;
       if (t.name === 'fs-preset') {
@@ -1152,12 +1353,17 @@
     setTitle('Yöntem', 'ReviewRadar rakamları nasıl hesaplanıyor: hangi yorumlar okundu, şikâyet oranı, 1-2 yıldız payı, rakip karşılaştırması ve giriş puanı.');
     const t = totals(data);
     const oran = t.onerilenN ? t.onerilen / t.onerilenN : 0, gercek = t.yazili ? t.dusukN / t.yazili : 0;
+    // Canlı örnek: örnek kategorinin 1 numaralı şikâyeti, ürün ürün toplanınca başlıktaki oran
+    const ex = data[DEMO_CAT] || Object.values(data).find(Boolean), exT = ex && ex.tema[0];
+    const exK = exT ? ex.urunler.reduce((a, p) => a + (p.sikayet[exT.id] || 0) * p.ornek_dusuk, 0) : 0;
+    const D = Object.values(data).filter(Boolean), Q = D.flatMap((d) => d.urunler.flatMap((p) => p.alinti));
+    const qLow = Q.filter((a) => a.yildiz <= 2).length, qProd = D.reduce((a, d) => a + d.urunler.length, 0);
     app.innerHTML = `
       <div class="band phead"><div class="crumbs"><a href="#/">Ana sayfa</a> / Yöntem</div>
         <div class="chead"><h1>Yöntem: Bu rakamlar nasıl hesaplandı?</h1></div></div>
       <article class="doc">
         ${kpiList(t, 'doc-kpis')}
-        <section><h2>Veri nereden geliyor?</h2>
+        <section id="y-veri" tabindex="-1"><h2>Veri nereden geliyor?</h2>
           <p>Rakamlar Trendyol'daki ürün yorumlarından geliyor. Yorumlar bir araştırma örneklemi olarak tek seferde toplandı. Yorum yazanların adları toplanmadı.</p></section>
         <section id="y-iki-ornek" tabindex="-1"><h2>Her üründe hangi yorumlar okundu?</h2>
           <p>Her ürün için iki ayrı örnek okundu:</p>
@@ -1168,6 +1374,13 @@
         <section id="y-sikayet" tabindex="-1"><h2>Şikâyet oranı ne demek?</h2>
           <p>Bir konunun şikâyet oranı, okunan 1-2 yıldızlı yorumların yüzde kaçında o konudan söz edildiğini gösterir.</p>
           <ul class="ul"><li>Konular her kategori için hazırlanan anahtar kelimelerle bulundu. Bu yüzden oranlar yaklaşıktır.</li><li>Bir yorum birden fazla konuya girebilir. Bu yüzden oranların toplamı 100 etmez.</li><li>Kategori ortalamasında her ürün, okunan 1-2 yıldızlı yorum sayısı kadar ağırlık taşır.</li></ul></section>
+        <section id="y-oran" tabindex="-1"><h2>Bir oran hangi ürünlerden oluşuyor?</h2>
+          <p>Kategorinin şikâyet oranı, ürünlerin şikâyet oranlarından hesaplanır. Her ürün için oran, okunan <span class="nowrap">1-2 yıldızlı</span> yorum sayısıyla çarpılır. Çıkan sayı, o konunun üründe yaklaşık kaç yorumda geçtiğidir. Bu sayılar toplanır ve bütün ürünlerde okunan <span class="nowrap">1-2 yıldızlı</span> yorumların toplamına bölünür.</p>
+          ${exT ? `<p>Örnek: ${esc(ex.ad)} kategorisinde "${esc(exT.ad)}" ürünlerde yaklaşık ${approx(exK)} yorumda geçiyor. Okunan <span class="nowrap">1-2 yıldızlı</span> yorum ${int(ex.top.ornek)}. ${approx(exK)} ÷ ${int(ex.top.ornek)} = ${pct(exT.tum)}. <a href="${esc(H.konu(ex.id, 'konu', exT.id))}">Bu hesabı ürün ürün gör</a>.</p>` : ''}
+          <ul class="ul"><li>Büyük marka ve KOBİ oranları aynı hesapla, yalnızca o gruptaki ürünlerden çıkar.</li>
+            <li>Ürün oranları yuvarlanmış tutulduğu için yaklaşık yorum sayısı küsuratlı olabilir.</li>
+            <li>Müşterinin sevdiği konularda oran, Trendyol'un "Önerilen" sıralamasında okunan yorumlardan hesaplanır. Kategori oranı ürün oranlarının basit ortalamasıdır: her ürün eşit ağırlık taşır.</li>
+            <li>Her konunun sayfasında bu hesap ürün ürün gösterilir; parçalar toplanınca sayfanın başındaki oran çıkar.</li></ul></section>
         <section id="y-yildiz" tabindex="-1"><h2>1-2 yıldız payı ne demek?</h2>
           <p>Yazılı yorumların yüzde kaçının 1 ya da 2 yıldız olduğunu gösterir. Örneklemden değil, ürünün Trendyol'daki tüm yıldız dağılımından hesaplandı. Kategori ve satıcı tipi için o gruptaki bütün ürünlerin yorumları birlikte sayılır.</p></section>
         <section id="y-segment" tabindex="-1"><h2>KOBİ ve büyük marka</h2>
@@ -1182,8 +1395,19 @@
             <li>Fark, okunan yorum sayısına göre şansla açıklanamayacak kadar büyük olmalı: fark, ortalamanın bu örneklemdeki olağan oynamasının (standart hata) en az ${GAP.z} katı.</li>
             <li>Her iki listede en büyük farkı olan en fazla ${GAP.max} konu gösterilir.</li></ul>
           <p>Bu karşılaştırma ürünün gerçek kalitesini ölçmez. Yalnızca 1-2 yıldız veren müşterilerin hangi sorunu ne sıklıkla yazdığını gösterir.</p></section>
+        <section id="y-alinti" tabindex="-1"><h2>Örnek yorumlar nasıl seçildi, neden az?</h2>
+          <p>Yorumların tamamı bu sitede tutulmuyor. Her ürün için okunan yorumlardan yalnızca 3-4 tanesi kelimesi kelimesine saklandı ve her biri bir konuya etiketlendi.${t.tam && Q.length ? ` Bu sitede ${int(qProd)} ürün için ${int(Q.length)} örnek yorum var; ${int(qLow)} tanesi <span class="nowrap">1-2 yıldızlı</span>.` : ''}</p>
+          <ul class="ul"><li>Bir örnek yorum yalnızca etiketlendiği konuda gösterilir.</li>
+            <li>Bir konunun geçtiği her üründe örnek yorum yok. O zaman site bunu yazar ve ürünün Trendyol sayfasına bağlantı verir; yorumların tamamı orada okunabilir.</li>
+            <li>Yorumların tarihi saklanmadı. Örnekler tarihsiz gösterilir.</li>
+            <li>Yorum yazanların adları toplanmadı.</li></ul></section>
+        <section id="y-oneri" tabindex="-1"><h2>Öneriler hangi şikâyete dayanıyor?</h2>
+          <p>"Ne yapmalı?" önerileri yorumlar okunarak yazıldı; ölçüm değildir. Her önerinin altında dayandığı şikâyet ya da müşterinin sevdiği konu yazar. Eşleme önerinin metnine göre elle yapıldı.</p>
+          <ul class="ul"><li>Önerinin yanındaki oranlar öneri metninin parçası değildir. O konuların bu sitedeki oranlarıdır ve veriden hesaplanır.</li>
+            <li>Bir konuya tıklayınca oranın hangi ürünlerden geldiğini ve örnek yorumları görürsün.</li>
+            <li>Belirli bir konuya dayanmayan öneri "Genel öneri" olarak görünür; yanında rakam yoktur.</li></ul></section>
         <section id="y-kontrol" tabindex="-1"><h2>Giriş kontrol listesi</h2>
-          <p>Kategori sayfasının sonundaki liste, kategorinin şikâyet oranı en yüksek 5 konusundan ve o kategori için yazılan önerilerin başlıklarından oluşur. Yeni bir bilgi eklemez. İşaretler yalnızca senin tarayıcında saklanır; siteye gönderilmez.</p></section>
+          <p>Kategori sayfasının sonundaki liste, kategorinin şikâyet oranı en yüksek 5 konusundan ve o kategori için yazılan önerilerin başlıklarından oluşur. Yeni bir bilgi eklemez. Her maddenin altında dayandığı konu ve oranı bağlantı olarak durur. İşaretler yalnızca senin tarayıcında saklanır; siteye gönderilmez.</p></section>
         <section><h2>"Dikkat" ve "ders" notları</h2>
           <p>Ürün sayfalarındaki "Bu ürünün zayıf noktaları" ve "Rakip bir KOBİ için ders" notları, olumsuz yorumlar okunarak yazılmış yorumlardır. Ölçüm değildir.</p></section>
         <section id="giris-puani"><h2>Giriş puanı nasıl hesaplanıyor?</h2>
@@ -1207,9 +1431,15 @@
   addEventListener('scroll', () => { if (!routing && curKey) scrollMap[curKey] = scrollY; }, { passive: true });
   addEventListener('pagehide', () => { try { sessionStorage.setItem('rr_scroll', JSON.stringify(scrollMap)); } catch {} });
 
+  // Süzgeç/sıralama değişince yeni geçmiş kaydı (hashchange tetiklenmez, sayfa yeniden çizilmez); kaydırma yeri iki kayıtta da tutulur
+  const pushHist = (url) => { if (curKey) scrollMap[curKey] = scrollY; curKey = newKey(); history.pushState({ k: curKey }, '', url); scrollMap[curKey] = scrollY; };
+  // Sayfa çizilirken açılışta gidilecek bölüm (yalnızca yeni açılışta; geri/ileri tuşunda kayıtlı kaydırma yeri kullanılır)
+  let pendingFocus = null;
+  // "#/kategori/termos?sirala=cok" → ['kategori', 'termos'] + q (URLSearchParams); sondaki boş parça atılır
   const parseHash = () => {
-    const raw = location.hash.replace(/^#\/?/, '');
-    try { return raw.split('/').map((s) => decodeURIComponent(s)); } catch { return null; }
+    const raw = location.hash.replace(/^#\/?/, ''), qi = raw.indexOf('?');
+    const path = (qi < 0 ? raw : raw.slice(0, qi)).replace(/\/+$/, ''), qs = qi < 0 ? '' : raw.slice(qi + 1);
+    try { const h = path.split('/').map((s) => decodeURIComponent(s)); h.q = new URLSearchParams(qs); return h; } catch { return null; }
   };
   const showLoading = () => {
     app.setAttribute('aria-busy', 'true');
@@ -1231,21 +1461,29 @@
     let h = parseHash();
     if (!h || !['', 'kategori', 'urun', 'karsilastir', 'ara', 'yontem', 'firsat'].includes(h[0]) || (h[0] === 'ara' && !h.slice(1).join('/').trim())) {
       history.replaceState(history.state, '', '#/');
-      h = [''];
+      h = Object.assign([''], { q: new URLSearchParams() });
     }
     syncNav();
-    let restoreY = 0;
+    let restoreY = 0, fresh = false;
     const keepY = scrollY;
     if (!opts.keep) {
       const st = history.state;
-      if (st && st.k) { curKey = st.k; restoreY = scrollMap[st.k] || 0; }
-      else { curKey = newKey(); history.replaceState({ k: curKey }, ''); restoreY = 0; }
+      if (st && st.k && st.k in scrollMap) { curKey = st.k; restoreY = scrollMap[st.k] || 0; }
+      else { curKey = st && st.k ? st.k : newKey(); if (!(st && st.k)) history.replaceState({ k: curKey }, ''); restoreY = 0; fresh = true; }
     }
+    pendingFocus = null;
     const timer = setTimeout(() => { if (!isStale()) showLoading(); }, 150);
+    // Adres biçimi: konu ve ürün-konu adresleri tam uzunlukta olmalı; süzgeç (?…) yalnızca kategori sayfasında
+    const n = h.length, hasQ = [...h.q.keys()].length > 0, kinds = ['konu', 'sevilen'];
     try {
       if (!REG.length) { REG = await getJSON('data/kategoriler.json'); if (isStale()) return; }
-      if (h[0] === 'kategori') await category(h[1], isStale, h[2] === 'konu' ? h[3] : null);
-      else if (h[0] === 'urun') await product(h[1], h[2], isStale);
+      if (hasQ && !(h[0] === 'kategori' && n === 2)) notFound('Bu adres bu sitede yok.');
+      else if (h[0] === 'kategori' && n === 2) await category(h[1], isStale, h.q);
+      else if (h[0] === 'kategori' && n === 4 && kinds.includes(h[2])) await topicRoute(h[1], h[2], h[3], isStale);
+      else if (h[0] === 'kategori') notFound('Bu adres bu sitede yok.');
+      else if (h[0] === 'urun' && n === 3) await product(h[1], h[2], isStale);
+      else if (h[0] === 'urun' && n === 5 && kinds.includes(h[3])) await product(h[1], h[2], isStale, h[3], h[4]);
+      else if (h[0] === 'urun') notFound('Bu adres bu sitede yok.');
       else if (h[0] === 'karsilastir') await compare(isStale);
       else if (h[0] === 'ara') await search(h.slice(1).join('/').trim(), isStale);
       else if (h[0] === 'yontem') await method(isStale);
@@ -1260,11 +1498,13 @@
     if (isStale()) return;
     app.removeAttribute('aria-busy');
     scrollTo(0, opts.keep ? keepY : restoreY);
-    // #/yontem/<bölüm>: terim açıklamalarındaki bağlantılar ilgili bölüme açılır
-    if (h[0] === 'yontem' && h[1] && !opts.keep && !restoreY) {
-      const el = document.getElementById('y-' + h[1]);
+    // Yeni açılışta ilgili bölüme git: #/yontem/<bölüm>, süzgeçli kategori adresinde ürün listesi, ürün sayfasında açılan konu
+    if (h[0] === 'yontem' && h[1]) pendingFocus = 'y-' + h[1];
+    if (pendingFocus && fresh && !opts.keep) {
+      const el = document.getElementById(pendingFocus);
       if (el) { el.scrollIntoView(); el.focus({ preventScroll: true }); }
     }
+    pendingFocus = null;
     if (!opts.keep && curKey) scrollMap[curKey] = scrollY;
     routing = false;
     drawBar();

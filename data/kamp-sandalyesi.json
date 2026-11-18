@@ -150,23 +150,48 @@
  "oneriler": [
   {
    "baslik": "Dayanıklılığı kanıtla: taşıma kapasitesini yaz",
-   "metin": "KOBİ ürünlerinde kısa sürede kırılma ve yamulma şikâyetinin oranı %28, büyük markalarda %6. Kırılan sandalye yorumlarında kullanıcılar sık sık 55-90 kg olduğunu yazıyor. Decathlon'un yaptığı gibi taşıma kapasitesini (110 kg, 150 kg), profil kalınlığını ve kumaş cinsini ilanda açıkça yazmak ve buna uygun malzeme kullanmak en büyük şikâyetin karşılığı."
+   "metin": "KOBİ ürünlerinde kısa sürede kırılma ve yamulma şikâyetinin oranı %28, büyük markalarda %6. Kırılan sandalye yorumlarında kullanıcılar sık sık 55-90 kg olduğunu yazıyor. Decathlon'un yaptığı gibi taşıma kapasitesini (110 kg, 150 kg), profil kalınlığını ve kumaş cinsini ilanda açıkça yazmak ve buna uygun malzeme kullanmak en büyük şikâyetin karşılığı.",
+   "konular": [
+    "kirilma",
+    "kilo"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Kalite kontrol: kusurlu gönderme",
-   "metin": "Kırık, yamuk, yırtık, lekeli ya da kullanılmış gibi gelen ürün şikâyetinin oranı %22 (KOBİ %23, büyük marka %16). Naylon poşetle gönderilen sandalyeler kargoda eziliyor. Göndermeden önce açıp kontrol etmek ve kutuyla göndermek bu şikâyeti doğrudan azaltır."
+   "metin": "Kırık, yamuk, yırtık, lekeli ya da kullanılmış gibi gelen ürün şikâyetinin oranı %22 (KOBİ %23, büyük marka %16). Naylon poşetle gönderilen sandalyeler kargoda eziliyor. Göndermeden önce açıp kontrol etmek ve kutuyla göndermek bu şikâyeti doğrudan azaltır.",
+   "konular": [
+    "hasarli",
+    "paket"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Plastik parçalar zayıf halka",
-   "metin": "KOBİ sandalyelerinde bardaklık ve kol plastiklerinin kırıldığı şikâyetinin oranı %10, büyük markalarda %2. Yan bardaklık müşterinin sevdiği bir detay (Moniev Natura'nın önerilen yorumlarının %11'i övüyor); bu parçanın sağlam olması ürünün tamamının sağlam algılanmasını sağlar."
+   "metin": "KOBİ sandalyelerinde bardaklık ve kol plastiklerinin kırıldığı şikâyetinin oranı %10, büyük markalarda %2. Yan bardaklık müşterinin sevdiği bir detay (Moniev Natura'nın önerilen yorumlarının %11'i övüyor); bu parçanın sağlam olması ürünün tamamının sağlam algılanmasını sağlar.",
+   "konular": [
+    "bardaklik"
+   ],
+   "sevilenler": [
+    "bardaklik"
+   ]
   },
   {
    "baslik": "Siparişi doğru hazırla: renk ve adet",
-   "metin": "Yanlış ürün ya da renk şikâyetinin oranı %7, eksik adet ya da parça %6. Büyük markalarda eksik adet %18 (Koçtaş 2'li %26), Eksiksepeti setinde yanlış renk %30. Çoklu adet ve renk seçenekli siparişlerde paketlemeden önce son kontrol, müşterinin \"aynı renk gelmedi\" şikâyetini önler."
+   "metin": "Yanlış ürün ya da renk şikâyetinin oranı %7, eksik adet ya da parça %6. Büyük markalarda eksik adet %18 (Koçtaş 2'li %26), Eksiksepeti setinde yanlış renk %30. Çoklu adet ve renk seçenekli siparişlerde paketlemeden önce son kontrol, müşterinin \"aynı renk gelmedi\" şikâyetini önler.",
+   "konular": [
+    "yanlis",
+    "eksik"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Market sandalyesiyle kıyaslanıyorsun",
-   "metin": "Fiyatına değmediği ya da \"markette daha ucuzu var\" şikâyetinin oranı %11. Alıcılar ürünü BİM, A101 ve Migros'taki katlanır sandalyelerle karşılaştırıyor. Fiyat farkını haklı çıkaran özellik (kalın profil, taşıma kapasitesi, kilitli mekanizma, sağlam bardaklık) ilanda görünür olmalı."
+   "metin": "Fiyatına değmediği ya da \"markette daha ucuzu var\" şikâyetinin oranı %11. Alıcılar ürünü BİM, A101 ve Migros'taki katlanır sandalyelerle karşılaştırıyor. Fiyat farkını haklı çıkaran özellik (kalın profil, taşıma kapasitesi, kilitli mekanizma, sağlam bardaklık) ilanda görünür olmalı.",
+   "konular": [
+    "fiyat"
+   ],
+   "sevilenler": []
   }
  ],
  "urunler": [

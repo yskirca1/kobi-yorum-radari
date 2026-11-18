@@ -126,27 +126,55 @@
  "oneriler": [
   {
    "baslik": "Sararmayan malzeme kullan, dürüst yaz",
-   "metin": "Sararma ve kararma olumsuz yorumlarda %22 oranla 1 numaralı sorun; şeffaf ve renkli silikon kılıflar birkaç gün ile bir ay içinde rengini kaybediyor. Sararmaya dayanıklı malzeme kullan ve bunu açıkça yaz; kullanmıyorsan \"zamanla sararabilir\" demek 1 yıldızı önler."
+   "metin": "Sararma ve kararma olumsuz yorumlarda %22 oranla 1 numaralı sorun; şeffaf ve renkli silikon kılıflar birkaç gün ile bir ay içinde rengini kaybediyor. Sararmaya dayanıklı malzeme kullan ve bunu açıkça yaz; kullanmıyorsan \"zamanla sararabilir\" demek 1 yıldızı önler.",
+   "konular": [
+    "sararma"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Hangi modele tam oturduğunu açıkça yaz",
-   "metin": "Telefona oturmama şikâyeti %15; \"13/14/15 uyumlu\" diye satılan iki kılıfta %37. iPhone 13'te kamera boşluğu, ekran koruyucuyu kaldırma ve basmayan tuş en sık örnekler. Her model için ayrı kalıp üret ya da hangi modelde boşluk kalacağını ilanda yaz."
+   "metin": "Telefona oturmama şikâyeti %15; \"13/14/15 uyumlu\" diye satılan iki kılıfta %37. iPhone 13'te kamera boşluğu, ekran koruyucuyu kaldırma ve basmayan tuş en sık örnekler. Her model için ayrı kalıp üret ya da hangi modelde boşluk kalacağını ilanda yaz.",
+   "konular": [
+    "uyum"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Göndermeden önce çizik kontrolü yap",
-   "metin": "Çizik, leke ya da kusurlu gelme şikâyeti %11; şeffaf kılıflarda %23-26'ya çıkıyor ve \"jelatin altında bile çizik\" yorumu sık. Paketlemeden önce ışığa tutup kontrol etmek ucuz ama etkili bir ayrışma."
+   "metin": "Çizik, leke ya da kusurlu gelme şikâyeti %11; şeffaf kılıflarda %23-26'ya çıkıyor ve \"jelatin altında bile çizik\" yorumu sık. Paketlemeden önce ışığa tutup kontrol etmek ucuz ama etkili bir ayrışma.",
+   "konular": [
+    "cizik"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Süslemeyi ve baskıyı dayanıklı yap",
-   "metin": "Baskı, taş ve kaplamanın soyulması tüm ürünlerde %6, ama desenli ve süslemeli kılıflarda %18-20. Fiyonk, inci ve kelebek baskının birkaç günde silinmesi en çok fotoğraflı 1 yıldız getiren şikâyet."
+   "metin": "Baskı, taş ve kaplamanın soyulması tüm ürünlerde %6, ama desenli ve süslemeli kılıflarda %18-20. Fiyonk, inci ve kelebek baskının birkaç günde silinmesi en çok fotoğraflı 1 yıldız getiren şikâyet.",
+   "konular": [
+    "soyulma"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Bu pazar KOBİ'lerin: güveni sen ver",
-   "metin": "26 bin yazılı yorumda büyük markaların (Spigen, Apple) payı yalnızca %0,2. Apple'ın kendi kılıfında bile \"logo yok, çakma gibi\" şikâyeti var. Malzemesini, uyumunu ve garantisini net anlatan bir KOBİ markası rakipsiz kalır."
+   "metin": "26 bin yazılı yorumda büyük markaların (Spigen, Apple) payı yalnızca %0,2. Apple'ın kendi kılıfında bile \"logo yok, çakma gibi\" şikâyeti var. Malzemesini, uyumunu ve garantisini net anlatan bir KOBİ markası rakipsiz kalır.",
+   "konular": [
+    "orijinal"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Hediye kapıyı açar, kaliteyi kapatmaz",
-   "metin": "KOBİ'lerin önerilen yorumlarında satıcının hediyesine (kablo koruyucu, şarj koruyucu) teşekkür oranı %25, bir üründe %53. Hediye ilk izlenimi güçlendiriyor; ama sararma ve uyum sorunu varsa 1 yıldız yine geliyor ve \"bot yorum\" şüphesi doğuyor."
+   "metin": "KOBİ'lerin önerilen yorumlarında satıcının hediyesine (kablo koruyucu, şarj koruyucu) teşekkür oranı %25, bir üründe %53. Hediye ilk izlenimi güçlendiriyor; ama sararma ve uyum sorunu varsa 1 yıldız yine geliyor ve \"bot yorum\" şüphesi doğuyor.",
+   "konular": [
+    "sararma",
+    "uyum",
+    "yorum"
+   ],
+   "sevilenler": [
+    "satici_hediye"
+   ]
   }
  ],
  "urunler": [

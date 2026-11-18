@@ -170,19 +170,37 @@
  "oneriler": [
   {
    "baslik": "Tekerlek kategorinin 1 numaralı sorunu",
-   "metin": "Olumsuz yorumlarda tekerlek şikâyetinin oranı %30 (KOBİ %32, büyük marka %14): fayansta dönmüyor, tümsekte takılıyor, sürüşte yerinden çıkıyor. Tekerlek malzemesini, çapını, amortisörü ve ön teker kilidini ilanda gösteren ve sağlam tekerlek kullanan KOBİ en büyük şikâyeti karşılar."
+   "metin": "Olumsuz yorumlarda tekerlek şikâyetinin oranı %30 (KOBİ %32, büyük marka %14): fayansta dönmüyor, tümsekte takılıyor, sürüşte yerinden çıkıyor. Tekerlek malzemesini, çapını, amortisörü ve ön teker kilidini ilanda gösteren ve sağlam tekerlek kullanan KOBİ en büyük şikâyeti karşılar.",
+   "konular": [
+    "teker"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Dayanıklılık aylar sonra sınanıyor: parça ve garanti desteği ver",
-   "metin": "Kısa sürede kırılma şikâyetinin oranı %21; birçok yorum \"yorumumu güncelliyorum\" diye aylar sonra yazılıyor. Arabayı hamileyken alıp doğumdan sonra kullanmaya başlayanlar sorunu iade süresi geçtikten sonra fark ettiğini yazıyor. KOBİ'lerde satıcıya ve garantiye ulaşamama şikâyeti %8. Yedek teker ve parça satmak, garanti sürecini ilanda anlatmak güven verir."
+   "metin": "Kısa sürede kırılma şikâyetinin oranı %21; birçok yorum \"yorumumu güncelliyorum\" diye aylar sonra yazılıyor. Arabayı hamileyken alıp doğumdan sonra kullanmaya başlayanlar sorunu iade süresi geçtikten sonra fark ettiğini yazıyor. KOBİ'lerde satıcıya ve garantiye ulaşamama şikâyeti %8. Yedek teker ve parça satmak, garanti sürecini ilanda anlatmak güven verir.",
+   "konular": [
+    "kirilma",
+    "satici"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Kutudan kusursuz çıksın",
-   "metin": "Kırık, kusurlu ya da kullanılmış gibi gelen ürün şikâyetinin oranı %15 (KOBİ %16, büyük marka %9). Bebek arabasında ilk izlenim güven demek; göndermeden önce kurup kontrol etmek ve sağlam koliyle göndermek bu şikâyeti doğrudan azaltır."
+   "metin": "Kırık, kusurlu ya da kullanılmış gibi gelen ürün şikâyetinin oranı %15 (KOBİ %16, büyük marka %9). Bebek arabasında ilk izlenim güven demek; göndermeden önce kurup kontrol etmek ve sağlam koliyle göndermek bu şikâyeti doğrudan azaltır.",
+   "konular": [
+    "hasarli"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Büyük markanın açığı: konfor ve fiyat istikrarı",
-   "metin": "Büyük marka kabin boy arabalarda bebeğin rahat etmemesi şikâyetinin oranı %21 (KOBİ %5); aldıktan sonra fiyatın düşmesi %13. Geniş oturma yeri, ayak desteği ve kampanyalarla dalgalanmayan fiyat KOBİ için fark yaratacak alanlar."
+   "metin": "Büyük marka kabin boy arabalarda bebeğin rahat etmemesi şikâyetinin oranı %21 (KOBİ %5); aldıktan sonra fiyatın düşmesi %13. Geniş oturma yeri, ayak desteği ve kampanyalarla dalgalanmayan fiyat KOBİ için fark yaratacak alanlar.",
+   "konular": [
+    "konfor",
+    "fiyat_dusus"
+   ],
+   "sevilenler": []
   }
  ],
  "urunler": [

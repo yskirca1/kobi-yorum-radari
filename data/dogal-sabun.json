@@ -125,31 +125,63 @@
  "oneriler": [
   {
    "baslik": "Vaadi abartma, ne beklenir açıkça yaz",
-   "metin": "Etkisini görmediğini yazanların oranı %12 ile en büyük şikâyet; \"beyazlatıcı\" diye satılan pirinç sabunlarında %22-24'e çıkıyor. \"Bembeyaz olacağınızı sanmayın\" yorumu durumu özetliyor. Gerçekçi bir dil ve \"kaç haftalık düzenli kullanımda ne beklenir\" bilgisi hayal kırıklığını azaltır."
+   "metin": "Etkisini görmediğini yazanların oranı %12 ile en büyük şikâyet; \"beyazlatıcı\" diye satılan pirinç sabunlarında %22-24'e çıkıyor. \"Bembeyaz olacağınızı sanmayın\" yorumu durumu özetliyor. Gerçekçi bir dil ve \"kaç haftalık düzenli kullanımda ne beklenir\" bilgisi hayal kırıklığını azaltır.",
+   "konular": [
+    "etkisiz"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Hassas cilt uyarısı koy",
-   "metin": "Kurutma, yanma, kızarma ve sivilce şikâyeti tüm ürünlerde %9, Tala Pirinç'te %22. Etikete \"hassas ciltte önce küçük bir alanda deneyin, sonrasında nemlendirin\" yazmak hem müşteriyi korur hem 1 yıldızı önler."
+   "metin": "Kurutma, yanma, kızarma ve sivilce şikâyeti tüm ürünlerde %9, Tala Pirinç'te %22. Etikete \"hassas ciltte önce küçük bir alanda deneyin, sonrasında nemlendirin\" yazmak hem müşteriyi korur hem 1 yıldızı önler.",
+   "konular": [
+    "tahris"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Kabak lifini yumuşak ve bol yap",
-   "metin": "Kabak lifli sabunlarda lif şikâyeti oranı %12: lif sert gelip yüzü çiziyor, az konuyor ya da birkaç kullanımda dökülüyor. Lifi yumuşatmak ve sabuna sağlam gömmek bu ürün grubunda en net ayrışma noktası."
+   "metin": "Kabak lifli sabunlarda lif şikâyeti oranı %12: lif sert gelip yüzü çiziyor, az konuyor ya da birkaç kullanımda dökülüyor. Lifi yumuşatmak ve sabuna sağlam gömmek bu ürün grubunda en net ayrışma noktası.",
+   "konular": [
+    "lif"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Gramajı ve sertliği koru",
-   "metin": "Çabuk erime, küçük ya da ince gelme şikâyeti %7; en ucuz sette %19, aynı ürünün 1-2 yıldız oranı da %23,8 ile kategorinin en yükseği. Gramajı ilanda net yazmak ve sabunu iyi kürlemek ucuz görünmenin bedelini önler."
+   "metin": "Çabuk erime, küçük ya da ince gelme şikâyeti %7; en ucuz sette %19, aynı ürünün 1-2 yıldız oranı da %23,8 ile kategorinin en yükseği. Gramajı ilanda net yazmak ve sabunu iyi kürlemek ucuz görünmenin bedelini önler.",
+   "konular": [
+    "erime"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Formülü değiştirirsen söyle",
-   "metin": "Rise and Shine'ın önerilen yorumlarının %40'ı \"yıllardır kullanıyorum\" diyor; bu sadık kitle koku ve yapı değişince hemen fark ediyor (\"eskisi gibi değil\" oranı %13-14). Formül değiştiyse ilanda ve pakette duyurmak sadık müşteriyi kaybetmemenin yolu."
+   "metin": "Rise and Shine'ın önerilen yorumlarının %40'ı \"yıllardır kullanıyorum\" diyor; bu sadık kitle koku ve yapı değişince hemen fark ediyor (\"eskisi gibi değil\" oranı %13-14). Formül değiştiyse ilanda ve pakette duyurmak sadık müşteriyi kaybetmemenin yolu.",
+   "konular": [
+    "formul"
+   ],
+   "sevilenler": [
+    "sadakat"
+   ]
   },
   {
    "baslik": "Orijinallik ve paket güvencesi ver",
-   "metin": "Çok satıcılı ürünlerde logosuz ya da etiketsiz gelen sabun \"sahte mi?\" şüphesi doğuruyor (Rise and Shine'da %7-8). Naylona sarılı gönderim ise \"hijyenik değil\" yorumunu getiriyor (ASKA'da paket şikâyeti %18). Logolu, kapalı ambalaj iki sorunu birden çözer."
+   "metin": "Çok satıcılı ürünlerde logosuz ya da etiketsiz gelen sabun \"sahte mi?\" şüphesi doğuruyor (Rise and Shine'da %7-8). Naylona sarılı gönderim ise \"hijyenik değil\" yorumunu getiriyor (ASKA'da paket şikâyeti %18). Logolu, kapalı ambalaj iki sorunu birden çözer.",
+   "konular": [
+    "sahte",
+    "paket"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Büyük markalar ürünle değil gönderimle kaybediyor",
-   "metin": "Hacı Şakir ve Dalan'ın yazılı yorumlardaki payı yalnızca %4,5; pazar KOBİ'lerin elinde. Büyük markaların az sayıdaki şikâyeti de ürüne değil, yanlış ürün ve özensiz paketlemeye (Dalan'da yanlış ürün oranı %33). Doğru ürünü sağlam paketle göndermek bu pazarda kolay bir ayrışma."
+   "metin": "Hacı Şakir ve Dalan'ın yazılı yorumlardaki payı yalnızca %4,5; pazar KOBİ'lerin elinde. Büyük markaların az sayıdaki şikâyeti de ürüne değil, yanlış ürün ve özensiz paketlemeye (Dalan'da yanlış ürün oranı %33). Doğru ürünü sağlam paketle göndermek bu pazarda kolay bir ayrışma.",
+   "konular": [
+    "yanlis",
+    "paket"
+   ],
+   "sevilenler": []
   }
  ],
  "urunler": [

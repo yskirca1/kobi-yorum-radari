@@ -1,0 +1,566 @@
+{
+ "bebek-arabasi": [
+  {
+   "baslik": "Tekerlek kategorinin 1 numaralı sorunu",
+   "konular": [
+    "teker"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Dayanıklılık aylar sonra sınanıyor: parça ve garanti desteği ver",
+   "konular": [
+    "kirilma",
+    "satici"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Kutudan kusursuz çıksın",
+   "konular": [
+    "hasarli"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Büyük markanın açığı: konfor ve fiyat istikrarı",
+   "konular": [
+    "konfor",
+    "fiyat_dusus"
+   ],
+   "sevilenler": []
+  }
+ ],
+ "bluetooth-kulaklik": [
+  {
+   "baslik": "Dayanıklılığı kanıtla, değişim garantisi ver",
+   "konular": [
+    "bozulma",
+    "tek",
+    "sarj"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Şarj iddiasını gerçekçi yaz",
+   "konular": [
+    "pil",
+    "sarj"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Büyük markanın açığından gir: ses ve oturma",
+   "konular": [
+    "ses",
+    "kulak"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Kutuyu eksiksiz gönder",
+   "konular": [
+    "eksik"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Puanı hediyeyle değil, ürünle topla",
+   "konular": [
+    "yorum"
+   ],
+   "sevilenler": [
+    "satici_hediye"
+   ]
+  },
+  {
+   "baslik": "Bağlantıyı test et, uyumluluğu net yaz",
+   "konular": [
+    "baglanti"
+   ],
+   "sevilenler": []
+  }
+ ],
+ "dogal-sabun": [
+  {
+   "baslik": "Vaadi abartma, ne beklenir açıkça yaz",
+   "konular": [
+    "etkisiz"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Hassas cilt uyarısı koy",
+   "konular": [
+    "tahris"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Kabak lifini yumuşak ve bol yap",
+   "konular": [
+    "lif"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Gramajı ve sertliği koru",
+   "konular": [
+    "erime"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Formülü değiştirirsen söyle",
+   "konular": [
+    "formul"
+   ],
+   "sevilenler": [
+    "sadakat"
+   ]
+  },
+  {
+   "baslik": "Orijinallik ve paket güvencesi ver",
+   "konular": [
+    "sahte",
+    "paket"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Büyük markalar ürünle değil gönderimle kaybediyor",
+   "konular": [
+    "yanlis",
+    "paket"
+   ],
+   "sevilenler": []
+  }
+ ],
+ "filtre-kahve": [
+  {
+   "baslik": "KOBİ'nin rakibi damak tadı: tadı net anlat",
+   "konular": [
+    "tat"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Taze kahve en güçlü kozun",
+   "konular": [
+    "skt"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Paketi kargoya dayanıklı yap",
+   "konular": [
+    "paket_hasar"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Öğütmeyi müşteriye sor, doğru öğüt",
+   "konular": [
+    "ogutme"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Yorum beklentisini yönet",
+   "konular": [
+    "yorum"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Deneme seti ve hediye kapıyı açar",
+   "konular": [],
+   "sevilenler": [
+    "cesit",
+    "hediye"
+   ]
+  }
+ ],
+ "kamp-sandalyesi": [
+  {
+   "baslik": "Dayanıklılığı kanıtla: taşıma kapasitesini yaz",
+   "konular": [
+    "kirilma",
+    "kilo"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Kalite kontrol: kusurlu gönderme",
+   "konular": [
+    "hasarli",
+    "paket"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Plastik parçalar zayıf halka",
+   "konular": [
+    "bardaklik"
+   ],
+   "sevilenler": [
+    "bardaklik"
+   ]
+  },
+  {
+   "baslik": "Siparişi doğru hazırla: renk ve adet",
+   "konular": [
+    "yanlis",
+    "eksik"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Market sandalyesiyle kıyaslanıyorsun",
+   "konular": [
+    "fiyat"
+   ],
+   "sevilenler": []
+  }
+ ],
+ "kedi-tirmalama": [
+  {
+   "baslik": "Tabanı ağırlaştır, devrilmesin",
+   "konular": [
+    "devrilme"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Vidayı ve kurulumu sağlama al",
+   "konular": [
+    "kurulum"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Paketten eksik parça çıkmasın",
+   "konular": [
+    "eksik"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "İpi ve malzemeyi sağlam seç",
+   "konular": [
+    "dayaniksiz",
+    "malzeme"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Görseldeki ürünü gönder, ölçüyü göster",
+   "konular": [
+    "gorsel",
+    "kucuk"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Kedinin ilgisini çek",
+   "konular": [
+    "ilgisiz"
+   ],
+   "sevilenler": [
+    "catnip"
+   ]
+  },
+  {
+   "baslik": "Bu pazar tamamen KOBİ'lerin",
+   "konular": [],
+   "sevilenler": []
+  }
+ ],
+ "nevresim-takimi": [
+  {
+   "baslik": "Kumaş içeriğini oranıyla yaz",
+   "konular": [
+    "naylon"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Kumaşın kalınlığını göster",
+   "konular": [
+    "ince",
+    "kalitesiz"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Tüylenme ve ölçü: KOBİ setlerinin zayıf noktası",
+   "konular": [
+    "tuylenme",
+    "olcu"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Her renk ayrı ilan, ayrı sınav",
+   "konular": [
+    "renk"
+   ],
+   "sevilenler": [
+    "renk"
+   ]
+  },
+  {
+   "baslik": "Büyük marka ilanında doğru marka, eksiksiz takım",
+   "konular": [
+    "marka",
+    "eksik",
+    "yanlis"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Hediye ve çeyiz alıcısı, fiyat alıcısı",
+   "konular": [],
+   "sevilenler": [
+    "hediye",
+    "fiyat"
+   ]
+  }
+ ],
+ "sal": [
+  {
+   "baslik": "Setlerde her rengi tek tek kontrol et",
+   "konular": [
+    "yanlis",
+    "renk"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Rengi gün ışığında çek, tonu doğru adlandır",
+   "konular": [],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Kenarları kontrol et, iade dönen ürünü yeniden satma",
+   "konular": [
+    "defo"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Kumaşı fotoğraftaki gibi anlat",
+   "konular": [
+    "sert",
+    "sentetik",
+    "ince"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Yıkama dayanımını test et",
+   "konular": [
+    "yikama"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Büyük markayla aynı ligdesin: farkı hizmette yarat",
+   "konular": [],
+   "sevilenler": [
+    "renk",
+    "kalite",
+    "kaymaz",
+    "not"
+   ]
+  }
+ ],
+ "sweatshirt": [
+  {
+   "baslik": "Beden tablosunu boy ve kiloyla ver",
+   "konular": [
+    "dar",
+    "bol",
+    "yanlis",
+    "cekme"
+   ],
+   "sevilenler": [
+    "boykilo"
+   ]
+  },
+  {
+   "baslik": "Tüylenmeyi yıkamadan önce çöz",
+   "konular": [
+    "tuylenme"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Kumaşı fotoğrafta abartma, kalınlığını yaz",
+   "konular": [
+    "ince"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Doğru bedeni, doğru ürünü gönder",
+   "konular": [
+    "yanlis"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Renkler arasında kalıbı ve kumaşı eşitle",
+   "konular": [
+    "tuylenme",
+    "dar",
+    "bol"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Hediye alıcısını hedefle",
+   "konular": [],
+   "sevilenler": [
+    "hediye"
+   ]
+  }
+ ],
+ "telefon-kilifi": [
+  {
+   "baslik": "Sararmayan malzeme kullan, dürüst yaz",
+   "konular": [
+    "sararma"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Hangi modele tam oturduğunu açıkça yaz",
+   "konular": [
+    "uyum"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Göndermeden önce çizik kontrolü yap",
+   "konular": [
+    "cizik"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Süslemeyi ve baskıyı dayanıklı yap",
+   "konular": [
+    "soyulma"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Bu pazar KOBİ'lerin: güveni sen ver",
+   "konular": [
+    "orijinal"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Hediye kapıyı açar, kaliteyi kapatmaz",
+   "konular": [
+    "sararma",
+    "uyum",
+    "yorum"
+   ],
+   "sevilenler": [
+    "satici_hediye"
+   ]
+  }
+ ],
+ "termos": [
+  {
+   "baslik": "Isı iddiasını küçült, kanıtla",
+   "konular": [
+    "isi"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Farkı kapakta yarat",
+   "konular": [
+    "sizdirma",
+    "kapak"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Güveni sat",
+   "konular": [
+    "orijinal"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Dayanıklılığı garanti et",
+   "konular": [
+    "zamanla"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Hediye deneyimini kullan, sözünü tut",
+   "konular": [
+    "paketSoz"
+   ],
+   "sevilenler": [
+    "hediye"
+   ]
+  },
+  {
+   "baslik": "Bebek ve mama segmentini ayrı konumlandır",
+   "konular": [],
+   "sevilenler": [
+    "bebek"
+   ]
+  }
+ ],
+ "yuz-serumu": [
+  {
+   "baslik": "En büyük şikâyet etki beklentisi: kullanım süresini açık yaz",
+   "konular": [
+    "etkisiz"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Cilt tepkisi yazan yorumlar: kullanım talimatı ve uyarılar görünür olsun",
+   "konular": [
+    "sivilce",
+    "tahris"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Sızdırmaz şişe, mühürlü kutu",
+   "konular": [
+    "hasarli",
+    "bant",
+    "orijinal"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Renk ve koku değişimi: saklama bilgisini ver",
+   "konular": [
+    "bozuk"
+   ],
+   "sevilenler": []
+  },
+  {
+   "baslik": "Yıldıza değil metne bak; hediye beklenti yaratıyor",
+   "konular": [
+    "hediye"
+   ],
+   "sevilenler": [
+    "hediye"
+   ]
+  }
+ ]
+}

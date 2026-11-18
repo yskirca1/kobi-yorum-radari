@@ -145,27 +145,57 @@
  "oneriler": [
   {
    "baslik": "Dayanıklılığı kanıtla, değişim garantisi ver",
-   "metin": "KOBİ ürünlerinde arıza (kısa sürede bozulma, tek tarafın susması, şarj almama) olumsuz yorumlarda %36 oranında; büyük markalarda %22. En sık cümle \"1 ay bile olmadı bozuldu\". Göndermeden önce her kulaklığı test et, 6-12 aylık değişim sözü ver: büyük markaya karşı en güçlü koz bu."
+   "metin": "KOBİ ürünlerinde arıza (kısa sürede bozulma, tek tarafın susması, şarj almama) olumsuz yorumlarda %36 oranında; büyük markalarda %22. En sık cümle \"1 ay bile olmadı bozuldu\". Göndermeden önce her kulaklığı test et, 6-12 aylık değişim sözü ver: büyük markaya karşı en güçlü koz bu.",
+   "konular": [
+    "bozulma",
+    "tek",
+    "sarj"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Şarj iddiasını gerçekçi yaz",
-   "metin": "Şarj sorunları (çabuk bitme, şarj almama) KOBİ'lerde %18, büyük markalarda %5. Kutulu ve kutusuz gerçek kullanım süresini test edip yaz; şarj göstergesi doğru yüzdeyi göstermiyorsa müşteri bunu hemen fark ediyor."
+   "metin": "Şarj sorunları (çabuk bitme, şarj almama) KOBİ'lerde %18, büyük markalarda %5. Kutulu ve kutusuz gerçek kullanım süresini test edip yaz; şarj göstergesi doğru yüzdeyi göstermiyorsa müşteri bunu hemen fark ediyor.",
+   "konular": [
+    "pil",
+    "sarj"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Büyük markanın açığından gir: ses ve oturma",
-   "metin": "Xiaomi ve Huawei'nin olumsuz yorumlarında \"ses az, boğuk, dışarı veriyor\" oranı %31 (KOBİ'de %10), \"kulağa oturmuyor, acıtıyor\" %11 (KOBİ'de %2). Yüksek ses seviyesi, farklı boy silikon uçlar ve görüşmede net mikrofonu öne çıkaran bir KOBİ ürünü burada rakipsiz kalır."
+   "metin": "Xiaomi ve Huawei'nin olumsuz yorumlarında \"ses az, boğuk, dışarı veriyor\" oranı %31 (KOBİ'de %10), \"kulağa oturmuyor, acıtıyor\" %11 (KOBİ'de %2). Yüksek ses seviyesi, farklı boy silikon uçlar ve görüşmede net mikrofonu öne çıkaran bir KOBİ ürünü burada rakipsiz kalır.",
+   "konular": [
+    "ses",
+    "kulak"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Kutuyu eksiksiz gönder",
-   "metin": "Büyük markaların olumsuz yorumlarında \"kutudan kablo ya da parça çıkmadı\" oranı %8. İlanda yazan her aksesuar (kablo, yedek uç, kılavuz) kutuda olmalı; yoksa ilanda açıkça yazılmalı."
+   "metin": "Büyük markaların olumsuz yorumlarında \"kutudan kablo ya da parça çıkmadı\" oranı %8. İlanda yazan her aksesuar (kablo, yedek uç, kılavuz) kutuda olmalı; yoksa ilanda açıkça yazılmalı.",
+   "konular": [
+    "eksik"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Puanı hediyeyle değil, ürünle topla",
-   "metin": "KOBİ'lerin önerilen yorumlarında satıcının hediyesine (kılıf, kahve) teşekkür oranı %19, bir üründe %54; büyük markalarda yok denecek kadar az. Bazı olumsuz yorumlar \"hediye için güzel yorum yazdırıyorlar\" diyor. Hediye ilk puanı yükseltiyor ama arıza gelince 1 yıldıza dönüyor ve güveni zedeliyor."
+   "metin": "KOBİ'lerin önerilen yorumlarında satıcının hediyesine (kılıf, kahve) teşekkür oranı %19, bir üründe %54; büyük markalarda yok denecek kadar az. Bazı olumsuz yorumlar \"hediye için güzel yorum yazdırıyorlar\" diyor. Hediye ilk puanı yükseltiyor ama arıza gelince 1 yıldıza dönüyor ve güveni zedeliyor.",
+   "konular": [
+    "yorum"
+   ],
+   "sevilenler": [
+    "satici_hediye"
+   ]
   },
   {
    "baslik": "Bağlantıyı test et, uyumluluğu net yaz",
-   "metin": "Bağlantı kopması iki grupta da olumsuz yorumlarda yaklaşık %12 oranında geçiyor. iPhone, Android ve bilgisayarla eşleştirmeyi kısa bir videoyla göster; menzili ve desteklenen cihazları açıkça yaz."
+   "metin": "Bağlantı kopması iki grupta da olumsuz yorumlarda yaklaşık %12 oranında geçiyor. iPhone, Android ve bilgisayarla eşleştirmeyi kısa bir videoyla göster; menzili ve desteklenen cihazları açıkça yaz.",
+   "konular": [
+    "baglanti"
+   ],
+   "sevilenler": []
   }
  ],
  "urunler": [

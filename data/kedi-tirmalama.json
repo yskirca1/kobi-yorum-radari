@@ -130,31 +130,61 @@
  "oneriler": [
   {
    "baslik": "Tabanı ağırlaştır, devrilmesin",
-   "metin": "Devrilme ve sallanma olumsuz yorumlarda %17 ile 1 numaralı sorun; 82-90 cm uzun modellerde %32'ye çıkıyor (en yüksek üründe %41). Kedi devrilen tahtadan korkup bir daha yanaşmıyor. Daha geniş ve ağır taban, ya da duvara sabitleme aparatı en net ayrışma."
+   "metin": "Devrilme ve sallanma olumsuz yorumlarda %17 ile 1 numaralı sorun; 82-90 cm uzun modellerde %32'ye çıkıyor (en yüksek üründe %41). Kedi devrilen tahtadan korkup bir daha yanaşmıyor. Daha geniş ve ağır taban, ya da duvara sabitleme aparatı en net ayrışma.",
+   "konular": [
+    "devrilme"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Vidayı ve kurulumu sağlama al",
-   "metin": "Vidanın oturmaması, boş dönmesi ve kurulamama şikâyeti %16, uzun modellerde %26. Göndermeden önce bir adet kurup denemek, vida deliğine metal somun koymak ve resimli kurulum kâğıdı eklemek bu şikâyeti büyük ölçüde bitirir."
+   "metin": "Vidanın oturmaması, boş dönmesi ve kurulamama şikâyeti %16, uzun modellerde %26. Göndermeden önce bir adet kurup denemek, vida deliğine metal somun koymak ve resimli kurulum kâğıdı eklemek bu şikâyeti büyük ölçüde bitirir.",
+   "konular": [
+    "kurulum"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Paketten eksik parça çıkmasın",
-   "metin": "Vida ya da parça eksik gelme oranı %8; yavru kedi modelinde %20. Eksik vida yüzünden ürün kurulmadan kalıyor ve müşteri 1 yıldız veriyor. Paketleme sırasında parça kontrol listesi ve yedek vida koymak ucuz bir çözüm."
+   "metin": "Vida ya da parça eksik gelme oranı %8; yavru kedi modelinde %20. Eksik vida yüzünden ürün kurulmadan kalıyor ve müşteri 1 yıldız veriyor. Paketleme sırasında parça kontrol listesi ve yedek vida koymak ucuz bir çözüm.",
+   "konular": [
+    "eksik"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "İpi ve malzemeyi sağlam seç",
-   "metin": "Çabuk dağılma ve ipin kopması %13, kalitesiz malzeme şikâyeti %13. En ucuz modellerde 1-2 yıldız oranı %24-29'a çıkıyor; \"çamaşır ipi gibi\" ve \"kartondan yapılmış\" yorumları sık. Sisal ip kalınlığını ve malzemeyi ilanda yazmak, kalitesizlik algısını önler."
+   "metin": "Çabuk dağılma ve ipin kopması %13, kalitesiz malzeme şikâyeti %13. En ucuz modellerde 1-2 yıldız oranı %24-29'a çıkıyor; \"çamaşır ipi gibi\" ve \"kartondan yapılmış\" yorumları sık. Sisal ip kalınlığını ve malzemeyi ilanda yazmak, kalitesizlik algısını önler.",
+   "konular": [
+    "dayaniksiz",
+    "malzeme"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Görseldeki ürünü gönder, ölçüyü göster",
-   "metin": "Renk ve görsel farkı %9, küçük gelme %7. \"Karışık renk\" gönderimi ve fotoğraftaki topun gelmemesi en sık örnekler. Ölçüyü bir kediyle birlikte fotoğraflamak ve rengi müşteriye seçtirmek bu şikâyetleri azaltır."
+   "metin": "Renk ve görsel farkı %9, küçük gelme %7. \"Karışık renk\" gönderimi ve fotoğraftaki topun gelmemesi en sık örnekler. Ölçüyü bir kediyle birlikte fotoğraflamak ve rengi müşteriye seçtirmek bu şikâyetleri azaltır.",
+   "konular": [
+    "gorsel",
+    "kucuk"
+   ],
+   "sevilenler": []
   },
   {
    "baslik": "Kedinin ilgisini çek",
-   "metin": "Olumsuz yorumların %11'i \"kedim kullanmadı\". Kedi otu (catnip) ve oyuncak top ürünle birlikte geliyor ama yorumlarda neredeyse hiç anılmıyor; kullanım ipucu (kedi otunu sürün, kedinin dinlendiği yere koyun) eklemek bu hayal kırıklığını azaltır."
+   "metin": "Olumsuz yorumların %11'i \"kedim kullanmadı\". Kedi otu (catnip) ve oyuncak top ürünle birlikte geliyor ama yorumlarda neredeyse hiç anılmıyor; kullanım ipucu (kedi otunu sürün, kedinin dinlendiği yere koyun) eklemek bu hayal kırıklığını azaltır.",
+   "konular": [
+    "ilgisiz"
+   ],
+   "sevilenler": [
+    "catnip"
+   ]
   },
   {
    "baslik": "Bu pazar tamamen KOBİ'lerin",
-   "metin": "Trendyol'da en çok değerlendirilen tırmalama tahtalarının tamamı KOBİ ürünü; Trixie, Karlie gibi büyük markaların ürünlerinde neredeyse hiç yorum yok. Ağır tabanlı, eksiksiz ve sağlam bir ürünle kısa sürede öne çıkmak mümkün."
+   "metin": "Trendyol'da en çok değerlendirilen tırmalama tahtalarının tamamı KOBİ ürünü; Trixie, Karlie gibi büyük markaların ürünlerinde neredeyse hiç yorum yok. Ağır tabanlı, eksiksiz ve sağlam bir ürünle kısa sürede öne çıkmak mümkün.",
+   "konular": [],
+   "sevilenler": []
   }
  ],
  "urunler": [
