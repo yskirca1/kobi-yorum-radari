@@ -1,6 +1,6 @@
 # Jüri demosu: 2-3 dakikalık akış
 
-Akış yalnızca sitenin kendi bağlantılarıyla yürür; ayrı bir kılavuz ekranı yok. Adresler canlı sitenin köküne göredir: `https://yskirca1.github.io/kobi-yorum-radari/` + aşağıdaki `#/…` kısmı. Her adres doğrudan yapıştırılarak da açılır, geri ve ileri tuşları çalışır.
+Akış yalnızca sitenin kendi bağlantılarıyla yürür; ayrı bir kılavuz ekranı yok. Adresler canlı sitenin köküne göredir: `https://yskirca1.github.io/kobi-yorum-radari/` + aşağıdaki `#/…` kısmı. Her adres doğrudan yapıştırılarak da açılır, geri ve ileri tuşları çalışır. Bir bağlantı sayfanın belirli bir parçasına gidiyorsa (konu başlığındaki oran, tablodaki ürün satırı, konu kartı, süzgeçli liste, Yöntem bölümü) o parça açılınca bir an turkuaz zeminle vurgulanır, sonra kendiliğinden söner.
 
 ## Neden filtre kahve?
 

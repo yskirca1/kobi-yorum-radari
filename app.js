@@ -422,7 +422,7 @@
     const reads = readings(catRows(data));
     if (!reads.length) { el.remove(); return; }
     el.innerHTML = `<div class="sec-top"><h2 id="reads-t" class="label">Kategoriler yan yana</h2><a class="reads-all" href="#/firsat">Kategorileri puanla ve karşılaştır <span aria-hidden="true">→</span></a></div>
-      <ul class="reads-list">${reads.map((x) => `<li><a href="#/firsat"><span class="label">${esc(x.k)}</span><span>${x.t}</span></a></li>`).join('')}</ul>
+      <ul class="reads-list">${reads.map((x) => `<li><a href="#/firsat" data-to="read:${esc(x.k)}"><span class="label">${esc(x.k)}</span><span>${x.t}</span></a></li>`).join('')}</ul>
       ${gloss(['yildiz', 'sikayet', 'segment'])}`;
   }
 
@@ -704,12 +704,12 @@
           <p class="note">Yüzde, şikâyet oranıdır: 1-2 yıldızlı yorumların kaçında bu sorunun geçtiğini gösterir. Bir yorum birden fazla soruna girebilir. <a href="#/yontem">Bu rakamlar nasıl hesaplandı?</a></p>
         </div>
         <div class="sum-side">
-          <div class="fact"><span class="fact-h">Tüm yazılı yorumlar ${tip('yildiz')}</span>${go(H.cat(c.id, 'sirala=cok'), pct(c.top.dusuk, 1), 'fig neg', `${pct(c.top.dusuk, 1)}: ürünleri 1-2 yıldız payına göre sırala`)}
+          <div class="fact" data-fig="dusuk"><span class="fact-h">Tüm yazılı yorumlar ${tip('yildiz')}</span>${go(H.cat(c.id, 'sirala=cok'), pct(c.top.dusuk, 1), 'fig neg', `${pct(c.top.dusuk, 1)}: ürünleri 1-2 yıldız payına göre sırala`)}
             <span>1-2 yıldız payı: ${int(c.top.yazili)} yorumdan ${int(c.top.dusukN)} tanesi 1 ya da 2 yıldız.</span></div>
           <div class="fact"><span class="fact-h">Müşterinin ilk gördüğü yorumlar ${tip('onerilen')}</span>${go('#/yontem/iki-ornek', `${int(on)} / ${int(c.top.onerilenN)}`, 'fig', `${int(on)} / ${int(c.top.onerilenN)}: Yöntem, iki ayrı örnek`)}
             <span>${tamYuz ? `Trendyol'un "Önerilen" sıralamasında her ürünün ilk 100 yorumu.` : `Trendyol'un "Önerilen" sıralamasında okunan yorumlar (yorumu az olan üründe 100'den az).`} ${on ? `${int(on)} tanesi 1-2 yıldızlı.` : 'Hiçbiri 1-2 yıldızlı değil.'}</span></div>
           ${segIki ? `<div class="fact"><span class="fact-h">1-2 yıldız payı, satıcı tipine göre ${tip('segment')}</span>
-            <dl class="fact-seg"><div><dt>Büyük marka</dt><dd class="neg num">${go(H.cat(c.id, 'sirala=cok&tip=buyuk'), pct(sl.buyuk, 1), '', `Büyük marka ${pct(sl.buyuk, 1)}: büyük marka ürünlerini 1-2 yıldız payına göre göster`)}</dd></div><div><dt>KOBİ</dt><dd class="neg num">${go(H.cat(c.id, 'sirala=cok&tip=kobi'), pct(sl.kobi, 1), '', `KOBİ ${pct(sl.kobi, 1)}: KOBİ ürünlerini 1-2 yıldız payına göre göster`)}</dd></div></dl></div>` : ''}
+            <dl class="fact-seg"><div data-fig="dusuk-buyuk"><dt>Büyük marka</dt><dd class="neg num">${go(H.cat(c.id, 'sirala=cok&tip=buyuk'), pct(sl.buyuk, 1), '', `Büyük marka ${pct(sl.buyuk, 1)}: büyük marka ürünlerini 1-2 yıldız payına göre göster`)}</dd></div><div data-fig="dusuk-kobi"><dt>KOBİ</dt><dd class="neg num">${go(H.cat(c.id, 'sirala=cok&tip=kobi'), pct(sl.kobi, 1), '', `KOBİ ${pct(sl.kobi, 1)}: KOBİ ürünlerini 1-2 yıldız payına göre göster`)}</dd></div></dl></div>` : ''}
         </div>
       </section>
       <section class="card recs-card jump" id="sec-oneri" tabindex="-1" aria-labelledby="oneri-t"><h2 id="oneri-t">Ne yapmalı? Bu kategoriye girecek KOBİ için öneriler</h2><ol class="recs" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))">${c.oneriler.map((o) => `<li><b>${esc(o.baslik)}</b><span>${esc(o.metin)}</span>${recEv(c, o)}</li>`).join('')}</ol>
@@ -831,6 +831,94 @@
     if (!t) return;
     t.scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth', block: 'start' });
     t.focus({ preventScroll: true });
+    // Bölümün başlığı, kaydırma bitince bir an vurgulanır
+    arrive([document.getElementById(t.getAttribute('aria-labelledby'))], false);
+  }
+
+  // ---- varış vurgusu (v20): site içi bir bağlantı sayfanın belirli bir parçasını gösteriyorsa o parça görünür alana getirilir,
+  // bir an hafif turkuaz zemin ve ince çizgiyle işaretlenir, sonra iz bırakmadan söner. Yalnızca görsel; odak değişmez.
+  // Hedef adresten ve (tıklanan bağlantı varsa) geldiği sayfadan ya da bağlantının data-to ipucundan bulunur: arrivalFor.
+  // Yerleşimi değiştirmez (yalnızca box-shadow ve outline, Web Animations ile; bitince sınıf ya da stil kalmaz). Azaltılmış hareket: aynı süre sabit, sonra animasyonsuz kalkar.
+  const ARR_MS = 1800;
+  let arrAnims = [], arrTok = 0;
+  const arriveStop = () => { arrTok++; arrAnims.forEach((a) => a.cancel()); arrAnims = []; };
+  addEventListener('beforeprint', arriveStop);
+  // Kaydırma durunca (art arda 3 karede yer değişmezse) çalıştır; yumuşak kaydırmada vurgu hedef yerine oturunca başlar
+  const settle = (cb) => { let y = scrollY, still = 0, n = 0; const f = () => { if (scrollY === y) still++; else { still = 0; y = scrollY; } if (still >= 3 || ++n > 120) cb(); else requestAnimationFrame(f); }; requestAnimationFrame(f); };
+  // Hedef yapışkan başlığın (kategori sayfasında bölüm menüsünün de) altında ve karşılaştırma çubuğunun üstünde görünmüyorsa oraya kaydır
+  function ensureVisible(el) {
+    const r = el.getBoundingClientRect(), top = document.querySelector('.top'), nav = document.getElementById('secnav'), bar = document.getElementById('cmpbar');
+    const topH = top ? top.offsetHeight : 0, navH = nav ? nav.offsetHeight : 0;
+    const lim = Math.max(top ? top.getBoundingClientRect().bottom : 0, nav ? nav.getBoundingClientRect().bottom : 0);
+    const bot = innerHeight - (bar && !bar.hidden ? bar.offsetHeight : 0), avail = bot - lim;
+    const ok = r.top >= lim - 1 && (r.bottom <= bot + 1 || (r.height > avail && r.top <= lim + avail * 0.25));
+    if (!ok) scrollTo(scrollX, Math.max(0, scrollY + r.top - topH - navH - 14));
+  }
+  const hexRgb = (h) => { const m = /^#?([0-9a-f]{6})$/i.exec(h.trim()); if (!m) return '29 114 104'; const n = parseInt(m[1], 16); return `${n >> 16} ${(n >> 8) & 255} ${n & 255}`; };
+  function flashArrive(els) {
+    const cs = getComputedStyle(document.documentElement), rgb = hexRgb(cs.getPropertyValue('--brand')), dark = cs.colorScheme === 'dark';
+    const tint = dark ? 0.2 : 0.13;
+    els.forEach((el) => {
+      const s = getComputedStyle(el), base = s.boxShadow && s.boxShadow !== 'none' ? ', ' + s.boxShadow : '';
+      const row = el.matches('tr'), pad = row ? 0 : el.matches('.chip') ? 3 : el.matches('.fact-seg > div') ? 4 : 6;
+      const k = (a) => ({ boxShadow: `inset 0 0 0 2000px rgb(${rgb} / ${a * tint}), 0 0 0 ${pad}px rgb(${rgb} / ${a * tint})${base}`,
+        outline: `2px solid rgb(${rgb} / ${a * 0.8})`, outlineOffset: `${row ? -2 : pad}px` });
+      const kf = reduceMotion.matches ? [k(1), k(1)] : [{ ...k(0), offset: 0 }, { ...k(1), offset: 0.08 }, { ...k(1), offset: 0.35, easing: 'ease-in-out' }, { ...k(0), offset: 1 }];
+      el.setAttribute('data-arriving', '');
+      const an = el.animate(kf, { duration: ARR_MS, easing: 'linear', id: 'rr-arrive' });
+      const done = () => { el.removeAttribute('data-arriving'); arrAnims = arrAnims.filter((x) => x !== an); };
+      an.onfinish = done; an.oncancel = done;
+      arrAnims.push(an);
+    });
+  }
+  // sync: hedefi hemen (yönlendirme sırasında, kaydırma kaydından önce) görünür alana getir. Bölüm menüsünde yumuşak kaydırma kendi işini yapar.
+  function arrive(els, sync = true) {
+    arriveStop();
+    els = els.filter((el) => el && el.isConnected && el.getClientRects().length);
+    if (!els.length) return;
+    const tok = arrTok;
+    if (sync) ensureVisible(els[0]);
+    settle(() => { if (tok !== arrTok || !els[0].isConnected) return; ensureVisible(els[0]); flashArrive(els); });
+  }
+  // Tıklanan iç bağlantı: hedef adresi, tıklandığı sayfanın adresi ve isteğe bağlı ipucu (data-to). Değiştirici tuşla açılan yeni sekme sayılmaz.
+  let navFrom = null;
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest && e.target.closest('a[href^="#/"]');
+    if (!a || e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+    navFrom = { hash: a.hash, from: location.hash, to: a.dataset.to || '', t: Date.now() };
+  }, true);
+  // Bir yeni açılışta vurgulanacak parça(lar). focus: yönlendirmenin odaklayacağı bölümü değiştirir (fırsat hücresinden gelen rakam özet kutusunda).
+  function arrivalFor(h, nav) {
+    const $ = (s) => app.querySelector(s), one = (el) => (el ? { els: [el] } : null);
+    const from = nav ? parseHash(nav.from) : null, to = nav ? nav.to : '';
+    if (h[0] === 'kategori' && h.length === 2 && [...h.q.keys()].length) {
+      if (!$('#sec-urun')) return null;
+      // #/firsat hücresi: kategori sayfasında aynı rakam varsa (1-2 yıldız payı, KOBİ / büyük marka payı) o rakam
+      if (from && from[0] === 'firsat') {
+        const n = [...h.q.keys()].length, t = h.q.get('tip');
+        const key = h.q.get('sirala') === 'cok' ? (n === 1 ? 'dusuk' : n === 2 && (t === 'kobi' || t === 'buyuk') ? 'dusuk-' + t : '') : '';
+        const f = key && $(`[data-fig="${key}"]`);
+        if (f) return { els: [f], focus: 'sec-ozet' };
+      }
+      // Süzgeçli ya da sıralı liste: ürün listesi başlığı, sıralama (varsayılan değilse) ve etkin süzgeç etiketleri
+      const sort = $('#sort');
+      return { els: [$('#urun-t'), sort && sort.value !== 'yorum' ? sort.closest('label') : null, ...app.querySelectorAll('#chips .chip')] };
+    }
+    if (h[0] === 'kategori' && h.length === 4) {
+      if (!$('.tp-table')) return null;
+      if (to === 'dokum') return one($('[aria-labelledby="tp-how-t"]'));
+      // Ürün sayfasından gelindiyse o ürünün tablodaki satırı (konunun geçmediği ürünse "geçmediği" satırı)
+      if (from && from[0] === 'urun' && from[1] === h[1]) {
+        const a = [...app.querySelectorAll('.tp-table tbody th a')].find((x) => { const p = parseHash(x.getAttribute('href')); return p && p[2] === from[2]; });
+        if (a) return one(a.closest('tr'));
+      }
+      return one($('.tp-lead'));
+    }
+    if (h[0] === 'urun' && h.length === 5) return one($('#p-konu'));
+    if (h[0] === 'urun' && h.length === 3 && to === 'alinti') return one($('#p-alinti'));
+    if (h[0] === 'yontem' && h[1]) return one(document.getElementById('y-' + h[1]));
+    if (h[0] === 'firsat' && to.startsWith('read:')) return one([...app.querySelectorAll('.fp-reads li[data-read]')].find((li) => li.dataset.read === to.slice(5)));
+    return null;
   }
   let spyFn = null;
   function secSpy() {
@@ -937,7 +1025,7 @@
       ? (noLow(p) ? esc(noLowText(p)) : `Bu üründe şikâyet oranı <b class="num ${negCls(v)}">${pct(v)}</b>: okunan ${int(n)} adet <span class="nowrap">1-2 yıldızlı</span> yorumun yaklaşık ${int(Math.round(v * n))} tanesinde geçiyor. Kategoride ${go(H.konu(c.id, kind, t.id), `<b class="num neg">${pct(t.tum)}</b>`, '', `Kategoride ${pct(t.tum)}: bu oran hangi ürünlerden oluşuyor`)}.`)
       : `"Önerilen" sıralamada okunan ${int(n)} yorumun <b class="num">${pct(v)}</b> kadarında geçiyor (yaklaşık ${int(Math.round(v * n))} yorum). Kategori ortalaması ${go(H.konu(c.id, kind, t.id), `<b class="num">${pct(t.tum)}</b>`, '', `Kategori ortalaması ${pct(t.tum)}: bu oran hangi ürünlerden oluşuyor`)}.`;
     return `<section class="card pk-card${neg ? '' : ' pos'}" id="p-konu" tabindex="-1" aria-labelledby="pk-t">
-        <div class="pk-top"><span class="label">${neg ? 'Şikâyet konusu' : 'Müşterinin sevdiği konu'}</span><a class="linkbtn" href="${esc(all)}">Bütün alıntıları göster (${p.alinti.length})</a></div>
+        <div class="pk-top"><span class="label">${neg ? 'Şikâyet konusu' : 'Müşterinin sevdiği konu'}</span><a class="linkbtn" href="${esc(all)}" data-to="alinti">Bütün alıntıları göster (${p.alinti.length})</a></div>
         <h2 id="pk-t">${esc(t.ad)}</h2>
         <p class="pk-fig">${fig}</p>
         <h3>Müşterinin kendi sözleriyle ${tip('alinti')}</h3>
@@ -1212,7 +1300,7 @@
       <div class="band phead"><div class="crumbs"><a href="#/">Ana sayfa</a> / Kategorileri karşılaştır</div>
         <div class="chead"><h1>Hangi kategoriye girmeli?</h1>
           <p class="muted">Kategoriler giriş puanına göre sıralı. Giriş puanı beş ölçütü tek sayıda toplar; ağırlıkları sen seçersin. "Puan ayrıntısı" puanın nereden geldiğini gösterir.</p>${gloss(['yildiz', 'sikayet', 'segment'])}</div></div>
-      ${reads.length ? `<ul class="reads-list fp-reads">${reads.map((x) => `<li><span class="label">${esc(x.k)}</span><span>${x.t}</span></li>`).join('')}</ul>` : ''}
+      ${reads.length ? `<ul class="reads-list fp-reads">${reads.map((x) => `<li data-read="${esc(x.k)}"><span class="label">${esc(x.k)}</span><span>${x.t}</span></li>`).join('')}</ul>` : ''}
       <section class="fs-ctrl" aria-labelledby="fs-t">
         <div class="fs-row"><h2 class="label" id="fs-t">Giriş puanı ağırlığı</h2>
           <fieldset class="segctl"><legend class="sr-only">Ağırlık seçimi</legend>${[...PRESETS, OZEL].map((p) => `<label><input type="radio" name="fs-preset" value="${p.k}"><span>${esc(p.ad)}</span></label>`).join('')}</fieldset></div>
@@ -1376,7 +1464,7 @@
           <ul class="ul"><li>Konular her kategori için hazırlanan anahtar kelimelerle bulundu. Bu yüzden oranlar yaklaşıktır.</li><li>Bir yorum birden fazla konuya girebilir. Bu yüzden oranların toplamı 100 etmez.</li><li>Kategori ortalamasında her ürün, okunan 1-2 yıldızlı yorum sayısı kadar ağırlık taşır.</li></ul></section>
         <section id="y-oran" tabindex="-1"><h2>Bir oran hangi ürünlerden oluşuyor?</h2>
           <p>Kategorinin şikâyet oranı, ürünlerin şikâyet oranlarından hesaplanır. Her ürün için oran, okunan <span class="nowrap">1-2 yıldızlı</span> yorum sayısıyla çarpılır. Çıkan sayı, o konunun üründe yaklaşık kaç yorumda geçtiğidir. Bu sayılar toplanır ve bütün ürünlerde okunan <span class="nowrap">1-2 yıldızlı</span> yorumların toplamına bölünür.</p>
-          ${exT ? `<p>Örnek: ${esc(ex.ad)} kategorisinde "${esc(exT.ad)}" ürünlerde yaklaşık ${approx(exK)} yorumda geçiyor. Okunan <span class="nowrap">1-2 yıldızlı</span> yorum ${int(ex.top.ornek)}. ${approx(exK)} ÷ ${int(ex.top.ornek)} = ${pct(exT.tum)}. <a href="${esc(H.konu(ex.id, 'konu', exT.id))}">Bu hesabı ürün ürün gör</a>.</p>` : ''}
+          ${exT ? `<p>Örnek: ${esc(ex.ad)} kategorisinde "${esc(exT.ad)}" ürünlerde yaklaşık ${approx(exK)} yorumda geçiyor. Okunan <span class="nowrap">1-2 yıldızlı</span> yorum ${int(ex.top.ornek)}. ${approx(exK)} ÷ ${int(ex.top.ornek)} = ${pct(exT.tum)}. <a href="${esc(H.konu(ex.id, 'konu', exT.id))}" data-to="dokum">Bu hesabı ürün ürün gör</a>.</p>` : ''}
           <ul class="ul"><li>Büyük marka ve KOBİ oranları aynı hesapla, yalnızca o gruptaki ürünlerden çıkar.</li>
             <li>Ürün oranları yuvarlanmış tutulduğu için yaklaşık yorum sayısı küsuratlı olabilir.</li>
             <li>Müşterinin sevdiği konularda oran, Trendyol'un "Önerilen" sıralamasında okunan yorumlardan hesaplanır. Kategori oranı ürün oranlarının basit ortalamasıdır: her ürün eşit ağırlık taşır.</li>
@@ -1436,8 +1524,8 @@
   // Sayfa çizilirken açılışta gidilecek bölüm (yalnızca yeni açılışta; geri/ileri tuşunda kayıtlı kaydırma yeri kullanılır)
   let pendingFocus = null;
   // "#/kategori/termos?sirala=cok" → ['kategori', 'termos'] + q (URLSearchParams); sondaki boş parça atılır
-  const parseHash = () => {
-    const raw = location.hash.replace(/^#\/?/, ''), qi = raw.indexOf('?');
+  const parseHash = (hs = location.hash) => {
+    const raw = String(hs).replace(/^#\/?/, ''), qi = raw.indexOf('?');
     const path = (qi < 0 ? raw : raw.slice(0, qi)).replace(/\/+$/, ''), qs = qi < 0 ? '' : raw.slice(qi + 1);
     try { const h = path.split('/').map((s) => decodeURIComponent(s)); h.q = new URLSearchParams(qs); return h; } catch { return null; }
   };
@@ -1458,6 +1546,10 @@
     closeDrawer(false);
     if (barMsg && barMsg.type === 'ask' && !opts.keep) barMsg = null;
     app.onclick = app.onchange = app.oninput = null;
+    arriveStop();
+    // Bu yönlendirmeyi az önce tıklanan iç bağlantı mı başlattı? (adres aynıysa ve tıklama yeniyse)
+    const nav = navFrom && navFrom.hash === location.hash && Date.now() - navFrom.t < 4000 ? navFrom : null;
+    navFrom = null;
     let h = parseHash();
     if (!h || !['', 'kategori', 'urun', 'karsilastir', 'ara', 'yontem', 'firsat'].includes(h[0]) || (h[0] === 'ara' && !h.slice(1).join('/').trim())) {
       history.replaceState(history.state, '', '#/');
@@ -1500,11 +1592,15 @@
     scrollTo(0, opts.keep ? keepY : restoreY);
     // Yeni açılışta ilgili bölüme git: #/yontem/<bölüm>, süzgeçli kategori adresinde ürün listesi, ürün sayfasında açılan konu
     if (h[0] === 'yontem' && h[1]) pendingFocus = 'y-' + h[1];
+    // Varış vurgusu yalnızca yeni açılışta (bağlantı, yapıştırılan ya da doğrudan açılan adres); geri/ileri ve yenilemede kayıtlı kaydırma yeri bozulmasın diye yok
+    const arr = fresh && !opts.keep ? arrivalFor(h, nav) : null;
+    if (arr && arr.focus) pendingFocus = arr.focus;
     if (pendingFocus && fresh && !opts.keep) {
       const el = document.getElementById(pendingFocus);
       if (el) { el.scrollIntoView(); el.focus({ preventScroll: true }); }
     }
     pendingFocus = null;
+    if (arr) arrive(arr.els);
     if (!opts.keep && curKey) scrollMap[curKey] = scrollY;
     routing = false;
     drawBar();

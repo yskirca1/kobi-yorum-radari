@@ -1000,3 +1000,6 @@ a.cat-top .go-v { color: var(--neg); font-weight: 700; flex: none; }
   .ck-ev { margin: 0 0 4px 19pt; font-size: 8pt; }
   .recs .rec-ev { font-size: 8.5pt; }
 }
+
+/* v20: varış vurgusu app.js'te Web Animations ile (box-shadow + outline; yerleşim değişmez, bitince iz kalmaz). Baskıda hiç görünmez. */
+@media print { [data-arriving] { box-shadow: none !important; outline: none !important; } }
