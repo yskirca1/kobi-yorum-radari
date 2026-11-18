@@ -1,8 +1,10 @@
+import os, sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from _common import BASE, DATA, outdir, launch_kwargs
 """Measured contrast per theme: computed colours of real elements (+ effective background, alpha-composited),
 plus variable pairs for states that are hard to reach (hover tints, bar tracks, logo on header)."""
 import asyncio, json, re, sys
 from playwright.async_api import async_playwright
-B='http://localhost:8765/'
+B=BASE
 SVG=b'<svg xmlns="http://www.w3.org/2000/svg" width="4" height="6"><rect width="4" height="6" fill="#fff"/></svg>'
 TH=['acik','krem','adacayi','koyu','gece']
 CMP=[{'cat':'termos','id':'780345921'},{'cat':'termos','id':'748758153'}]
@@ -67,6 +69,18 @@ CHECKS=[
  ('#/firsat','preset border','.segctl input:not(:checked) + span',None,3,'border'),
  ('#/firsat','expand button','.ft-exp',None,4.5,'text'),
  ('#/firsat','filter select border','#ff-d',None,3,'border'),
+ # v17
+ ('#/','hero steps text','.steps span',None,4.5,'text-hero'),
+ ('#/','gloss text','.reads .gloss .gl',None,4.5,'text'),
+ ('#/','term button','.reads .tip',None,4.5,'text'),
+ ('#/','term button border','.reads .tip',None,3,'border'),
+ ('#/kategori/termos','fact heading','.fact-h',None,4.5,'text'),
+ ('#/kategori/termos','fact text','.fact > span:last-child',None,4.5,'text'),
+ ('#/kategori/termos','segment % red','.fact-seg dd.neg',None,4.5,'text'),
+ ('#/kategori/termos','section nav','.secnav button:not([aria-current])',None,4.5,'text'),
+ ('#/kategori/termos','section nav current','.secnav button[aria-current]',None,4.5,'text'),
+ ('#/urun/termos/748758153','product nav link','.pnav a',None,4.5,'text'),
+ ('#/urun/termos/748758153','product nav position','.pnav .muted',None,4.5,'text'),
 ]
 # variable pairs: [fg, bg, threshold, label]
 VARS=[('--neg','--subtle',4.5,'red % on hovered/tinted row'),('--neg','--neg-soft',4.5,'red on red tint'),('--kobi-ink','--brand-soft',4.5,'KOBİ badge (var)'),
@@ -112,7 +126,7 @@ hx=lambda c:'#%02x%02x%02x'%tuple(round(x) for x in c[:3])
 async def main():
   fails=0; worst={}
   async with async_playwright() as p:
-    br=await p.chromium.launch(executable_path='/usr/bin/google-chrome')
+    br=await p.chromium.launch(**launch_kwargs())
     ctx=await br.new_context(viewport={'width':1440,'height':900}); pg=await ctx.new_page()
     await pg.route('**/cdn.dsmcdn.com/**', lambda r: r.fulfill(status=200, content_type='image/svg+xml', body=SVG))
     await pg.route('**/fonts.g*/**', lambda r: r.abort())
@@ -139,7 +153,7 @@ async def main():
       worst[t]=[by[k] for k in (7,4.5,3)]
       print(f'[{t}] {len(rows)} pairs; tightest per class:', ' | '.join(f'{th}:1 {l} {c:.2f} ({f} on {b})' for th,(_,c,_x,l,f,b) in by.items()))
     await br.close()
-  json.dump({t:[(l,round(c,2),th,f,b) for _,c,th,l,f,b in v] for t,v in worst.items()}, open('/home/claude/test/contrast.json','w'), ensure_ascii=False, indent=1)
+  json.dump({t:[(l,round(c,2),th,f,b) for _,c,th,l,f,b in v] for t,v in worst.items()}, open(outdir()+'contrast.json','w',encoding='utf-8'), ensure_ascii=False, indent=1)
   print('CONTRAST', 'OK' if not fails else f'{fails} FAIL')
   sys.exit(1 if fails else 0)
 asyncio.run(main())

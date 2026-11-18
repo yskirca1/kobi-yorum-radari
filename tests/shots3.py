@@ -1,10 +1,12 @@
+import os, sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from _common import BASE, DATA, outdir, launch_kwargs
 import asyncio
 from playwright.async_api import async_playwright
-B='http://localhost:8765/'; O='/home/claude/after3/'
+B=BASE; O=outdir('shots3')
 SVG=b'<svg xmlns="http://www.w3.org/2000/svg" width="4" height="6"/>'
 async def main():
   async with async_playwright() as p:
-    br=await p.chromium.launch(executable_path='/usr/bin/google-chrome')
+    br=await p.chromium.launch(**launch_kwargs())
     for name,(w,h),theme,custom in [('desktop-default',(1440,900),'light',0),('desktop-custom-expanded',(1440,900),'light',1),('mobile',(390,844),'light',0),('dark',(1440,900),'dark',0),('mobile-expanded',(390,844),'light',1)]:
       ctx=await br.new_context(viewport={'width':w,'height':h}); pg=await ctx.new_page()
       await pg.route('**/fonts.g*/**', lambda r: r.abort())

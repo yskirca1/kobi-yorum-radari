@@ -1,10 +1,12 @@
+import os, sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from _common import BASE, DATA, outdir, launch_kwargs
 import json,os
-D='/home/claude/kobi-yorum-radari/data/'
+D=str(DATA)+os.sep
 def ref():
-  reg=json.load(open(D+'kategoriler.json')); out=[]
+  reg=json.load(open(D+'kategoriler.json',encoding='utf-8')); out=[]
   for c in reg:
     if c.get('durum')!='hazir': continue
-    try: d=json.load(open(D+c['id']+'.json'))
+    try: d=json.load(open(D+c['id']+'.json',encoding='utf-8'))
     except Exception as e: print('skip',c['id'],e); continue
     P=d['urunler']
     yaz=sum(p['yazili'] for p in P); dus=sum(p['yildiz'][0]+p['yildiz'][1] for p in P)

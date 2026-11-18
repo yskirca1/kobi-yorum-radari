@@ -2,17 +2,17 @@
 
 > Bu dosya, projeyi yeni bir Claude oturumunda (ya da yeni bir hesapta) kaldığı yerden devam ettirmek için yazıldı.
 > Yeni oturumda ilk mesaj: **"yskirca1/kobi-yorum-radari deposundaki PROJE_NOTLARI.md dosyasını oku, projeye devam edelim."**
-> Son güncelleme: 18 Kasım 2026 (Claude Code'da nevresim takımı tamamlandı; site v=16, 12 kategori)
+> Son güncelleme: 18 Kasım 2026 (kullanılabilirlik düzeltmeleri, site v=17, 12 kategori)
 
 ## 0. Devir notu (18 Kasım 2026): Claude Code'a taşınıyor
 
 - Proje bundan sonra Claude Code'da sürdürülecek. Bu dosya ve depo tek başına yeterli olacak şekilde güncellendi.
-- **Yayındaki durum:** main, asset `v=16`. 12 kategori, 141 ürün, 440.358 yazılı yorum, 24.500 okunan yorum (18 Kasım'da nevresim takımıyla). Sayfalar: `#/`, `#/kategori/<id>`, `#/urun/<kategori>/<id>`, `#/karsilastir`, `#/ara/<terim>`, `#/yontem`, `#/firsat`.
+- **Yayındaki durum:** main, asset `v=16` (yerelde v=17 hazır, henüz yayında değil). 12 kategori, 141 ürün, 440.358 yazılı yorum, 24.500 okunan yorum (18 Kasım'da nevresim takımıyla). Sayfalar: `#/`, `#/kategori/<id>`, `#/urun/<kategori>/<id>`, `#/karsilastir`, `#/ara/<terim>`, `#/yontem`, `#/firsat`.
 - **12 Kasım'da eklenenler:** büyük görseller ve genel düzeltmeler (v12-13), kamp sandalyesi + bebek arabası + yüz serumu, `#/firsat` (giriş puanı, ağırlık seçenekleri, filtreler), yazdırılabilir kategori raporu, yumuşatılmış renkler ve 5 tema + Sistem (v16). Ayrıntılar aşağıdaki "Site" ve "Tasarım kararları" bölümlerinde.
 - **Nevresim takımı tamamlandı (18 Kasım 2026, Claude Code).** Ham yorumlar Claude Code'un tarayıcısında yoktu (Chat sekmesindeki tarayıcı ayrı profil); yeniden toplanmadı. Kategori, depodaki `tools/nevresim-takimi/nevresim_tarayici.json` özetlerinden kuruldu: 12 ürünün hepsi eksiksiz (Berolige 38976172: 100 önerilen + toplam 52 adet 1-2 yıldızlı yorumun tamamı). `tools/nevresim-takimi/olustur.py`, `data/nevresim-takimi.json` ve `kategoriler.json` girişi eklendi. Ürün notları yalnızca oranlara ve ürün başına 3 alıntıya dayanıyor (ham yorum okunmadı). Yeni toplamlar: 12 kategori, 141 ürün, 440.358 yazılı yorum, 24.500 okunan yorum.
-- **Testler:** `tests/` klasöründe (bkz. `tests/README.md`); yollar eski çalışma alanına göre sabit.
+- **Testler:** `tests/` klasöründe (bkz. `tests/README.md`); 18 Kasım'dan beri yollar depoya göre (`tests/_common.py`), Windows'ta kurulu Edge ile çalışır. Bu bilgisayardaki Python'da Playwright kurulu değil.
 - **Canlıda gözle kontrol edilmeyenler:** v14-v16 (karşılaştırma sayfası, giriş puanı, temalar, yüz serumu) yerel testlerden geçti ama canlı sitede tarayıcıdan bakılmadı.
-- **Bilinen eksikler:** ana sayfa bütün kategori dosyaları yüklenene kadar "Yükleniyor…" gösteriyor; `tests/behave.py` içinde 6 eski kontrol güncellenmeli; sunum mesajlarına (Echo: ReviewRadar_Sunum_Mesajlari) yüz serumu eklenmedi; sunumun kendisi (slaytlar, persona, pazar büyüklüğü, iş modeli) hazırlanmadı; verilerin periyodik yenilenme yöntemi belirlenmedi.
+- **Bilinen eksikler:** sunum mesajlarına (Echo: ReviewRadar_Sunum_Mesajlari) yüz serumu eklenmedi; sunumun kendisi (slaytlar, persona, pazar büyüklüğü, iş modeli) hazırlanmadı; verilerin periyodik yenilenme yöntemi belirlenmedi.
 - **Çalışma düzeni (kullanıcı tercihi):** iş dağıtımında fable-orchestration kuralı (ana oturum karar ve kontrol; uygulama Opus/Sonnet alt ajanlara, her çağrıda açık `model`), iş bitince echo-gunluk ile Echo kasasına not.
 
 ## 1. Proje nedir?
@@ -179,6 +179,15 @@
   - Yüklenemeyen görsel yerine nötr "Görsel yok" kutusu (kırık simge yok). `head` içinde Open Graph/Twitter etiketleri ve açık/koyu `theme-color`. "İçeriğe geç" bağlantısı, tema düğmesinde `aria-pressed`.
 - `data/<id>.json` yapısı: `{id, ad, ust, esanlam[], toplama, kaynak, temalar[{id, ad, unlem}], olumlu_konular[{id, ad}], oneriler[{baslik, metin}], urunler[{id, kisa, marka, ad, segment ("Büyük marka"|"KOBİ"), gorsel, link, yazili, yildiz[1..5 sayıları], ort, onerilen_ort, onerilen_dusuk, ornek_dusuk, sikayet{temaId: oran}, olumlu{konuId: oran}, dikkat[], ders[], alinti[{konu, yildiz, metin}]}]}`
 
+- **18 Kasım 2026 (asset v=17), kullanılabilirlik düzeltmeleri:**
+  - Kategori sayfası sırası: başlık, yapışkan bölüm menüsü (Özet · Ne yapmalı? · İçgörüler · Ürünler; düğme, klavyeyle çalışır, kaydırırken bulunulan bölüm işaretli), özet, öneriler ("Ne yapmalı?"), içgörüler, ürünler. Yazdırma raporu: özet, öneriler, içgörüler, ürün tablosu.
+  - Özet kutusunun sağ sütunu: "Tüm yazılı yorumlar" (1-2 yıldız payı ve "X yorumdan Y tanesi"), "Müşterinin ilk gördüğü yorumlar" (`N / M`; `onerilen_n` 100'den azsa ayrı cümle), iki segment varsa "1-2 yıldız payı, satıcı tipine göre" (Büyük marka / KOBİ). Eski 3. hücre (1 numaralı şikâyet, soldaki listeyi tekrarlıyordu) kaldırıldı.
+  - Terim açıklamaları: "?" düğmesi (dokunma ve klavye; Esc kapatır; üzerine gelince açılmaz; pencere değil). Terimler: 1-2 yıldız payı, şikâyet oranı, "Önerilen" sıralama, KOBİ ve büyük marka. Bağlantı `#/yontem/<bölüm>` (yildiz, sikayet, iki-ornek, segment) ilgili bölüme açılır; Yöntem'e "KOBİ ve büyük marka" bölümü eklendi. Filtre panelinde açıklama panelin içinde açılır. Ana sayfa, fırsat ve karşılaştırma sayfalarında "Terimler:" satırı.
+  - Terim birliği: yıldız için her yerde "1-2 yıldız payı", "şikâyet oranı" yalnızca konu oranları için (filtre başlığı, filtre etiketi, ana sayfa tespitleri, Yöntem).
+  - Ana sayfa `kategoriler.json` gelince hemen çizilir; "En sık şikâyet" kutusu ve "Yazılı yorum" rakamı kategori dosyaları geldikçe dolar (yer önceden ayrılı, sayfa zıplamaz). Kategori listesi kahramandan hemen sonra, "Kategoriler yan yana" tespitleri listenin altında. Adımlar (1. Kategori seç…) düz metin.
+  - Ürün sayfası: üstte ve altta "← Kategori: tüm ürünler" ile önceki/sonraki ürün (kategori sayfasındaki sıralama; bu ürün filtreye uyuyorsa filtreli liste).
+  - `#/firsat` telefonda (640 px ve altı) tablo yerine kategori başına kart; "Sırala" seçimi ve yön düğmesi, ağırlıklar, filtreler ve "Puan ayrıntısı" aynı. Masaüstünde tablo aynı.
+
 ### Tasarım kararları
 - 3 Kasım 2026 yeniden tasarım (asset v=11): açık gri zemin (#f3f5f8) üzerinde gölgeli beyaz kartlar; ana sayfada koyu lacivert tanıtım bandı + 4'lü rakam şeridi (kategori, ürün, yazılı yorum, okunan yorum); iç sayfalarda beyaz başlık bandı; KOBİ/Büyük marka rozetleri; numaralı öneri kutuları; koyu altbilgi. Tam genişlik bantlar `.band::before` (100vw) ile yapılıyor.
 - Sade, kurumsal pazar yeri görünümü; "yapay zekâ havası" veren şeylerden (trend yazı tipleri, renkli kutular, her yerde etiket/gölge) kaçınılıyor.
@@ -186,6 +195,7 @@
 - 12 Kasım 2026 (asset v=12): Görseller büyütüldü (Trendyol fotoğrafları dikey, yaklaşık 2:3). Kategori kartında görsel alanı 4:5 (telefonda 1:1), kenar boşluğu az, fotoğraf kırpılmıyor; ürün kartında 3:4 (telefonda 4:5); ürün sayfasında görsel sütunu 460 px (telefonda tam genişlik, tablette en fazla 480 px); karşılaştırma tablosunda 140×210 px, karşılaştırma çubuğunda 44 px.
 - 12 Kasım 2026: Karşılaştırma tablosunda kırmızı yalnızca 1-2 yıldız ve şikâyet satırlarında; en iyi değer yalnızca kalın. Telefonda ilk sütun sabit, tablo yana kayar; sağ kenarda solma ve "Tabloyu yana kaydır" ipucu var.
 - 12 Kasım 2026: Açık temada soluk yazı rengi #6b7684 → #5f6b78 (gri zeminde 4,5:1 kontrast).
+- 18 Kasım 2026 (v=17): telefonda kategori kartı yatay satır (solda 96 px görsel, kırpılmadan; sağda ad, sayı, en sık şikâyet; "Analizi incele" yazısı yok), alan düğmeleri tek satırda kendi içinde yana kayar. Telefonda ürün sayfasında görsel 96 px (900 px altı 150 px) ve adın yanında; dört rakam 2×2 kutuda ilk ekranda.
 - Logo: turkuaz konuşma balonu içinde radar (halkalar + tarama dilimi + sinyal noktası) + tek satır "Review**Radar**" ("Radar" turkuaz). Dosyalar `logo/` klasöründe (açık, koyu, şeffaf, ikon; SVG + PNG).
 
 - 12 Kasım 2026 (asset v=13): ürün sayfasındaki "Alırken dikkat edilmesi gerekenler" başlığı satıcı gözüyle "Bu ürünün zayıf noktaları" oldu; "Genel Markalar" arayüzde "Markasız" olarak gösteriliyor (veri aynı); KOBİ rozeti yazısı kontrast için koyulaştırıldı (#07635b).

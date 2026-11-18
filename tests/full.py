@@ -1,6 +1,8 @@
+import os, sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from _common import BASE, DATA, outdir, launch_kwargs
 import json, asyncio, sys
 from playwright.async_api import async_playwright
-B='http://localhost:8765/'
+B=BASE
 SVG=b'<svg xmlns="http://www.w3.org/2000/svg" width="400" height="600"><rect width="400" height="600" fill="#e8eef3"/><rect x="100" y="80" width="200" height="440" rx="30" fill="#557"/></svg>'
 VP={'d':(1440,900),'t':(768,1024),'m':(390,844)}
 ROUTES=[('home','#/'),('cat-termos','#/kategori/termos'),('cat-sweat','#/kategori/sweatshirt'),('cat-kedi','#/kategori/kedi-tirmalama'),('prod','#/urun/termos/748758153'),
@@ -19,7 +21,7 @@ async def main():
   out={}; bad=[]
   only=sys.argv[1:] 
   async with async_playwright() as p:
-    br=await p.chromium.launch(executable_path='/usr/bin/google-chrome')
+    br=await p.chromium.launch(**launch_kwargs())
     for vk,(w,h) in VP.items():
       for theme in ['acik','krem','adacayi','koyu','gece']:
         if vk=='t' and theme not in ('acik','koyu'): continue
@@ -40,10 +42,10 @@ async def main():
           m=await pg.evaluate(MEASURE); m['logs']=list(logs); m['url']=pg.url
           k=f'{vk}-{theme}-{name}'; out[k]=m
           if m['sw']>m['W'] or m['logs'] or m['over'] or m['broken']: bad.append((k,m))
-          await pg.screenshot(path=f'/home/claude/after/{k}.png', full_page=True)
+          await pg.screenshot(path=outdir('full')+f'{k}.png', full_page=True)
         await ctx.close()
     await br.close()
-  json.dump(out,open('/home/claude/test/measure.json','w'),ensure_ascii=False,indent=1)
+  json.dump(out,open(outdir()+'measure.json','w',encoding='utf-8'),ensure_ascii=False,indent=1)
   print('checked',len(out),'bad',len(bad))
   for k,m in bad: print(k,m)
   for k in out:

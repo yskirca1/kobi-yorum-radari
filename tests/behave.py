@@ -1,6 +1,10 @@
+import os, sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from _common import BASE, DATA, outdir, launch_kwargs
 import asyncio, json
+REG=json.load(open(DATA/'kategoriler.json',encoding='utf-8'))
+READY=[c for c in REG if c.get('durum')=='hazir']; SOON=[c for c in REG if c.get('durum')!='hazir']
 from playwright.async_api import async_playwright
-B='http://localhost:8765/'
+B=BASE
 SVG=b'<svg xmlns="http://www.w3.org/2000/svg" width="400" height="600"><rect width="400" height="600" fill="#e8eef3"/></svg>'
 R=[]
 def check(name, cond, info=''):
@@ -10,7 +14,7 @@ async def stub(pg):
   await pg.route('**/fonts.g*/**', lambda r: r.abort())
 async def main():
   async with async_playwright() as p:
-    br=await p.chromium.launch(executable_path='/usr/bin/google-chrome')
+    br=await p.chromium.launch(**launch_kwargs())
     ctx=await br.new_context(viewport={'width':1440,'height':900}); pg=await ctx.new_page(); await stub(pg)
     errs=[]; pg.on('pageerror',lambda e: errs.append(str(e))); pg.on('console',lambda m: errs.append(m.text) if m.type=='error' and 'ERR_FAILED' not in m.text else None)
     st=lambda: pg.evaluate("JSON.parse(localStorage.getItem('kyr_cmp')||'[]')")
@@ -21,7 +25,8 @@ async def main():
     await pg.goto(B+'#/kategori/termos'); await pg.evaluate("localStorage.removeItem('kyr_cmp')"); await pg.reload(); await pg.wait_for_timeout(500)
     # --- D: max 4
     boxes=pg.locator('#pgrid input[data-cmp]')
-    await pg.evaluate('scrollTo(0,1200)'); y0=await pg.evaluate('scrollY')
+    # v17: ürünler sayfanın sonunda; kutular görünür olsun (karşılaştırma çubuğunun altında kalmasın)
+    await pg.evaluate("scrollTo(0, document.getElementById('pgrid').getBoundingClientRect().top + scrollY - 160)"); y0=await pg.evaluate('scrollY')
     for i in range(4): await boxes.nth(i).check()
     check('K: ticking compare boxes keeps scroll', await pg.evaluate('scrollY')==y0, f'{y0}->{await pg.evaluate("scrollY")}')
     await boxes.nth(4).click(); await pg.wait_for_timeout(200)
@@ -121,7 +126,7 @@ async def main():
     await pg3.route('**/data/sal.json', slow)
     await pg3.goto(B+'#/kategori/sal'); await pg3.wait_for_timeout(600)
     check('L: loading text while fetching', 'Yükleniyor' in await pg3.inner_text('#app'))
-    await pg3.screenshot(path='/home/claude/after/loading.png')
+    await pg3.screenshot(path=outdir('behave')+'loading.png')
     await pg3.wait_for_timeout(1500); check('L: content after load', await pg3.locator('#pgrid .pc').count()>0)
     # --- O: search
     await pg.goto(B+'#/kategori/termos'); await pg.wait_for_timeout(400)
@@ -137,15 +142,15 @@ async def main():
     await pg.fill('#q','kahve'); await pg.wait_for_timeout(150)
     await pg.press('#q','Escape'); check('O: Esc closes list', await pg.is_hidden('#suggest'))
     await pg.fill('#q','bisiklet'); await pg.press('#q','Enter'); await pg.wait_for_timeout(400)
-    t=await pg.inner_text('#app'); check('O: no-hit message + links', 'için sonuç bulunamadı' in t and await pg.locator('.cat-links a').count()==8)
-    await pg.fill('#q','bebek'); await pg.wait_for_timeout(150)
-    check('N: yakında suggestion not a link', await pg.locator('#suggest a').count()==0)
-    await pg.press('#q','Enter'); await pg.wait_for_timeout(400)
-    check('N: "bebek" -> search page with muted Yakında card, no link', '#/ara/' in pg.url and await pg.locator('.soon-card').count()==1 and await pg.locator('#app a[href*="bebek"]').count()==0)
+    t=await pg.inner_text('#app'); check('O: no-hit message + links to every ready category', 'için sonuç bulunamadı' in t and await pg.locator('.cat-links a').count()==len(READY))
+    # N: "yakında" kategoriler hiçbir yerde bağlantı değil. 18 Kasım 2026'dan beri hepsi hazır; o durumda Yakında bölümü hiç görünmemeli.
     await pg.goto(B+'#/'); await pg.wait_for_timeout(400)
-    check('N: no link to yakında on home', await pg.locator('#app a[href*="bebek-arabasi"], #app a[href*="kamp"]').count()==0 and await pg.locator('.soon-card').count()==2)
+    check('N: home soon cards = "yakında" categories, none linked', await pg.locator('.soon-card').count()==len(SOON) and all([await pg.locator(f'#app a[href="#/kategori/{c["id"]}"]').count()==0 for c in SOON]))
+    check('N: no "Yakında" section when every category is ready', bool(SOON) or await pg.locator('.soon-sec').count()==0)
     chips=await pg.evaluate("[...document.querySelectorAll('[data-alan]')].map(x=>x.textContent)")
-    check('N: area chips only ready areas', 'Anne ve bebek' not in chips and 'Outdoor' not in chips, str(chips))
+    check('N: area chips = areas with a ready category', sorted(chips[1:])==sorted(set(c['ust'] for c in READY)), str(chips))
+    await pg.fill('#q','bebek'); await pg.wait_for_timeout(150)
+    check('N: ready category suggestion is a link', await pg.locator('#suggest a[href="#/kategori/bebek-arabasi"]').count()==1)
     # P: empty compare back link
     await pg.goto(B+'#/kategori/sal'); await pg.wait_for_timeout(400); await pg.evaluate("localStorage.removeItem('kyr_cmp')")
     await pg.evaluate("location.hash='#/karsilastir'"); await pg.wait_for_timeout(400)
@@ -164,7 +169,46 @@ async def main():
     pg4=await ctx.new_page(); await pg4.route('**/fonts.g*/**', lambda r: r.abort()); await pg4.route('**/cdn.dsmcdn.com/**', lambda r: r.abort())
     await pg4.goto(B+'#/kategori/termos'); await pg4.wait_for_timeout(800)
     check('B: failed images replaced by placeholder', await pg4.locator('#app img').count()==0 and await pg4.locator('#app .img-ph').count()>=8)
-    await pg4.screenshot(path='/home/claude/after/img-fail-placeholder.png')
+    await pg4.screenshot(path=outdir('behave')+'img-fail-placeholder.png')
+    # --- v17: kategori sayfası düzeni, bölüm menüsü, terim açıklamaları, ürün komşuları, ana sayfa hızlı açılış
+    await pg.set_viewport_size({'width':1280,'height':800})
+    await pg.goto(B+'#/kategori/termos'); await pg.wait_for_timeout(500)
+    ids=await pg.evaluate("[...document.querySelectorAll('#sec-ozet,#sec-oneri,#sec-icgoru,#sec-urun')].map(e=>e.id)")
+    check('V17: order Özet, Ne yapmalı?, İçgörüler, Ürünler', ids==['sec-ozet','sec-oneri','sec-icgoru','sec-urun'], str(ids))
+    await pg.focus('[data-jump="sec-urun"]'); await pg.keyboard.press('Enter'); await pg.wait_for_timeout(900)
+    st=await pg.evaluate("({f:document.activeElement.id, top:document.getElementById('sec-urun').getBoundingClientRect().top, nav:document.getElementById('secnav').getBoundingClientRect().bottom, cur:document.querySelector('#secnav [aria-current]')?.dataset.jump})")
+    check('V17: section nav by keyboard: scrolls below sticky nav, moves focus, marks current', st['f']=='sec-urun' and st['nav']<=st['top']<st['nav']+40 and st['cur']=='sec-urun', str(st))
+    side=await pg.inner_text('.sum-side')
+    check('V17: summary contrast (all reviews % vs first reviews N / M) + segment split', '%16,3' in side and '0 / 800' in side and 'Büyük marka' in side, side)
+    await pg.goto(B+'#/kategori/telefon-kilifi'); await pg.wait_for_timeout(500)
+    side=await pg.inner_text('.sum-side'); check('V17: onerilen_n < 100 wording', '11 / 959' in side and "100'den az" in side, side)
+    await pg.goto(B+'#/kategori/kedi-tirmalama'); await pg.wait_for_timeout(500)
+    check('V17: one segment -> no segment fact', await pg.locator('.sum-side .fact').count()==2)
+    await pg.goto(B+'#/kategori/termos'); await pg.wait_for_timeout(500)
+    tip=pg.locator('.sum-side .tip').first
+    await tip.focus(); await pg.keyboard.press('Enter')
+    check('V17: term button opens by keyboard', await tip.get_attribute('aria-expanded')=='true' and await pg.locator('.sum-side .tip-box').first.is_visible())
+    await pg.keyboard.press('Escape')
+    check('V17: Esc closes term, focus stays', await tip.get_attribute('aria-expanded')=='false' and await pg.evaluate("document.activeElement.classList.contains('tip')"))
+    await pg.goto(B+'#/yontem/segment'); await pg.wait_for_timeout(600)
+    check('V17: #/yontem/<bölüm> opens at section', await pg.evaluate("(()=>{const t=document.getElementById('y-segment').getBoundingClientRect().top; return t>=0 && t<200})()"))
+    txt=''
+    for h in ['#/','#/kategori/termos','#/firsat','#/yontem']:
+      await pg.goto(B+h); await pg.wait_for_timeout(600); txt+=await pg.inner_text('#app')
+    check('V17: "1-2 yıldız payı" used, never "1-2 yıldız oranı"', '1-2 yıldız oran' not in txt)
+    await pg.goto(B+'#/urun/termos/748758153'); await pg.wait_for_timeout(500)
+    check('V17: product: back to category and prev/next links', await pg.locator('.pnav-top a[href="#/kategori/termos"]').count()==1 and await pg.locator('.pnav-top .pnav-step a').count()==2)
+    pg5=await ctx.new_page(); await stub(pg5)
+    gate=asyncio.Event()
+    async def hold(r): await gate.wait(); await r.continue_()
+    await pg5.route('**/data/termos.json*', hold)
+    await pg5.goto(B+'#/'); await pg5.wait_for_timeout(500)
+    st=await pg5.evaluate("({n:document.querySelectorAll('.cat').length, wait:document.querySelectorAll('.cat-top.wait').length, h:document.querySelector('.cat[data-cat=termos]').getBoundingClientRect().height})")
+    check('V17: home cards render before category files arrive', st['n']==len(READY) and st['wait']==1, str(st))
+    gate.set(); await pg5.wait_for_timeout(600)
+    h2=await pg5.evaluate("document.querySelector('.cat[data-cat=termos]').getBoundingClientRect().height")
+    check('V17: filling the numbers does not change card height', abs(h2-st['h'])<1 and await pg5.locator('.cat-top.wait').count()==0, f"{st['h']} -> {h2}")
+    await pg5.close()
     check('no page errors / native dialogs', not errs, str(errs))
     await br.close()
   print(sum(1 for _,c in R if c),'/',len(R),'passed')

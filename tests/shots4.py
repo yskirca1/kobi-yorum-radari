@@ -1,11 +1,13 @@
+import os, sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from _common import BASE, DATA, outdir, launch_kwargs
 import asyncio, json, sys
 from playwright.async_api import async_playwright
-B='http://localhost:8765/'; O='/home/claude/after4/'
+B=BASE; O=outdir('shots4')
 SVG=b'<svg xmlns="http://www.w3.org/2000/svg" width="400" height="600"><rect width="400" height="600" fill="#ffffff"/><rect x="120" y="100" width="160" height="400" rx="24" fill="#8a96a3"/></svg>'
 TH=['acik','krem','adacayi','koyu','gece']
 async def main():
   async with async_playwright() as p:
-    br=await p.chromium.launch(executable_path='/usr/bin/google-chrome')
+    br=await p.chromium.launch(**launch_kwargs())
     ctx=await br.new_context(viewport={'width':1440,'height':900}); pg=await ctx.new_page()
     await pg.route('**/cdn.dsmcdn.com/**', lambda r: r.fulfill(status=200, content_type='image/svg+xml', body=SVG))
     await pg.route('**/fonts.g*/**', lambda r: r.abort())

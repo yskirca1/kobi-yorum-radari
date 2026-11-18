@@ -1,10 +1,11 @@
+import os, sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from _common import BASE, DATA, outdir, launch_kwargs
 import asyncio, json, sys, math
-sys.path.insert(0,'/home/claude/test')
 import firsat_ref as F
 from playwright.async_api import async_playwright
-B='http://localhost:8765/'
+B=BASE
 SVG=b'<svg xmlns="http://www.w3.org/2000/svg" width="400" height="600"><rect width="400" height="600" fill="#e8eef3"/></svg>'
-OUT='/home/claude/after3/'
+OUT=outdir('firsat')
 R=[]
 def check(n,c,i=''): R.append((n,bool(c))); print(('PASS ' if c else 'FAIL ')+n, i if not c or len(str(i))<200 else str(i)[:200])
 P=lambda v,d=1: '%'+f'{v*100:.{d}f}'.replace('.',',')
@@ -14,7 +15,7 @@ async def stub(pg):
   await pg.route('**/fonts.g*/**', lambda r: r.abort())
 ROWS="""() => [...document.querySelectorAll('#ft-body tr[data-row]')].map(tr=>({id:tr.dataset.row, name:tr.querySelector('th a').innerText.trim(), rank:(tr.querySelector('.ft-rank')||{}).innerText||null,
   cells:[...tr.querySelectorAll(':scope > td')].map(td=>td.innerText.replace(/\\s+/g,' ').trim()), score:+tr.querySelector('.ft-score').innerText}))"""
-COMPS_JS="""() => Object.fromEntries([...document.querySelectorAll('#ft-body tr.ft-detail')].map(tr=>[tr.id.slice(4), Object.fromEntries([...tr.querySelectorAll('[data-comp]')].map(td=>[td.dataset.comp, td.innerText.trim()]))]))"""
+COMPS_JS="""() => Object.fromEntries([...document.querySelectorAll('#ft-body .ft-dbox')].map(d=>[d.id.slice(4), Object.fromEntries([...d.querySelectorAll('[data-comp]')].map(td=>[td.dataset.comp, td.innerText.trim()]))]))"""
 rows=F.ref(); REF={r['id']:r for r in rows}; N=len(rows)
 COMP=F.components(rows)
 def comp_ok(dom):
@@ -36,7 +37,7 @@ async def slider_to(pg, i, v):
   for _ in range(v): await pg.keyboard.press('ArrowRight')
 async def main():
   async with async_playwright() as p:
-    br=await p.chromium.launch(executable_path='/usr/bin/google-chrome')
+    br=await p.chromium.launch(**launch_kwargs())
     ctx=await br.new_context(viewport={'width':1440,'height':900}); pg=await ctx.new_page(); await stub(pg)
     errs=[]; pg.on('pageerror',lambda e: errs.append(str(e)))
     await pg.goto(B); await pg.evaluate("localStorage.clear(); sessionStorage.clear(); localStorage.setItem('rr_theme','light')")
@@ -170,13 +171,23 @@ async def main():
         errs=[]; pg.on('pageerror',lambda e: errs.append(str(e)))
         await pg.goto(B); await pg.evaluate(f"localStorage.setItem('rr_theme','{theme}'); localStorage.setItem('rr_firsat_w', JSON.stringify({{p:'ozel',w:[5,0,2,0,1],c:true}}))")
         await pg.goto(B+'#/firsat'); await pg.reload(); await pg.wait_for_timeout(700)
-        await pg.click('#ft-body tr[data-row] [data-exp]'); await pg.wait_for_timeout(100)
+        await pg.locator('[data-exp]:visible').first.click(); await pg.wait_for_timeout(100)
         sw=await pg.evaluate('[document.documentElement.scrollWidth, document.documentElement.clientWidth]')
         check(f'{tag}-{theme}: no page overflow (sliders open, row expanded)', sw[0]<=sw[1], str(sw))
         if tag=='m':
-          st=await pg.evaluate("(()=>{const b=document.getElementById('ctable-box'); b.scrollLeft=200; const th=document.querySelector('#ft-body tr[data-row] th'), br=b.getBoundingClientRect(), r=th.getBoundingClientRect(), d=document.querySelector('.ft-dbox').getBoundingClientRect(); return {over:b.scrollWidth>b.clientWidth, sticky:Math.round(r.left-br.left), urunHidden:getComputedStyle(document.querySelector('th.c-urun')).display==='none', dbox:[Math.round(d.left-br.left), Math.round(d.right), innerWidth], fs:getComputedStyle(document.querySelector('#ft-body td')).fontSize}})()")
-          check(f'm-{theme}: sticky name column, products column dropped, detail box in view', st['over'] and st['sticky']<=2 and st['urunHidden'] and st['dbox'][0]<=2 and st['dbox'][1]<=st['dbox'][2], str(st))
-          await pg.evaluate("document.getElementById('ctable-box').scrollLeft=0")
+          # v17: telefonda tablo yerine kategori kartları; sıralama seçimi ve "Puan ayrıntısı" kartta
+          st=await pg.evaluate("(()=>{const d=document.querySelector('#fcards .ft-dbox').getBoundingClientRect(); return {cards:document.querySelectorAll('#fcards .fc').length, table:document.getElementById('ctable-wrap').hidden, sort:!document.getElementById('fsort-m').hidden, comps:document.querySelectorAll('#fcards .ft-dbox [data-comp]').length, dbox:[Math.round(d.left), Math.round(d.right), innerWidth]}})()")
+          check(f'm-{theme}: one card per category, table hidden, sort control, detail box in view', st['cards']==N and st['table'] and st['sort'] and st['comps']==5 and st['dbox'][0]>=0 and st['dbox'][1]<=st['dbox'][2], str(st))
+          sc=await pg.evaluate("[...document.querySelectorAll('#fcards .ft-score')].map(x=>+x.innerText)")
+          s_ref,order,_=F.scores(rows,[5,0,2,0,1])
+          check(f'm-{theme}: card scores and order = reference', sc==[s_ref[i] for i in order], str(sc))
+          await pg.select_option('#fm-sort','dusuk'); await pg.wait_for_timeout(100)
+          o=await pg.evaluate("[...document.querySelectorAll('#fcards .fc')].map(x=>x.dataset.row)")
+          check(f'm-{theme}: sort select (1-2 yıldız payı desc)', o==[r['id'] for r in sorted(rows,key=lambda r:-r['dusuk'])], str(o))
+          await pg.click('#fm-dir'); await pg.wait_for_timeout(100)
+          o=await pg.evaluate("[...document.querySelectorAll('#fcards .fc')].map(x=>x.dataset.row)")
+          check(f'm-{theme}: direction button (asc)', o==[r['id'] for r in sorted(rows,key=lambda r:r['dusuk'])], str(o))
+          await pg.select_option('#fm-sort','puan')
         await pg.evaluate("localStorage.setItem('rr_firsat_w', JSON.stringify({p:'dengeli',w:[1,1,1,1,1],c:false}))"); await pg.reload(); await pg.wait_for_timeout(700)
         sw=await pg.evaluate('[document.documentElement.scrollWidth, document.documentElement.clientWidth]')
         check(f'{tag}-{theme}: no page overflow (default)', sw[0]<=sw[1], str(sw))

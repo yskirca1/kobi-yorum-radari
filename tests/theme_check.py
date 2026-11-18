@@ -1,11 +1,13 @@
+import os, sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from _common import BASE, DATA, outdir, launch_kwargs
 import asyncio
 from playwright.async_api import async_playwright
-B='http://localhost:8765/'
+B=BASE
 R=[]
 def check(n,c,i=''): R.append((n,bool(c))); print(('PASS ' if c else 'FAIL ')+n, i)
 async def main():
   async with async_playwright() as p:
-    br=await p.chromium.launch(executable_path='/usr/bin/google-chrome')
+    br=await p.chromium.launch(**launch_kwargs())
     ctx=await br.new_context(viewport={'width':1440,'height':900}, color_scheme='light'); pg=await ctx.new_page()
     await pg.route('**/fonts.g*/**', lambda r: r.abort())
     errs=[]; pg.on('pageerror', lambda e: errs.append(str(e)))
