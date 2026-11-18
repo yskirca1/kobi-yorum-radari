@@ -7,7 +7,7 @@
 ## 0. Devir notu (18 Kasım 2026): Claude Code'a taşınıyor
 
 - Proje bundan sonra Claude Code'da sürdürülecek. Bu dosya ve depo tek başına yeterli olacak şekilde güncellendi.
-- **Yayındaki durum:** main, asset `v=16`. 11 kategori, 129 ürün, 407.179 yazılı yorum, 22.148 okunan yorum. Sayfalar: `#/`, `#/kategori/<id>`, `#/urun/<kategori>/<id>`, `#/karsilastir`, `#/ara/<terim>`, `#/yontem`, `#/firsat`.
+- **Yayındaki durum:** main, asset `v=16`. 12 kategori, 141 ürün, 440.358 yazılı yorum, 24.500 okunan yorum (18 Kasım'da nevresim takımıyla). Sayfalar: `#/`, `#/kategori/<id>`, `#/urun/<kategori>/<id>`, `#/karsilastir`, `#/ara/<terim>`, `#/yontem`, `#/firsat`.
 - **12 Kasım'da eklenenler:** büyük görseller ve genel düzeltmeler (v12-13), kamp sandalyesi + bebek arabası + yüz serumu, `#/firsat` (giriş puanı, ağırlık seçenekleri, filtreler), yazdırılabilir kategori raporu, yumuşatılmış renkler ve 5 tema + Sistem (v16). Ayrıntılar aşağıdaki "Site" ve "Tasarım kararları" bölümlerinde.
 - **Nevresim takımı tamamlandı (18 Kasım 2026, Claude Code).** Ham yorumlar Claude Code'un tarayıcısında yoktu (Chat sekmesindeki tarayıcı ayrı profil); yeniden toplanmadı. Kategori, depodaki `tools/nevresim-takimi/nevresim_tarayici.json` özetlerinden kuruldu: 12 ürünün hepsi eksiksiz (Berolige 38976172: 100 önerilen + toplam 52 adet 1-2 yıldızlı yorumun tamamı). `tools/nevresim-takimi/olustur.py`, `data/nevresim-takimi.json` ve `kategoriler.json` girişi eklendi. Ürün notları yalnızca oranlara ve ürün başına 3 alıntıya dayanıyor (ham yorum okunmadı). Yeni toplamlar: 12 kategori, 141 ürün, 440.358 yazılı yorum, 24.500 okunan yorum.
 - **Testler:** `tests/` klasöründe (bkz. `tests/README.md`); yollar eski çalışma alanına göre sabit.
