@@ -14,7 +14,7 @@ DOSYALAR = {  # urunId: (kisa, marka, segment)
     '271943142': ('Lastikli çarşaflı, bordo-gri', 'İQON', 'KOBİ'),
     '182714625': ('Lastikli çarşaflı, Viola', 'MyStory Home', 'KOBİ'),
     '635703472': ('Çift taraflı takım', 'Rimo Home', 'KOBİ'),
-    '798612173': ('Malia, multicolor', 'Sarah Anderson', 'Büyük marka'),
+    '798612173': ('Malia, multicolor', 'Sarah Anderson', 'KOBİ'),  # PROJE_NOTLARI listesinde KOBİ
     '38976172': ('Sunday %100 pamuk çizgili, kahve', 'Berolige', 'KOBİ'),
 }
 SIKAYET = {
