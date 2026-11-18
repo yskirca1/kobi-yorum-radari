@@ -25,11 +25,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="style.css?v=20">
+<link rel="stylesheet" href="style.css?v=21">
 <script>/* Tema ilk boyamadan önce: kayıtlı seçim (eski light/dark değeri Açık/Koyu olur) ya da Sistem */
 (function(){var d=document.documentElement,c=null,ok=["acik","krem","adacayi","koyu","gece"];try{c=localStorage.getItem("rr_theme");}catch(e){}
 c={light:"acik",dark:"koyu"}[c]||c;if(ok.indexOf(c)<0)c="sistem";d.dataset.themeChoice=c;
-d.dataset.theme=c==="sistem"?(matchMedia("(prefers-color-scheme: dark)").matches?"koyu":"acik"):c;})();</script>
+d.dataset.theme=c==="sistem"?(matchMedia("(prefers-color-scheme: dark)").matches?"koyu":"acik"):c;
+var h=(location.hash||"").replace(/^#\/?/,"").split(/[\/?]/)[0];d.dataset.page=h||"home";})();</script>
 </head>
 <body>
 <a class="skip" href="#app">İçeriğe geç</a>
@@ -74,6 +75,6 @@ d.dataset.theme=c==="sistem"?(matchMedia("(prefers-color-scheme: dark)").matches
   <p>Hamilik Okulu Vakfı pazarlama projesi. Ürün görselleri, puanlar ve yorumlar Trendyol'daki herkese açık ürün sayfalarından alınmıştır. Şikâyet oranları anahtar kelime eşleşmesiyle hesaplanmıştır ve yaklaşıktır.</p>
   <p><a href="#/yontem">Yöntem: Bu rakamlar nasıl hesaplandı?</a></p>
 </footer>
-<script src="app.js?v=20"></script>
+<script src="app.js?v=21"></script>
 </body>
 </html>

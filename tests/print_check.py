@@ -16,7 +16,7 @@ async def main():
       await pg.emulate_media(media='print')
       info=await pg.evaluate("""(()=>{const vis=s=>[...document.querySelectorAll(s)].some(e=>e.getClientRects().length&&getComputedStyle(e).display!=='none'&&getComputedStyle(e).visibility!=='hidden');
         return {bg:getComputedStyle(document.body).backgroundColor, ink:getComputedStyle(document.body).color, header:vis('.top'), cmpbar:vis('.cmpbar'), buttons:vis('button'), imgs:vis('img'), filters:vis('#filters'), pgrid:vis('#pgrid'),
-          table:vis('.ptable'), rows:document.querySelectorAll('.ptable tbody tr').length, seg:vis('.cgrid .legend'), recs:document.querySelectorAll('.recs li').length, foot:document.querySelector('.prt-foot').innerText}})()""")
+          table:vis('.ptable'), rows:document.querySelectorAll('.ptable tbody tr').length, seg:vis('.seg-chart .legend'), recs:document.querySelectorAll('.recs li').length, foot:document.querySelector('.prt-foot').innerText}})()""")
       print(cat, info)
       f=outdir('print')+f'print-{cat}.pdf'
       await pg.pdf(path=f, format='A4', print_background=True, prefer_css_page_size=True)
