@@ -140,7 +140,9 @@
   {
    "baslik": "Rengi gün ışığında çek, tonu doğru adlandır",
    "metin": "\"Kakao renk istedim, kahverenginin hiç sevmediğim tonu geldi\", \"karamel değil turuncu\" yorumları tonun yanlış adlandırıldığını gösteriyor. Filtresiz gün ışığında fotoğraf, yakın çekim kumaş ve tonu tarif eden bir cümle (ör. \"sütlü kahveye yakın\") beklentiyi doğru kurar.",
-   "konular": [],
+   "konular": [
+    "renk"
+   ],
    "sevilenler": []
   },
   {
