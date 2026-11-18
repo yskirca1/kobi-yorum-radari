@@ -1,0 +1,75 @@
+import asyncio
+from playwright.async_api import async_playwright
+B='http://localhost:8765/'
+R=[]
+def check(n,c,i=''): R.append((n,bool(c))); print(('PASS ' if c else 'FAIL ')+n, i)
+async def main():
+  async with async_playwright() as p:
+    br=await p.chromium.launch(executable_path='/usr/bin/google-chrome')
+    ctx=await br.new_context(viewport={'width':1440,'height':900}, color_scheme='light'); pg=await ctx.new_page()
+    await pg.route('**/fonts.g*/**', lambda r: r.abort())
+    errs=[]; pg.on('pageerror', lambda e: errs.append(str(e)))
+    # no flash: attribute present before DOMContentLoaded
+    await pg.add_init_script("document.addEventListener('DOMContentLoaded',()=>{window.__dcl=[document.documentElement.dataset.theme, document.documentElement.dataset.themeChoice]},{once:true}); new MutationObserver((m,o)=>{ if(document.body && !window.__body){ window.__body=document.documentElement.dataset.theme||'NONE'; o.disconnect(); } }).observe(document,{childList:true,subtree:true});")
+    await pg.goto(B); await pg.wait_for_timeout(400)
+    check('default (no saved choice) = Sistem -> Açık under light scheme', await pg.evaluate("[document.documentElement.dataset.themeChoice, document.documentElement.dataset.theme]")==['sistem','acik'])
+    check('no flash: theme set before <body> is parsed and before DOMContentLoaded', await pg.evaluate("window.__body")=='acik' and await pg.evaluate("window.__dcl")==['acik','sistem'], str(await pg.evaluate("[window.__body, window.__dcl]")))
+    check('Sistem item checked', await pg.get_attribute('[data-theme-v="sistem"]','aria-checked')=='true')
+    # Sistem follows emulated scheme change
+    await pg.emulate_media(color_scheme='dark'); await pg.wait_for_timeout(150)
+    check('Sistem follows prefers-color-scheme change -> Koyu', await pg.evaluate("document.documentElement.dataset.theme")=='koyu')
+    meta=await pg.evaluate("[...document.querySelectorAll('meta[name=theme-color]')].map(m=>m.content)"); band=await pg.evaluate("getComputedStyle(document.documentElement).getPropertyValue('--band').trim()")
+    check('theme-color meta synced to header band', all(m==band for m in meta), f'{meta} {band}')
+    await pg.emulate_media(color_scheme='light'); await pg.wait_for_timeout(150)
+    check('... and back to Açık', await pg.evaluate("document.documentElement.dataset.theme")=='acik')
+    # keyboard
+    await pg.focus('#theme'); await pg.keyboard.press('Enter'); await pg.wait_for_timeout(100)
+    check('Enter opens menu, aria-expanded true, focus on checked item', await pg.get_attribute('#theme','aria-expanded')=='true' and await pg.is_visible('#theme-menu') and await pg.evaluate("document.activeElement.dataset.themeV")=='sistem')
+    await pg.keyboard.press('ArrowDown'); await pg.keyboard.press('ArrowDown')
+    check('ArrowDown moves focus', await pg.evaluate("document.activeElement.dataset.themeV")=='krem')
+    await pg.keyboard.press('ArrowUp'); await pg.keyboard.press('ArrowUp'); await pg.keyboard.press('ArrowUp')
+    check('ArrowUp wraps to last', await pg.evaluate("document.activeElement.dataset.themeV")=='gece')
+    await pg.keyboard.press('Home'); check('Home -> first', await pg.evaluate("document.activeElement.dataset.themeV")=='sistem')
+    await pg.keyboard.press('End'); check('End -> last', await pg.evaluate("document.activeElement.dataset.themeV")=='gece')
+    await pg.keyboard.press('Escape'); await pg.wait_for_timeout(50)
+    check('Esc closes, focus back on button, theme unchanged', await pg.is_hidden('#theme-menu') and await pg.evaluate("document.activeElement.id")=='theme' and await pg.get_attribute('#theme','aria-expanded')=='false' and await pg.evaluate("document.documentElement.dataset.theme")=='acik')
+    await pg.keyboard.press('ArrowDown'); await pg.wait_for_timeout(50)
+    check('ArrowDown on button opens menu', await pg.is_visible('#theme-menu'))
+    for _ in range(2): await pg.keyboard.press('ArrowDown')
+    await pg.keyboard.press('Enter'); await pg.wait_for_timeout(100)
+    check('Enter selects Krem, closes, returns focus', await pg.evaluate("document.documentElement.dataset.theme")=='krem' and await pg.is_hidden('#theme-menu') and await pg.evaluate("document.activeElement.id")=='theme')
+    check('aria-checked only on Krem', await pg.evaluate("[...document.querySelectorAll('[role=menuitemradio]')].filter(b=>b.getAttribute('aria-checked')==='true').map(b=>b.dataset.themeV)")==['krem'])
+    check('button accessible name includes current theme', 'Krem' in await pg.evaluate("document.getElementById('theme').innerText + document.getElementById('theme-cur').textContent"))
+    check('saved', await pg.evaluate("localStorage.getItem('rr_theme')")=='krem')
+    await pg.reload(); await pg.wait_for_timeout(300)
+    check('persists across reload', await pg.evaluate("document.documentElement.dataset.theme")=='krem' and await pg.get_attribute('[data-theme-v="krem"]','aria-checked')=='true')
+    # Space selects too; click outside closes
+    await pg.click('#theme'); await pg.wait_for_timeout(50)
+    await pg.mouse.click(300,600); await pg.wait_for_timeout(50)
+    check('click outside closes', await pg.is_hidden('#theme-menu') and await pg.get_attribute('#theme','aria-expanded')=='false')
+    await pg.click('#theme'); await pg.click('[data-theme-v="gece"]'); await pg.wait_for_timeout(100)
+    check('mouse select Gece mavisi', await pg.evaluate("document.documentElement.dataset.theme")=='gece')
+    await pg.focus('#theme'); await pg.keyboard.press('Enter'); await pg.keyboard.press('Tab'); await pg.wait_for_timeout(50)
+    check('Tab out closes menu', await pg.is_hidden('#theme-menu'))
+    # migration
+    for old,new in [('light','acik'),('dark','koyu')]:
+      await pg.evaluate(f"localStorage.setItem('rr_theme','{old}')"); await pg.reload(); await pg.wait_for_timeout(300)
+      check(f'migration {old} -> {new} (applied pre-paint and rewritten in storage)', await pg.evaluate("window.__body")==new and await pg.evaluate("localStorage.getItem('rr_theme')")==new)
+    await pg.evaluate("localStorage.setItem('rr_theme','bogus')"); await pg.reload(); await pg.wait_for_timeout(300)
+    check('unknown value -> Sistem', await pg.evaluate("document.documentElement.dataset.themeChoice")=='sistem')
+    # swatches preview other themes
+    sw=await pg.evaluate("[...document.querySelectorAll('#theme-menu [data-theme-v]')].map(b=>[b.dataset.themeV, [...b.querySelectorAll('.sw[data-theme] i')].map(i=>getComputedStyle(i).backgroundColor).join('|')])")
+    check('each swatch shows its own theme colours (distinct)', len(set(x[1] for x in sw))==6, str(sw))
+    check('no page errors', not errs, str(errs))
+    await ctx.close()
+    # mobile
+    ctx=await br.new_context(viewport={'width':390,'height':844}, has_touch=True); pg=await ctx.new_page()
+    await pg.goto(B); await pg.wait_for_timeout(300)
+    await pg.tap('#theme'); await pg.wait_for_timeout(100)
+    box=await pg.evaluate("(()=>{const r=document.getElementById('theme-menu').getBoundingClientRect(); return [r.left, r.right, innerWidth]})()")
+    check('mobile: menu opens fully on screen', await pg.is_visible('#theme-menu') and box[0]>=0 and box[1]<=box[2], str(box))
+    await pg.tap('[data-theme-v="adacayi"]'); await pg.wait_for_timeout(100)
+    check('mobile: tap selects Adaçayı', await pg.evaluate("document.documentElement.dataset.theme")=='adacayi' and await pg.is_hidden('#theme-menu'))
+    await ctx.close(); await br.close()
+  print(sum(o for _,o in R),'/',len(R),'passed')
+asyncio.run(main())

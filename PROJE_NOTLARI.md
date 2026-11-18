@@ -2,7 +2,18 @@
 
 > Bu dosya, projeyi yeni bir Claude oturumunda (ya da yeni bir hesapta) kaldığı yerden devam ettirmek için yazıldı.
 > Yeni oturumda ilk mesaj: **"yskirca1/kobi-yorum-radari deposundaki PROJE_NOTLARI.md dosyasını oku, projeye devam edelim."**
-> Son güncelleme: 12 Kasım 2026 (yüz serumu eklendi; nevresim takımı toplaması yarıda, bkz. Sıradaki adımlar 0; önceki: kamp sandalyesi, bebek arabası, Yöntem sayfası)
+> Son güncelleme: 18 Kasım 2026 (Claude Code'a devir notu eklendi; site v=16, 11 kategori)
+
+## 0. Devir notu (18 Kasım 2026): Claude Code'a taşınıyor
+
+- Proje bundan sonra Claude Code'da sürdürülecek. Bu dosya ve depo tek başına yeterli olacak şekilde güncellendi.
+- **Yayındaki durum:** main, asset `v=16`. 11 kategori, 129 ürün, 407.179 yazılı yorum, 22.148 okunan yorum. Sayfalar: `#/`, `#/kategori/<id>`, `#/urun/<kategori>/<id>`, `#/karsilastir`, `#/ara/<terim>`, `#/yontem`, `#/firsat`.
+- **12 Kasım'da eklenenler:** büyük görseller ve genel düzeltmeler (v12-13), kamp sandalyesi + bebek arabası + yüz serumu, `#/firsat` (giriş puanı, ağırlık seçenekleri, filtreler), yazdırılabilir kategori raporu, yumuşatılmış renkler ve 5 tema + Sistem (v16). Ayrıntılar aşağıdaki "Site" ve "Tasarım kararları" bölümlerinde.
+- **Yarım kalan iş: nevresim takımı.** 12 ürün seçildi (liste "Sıradaki adımlar" madde 0'da). 11 ürünün yorumları (100 + 100) yalnızca Claude masaüstü uygulamasının kendi tarayıcısında, trendyol.com localStorage'ında `rv_<id>` olarak duruyor; URL listesi `rv_urls_nevresim`. Berolige 38976172 toplanırken bağlantı koptu, kaydı kontrol edilmeli. `tools/nevresim-takimi/` içinde `analiz.py` (konu sözlüğü) ve `nevresim_tarayici.json` var; `olustur.py`, `data/nevresim-takimi.json` ve `kategoriler.json` girişi yok. Claude Code o tarayıcıya erişemiyorsa veriler oradan dışarı alınmalı ya da kategori yeniden toplanmalı.
+- **Testler:** `tests/` klasöründe (bkz. `tests/README.md`); yollar eski çalışma alanına göre sabit.
+- **Canlıda gözle kontrol edilmeyenler:** v14-v16 (karşılaştırma sayfası, giriş puanı, temalar, yüz serumu) yerel testlerden geçti ama canlı sitede tarayıcıdan bakılmadı.
+- **Bilinen eksikler:** ana sayfa bütün kategori dosyaları yüklenene kadar "Yükleniyor…" gösteriyor; `tests/behave.py` içinde 6 eski kontrol güncellenmeli; sunum mesajlarına (Echo: ReviewRadar_Sunum_Mesajlari) yüz serumu eklenmedi; sunumun kendisi (slaytlar, persona, pazar büyüklüğü, iş modeli) hazırlanmadı; verilerin periyodik yenilenme yöntemi belirlenmedi.
+- **Çalışma düzeni (kullanıcı tercihi):** iş dağıtımında fable-orchestration kuralı (ana oturum karar ve kontrol; uygulama Opus/Sonnet alt ajanlara, her çağrıda açık `model`), iş bitince echo-gunluk ile Echo kasasına not.
 
 ## 1. Proje nedir?
 
