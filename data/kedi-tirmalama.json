@@ -154,7 +154,7 @@
   },
   {
    "baslik": "İpi ve malzemeyi sağlam seç",
-   "metin": "Çabuk dağılma ve ipin kopması %13, kalitesiz malzeme şikâyeti %13. En ucuz modellerde 1-2 yıldız oranı %24-29'a çıkıyor; \"çamaşır ipi gibi\" ve \"kartondan yapılmış\" yorumları sık. Sisal ip kalınlığını ve malzemeyi ilanda yazmak, kalitesizlik algısını önler.",
+   "metin": "Çabuk dağılma ve ipin kopması %13, kalitesiz malzeme şikâyeti %13. En ucuz modellerde 1-2 yıldız payı %24-29'a çıkıyor; \"çamaşır ipi gibi\" ve \"kartondan yapılmış\" yorumları sık. Sisal ip kalınlığını ve malzemeyi ilanda yazmak, kalitesizlik algısını önler.",
    "konular": [
     "dayaniksiz",
     "malzeme"
@@ -238,12 +238,12 @@
     "tekrar": 0.03
    },
    "dikkat": [
-    "1-2 yıldız oranı %25,7: kategorinin en çok satan ama en çok şikâyet alan ürünlerinden.",
+    "1-2 yıldız payı %25,7: kategorinin en çok satan ama en çok şikâyet alan ürünlerinden.",
     "İplerin birkaç kullanımda kopması ya da gevşemesi en sık şikâyet (%17).",
     "\"Karışık renk\" gönderim yüzünden istediği rengi alamayanlar var (%10)."
    ],
    "ders": [
-    "En ucuz ve en çok satan model: hacim fiyatla geliyor ama dayanıksız ip ve rastgele renk 1 yıldız oranını kategorinin en üstüne taşıyor."
+    "En ucuz ve en çok satan model: hacim fiyatla geliyor ama dayanıksız ip ve rastgele renk 1 yıldız payını kategorinin en üstüne taşıyor."
    ],
    "alinti": [
     {
@@ -463,7 +463,7 @@
     "tekrar": 0
    },
    "dikkat": [
-    "1-2 yıldız oranı %28,7 ile en yüksek.",
+    "1-2 yıldız payı %28,7 ile en yüksek.",
     "Çabuk yıpranma, ipin açılıp dökülmesi en sık şikâyet (%19).",
     "Alt tablası basit ve hafif: kedi tırmalarken düşüyor (%10)."
    ],
@@ -617,7 +617,7 @@
     "Kartonun kısa sürede parçalanıp evi kirlettiği yazılıyor (%26)."
    ],
    "ders": [
-    "Karton tırmalama 1-2 yıldız oranı en düşük ürün (%2,8): kedi seviyor, ama \"karton olduğunu bilmiyordum\" diyen müşteri için malzeme ilanda net yazılmalı."
+    "Karton tırmalama 1-2 yıldız payı en düşük ürün (%2,8): kedi seviyor, ama \"karton olduğunu bilmiyordum\" diyen müşteri için malzeme ilanda net yazılmalı."
    ],
    "alinti": [
     {
@@ -836,7 +836,7 @@
    },
    "dikkat": [
     "Görseldeki top ya da renk farklı gelme şikâyeti en yüksek (%23).",
-    "1-2 yıldız oranı %24,3; kalitesiz malzeme (%16) ve devrilme (%16) sık."
+    "1-2 yıldız payı %24,3; kalitesiz malzeme (%16) ve devrilme (%16) sık."
    ],
    "ders": [
     "Aynı ürünü 18 satıcı satıyor; görseldeki top ve renk her satıcıda aynı gelmeyince şikâyet satıcıdan bağımsız ürüne yazılıyor."

@@ -10,7 +10,7 @@
 - **Nerede:** `v22-bitirme` dalı (main'e birleştirme ve canlıya gönderim site sahibinin onayıyla). `?v=22`.
 - **Kontroller depoda:** `node tests/node/run.mjs` (Node 18+ ve kurulu Edge; kurulum yok; tek Edge açar, geçici profili siler). Takımlar ve ölçümler `tests/node/README.md`. Ekran görüntüleri: `node tests/node/tools/shots.mjs --real-images` → `.onizleme/v22/` (git'e girmez).
 - **Yapılanlar (sırayla):** kontrol takımı depoya alındı; yeni kimlik (lacivert ana renk, kehribar birincil çağrı, Fira Sans, beş tema yeniden); logo, favicon ve paylaşım görseli lacivert; telefonda kategori, Yöntem ve fırsat sayfaları kısaldı; ana sayfada görünür kategori fotoğrafları, ürün sayfasında yıldız çubuğu; fotoğraf ve yazı tipi gelmezse sayfa bozulmuyor; arayüz metinleri okundu (`docs/superpowers/specs/2026-11-21-metin-degisiklikleri.md`); UI UX Pro Max kural denetimi (`docs/superpowers/specs/2026-11-21-kural-denetimi.md`).
-- **Açık kalan:** veri dosyalarında 36 yerde "1-2 yıldız oranı" yazıyor (ürünlerin "dikkat"/"ders" notları ve 4 öneri metni); arayüzün terimi "1-2 yıldız payı". `data/` değiştirilmediği için kaldı; düzeltmek site sahibinin kararı.
+- **Terim düzeltmesi (21 Kasım, site sahibinin onayıyla):** veri dosyalarında ve `tools/*/olustur.py` içinde "1-2 yıldız oranı" ifadesi arayüzün terimi olan "1-2 yıldız payı" yapıldı (37 yer). Yalnızca kelime değişti; hiçbir rakam değişmedi.
 
 ## 0a. Devir notu (18 Kasım 2026): Claude Code'a taşınıyor
 

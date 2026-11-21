@@ -149,7 +149,7 @@
   },
   {
    "baslik": "Gramajı ve sertliği koru",
-   "metin": "Çabuk erime, küçük ya da ince gelme şikâyeti %7; en ucuz sette %19, aynı ürünün 1-2 yıldız oranı da %23,8 ile kategorinin en yükseği. Gramajı ilanda net yazmak ve sabunu iyi kürlemek ucuz görünmenin bedelini önler.",
+   "metin": "Çabuk erime, küçük ya da ince gelme şikâyeti %7; en ucuz sette %19, aynı ürünün 1-2 yıldız payı da %23,8 ile kategorinin en yükseği. Gramajı ilanda net yazmak ve sabunu iyi kürlemek ucuz görünmenin bedelini önler.",
    "konular": [
     "erime"
    ],
@@ -382,7 +382,7 @@
     "sadakat": 0.15
    },
    "dikkat": [
-    "1-2 yıldız oranı %23,8 ile kategorinin en yükseği.",
+    "1-2 yıldız payı %23,8 ile kategorinin en yükseği.",
     "Çabuk erime, küçük ve ince gelme (%19) ile lifin az ya da sert olması (%19) başı çekiyor.",
     "Ezik, erimiş ya da renkleri birbirine akmış gelen ürün şikâyeti var (paket %13)."
    ],
@@ -825,7 +825,7 @@
     "sadakat": 0.32
    },
    "dikkat": [
-    "1-2 yıldız oranı yalnızca %4,8; şikâyetler ürüne değil satıcıya yönelik.",
+    "1-2 yıldız payı yalnızca %4,8; şikâyetler ürüne değil satıcıya yönelik.",
     "Eksik paket gönderimi (%11) ve \"bambaşka ürün geldi\" şikâyeti var."
    ],
    "ders": [

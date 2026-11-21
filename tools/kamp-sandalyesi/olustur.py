@@ -17,7 +17,7 @@ AD = {
     '836348315': 'Funky Chairs Tenteli Gölgelikli Kamp Sandalyesi, haki',
 }
 DIKKAT = {
-    '816485347': ['1-2 yıldız oranı %4,4 ile kategorinin en düşüğü; 18 olumsuz yorumda kırılma şikâyeti yok.',
+    '816485347': ['1-2 yıldız payı %4,4 ile kategorinin en düşüğü; 18 olumsuz yorumda kırılma şikâyeti yok.',
                   'Olumsuz yorumların %22\'si oturuştan: sırtın dik olduğu, arkaya yatmadığı, uzun oturuşta beli ağrıttığı yazılıyor.',
                   'Eksik adet ya da kolsuz model gönderimi (%17) ve geç teslimat (%17) şikâyeti var; ürünü 7 satıcı satıyor.'],
     '816491110': ['Az olumsuz yorum (8); ikisi sırt ve bel kısmının rahatsız olduğunu yazıyor.',
@@ -28,11 +28,11 @@ DIKKAT = {
     '1117395473': ['Olumsuz yorumların %26\'sı eksik adetten: dört sandalye sipariş edilip üç ya da iki tane gelmiş.',
                    'Kusurlu, yırtık ya da kılıfı sökük gelme oranı da %26.',
                    'Uzun boylu ve kilolu kullanıcılar küçük ve rahatsız buluyor (%11).'],
-    '129882972': ['Kategorinin en çok yorum alan ürünü (2.423 yazılı yorum); 1-2 yıldız oranı %8,6.',
+    '129882972': ['Kategorinin en çok yorum alan ürünü (2.423 yazılı yorum); 1-2 yıldız payı %8,6.',
                   'Olumsuz yorumların %27\'si kısa sürede kırılma ve yamulmadan; 55-70 kg kullanıcıların sandalyesinin çöktüğü yazılıyor.',
                   'Kusurlu gelme oranı %25: ayağı eğri, kol vidası kırık, kumaşı yırtık.',
                   'Bardaklık ve kol plastiklerinin dandik olduğu yazılıyor (%14); market sandalyesiyle aynı kalitede bulunuyor.'],
-    '208518948': ['Aynı modelin siyahına göre 1-2 yıldız oranı daha yüksek (%11,4; siyahta %8,6).',
+    '208518948': ['Aynı modelin siyahına göre 1-2 yıldız payı daha yüksek (%11,4; siyahta %8,6).',
                   'Kırılma ve yamulma oranı %32; kumaşın ya da dikişin ilk kullanımlarda yırtılması %20 (siyahta %4).',
                   'Paketleme şikâyeti %14: naylon poşet içinde, demiri yamuk gelen sandalyeler.'],
     '655222185': ['Kırılma oranı %38 ile kategorinin en yükseği: kol dayamaları birkaç kullanımda eğilip kırılıyor.',
@@ -47,7 +47,7 @@ DIKKAT = {
     '43151156': ['Olumsuz yorumların %31\'i boyuttan: "çocuk sandalyesi gibi", yetişkine küçük ve rahatsız.',
                  'Boyası soyulmuş, ezik ya da defolu gelme oranı %25.',
                  'Bağlantı yerlerinden çatlama ve yamulma yazılıyor (%13).'],
-    '899676379': ['1-2 yıldız oranı %23,0 ile kategorinin en yükseği.',
+    '899676379': ['1-2 yıldız payı %23,0 ile kategorinin en yükseği.',
                   'Olumsuz yorumların %37\'si ilk kullanımlarda kırılmadan: plastik bağlantılar ve vidalar ayrılıyor.',
                   'Yanlış renk gelme oranı %30: mavi yerine lacivert ya da yeşil, sandalye ve kılıf farklı renk.'],
     '836348315': ['Az olumsuz yorum (12); yarısı kusurlu ürün gelmesinden: tentede delik, kopuk ip, kullanılmış gibi görünen ayaklar.',
@@ -66,7 +66,7 @@ DERS = {
     '121658522': ['Ucuz katlanır sandalyede alıcı ürünü market sandalyesiyle kıyaslıyor; önerilen yorumların %17\'si fiyatı övüyor, ama olumsuzların üçte biri birkaç kullanımda kırılmadan.'],
     '43151156': ['Küçük boyut hem övülüyor hem şikâyet ediliyor: dar mutfak, balkon ve namaz için alanlar seviyor (önerilen yorumların %10\'u cami, namaz ya da umreden söz ediyor), kamp sandalyesi bekleyenler küçük buluyor. Ölçüyü ilanda net yazmak beklentiyi doğru kurar.'],
     '899676379': ['Renk seçenekli çoklu sette yanlış renk olumsuzların yaklaşık üçte biri; "sax mavi" gibi tonların fotoğrafta da doğru görünmesi gerekiyor.'],
-    '836348315': ['Tenteli, üst segment sandalyede 1-2 yıldız oranı %6,3 ile KOBİ\'ler arasında en düşük; şikâyet kalite kontrol ve kumaş inceliğinde toplanıyor.'],
+    '836348315': ['Tenteli, üst segment sandalyede 1-2 yıldız payı %6,3 ile KOBİ\'ler arasında en düşük; şikâyet kalite kontrol ve kumaş inceliğinde toplanıyor.'],
 }
 ONERILER = [
     ('Dayanıklılığı kanıtla: taşıma kapasitesini yaz',

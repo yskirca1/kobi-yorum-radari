@@ -30,7 +30,7 @@ DIKKAT = {
                   'French press seçilip ince çekilmiş kahve gelmesi gibi öğütme hatası var (%6).'],
     '37634572': ['En sık şikâyet patlak paket (%32) ve hava almış kahve (%15).',
                  '"Marketten aldığım tadı alamadım" diyenler var.'],
-    '80275104': ['1-2 yıldız oranı %17,8 ile kategorinin en yükseği; olumsuzların %37\'si son kullanma tarihinden.',
+    '80275104': ['1-2 yıldız payı %17,8 ile kategorinin en yükseği; olumsuzların %37\'si son kullanma tarihinden.',
                  'Kahvenin değiştirildiği, orijinal olmadığı şüphesi yazılıyor (%11). Ürünü 27 satıcı satıyor.'],
     '111624445': ['Olumsuz yorumların yarısından fazlası tattan (%54): "aroma yok", "su gibi", "hafif".',
                   '"Bu kadar övülmesine şaşırdım" diyerek yorumlara güvenip hayal kırıklığı yaşayanlar var.'],
@@ -42,7 +42,7 @@ DIKKAT = {
                  'Eksik ve patlak paket gönderimi yazılıyor.'],
     '46534796': ['Az olumsuz yorum (17); tat şikâyeti %35: "hepsi aynı tat, aroma gelmiyor".'],
     '151430407': ['Az olumsuz yorum (17); tat şikâyeti %47: "ilaç tadı", "kahveyle alakası yok".'],
-    '825973627': ['1-2 yıldız oranı %15,9; kafeinsiz kahve "inanılmaz ekşi" bulunuyor (tat %39).',
+    '825973627': ['1-2 yıldız payı %15,9; kafeinsiz kahve "inanılmaz ekşi" bulunuyor (tat %39).',
                   'Çekirdek istenip öğütülmüş gelmesi ya da espresso makinesine uymaması gibi öğütme sorunu %11.'],
 }
 DERS = {
