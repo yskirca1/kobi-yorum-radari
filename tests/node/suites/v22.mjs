@@ -92,6 +92,7 @@ export default async function ({ browser, base: BASE, check }) {
   await methodAndFirsat(browser, BASE, check);
   await homeAndStars(browser, BASE, check);
   await resilience(browser, BASE, check);
+  await copyText(browser, BASE, check);
 }
 
 // Görünür: kutusu var ve kapalı bir <details> ya da hidden="until-found" içinde değil (checkVisibility içerik görünürlüğüne de bakar)
@@ -283,3 +284,37 @@ async function resilience(browser, BASE, check) {
     for (const p of [ok, noImg, noFont]) await p.close();
   }
 }
+
+// Görev 8: arayüz metni. Her sayfa türünde (11 tür) sayfanın bütün metni (kapalı bölümler, "?" açıklamaları, aria-label, title, placeholder ve sekme başlığı dahil)
+// uzun tire, yanlış terim ve eski "turkuaz" içermez. Veri dosyalarından gelen metin (öneri metni, ürünün "dikkat"/"ders" notları, müşteri alıntıları) kapsam dışı:
+// data/ düzenlenmez ve bazı notlarda "1-2 yıldız oranı" yazıyor (raporda kayıtlı).
+async function copyText(browser, BASE, check) {
+  const pg = await browser.page({ width: 1280, height: 900 });
+  const DATA = '.recs li > span:not([class]), .cgrid .ul, blockquote';
+  const routes = ['#/', '#/kategori/filtre-kahve', '#/kategori/filtre-kahve/konu/skt', '#/kategori/filtre-kahve/sevilen/lezzet', '#/urun/filtre-kahve/52915799',
+    '#/urun/filtre-kahve/52915799/konu/skt', '#/karsilastir', '#/ara/karaca', '#/firsat', '#/yontem', '#/kategori/yok'];
+  const text = `(()=>{const b=document.body.cloneNode(true);b.querySelectorAll('script, ${DATA}').forEach(e=>e.remove());
+    const at=[...b.querySelectorAll('[aria-label],[title],[placeholder]')].map(e=>[e.getAttribute('aria-label'),e.getAttribute('title'),e.getAttribute('placeholder')].filter(Boolean).join(' '));
+    return [document.title, b.textContent, ...at].join(' ')})()`;
+  const bad = { dash: {}, term: {}, tur: {} };
+  for (const h of routes) {
+    await pg.goto('about:blank', 50); await pg.goto(BASE + h, 1500);
+    if (h === '#/karsilastir') {
+      // iki ürün: verideki ilk iki filtre kahve
+      await pg.eval(`(async()=>{const j=await (await fetch('data/filtre-kahve.json')).json();localStorage.setItem('kyr_cmp',JSON.stringify(j.urunler.slice(0,2).map(p=>({cat:'filtre-kahve',id:p.id}))));return true})()`);
+      await pg.goto('about:blank', 50); await pg.goto(BASE + h, 1500);
+    }
+    const t = await pg.eval(text);
+    const ctx = (re) => { const m = re.exec(t); return m ? t.slice(Math.max(0, m.index - 40), m.index + 40).replace(/\s+/g, ' ') : null; };
+    const d = ctx(/—/), tm = ctx(/1-2 yıldız oranı|şikâyet payı|şikayet payı/i), tu = ctx(/turkuaz/i);
+    if (d) bad.dash[h] = d; if (tm) bad.term[h] = tm; if (tu) bad.tur[h] = tu;
+    if (h === '#/karsilastir') { const n = await pg.eval(`document.querySelectorAll('.ctable td.num').length`); if (!n) bad.term[h] = 'karşılaştırma tablosu çizilmedi'; }
+  }
+  await pg.eval(`localStorage.removeItem('kyr_cmp'); true`);
+  check('metin: uzun tire yok (11 sayfa türü)', !Object.keys(bad.dash).length, JSON.stringify(bad.dash));
+  check('metin: terimler (1-2 yıldız payı, şikâyet oranı)', !Object.keys(bad.term).length, JSON.stringify(bad.term));
+  check('metin: turkuaz kalmadı', !Object.keys(bad.tur).length, JSON.stringify(bad.tur));
+  check('metin: konsol temiz', !pg.errors.length && !pg.logs.length, JSON.stringify([pg.errors, pg.logs]));
+  await pg.close();
+}
+

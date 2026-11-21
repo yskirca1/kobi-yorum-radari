@@ -1097,7 +1097,7 @@
   const SITE_URL = document.querySelector('meta[property="og:url"]')?.content || '';
   const printProducts = (c) => `
       <section class="print-only prt-products"><h2>Ürünler</h2>
-        <table class="ptable"><thead><tr><th>Ürün</th><th>Segment</th><th class="num">Ort. puan</th><th class="num">1-2 yıldız payı</th><th>En sık şikâyet</th></tr></thead><tbody>
+        <table class="ptable"><thead><tr><th>Ürün</th><th>Satıcı tipi</th><th class="num">Ort. puan</th><th class="num">1-2 yıldız payı</th><th>En sık şikâyet</th></tr></thead><tbody>
         ${[...c.urunler].sort((a, b) => b.yazili - a.yazili).map((p) => `<tr><td><b>${esc(markaAd(p.marka))}</b> ${esc(p.ad.replace(p.marka, '').trim())}</td><td>${esc(p.segment)}</td><td class="num">${dec(p.ort)}</td><td class="num ${negCls(p.dusuk)}">${pct(p.dusuk, 1)}</td>`
           + `<td>${noLow(p) ? `<span class="muted">${esc(noLowShort(p))}</span>` : p.sik[0] ? `${esc(p.sik[0].ad)} <span class="neg num">${pct(p.sik[0].v)}</span>` : ''}</td></tr>`).join('')}
         </tbody></table></section>`;
@@ -1303,7 +1303,7 @@
     return `<section class="card gp-card" aria-labelledby="gp-t"><h2 id="gp-t">Bu rakip nerede açık veriyor? ${tip('sikayet')}</h2>
         <p class="muted">Bu ürünün şikâyet oranları kategori ortalamasıyla karşılaştırıldı. Okunan ${n} adet <span class="nowrap">1-2 yıldızlı</span> yoruma dayanır; ürünün kalitesini değil, yorum yazanların ne yazdığını gösterir.</p>
         ${body}
-        <p class="note">Küçük farklar sayılmaz: en az ${Math.round(GAP.pts * 100)} puan ve ortalamanın belirgin üstü ya da altı gerekir. <a href="#/yontem/rakip">Bu karşılaştırma nasıl yapıldı?</a></p></section>`;
+        <p class="note">Küçük farklar sayılmaz: en az ${Math.round(GAP.pts * 100)} puan ve ortalamanın belirgin üstü ya da altı gerekir. <a href="#/yontem/rakip">Bu karşılaştırma nasıl yapılıyor?</a></p></section>`;
   }
 
   // Ürün sayfasında konu kartı (#/urun/<k>/<id>/konu/<tema> ya da /sevilen/<konu>): ürünün o konudaki oranı ve yalnızca o konuya etiketli alıntılar
@@ -1312,9 +1312,9 @@
     const all = H.urun(c.id, p.id);
     const fig = neg
       ? (noLow(p) ? esc(noLowText(p)) : `Bu üründe şikâyet oranı <b class="num ${negCls(v)}">${pct(v)}</b>: okunan ${int(n)} adet <span class="nowrap">1-2 yıldızlı</span> yorumun yaklaşık ${int(Math.round(v * n))} tanesinde geçiyor. Kategoride ${go(H.konu(c.id, kind, t.id), `<b class="num neg">${pct(t.tum)}</b>`, '', `Kategoride ${pct(t.tum)}: bu oran hangi ürünlerden oluşuyor`)}.`)
-      : `"Önerilen" sıralamada okunan ${int(n)} yorumun <b class="num">${pct(v)}</b> kadarında geçiyor (yaklaşık ${int(Math.round(v * n))} yorum). Kategori ortalaması ${go(H.konu(c.id, kind, t.id), `<b class="num">${pct(t.tum)}</b>`, '', `Kategori ortalaması ${pct(t.tum)}: bu oran hangi ürünlerden oluşuyor`)}.`;
+      : `"Önerilen" sıralamada okunan ${int(n)} yorumun <b class="num">${pct(v)}${sfxLoc(pct(v))}</b> geçiyor (yaklaşık ${int(Math.round(v * n))} yorum). Kategori ortalaması ${go(H.konu(c.id, kind, t.id), `<b class="num">${pct(t.tum)}</b>`, '', `Kategori ortalaması ${pct(t.tum)}: bu oran hangi ürünlerden oluşuyor`)}.`;
     return `<section class="card pk-card${neg ? '' : ' pos'}" id="p-konu" tabindex="-1" aria-labelledby="pk-t">
-        <div class="pk-top"><span class="kicker ${neg ? 'k-neg' : 'k-like'}">${icon(neg ? 'sikayet' : 'sevilen')}${neg ? 'Şikâyet konusu' : 'Müşterinin sevdiği konu'}</span><a class="linkbtn" href="${esc(all)}" data-to="alinti">Bütün alıntıları göster (${p.alinti.length})</a></div>
+        <div class="pk-top"><span class="kicker ${neg ? 'k-neg' : 'k-like'}">${icon(neg ? 'sikayet' : 'sevilen')}${neg ? 'Şikâyet konusu' : 'Müşterinin sevdiği konu'}</span><a class="linkbtn" href="${esc(all)}" data-to="alinti">Bütün örnek yorumları göster (${p.alinti.length})</a></div>
         <h2 id="pk-t">${esc(t.ad)}</h2>
         ${v > 0 && !(neg && noLow(p)) ? `<div class="pk-row">${picto(share(v), neg ? 'neg' : 'like')}<p class="pk-fig">${fig}</p></div>` : `<p class="pk-fig">${fig}</p>`}
         <h3>${icon('kanit', 'h-ic')}Müşterinin kendi sözleriyle ${tip('alinti')}</h3>
@@ -1450,12 +1450,12 @@
         <tbody>
         ${row('<span class="sr-only">Ürün görseli</span>', P.map((p) => `<td><div class="ct-top"><a href="#/urun/${esc(c.id)}/${esc(p.id)}" class="ct-img"><img src="${esc(p.gorsel)}" alt="${esc(p.ad)}" width="400" height="600" decoding="async" referrerpolicy="no-referrer"></a><button type="button" class="ct-rm" data-rm-col="${esc(p.id)}" aria-label="${esc(p.kisa)}: karşılaştırmadan çıkar">Çıkar <span aria-hidden="true">×</span></button></div></td>`))}
         ${row('Ürün', P.map((p) => `<td><b>${esc(markaAd(p.marka))}</b><br>${esc(p.ad.replace(p.marka, '').trim())}</td>`))}
-        ${row('Segment', P.map((p) => `<td>${esc(p.segment)}</td>`))}
+        ${row('Satıcı tipi', P.map((p) => `<td>${esc(p.segment)}</td>`))}
         ${row('Ortalama puan', P.map((p, i) => `<td class="num${ortB[i] ? ' best' : ''}">${dec(p.ort)}</td>`))}
         ${row('1-2 yıldız payı', P.map((p, i) => `<td class="num ${negCls(p.dusuk)}${dusB[i] ? ' best' : ''}">${pct(p.dusuk, 1)}</td>`))}
-        ${row('"Önerilen" ile gerçek arası fark', P.map((p, i) => `<td class="num${gapB[i] ? ' best' : ''}">${sgn(p.onerilen_ort - p.ort)} puan</td>`))}
+        ${row('"Önerilen" ortalaması ile genel puan farkı', P.map((p, i) => `<td class="num${gapB[i] ? ' best' : ''}">${sgn(p.onerilen_ort - p.ort)} puan</td>`))}
         ${row('Yazılı yorum', P.map((p) => `<td class="num">${int(p.yazili)}</td>`))}
-        ${row('En büyük 3 şikâyet', P.map((p) => noLow(p) ? `<td class="muted">${esc(noLowShort(p))}</td>` : `<td><ol>${p.sik.slice(0, 3).map((t) => `<li>${go(H.urun(c.id, p.id, 'konu', t.id), `${esc(t.ad)} <span class="neg num">${pct(t.v)}</span>`)}</li>`).join('')}</ol></td>`))}
+        ${row('En sık 3 şikâyet', P.map((p) => noLow(p) ? `<td class="muted">${esc(noLowShort(p))}</td>` : `<td><ol>${p.sik.slice(0, 3).map((t) => `<li>${go(H.urun(c.id, p.id, 'konu', t.id), `${esc(t.ad)} <span class="neg num">${pct(t.v)}</span>`)}</li>`).join('')}</ol></td>`))}
         ${row('En çok sevilen 3 konu', P.map((p) => `<td><ol>${p.sev.slice(0, 3).map((k) => `<li>${go(H.urun(c.id, p.id, 'sevilen', k.id), `${esc(k.ad)} <span class="muted num">${pct(k.v)}</span>`)}</li>`).join('')}</ol></td>`))}
         </tbody></table></div></div>`;
     app.onclick = (e) => {
@@ -1592,7 +1592,7 @@
     if (fl.ust && !alanlar.includes(fl.ust)) fl.ust = '';
     const maxD = Math.max(...rows.map((r) => r.dusuk), 0.01);
     const nU = rows.map((r) => r.urun), uMin = Math.min(...nU), uMax = Math.max(...nU);
-    const dash = '<span class="muted" title="Bu segmentte ürün yok">–</span>';
+    const dash = '<span class="muted" title="Bu satıcı tipinde ürün yok">–</span>';
     // Hücreler kanıta gider: 1-2 yıldız payı → ürünler 1-2 yıldız payına göre; satıcı tipi → o tipin ürünleri; 1 numaralı şikâyet → konu görünümü
     const cell = {
       puan: (r) => `<b class="ft-score">${r.puan}</b>${r.eksik ? `<small class="ft-eksik" title="KOBİ ile büyük marka karşılaştırılamadı; puan ${5 - r.eksik} ölçütle hesaplandı">${5 - r.eksik} ölçüt</small>` : ''}<span class="mbar" aria-hidden="true"><i style="width:${r.puanTam}%"></i></span>`,
@@ -1605,7 +1605,7 @@
       okunan: (r) => int(r.okunan),
     };
     const rawTxt = {
-      rekabet: (r) => (r.buyukPay == null ? 'Büyük marka yok' : `Büyük marka yorum payı ${pct(r.buyukPay, 1)}`),
+      rekabet: (r) => (r.buyukPay == null ? 'Büyük marka yok' : `Büyük markaların yorum payı ${pct(r.buyukPay, 1)}`),
       risk: (r) => `1-2 yıldız payı ${pct(r.dusuk, 1)}`,
       sorun: (r) => (r.sik ? `${esc(r.sik.ad)}: şikâyet oranı ${pct(r.sik.tum)}` : '–'),
       kobi: (r) => (r.raw.kobi == null ? (r.buyuk == null ? 'Büyük marka yok, ölçüt atlandı' : 'KOBİ ürünü yok, ölçüt atlandı') : `KOBİ ${pct(r.kobi, 1)}, büyük marka ${pct(r.buyuk, 1)} (fark ${r.raw.kobi > 0 ? '+' : r.raw.kobi < 0 ? '−' : ''}${pts(Math.abs(r.raw.kobi))})`),
@@ -1700,7 +1700,7 @@
           <div><dt>KOBİ'de</dt><dd class="num">${cell.kobi(r)}</dd></div>
           <div><dt>Büyük markada</dt><dd class="num">${cell.buyuk(r)}</dd></div>
           <div class="fc-w2"><dt>1 numaralı şikâyet</dt><dd>${cell.sik(r)}</dd></div>
-          <div><dt>Büyük marka yorum payı</dt><dd class="num">${r.buyukPay == null ? '<span class="muted">Yok</span>' : go(H.cat(r.id, 'tip=buyuk'), pct(r.buyukPay, 1), '', `${r.ad}, büyük markaların yorum payı ${pct(r.buyukPay, 1)}: büyük marka ürünlerini gör`)}</dd></div>
+          <div><dt>Büyük markaların yorum payı</dt><dd class="num">${r.buyukPay == null ? '<span class="muted">Yok</span>' : go(H.cat(r.id, 'tip=buyuk'), pct(r.buyukPay, 1), '', `${r.ad}, büyük markaların yorum payı ${pct(r.buyukPay, 1)}: büyük marka ürünlerini gör`)}</dd></div>
         </dl>
         <button type="button" class="ft-exp" data-exp="${esc(r.id)}" aria-expanded="${fOpen.has(r.id)}" aria-controls="ftc-${esc(r.id)}">Puan ayrıntısı<span class="sr-only">: ${esc(r.ad)}</span></button>
         ${fOpen.has(r.id) ? dbox(r, w, 'ftc-') : ''}</div></details></li>`;
