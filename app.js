@@ -1205,7 +1205,7 @@
     }
     if (h[0] === 'urun' && h.length === 5) return one($('#p-konu'));
     if (h[0] === 'urun' && h.length === 3 && to === 'alinti') return one($('#p-alinti'));
-    if (h[0] === 'yontem' && h[1]) return one(document.getElementById('y-' + h[1]));
+    if (h[0] === 'yontem' && h[1]) return one(mSec(h[1]));
     if (h[0] === 'firsat' && to.startsWith('read:')) return one([...app.querySelectorAll('.fp-reads li[data-read]')].find((li) => li.dataset.read === to.slice(5)));
     return null;
   }
@@ -1648,6 +1648,7 @@
       <p class="print-only prt-w" id="prt-w"></p>
       <div class="fsort-m" id="fsort-m" hidden><label>Sırala <select id="fm-sort">${FCOLS.map((c) => `<option value="${c.k}">${esc(c.k === 'ad' ? 'Kategori adı' : c.h)}</option>`).join('')}</select></label>
         <button type="button" class="btn ghost" id="fm-dir"></button></div>
+      <div class="fz-head" id="fz-head" aria-hidden="true" hidden><span>Kategori</span><span>Giriş puanı</span><span>1-2 yıldız payı</span></div>
       <ol class="fcards" id="fcards" hidden aria-label="Kategoriler"></ol>
       <p class="scroll-hint muted" id="scroll-hint" hidden>Tabloyu yana kaydır <span aria-hidden="true">→</span></p>
       <div class="ctable-wrap fp-wrap" id="ctable-wrap"><div class="ctable-box" id="ctable-box" tabindex="0" role="region" aria-label="Kategori karşılaştırma tablosu"><table class="ctable ftable">
@@ -1681,9 +1682,12 @@
         </tbody></table><p class="muted">Giriş puanı = ölçüt puanlarının ağırlıklı ortalaması = <b class="num">${fNum(r.puanTam)}</b>, yuvarlanınca <b class="num">${r.puan}</b>.</p></div>`;
     };
     // Telefonda tablo yerine kategori başına bir kart (aynı sıralama, filtre ve "Puan ayrıntısı")
-    const fcard = (r, rank, w) => `<li class="fc" data-row="${esc(r.id)}">
-        <div class="fc-top"><div class="fc-name">${rank ? `<span class="ft-rank num" aria-label="${r.sira}. sıra">${r.sira}</span>` : ''}<span><a href="#/kategori/${esc(r.id)}">${esc(r.ad)}</a><small class="muted num">${esc(r.ust)} · ${int(r.urun)} ürün · ${int(r.okunan)} okunan yorum</small></span></div>
-          <div class="fc-score"><b class="ft-score num">${r.puan}</b><small class="muted">Giriş puanı${r.eksik ? ` (${5 - r.eksik} ölçüt)` : ''}</small></div></div>
+    // v22: telefonda kısa satır (sıra, ad, giriş puanı, 1-2 yıldız payı); dokununca kartın ayrıntısı açılır
+    const fcard = (r, rank, w, open) => `<li class="fc" data-row="${esc(r.id)}"><details class="fz-row"${open ? ' open' : ''}>
+        <summary class="fz-sum"><span class="ft-rank num"${rank ? ` aria-label="${r.sira}. sıra">${r.sira}` : '>'}</span><span class="fz-ad">${esc(r.ad)}</span>
+          <span class="fz-v"><span class="sr-only">Giriş puanı</span><b class="fz-score num">${r.puan}</b></span><span class="fz-v"><span class="sr-only">1-2 yıldız payı</span><span class="fz-d num neg">${pct(r.dusuk, 1)}</span></span><span class="fold-ic" aria-hidden="true"></span></summary>
+        <div class="fz-body">
+        <div class="fc-top"><div class="fc-name"><span><a href="#/kategori/${esc(r.id)}">${esc(r.ad)} sayfasına git</a><small class="muted num">${esc(r.ust)} · ${int(r.urun)} ürün · ${int(r.okunan)} okunan yorum${r.eksik ? ` · puan ${5 - r.eksik} ölçütle` : ''}</small></span></div></div>
         <dl class="fc-m">
           <div><dt>1-2 yıldız payı</dt><dd class="num">${go(H.cat(r.id, 'sirala=cok'), `<span class="neg">${pct(r.dusuk, 1)}</span>`, '', `${r.ad}, 1-2 yıldız payı ${pct(r.dusuk, 1)}: ürünleri gör`)}</dd></div>
           <div><dt>KOBİ'de</dt><dd class="num">${cell.kobi(r)}</dd></div>
@@ -1692,7 +1696,7 @@
           <div><dt>Büyük marka yorum payı</dt><dd class="num">${r.buyukPay == null ? '<span class="muted">Yok</span>' : go(H.cat(r.id, 'tip=buyuk'), pct(r.buyukPay, 1), '', `${r.ad}, büyük markaların yorum payı ${pct(r.buyukPay, 1)}: büyük marka ürünlerini gör`)}</dd></div>
         </dl>
         <button type="button" class="ft-exp" data-exp="${esc(r.id)}" aria-expanded="${fOpen.has(r.id)}" aria-controls="ftc-${esc(r.id)}">Puan ayrıntısı<span class="sr-only">: ${esc(r.ad)}</span></button>
-        ${fOpen.has(r.id) ? dbox(r, w, 'ftc-') : ''}</li>`;
+        ${fOpen.has(r.id) ? dbox(r, w, 'ftc-') : ''}</div></details></li>`;
     const draw = () => {
       const w = weightsOf(ws), allZero = scoreApply(rows, w), wEff = allZero ? [1, 1, 1, 1, 1] : w;
       $('fs-zero').hidden = !(ws.p === 'ozel' && allZero);
@@ -1705,8 +1709,9 @@
       });
       // Tablo ve telefon kartları ikisi de çizilir; hangisinin görüneceğini CSS seçer (telefonda kartlar, yazdırırken her zaman tablo)
       const rank = col.k === 'puan';
-      $('fcards').innerHTML = vis.map((r) => fcard(r, rank, wEff)).join('');
-      $('fcards').hidden = !vis.length; $('fsort-m').hidden = false;
+      const openRows = new Set([...$('fcards').querySelectorAll('details[open]')].map((d) => d.closest('[data-row]').dataset.row));
+      $('fcards').innerHTML = vis.map((r) => fcard(r, rank, wEff, openRows.has(r.id))).join('');
+      $('fcards').hidden = $('fz-head').hidden = !vis.length; $('fsort-m').hidden = false;
       $('fm-sort').value = fSort.k;
       $('fm-dir').textContent = col.txt ? (fSort.dir === 'asc' ? "A'dan Z'ye" : "Z'den A'ya") : (fSort.dir === 'asc' ? 'Küçükten büyüğe' : 'Büyükten küçüğe');
       $('fm-dir').setAttribute('aria-label', `Sıralama yönü: ${$('fm-dir').textContent}. Tersine çevir`);
@@ -1778,7 +1783,13 @@
     draw();
   }
 
-  async function method(isStale) {
+  // Yöntem bölümleri: #/yontem/<bölüm> adresi, içindekilerdeki kısa ad. Eski kimlikler (y-…, giris-puani) varış vurgusu ve bağlantılar için korunur.
+  const M_TOC = { cumle: 'Baştaki cümle', veri: 'Veri', 'iki-ornek': 'Okunan yorumlar', 'neden-iki': 'Neden iki örnek', sikayet: 'Şikâyet oranı', oran: 'Oranın parçaları',
+    yildiz: '1-2 yıldız payı', segment: 'KOBİ ve büyük marka', rakip: 'Rakibin açığı', alinti: 'Örnek yorumlar', oneri: 'Öneriler', kontrol: 'Kontrol listesi',
+    notlar: 'Dikkat ve ders', 'giris-puani': 'Giriş puanı', sinirlar: 'Sınırlar' };
+  const mKey = (id) => id.replace(/^[ym]-/, '');
+  const mSec = (key) => { const el = key && (document.getElementById('y-' + key) || document.getElementById('m-' + key) || document.getElementById(key)); return el && el.matches('.m-sec') ? el : null; };
+  async function method(isStale, sec) {
     const data = await loadAll();
     if (isStale()) return;
     setTitle('Yöntem', 'ReviewRadar rakamları nasıl hesaplanıyor: hangi yorumlar okundu, şikâyet oranı, 1-2 yıldız payı, rakip karşılaştırması ve giriş puanı.');
@@ -1789,76 +1800,83 @@
     const exK = exT ? ex.urunler.reduce((a, p) => a + (p.sikayet[exT.id] || 0) * p.ornek_dusuk, 0) : 0;
     const D = Object.values(data).filter(Boolean), Q = D.flatMap((d) => d.urunler.flatMap((p) => p.alinti));
     const qLow = Q.filter((a) => a.yildiz <= 2).length, qProd = D.reduce((a, d) => a + d.urunler.length, 0);
-    app.innerHTML = `
+    // v22: her bölüm katlanır (<details>); geniş ekranda hepsi açık, telefonda yalnızca adresteki bölüm açık. Başta içindekiler.
+    const keys = [];
+    const S = (id, title) => { const k = mKey(id); keys.push(k); return `<details class="m-sec" id="${id}" tabindex="-1"${!phoneMQ.matches || k === sec ? ' open' : ''}><summary class="m-sum"><h2>${title}</h2><span class="fold-ic" aria-hidden="true"></span></summary><div class="m-body">`; };
+    const E = '</div></details>';
+    const html = `
       <div class="band phead phead-a"><div class="crumbs"><a href="#/">Ana sayfa</a> / Yöntem</div>
         <div class="chead"><h1 class="page-name">Yöntem: Bu rakamlar nasıl hesaplandı?</h1>
           <div class="answer-block" data-form="yontem"><p class="answer answer-m">Her rakam Trendyol'daki gerçek yorumlardan geliyor: ${t.yazili ? `${int(t.yazili)} yazılı yorumun yıldız dağılımına baktık, ` : ''}${int(t.okunan)} yorumu tek tek okuduk.</p></div></div></div>
       <article class="doc">
         ${kpiList(t, 'doc-kpis')}
-        <section id="y-cumle" tabindex="-1"><h2>Sayfanın başındaki cümle ve resim</h2>
+        <!--toc-->
+        ${S('y-cumle', `Sayfanın başındaki cümle ve resim`)}
           <p>Her sayfa, o sayfanın rakamlarından sabit bir kalıpla kurulan tek bir cümleyle açılır. Cümle yeni bir rakam eklemez; altındaki yüzdeyi düz Türkçeyle söyler.</p>
           <ul class="ul"><li>"1-2 yıldızlı her 10 yorumdan yaklaşık 4'ünde" gibi ifadeler, ekrandaki yüzdenin en yakın onluğa yuvarlanmış hâlidir (%40 → 4). Yüzde bir onluktan çok basit bir kesre yakınsa kesir söylenir: %25 "yaklaşık her 4 yorumdan 1'inde", %33 "her 3 yorumdan 1'inde", %50 "yaklaşık yarısında". %10'dan küçük oranlarda "her 100 yorumdan" denir. Resimdeki 10 balon tam payı gösterir (%25 → 2 dolu ve 1 yarım balon), 100 nokta yuvarlanmış yüzdeyi; tam yüzde her zaman yanında yazar.</li>
             <li>Şikâyet cümleleri okunan 1-2 yıldızlı yorumlar içindir, bütün müşteriler için değil. "1-2 yıldız payı" ise bütün yazılı yorumların payıdır.</li>
             <li>Grupları ya da ürünleri kıyaslayan cümleler, en az ${MIN_N} adet 1-2 yıldızlı yorumu okunan grup ve ürünlerle kurulur; daha az yorumda bunu açıkça yazar.</li></ul>
-          ${grammar()}</section>
-        <section id="y-veri" tabindex="-1"><h2>Veri nereden geliyor?</h2>
-          <p>Rakamlar Trendyol'daki ürün yorumlarından geliyor. Yorumlar bir araştırma örneklemi olarak tek seferde toplandı. Yorum yazanların adları toplanmadı.</p></section>
-        <section id="y-iki-ornek" tabindex="-1"><h2>Her üründe hangi yorumlar okundu?</h2>
+          ${grammar()}${E}
+        ${S('y-veri', `Veri nereden geliyor?`)}
+          <p>Rakamlar Trendyol'daki ürün yorumlarından geliyor. Yorumlar bir araştırma örneklemi olarak tek seferde toplandı. Yorum yazanların adları toplanmadı.</p>${E}
+        ${S('y-iki-ornek', `Her üründe hangi yorumlar okundu?`)}
           <p>Her ürün için iki ayrı örnek okundu:</p>
-          <ul class="ul"><li>Trendyol'un "Önerilen" sıralamasındaki ilk 100 yorum. Ürün sayfası yorumları önce bu sırayla gösterdiği için müşterinin ilk okuduğu yorumlar bunlar. Yorumu az olan üründe bu sırada 100'den az yorum var; o üründe hepsi okundu.</li><li>1 ya da 2 yıldız verilmiş en fazla 100 yorum. Üründe bu kadar düşük puanlı yorum yoksa daha azı.</li></ul></section>
-        <section><h2>Neden iki ayrı örnek?</h2>
+          <ul class="ul"><li>Trendyol'un "Önerilen" sıralamasındaki ilk 100 yorum. Ürün sayfası yorumları önce bu sırayla gösterdiği için müşterinin ilk okuduğu yorumlar bunlar. Yorumu az olan üründe bu sırada 100'den az yorum var; o üründe hepsi okundu.</li><li>1 ya da 2 yıldız verilmiş en fazla 100 yorum. Üründe bu kadar düşük puanlı yorum yoksa daha azı.</li></ul>${E}
+        ${S('m-neden-iki', `Neden iki ayrı örnek?`)}
           <p>"Önerilen" sıralamada düşük puanlı yorum neredeyse hiç görünmüyor. Yalnızca ilk sayfayı okursan sorunları göremezsin.</p>
-          ${t.tam && t.onerilenN ? `<p>Bu sitedeki ${t.kat} kategoride "Önerilen" sıralamada okunan ${int(t.onerilenN)} yorumun yalnızca ${int(t.onerilen)} tanesi 1-2 yıldızlı (payı ${pct(oran, 1)}). Oysa tüm yazılı yorumlarda 1-2 yıldız payı ${pct(gercek, 1)}. Şikâyet oranları bu yüzden ayrıca okunan ${int(t.ornek)} adet 1-2 yıldızlı yorumdan hesaplandı.</p>` : ''}</section>
-        <section id="y-sikayet" tabindex="-1"><h2>Şikâyet oranı ne demek?</h2>
+          ${t.tam && t.onerilenN ? `<p>Bu sitedeki ${t.kat} kategoride "Önerilen" sıralamada okunan ${int(t.onerilenN)} yorumun yalnızca ${int(t.onerilen)} tanesi 1-2 yıldızlı (payı ${pct(oran, 1)}). Oysa tüm yazılı yorumlarda 1-2 yıldız payı ${pct(gercek, 1)}. Şikâyet oranları bu yüzden ayrıca okunan ${int(t.ornek)} adet 1-2 yıldızlı yorumdan hesaplandı.</p>` : ''}${E}
+        ${S('y-sikayet', `Şikâyet oranı ne demek?`)}
           <p>Bir konunun şikâyet oranı, okunan 1-2 yıldızlı yorumların yüzde kaçında o konudan söz edildiğini gösterir.</p>
-          <ul class="ul"><li>Konular her kategori için hazırlanan anahtar kelimelerle bulundu. Bu yüzden oranlar yaklaşıktır.</li><li>Bir yorum birden fazla konuya girebilir. Bu yüzden oranların toplamı 100 etmez.</li><li>Kategori ortalamasında her ürün, okunan 1-2 yıldızlı yorum sayısı kadar ağırlık taşır.</li></ul></section>
-        <section id="y-oran" tabindex="-1"><h2>Bir oran hangi ürünlerden oluşuyor?</h2>
+          <ul class="ul"><li>Konular her kategori için hazırlanan anahtar kelimelerle bulundu. Bu yüzden oranlar yaklaşıktır.</li><li>Bir yorum birden fazla konuya girebilir. Bu yüzden oranların toplamı 100 etmez.</li><li>Kategori ortalamasında her ürün, okunan 1-2 yıldızlı yorum sayısı kadar ağırlık taşır.</li></ul>${E}
+        ${S('y-oran', `Bir oran hangi ürünlerden oluşuyor?`)}
           <p>Kategorinin şikâyet oranı, ürünlerin şikâyet oranlarından hesaplanır. Her ürün için oran, okunan <span class="nowrap">1-2 yıldızlı</span> yorum sayısıyla çarpılır. Çıkan sayı, o konunun üründe yaklaşık kaç yorumda geçtiğidir. Bu sayılar toplanır ve bütün ürünlerde okunan <span class="nowrap">1-2 yıldızlı</span> yorumların toplamına bölünür.</p>
           ${exT ? `<p>Örnek: ${esc(ex.ad)} kategorisinde "${esc(exT.ad)}" ürünlerde yaklaşık ${approx(exK)} yorumda geçiyor. Okunan <span class="nowrap">1-2 yıldızlı</span> yorum ${int(ex.top.ornek)}. ${approx(exK)} ÷ ${int(ex.top.ornek)} = ${pct(exT.tum)}. <a href="${esc(H.konu(ex.id, 'konu', exT.id))}" data-to="dokum">Bu hesabı ürün ürün gör</a>.</p>` : ''}
           <ul class="ul"><li>Büyük marka ve KOBİ oranları aynı hesapla, yalnızca o gruptaki ürünlerden çıkar.</li>
             <li>Ürün oranları yuvarlanmış tutulduğu için yaklaşık yorum sayısı küsuratlı olabilir.</li>
             <li>Müşterinin sevdiği konularda oran, Trendyol'un "Önerilen" sıralamasında okunan yorumlardan hesaplanır. Kategori oranı ürün oranlarının basit ortalamasıdır: her ürün eşit ağırlık taşır.</li>
-            <li>Her konunun sayfasında bu hesap ürün ürün gösterilir; parçalar toplanınca sayfanın başındaki oran çıkar.</li></ul></section>
-        <section id="y-yildiz" tabindex="-1"><h2>1-2 yıldız payı ne demek?</h2>
-          <p>Yazılı yorumların yüzde kaçının 1 ya da 2 yıldız olduğunu gösterir. Örneklemden değil, ürünün Trendyol'daki tüm yıldız dağılımından hesaplandı. Kategori ve satıcı tipi için o gruptaki bütün ürünlerin yorumları birlikte sayılır.</p></section>
-        <section id="y-segment" tabindex="-1"><h2>KOBİ ve büyük marka</h2>
+            <li>Her konunun sayfasında bu hesap ürün ürün gösterilir; parçalar toplanınca sayfanın başındaki oran çıkar.</li></ul>${E}
+        ${S('y-yildiz', `1-2 yıldız payı ne demek?`)}
+          <p>Yazılı yorumların yüzde kaçının 1 ya da 2 yıldız olduğunu gösterir. Örneklemden değil, ürünün Trendyol'daki tüm yıldız dağılımından hesaplandı. Kategori ve satıcı tipi için o gruptaki bütün ürünlerin yorumları birlikte sayılır.</p>${E}
+        ${S('y-segment', `KOBİ ve büyük marka`)}
           <p>Her ürün iki gruptan birine kondu:</p>
           <ul class="ul"><li><b>Büyük marka:</b> herkesin bildiği ulusal ya da uluslararası markalar ve büyük mağaza zincirlerinin kendi ürünleri.</li><li><b>KOBİ:</b> küçük ve orta ölçekli satıcılar. Mağazada da satılsa internetten büyüyen yerli markalar bu grupta sayıldı.</li></ul>
-          <p>Ayrım her kategoride ürün seçilirken elle yapıldı. Bazı markalarda tartışmaya açıktır. Bir kategoride tek grup varsa satıcı tipi karşılaştırması gösterilmez.</p></section>
-        <section id="y-rakip" tabindex="-1"><h2>Rakibin açık verdiği konular nasıl bulunuyor?</h2>
+          <p>Ayrım her kategoride ürün seçilirken elle yapıldı. Bazı markalarda tartışmaya açıktır. Bir kategoride tek grup varsa satıcı tipi karşılaştırması gösterilmez.</p>${E}
+        ${S('y-rakip', `Rakibin açık verdiği konular nasıl bulunuyor?`)}
           <p>Ürün sayfasındaki "Bu rakip nerede açık veriyor?" kutusu, ürünün her konudaki şikâyet oranını kategori ortalamasıyla karşılaştırır. Kategori ortalaması, ürün sayfasındaki çubuklarda ince çizgiyle gösterilen değerdir.</p>
           <ul class="ul"><li>Ürünün en az ${GAP.minN} adet 1-2 yıldızlı yorumu okunmuş olmalı. Daha azsa fark gösterilmez.</li>
             <li><b>Açık verdiği konu:</b> ürünün şikâyet oranı kategori ortalamasından en az ${Math.round(GAP.pts * 100)} yüzde puan yüksek, ortalamanın en az ${String(GAP.ratio).replace('.', ',')} katı ve konu en az ${GAP.minK} yorumda geçiyor.</li>
             <li><b>Az şikâyet aldığı konu:</b> ürünün şikâyet oranı kategori ortalamasından en az ${Math.round(GAP.pts * 100)} yüzde puan düşük ve ortalamanın en fazla yarısı.</li>
             <li>Fark, okunan yorum sayısına göre şansla açıklanamayacak kadar büyük olmalı: fark, ortalamanın bu örneklemdeki olağan oynamasının (standart hata) en az ${GAP.z} katı.</li>
             <li>Her iki listede en büyük farkı olan en fazla ${GAP.max} konu gösterilir.</li></ul>
-          <p>Bu karşılaştırma ürünün gerçek kalitesini ölçmez. Yalnızca 1-2 yıldız veren müşterilerin hangi sorunu ne sıklıkla yazdığını gösterir.</p></section>
-        <section id="y-alinti" tabindex="-1"><h2>Örnek yorumlar nasıl seçildi, neden az?</h2>
+          <p>Bu karşılaştırma ürünün gerçek kalitesini ölçmez. Yalnızca 1-2 yıldız veren müşterilerin hangi sorunu ne sıklıkla yazdığını gösterir.</p>${E}
+        ${S('y-alinti', `Örnek yorumlar nasıl seçildi, neden az?`)}
           <p>Yorumların tamamı bu sitede tutulmuyor. Her ürün için okunan yorumlardan yalnızca 3-4 tanesi kelimesi kelimesine saklandı ve her biri bir konuya etiketlendi.${t.tam && Q.length ? ` Bu sitede ${int(qProd)} ürün için ${int(Q.length)} örnek yorum var; ${int(qLow)} tanesi <span class="nowrap">1-2 yıldızlı</span>.` : ''}</p>
           <ul class="ul"><li>Bir örnek yorum yalnızca etiketlendiği konuda gösterilir.</li>
             <li>Bir konunun geçtiği her üründe örnek yorum yok. O zaman site bunu yazar ve ürünün Trendyol sayfasına bağlantı verir; yorumların tamamı orada okunabilir.</li>
             <li>Yorumların tarihi saklanmadı. Örnekler tarihsiz gösterilir.</li>
-            <li>Yorum yazanların adları toplanmadı.</li></ul></section>
-        <section id="y-oneri" tabindex="-1"><h2>Öneriler hangi şikâyete dayanıyor?</h2>
+            <li>Yorum yazanların adları toplanmadı.</li></ul>${E}
+        ${S('y-oneri', `Öneriler hangi şikâyete dayanıyor?`)}
           <p>"Ne yapmalı?" önerileri yorumlar okunarak yazıldı; ölçüm değildir. Her önerinin altında dayandığı şikâyet ya da müşterinin sevdiği konu yazar. Eşleme önerinin metnine göre elle yapıldı.</p>
           <ul class="ul"><li>Önerinin yanındaki oranlar öneri metninin parçası değildir. O konuların bu sitedeki oranlarıdır ve veriden hesaplanır.</li>
             <li>Bir konuya tıklayınca oranın hangi ürünlerden geldiğini ve örnek yorumları görürsün.</li>
-            <li>Belirli bir konuya dayanmayan öneri "Genel öneri" olarak görünür; yanında rakam yoktur.</li></ul></section>
-        <section id="y-kontrol" tabindex="-1"><h2>Giriş kontrol listesi</h2>
-          <p>Kategori sayfasının sonundaki liste, kategorinin şikâyet oranı en yüksek 5 konusundan ve o kategori için yazılan önerilerin başlıklarından oluşur. Yeni bir bilgi eklemez. Her maddenin altında dayandığı konu ve oranı bağlantı olarak durur. İşaretler yalnızca senin tarayıcında saklanır; siteye gönderilmez.</p></section>
-        <section><h2>"Dikkat" ve "ders" notları</h2>
-          <p>Ürün sayfalarındaki "Bu ürünün zayıf noktaları" ve "Rakip bir KOBİ için ders" notları, olumsuz yorumlar okunarak yazılmış yorumlardır. Ölçüm değildir.</p></section>
-        <section id="giris-puani"><h2>Giriş puanı nasıl hesaplanıyor?</h2>
+            <li>Belirli bir konuya dayanmayan öneri "Genel öneri" olarak görünür; yanında rakam yoktur.</li></ul>${E}
+        ${S('y-kontrol', `Giriş kontrol listesi`)}
+          <p>Kategori sayfasının sonundaki liste, kategorinin şikâyet oranı en yüksek 5 konusundan ve o kategori için yazılan önerilerin başlıklarından oluşur. Yeni bir bilgi eklemez. Her maddenin altında dayandığı konu ve oranı bağlantı olarak durur. İşaretler yalnızca senin tarayıcında saklanır; siteye gönderilmez.</p>${E}
+        ${S('m-notlar', `"Dikkat" ve "ders" notları`)}
+          <p>Ürün sayfalarındaki "Bu ürünün zayıf noktaları" ve "Rakip bir KOBİ için ders" notları, olumsuz yorumlar okunarak yazılmış yorumlardır. Ölçüm değildir.</p>${E}
+        ${S('giris-puani', `Giriş puanı nasıl hesaplanıyor?`)}
           <p><a href="#/firsat">Kategori karşılaştırma</a> sayfasındaki giriş puanı 0 ile 100 arasındadır; yüksek puan, küçük bir satıcı için daha çekici bir kategori demektir. Beş ölçütün her biri 0-100 arası puanlanır, sonra seçtiğin ağırlıklarla ortalaması alınır:</p>
           <ul class="ul">${COMPS.map((c) => `<li><b>${esc(c.ad)}:</b> ${esc(c.acik)}</li>`).join('')}</ul>
           <p>"En yüksek" ve "en düşük" bu sitedeki tüm kategorilere göre belirlenir; tablodaki filtreler puanı değiştirmez. Bütün kategoriler bir ölçütte eşitse herkes o ölçütten 50 alır. Puan tam sayıya yuvarlanır; eşitlikte 1-2 yıldız payı düşük olan öne geçer.</p>
           <p>Hazır ağırlıklar (sırasıyla: ${COMPS.map((c) => esc(c.ad.toLocaleLowerCase('tr'))).join(', ')}):</p>
           <ul class="ul">${PRESETS.map((p) => `<li><b>${esc(p.ad)}:</b> <span class="num">${p.w.join(', ')}</span>. ${esc(p.acik)}</li>`).join('')}<li><b>${esc(OZEL.ad)}:</b> her ölçüt 0-5. Hepsini 0 yaparsan eşit ağırlık kullanılır.</li></ul>
-          <p>Giriş puanı bir okuma kolaylığıdır, pazar tahmini değildir: kategorileri yalnızca örneklemdeki ürünlere bakarak birbirine göre sıralar.</p></section>
-        <section><h2>Sınırlar</h2>
-          <ul class="ul"><li>Veri tek bir anın görüntüsü; zamanla değişebilir.</li><li>Tek pazar yeri: yalnızca Trendyol.</li><li>Az yorumu olan üründe örnek küçük; o ürünün oranlarını dikkatle oku.</li></ul></section>
+          <p>Giriş puanı bir okuma kolaylığıdır, pazar tahmini değildir: kategorileri yalnızca örneklemdeki ürünlere bakarak birbirine göre sıralar.</p>${E}
+        ${S('m-sinirlar', `Sınırlar`)}
+          <ul class="ul"><li>Veri tek bir anın görüntüsü; zamanla değişebilir.</li><li>Tek pazar yeri: yalnızca Trendyol.</li><li>Az yorumu olan üründe örnek küçük; o ürünün oranlarını dikkatle oku.</li></ul>${E}
         <p><a class="btn" href="#/">Kategorilere git</a></p>
       </article>`;
+    app.innerHTML = html.replace('<!--toc-->', `<nav class="m-toc" id="m-toc" aria-label="Bu sayfada"><h2 class="label">Bu sayfada</h2><ul>${keys.map((k) => `<li><a href="#/yontem/${k}">${esc(M_TOC[k] || k)}</a></li>`).join('')}</ul></nav>`);
+    foldSync = () => app.querySelectorAll('.m-sec').forEach((d) => { d.open = !phoneMQ.matches || mKey(d.id) === sec; });
   }
 
   // ---- yönlendirme, kaydırma, yükleme ----
@@ -1931,7 +1949,7 @@
       else if (h[0] === 'urun') notFound('Bu adres bu sitede yok.');
       else if (h[0] === 'karsilastir') await compare(isStale);
       else if (h[0] === 'ara') await search(h.slice(1).join('/').trim(), isStale);
-      else if (h[0] === 'yontem') await method(isStale);
+      else if (h[0] === 'yontem') await method(isStale, h[1]);
       else if (h[0] === 'firsat') await firsat(isStale);
       else await home(isStale);
     } catch (e) {
@@ -1944,7 +1962,7 @@
     app.removeAttribute('aria-busy');
     scrollTo(0, opts.keep ? keepY : restoreY);
     // Yeni açılışta ilgili bölüme git: #/yontem/<bölüm>, süzgeçli kategori adresinde ürün listesi, ürün sayfasında açılan konu
-    if (h[0] === 'yontem' && h[1]) pendingFocus = 'y-' + h[1];
+    if (h[0] === 'yontem' && h[1]) pendingFocus = mSec(h[1])?.id || null;
     // Varış vurgusu yalnızca yeni açılışta (bağlantı, yapıştırılan ya da doğrudan açılan adres); geri/ileri ve yenilemede kayıtlı kaydırma yeri bozulmasın diye yok
     const arr = fresh && !opts.keep ? arrivalFor(h, nav) : null;
     if (arr && arr.focus) pendingFocus = arr.focus;

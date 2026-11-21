@@ -89,6 +89,7 @@ export default async function ({ browser, base: BASE, check }) {
   await pg.close();
 
   await phoneCategory(browser, BASE, check);
+  await methodAndFirsat(browser, BASE, check);
 }
 
 // Görünür: kutusu var ve kapalı bir <details> ya da hidden="until-found" içinde değil (checkVisibility içerik görünürlüğüne de bakar)
@@ -155,5 +156,58 @@ async function phoneCategory(browser, BASE, check) {
   await dk.goto(BASE + '#/kategori/filtre-kahve', 1500);
   const d = await dk.eval(`(()=>{const V=${VIS};const lk=[...document.querySelectorAll('.liked .hb')];return {vis:[...document.querySelectorAll('#pgrid .pc')].filter(V).length, more:!!document.getElementById('p-more'), ck:document.getElementById('ck-fold')?.open, like:lk.filter(V).length===lk.length, cols:getComputedStyle(document.getElementById('pgrid')).gridTemplateColumns.split(' ').length}})()`);
   check('masaüstü: ızgara ve açık liste değişmedi', d.vis === 13 && !d.more && d.ck === true && d.like && d.cols >= 3, JSON.stringify(d));
+  await dk.close();
+}
+
+// Görev 5: Yöntem içindekiler ve katlanır bölümler; fırsat telefonda kısa satırlar
+async function methodAndFirsat(browser, BASE, check) {
+  const ph = await browser.page({ width: 375, height: 812, mobile: true });
+  await ph.goto(BASE + '#/yontem', 1500);
+  const toc = await ph.eval(`(()=>{const a=[...document.querySelectorAll('#m-toc a')];const s=[...document.querySelectorAll('.m-sec')];
+    return {n:a.length, secs:s.length, hrefs:a.map(x=>x.getAttribute('href')), bad:a.map(x=>x.getAttribute('href')).filter(h=>!/^#\\/yontem\\/[a-z-]+$/.test(h)), open:s.filter(d=>d.open).map(d=>d.id), label:document.getElementById('m-toc')?.getAttribute('aria-label')}})()`);
+  check('yöntem: içindekiler', toc.n > 0 && toc.n === toc.secs && !toc.bad.length && toc.label === 'Bu sayfada', JSON.stringify(toc));
+  check('yöntem: telefonda bölümler kapalı', toc.secs > 0 && !toc.open.length, JSON.stringify(toc.open));
+  const ysh = await ph.eval('document.documentElement.scrollHeight / 812');
+  console.log(`  ölçüm: #/yontem telefonda ${ysh.toFixed(1)} ekran (v21: 11,2; hedef en çok 5)`);
+  check('ölçüm: yöntem telefonda kayıt', ysh > 0, ysh);
+
+  await ph.goto('about:blank', 50); await ph.goto(BASE + '#/yontem/oran', 200);
+  const seen = await until(ph, `!!document.querySelector('#y-oran[data-arriving]')`);
+  const o = await ph.eval(`(()=>{const d=document.getElementById('y-oran');const h=d.querySelector('summary h2').getBoundingClientRect();return {open:d.open, inView:h.top>=0&&h.bottom<=innerHeight, others:[...document.querySelectorAll('.m-sec[open]')].map(x=>x.id)}})()`);
+  check('yöntem: adresteki bölüm açık ve vurgulu', seen && o.open && o.inView && o.others.length === 1, JSON.stringify({ seen, o }));
+
+  await ph.goto('about:blank', 50); await ph.goto(BASE + '#/yontem', 1300);
+  await ph.mclick('#m-toc a[href="#/yontem/alinti"]', 1200);
+  const al = await ph.eval(`({h:location.hash, open:document.getElementById('y-alinti')?.open})`);
+  check('yöntem: içindekilerden tıklayınca açılır', al.h === '#/yontem/alinti' && al.open === true, JSON.stringify(al));
+
+  // fırsat: ilk üç kart kalır, kalan her kategori kısa satır
+  await ph.goto('about:blank', 50); await ph.goto(BASE + '#/firsat', 1800);
+  const fz = await ph.eval(`(()=>{const V=${VIS};const r=[...document.querySelectorAll('.fz-row')];const f=r[0];
+    return {n:r.length, open:r.filter(d=>d.open).length, t3:[...document.querySelectorAll('#t3 .t3c')].filter(V).length, first:f?f.querySelector('summary').textContent.replace(/\\s+/g,' ').trim():'', row:f?f.closest('[data-row]').dataset.row:'', h:f?f.getBoundingClientRect().height:0}})()`);
+  const rows = await ph.eval(`(async()=>{const reg=(await (await fetch('data/kategoriler.json')).json()).filter(c=>c.durum==='hazir');const out=[];
+    for(const c of reg){const j=await (await fetch('data/'+c.id+'.json')).json();const y=j.urunler.reduce((a,p)=>a+p.yazili,0),d=j.urunler.reduce((a,p)=>a+p.yildiz[0]+p.yildiz[1],0);out.push({id:c.id,ad:j.ad||c.ad,dusuk:d/y})}return out})()`);
+  const firstAd = (rows.find((r) => r.id === fz.row) || {}).ad || '';
+  const score = await ph.eval(`document.querySelector('.fc[data-row="${fz.row}"] .fz-score')?.textContent.trim()`);
+  check('fırsat: telefonda kısa satırlar', fz.n === 12 && fz.open === 0 && fz.t3 === 3 && fz.first.includes(firstAd) && !!score && fz.first.includes(score) && fz.h < 90, JSON.stringify({ fz, firstAd, score }));
+  await ph.mclick('.fz-row > summary', 500);
+  const det = await ph.eval(`(()=>{const V=${VIS};const f=document.querySelector('.fz-row');const b=f.querySelector('.ft-exp');return {open:f.open, btn:V(b)&&b.textContent.includes('Puan ayrıntısı')}})()`);
+  check('fırsat: satır açılınca ayrıntı', det.open && det.btn, JSON.stringify(det));
+  await ph.eval(`(()=>{const s=document.getElementById('fm-sort');s.value='dusuk';s.dispatchEvent(new Event('change',{bubbles:true}));return true})()`);
+  await new Promise((r) => setTimeout(r, 400));
+  const top = [...rows].sort((a, b) => b.dusuk - a.dusuk)[0];
+  const f2 = await ph.eval(`document.querySelector('.fz-row')?.closest('[data-row]').dataset.row`);
+  check('fırsat: sıralama korunur', f2 === top.id && f2 !== fz.row, JSON.stringify({ f2, want: top.id, before: fz.row }));
+  await ph.goto('about:blank', 50); await ph.goto(BASE + '#/firsat', 1800);
+  const fsh = await ph.eval('document.documentElement.scrollHeight / 812');
+  console.log(`  ölçüm: #/firsat telefonda ${fsh.toFixed(1)} ekran (v21: 7,8; hedef en çok 5)`);
+  check('ölçüm: fırsat telefonda kayıt', fsh > 0, fsh);
+  check('yöntem ve fırsat: konsol temiz', !ph.errors.length && !ph.logs.length, JSON.stringify([ph.errors, ph.logs]));
+  await ph.close();
+
+  const dk = await browser.page({ width: 1280, height: 900 });
+  await dk.goto(BASE + '#/yontem', 1500);
+  const all = await dk.eval(`(()=>{const s=[...document.querySelectorAll('.m-sec')];return {n:s.length, open:s.filter(d=>d.open).length}})()`);
+  check('yöntem: masaüstünde hepsi açık', all.n > 0 && all.open === all.n, JSON.stringify(all));
   await dk.close();
 }

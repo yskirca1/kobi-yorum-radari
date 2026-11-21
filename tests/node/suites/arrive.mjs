@@ -111,6 +111,8 @@ export default async function ({ browser, base: BASE, check, out }) {
     check(`${tag} focus unchanged (y-sikayet)`, r.a.active === 'y-sikayet', r.a.active);
     // yontem "Bu hesabı ürün ürün gör"
     await pg.hash('#/yontem', 900);
+    // v22: telefonda Yöntem bölümleri kapalı gelir; kullanıcı gibi önce bölüm başlığına dokunulur
+    if (mobile) await pg.mclick('#y-oran > summary', 300);
     await pg.mclick('#y-oran a[data-to="dokum"]', 900);
     await expectArr('Yöntem "Bu hesabı ürün ürün gör" → breakdown table card', (x) => x.tag === 'SECTION' && /hangi ürünlerden/.test(x.txt));
     // topic "other complaints" link
@@ -144,7 +146,9 @@ export default async function ({ browser, base: BASE, check, out }) {
     await expectArr('home reading → same reading on #/firsat', (x) => x.tag === 'LI' && 'read:' + x.fig === readK);
     // ---------- #/firsat ----------
     const cellSel = mobile ? '.fc[data-row="filtre-kahve"] .fc-m' : '#ft-body tr[data-row="filtre-kahve"]';
-    const firsatCell = async (sub) => { await pg.hash('#/firsat', 1300); return pg.mclick(`${cellSel} ${sub}`, 1000); };
+    // v22: telefonda her kategori kısa satır; ayrıntı satıra dokununca açılır
+    const openRow = async () => { if (mobile) await pg.mclick('.fc[data-row="filtre-kahve"] .fz-row > summary', 300); };
+    const firsatCell = async (sub) => { await pg.hash('#/firsat', 1300); await openRow(); return pg.mclick(`${cellSel} ${sub}`, 1000); };
     await firsatCell(`a[href="#/kategori/filtre-kahve?sirala=cok"]`);
     r = await expectArr('#/firsat 1-2 yıldız payı → category summary figure', (x) => x.fig === 'dusuk');
     check(`${tag} firsat→figure focus = sec-ozet`, r.a.active === 'sec-ozet', r.a.active);
@@ -156,7 +160,7 @@ export default async function ({ browser, base: BASE, check, out }) {
     await expectArr('#/firsat büyük marka yorum payı (no figure on category page) → list heading + chip', (x) => x.id === 'urun-t' || x.cls.includes('chip'), { many: true });
     await firsatCell(`a[href^="#/kategori/filtre-kahve/konu/"]`);
     await expectArr('#/firsat 1 numaralı şikâyet → topic headline', (x) => x.cls.includes('tp-lead'));
-    await pg.hash('#/firsat', 1300);
+    await pg.hash('#/firsat', 1300); await openRow();
     await pg.mclick(mobile ? '.fc[data-row="filtre-kahve"] .fc-name a' : '#ft-body tr[data-row="filtre-kahve"] th a', 1000);
     await expectNone('#/firsat category name → category');
     // ---------- compare ----------

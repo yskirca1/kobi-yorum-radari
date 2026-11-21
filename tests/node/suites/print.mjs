@@ -35,7 +35,16 @@ export default async function ({ browser, base: BASE, check, out }) {
   const pk = await m.eval(`(()=>{const V=${box};return {rows:[...document.querySelectorAll('.ptable tbody tr')].filter(V).length, ck:[...document.querySelectorAll('#sec-kontrol li')].filter(V).length}})()`);
   check('yazdırma: kapalı bölümler açık basılır', pk.rows === 13 && pk.ck === 11, JSON.stringify(pk));
   await m.media('');
+  // Yöntem bölümleri ve #/firsat tablosu telefonda yazdırmada açık
+  await m.goto(BASE + '#/yontem', 1500);
+  await m.media('print'); await sleep(200);
+  const ym = await m.eval(`(()=>{const V=${box};const s=[...document.querySelectorAll('.m-sec')];return {n:s.length, shown:s.filter(d=>{const b=d.querySelector('.m-body');return b&&V(b)}).length}})()`);
+  await m.media('');
   await m.goto(BASE + '#/firsat', 1500);
+  await m.media('print'); await sleep(200);
+  const ft = await m.eval(`(()=>{const V=${box};return [...document.querySelectorAll('#ft-body tr[data-row]')].filter(V).length})()`);
+  check('yazdırma: yöntem ve fırsat açık basılır', ym.n > 0 && ym.shown === ym.n && ft === 12, JSON.stringify({ ym, ft }));
+  await m.media('');
   const fbytes = await m.pdf(out + 'print-firsat-375.pdf');
   check('#/firsat telefon genişliği: PDF üretildi', fbytes > 20000, fbytes);
   await m.media('print'); await sleep(200);
