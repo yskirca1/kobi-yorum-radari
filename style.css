@@ -3,7 +3,12 @@
    v22 kimlik: lacivert ana renk (tıklanır), kehribar yalnızca birincil çağrı ve yıldız, Fira Sans. Ayrıntı: design-system/reviewradar/MASTER.md.
    Renkler anlam adlarıyla (--color-*) her temada tanımlanır; bileşenler yalnızca değişken kullanır, ham renk kodu yalnızca bu tema bloklarında durur.
    Beş tema (Açık, Krem, Adaçayı, Koyu, Gece mavisi). Tema seçicileri öznitelik seçicisidir (yalnızca :root değil): tema menüsündeki örnekler o temayı gösterebilsin. */
-:root { --img-dim: none; --font: "Fira Sans", "Segoe UI", system-ui, sans-serif; --r: 12px; --r-sm: 8px; }
+/* Yazı tipi gelmezse (ya da gelene kadar) yerel yedek: ölçüleri Fira Sans'a yaklaştırılmış Segoe UI / Arial; yazı tipi gelince satırlar belirgin kaymaz.
+   size-adjust kalınlığa göre ayrı: Segoe UI kalın yazısı Fira Sans'tan geniş. Oranlar aynı metnin genişliği ölçülerek bulundu. */
+@font-face { font-family: "Fira Sans Fallback"; src: local("Segoe UI"), local("SegoeUI"), local("Arial"), local("ArialMT"); font-weight: 300 500; size-adjust: 102.3%; ascent-override: 91.4%; descent-override: 25.9%; line-gap-override: 0%; }
+@font-face { font-family: "Fira Sans Fallback"; src: local("Segoe UI Semibold"), local("SegoeUI-Semibold"), local("Arial Bold"), local("Arial-BoldMT"); font-weight: 600; size-adjust: 100%; ascent-override: 93.5%; descent-override: 26.5%; line-gap-override: 0%; }
+@font-face { font-family: "Fira Sans Fallback"; src: local("Segoe UI Bold"), local("SegoeUI-Bold"), local("Arial Bold"), local("Arial-BoldMT"); font-weight: 700 900; size-adjust: 95.8%; ascent-override: 97.6%; descent-override: 27.7%; line-gap-override: 0%; }
+:root { --img-dim: none; --font: "Fira Sans", "Fira Sans Fallback", "Segoe UI", system-ui, sans-serif; --r: 12px; --r-sm: 8px; }
 :root, [data-theme="acik"] {
   --color-primary: #1E40AF; --color-primary-hover: #1E3A8A; --color-on-primary: #FFFFFF; --color-secondary: #3B82F6; --color-primary-soft: #DBEAFE;
   --color-accent: #D97706; --color-accent-hover: #F59E0B; --color-on-accent: #000000; --color-star: #D97706;
@@ -1333,3 +1338,7 @@ details[open] > summary .fold-ic { transform: translateY(2px) rotate(-135deg); }
 .stars-leg i.sb { width: 10px; height: 10px; border-radius: 2px; }
 .stars-leg b { font-weight: 600; color: var(--ink); }
 @media print { .stars-bar, .stars-leg i.sb { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+
+/* v22 dayanıklılık: fotoğraf gelmezse kutu aynı boyda kalır, içinde nötr ürün simgesi */
+.img-ph svg { width: min(44px, 46%); height: auto; color: var(--muted); fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.cat-img .img-ph, .pc-img .img-ph, .prod-img .img-ph, .sr-img .img-ph, .ct-img .img-ph { padding: 0; font-size: 0; }

@@ -278,16 +278,16 @@
     if (!e.target.closest('.tip-box')) document.querySelectorAll('.tip[aria-expanded="true"]').forEach((x) => setTip(x, false));
   });
 
-  // Görsel yüklenemezse tarayıcının kırık simgesi yerine nötr yer tutucu
+  // Görsel yüklenemezse (tek ortak yol): tarayıcının kırık simgesi yerine aynı kutuda nötr ürün simgesi; kutunun ölçüsü CSS'te sabit, sayfa oynamaz.
+  // Süs görseli (alt="") yer tutucusu da gizli kalır; adı olan görselde (ürün sayfası) ad ekran okuyucuya söylenir.
   document.addEventListener('error', (e) => {
     const i = e.target;
     if (!(i instanceof HTMLImageElement) || i.dataset.failed) return;
     i.dataset.failed = '1';
     const ph = document.createElement('span');
     ph.className = 'img-ph';
-    ph.setAttribute('role', 'img');
-    ph.setAttribute('aria-label', i.alt ? i.alt + ' (görsel yüklenemedi)' : 'Görsel yüklenemedi');
-    if (!i.closest('.cmpbar')) ph.textContent = 'Görsel yok';
+    if (i.alt) { ph.setAttribute('role', 'img'); ph.setAttribute('aria-label', i.alt + ' (görsel yüklenemedi)'); } else ph.setAttribute('aria-hidden', 'true');
+    ph.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">${ICONS.urun}</svg>`;
     i.replaceWith(ph);
   }, true);
 

@@ -91,6 +91,7 @@ export default async function ({ browser, base: BASE, check }) {
   await phoneCategory(browser, BASE, check);
   await methodAndFirsat(browser, BASE, check);
   await homeAndStars(browser, BASE, check);
+  await resilience(browser, BASE, check);
 }
 
 // Görünür: kutusu var ve kapalı bir <details> ya da hidden="until-found" içinde değil (checkVisibility içerik görünürlüğüne de bakar)
@@ -245,3 +246,40 @@ async function homeAndStars(browser, BASE, check) {
   await pg.close();
 }
 
+// Görev 7: fotoğraf ya da yazı tipi gelmezse sayfa bozulmuyor; yükleme sırasında sayfa oynamıyor
+async function resilience(browser, BASE, check) {
+  const pause = (ms) => new Promise((r) => setTimeout(r, ms));
+  const routes = ['#/', '#/kategori/termos'];
+  const eager = `document.querySelectorAll('img[loading=lazy]').forEach(i=>{i.loading='eager'}); true`;
+  const boxes = `[...document.querySelectorAll('.cat, .pc')].map(e=>Math.round(e.getBoundingClientRect().height*10)/10)`;
+  const lead = `(()=>{const e=document.querySelector('#app .answer, #app .lead');const r=e.getBoundingClientRect();const lh=parseFloat(getComputedStyle(e).lineHeight);return {h:r.height, lines:Math.round(r.height/lh)}})()`;
+  const open = async (pg, r, wait = 2500) => { await pg.goto('about:blank', 50); await pg.goto(BASE + '?r=' + Date.now() + r, 300); await pg.eval(eager); await pause(wait); };
+  for (const [w, h, mob] of [[375, 812, true], [1280, 900, false]]) {
+    const tag = w < 700 ? 'telefon' : 'masaüstü';
+    const ok = await browser.page({ width: w, height: h, mobile: mob });
+    const noImg = await browser.page({ width: w, height: h, mobile: mob, block: ['dsmcdn.com'] });
+    const noFont = await browser.page({ width: w, height: h, mobile: mob, block: ['fonts.gstatic.com'] });
+    for (const r of routes) {
+      await open(ok, r);
+      const base = { b: await ok.eval(boxes), l: await ok.eval(lead) };
+      // kayma: ilk 4 saniyedeki layout-shift toplamı (kullanıcı girdisi olmadan)
+      await ok.goto('about:blank', 50); await ok.goto(BASE + '?c=' + Date.now() + r, 4000);
+      const cls = await ok.eval(`new Promise(res=>{let s=0;new PerformanceObserver(l=>{for(const e of l.getEntries()) if(!e.hadRecentInput&&e.startTime<4000) s+=e.value; res(s)}).observe({type:'layout-shift',buffered:true}); setTimeout(()=>res(s),300)})`);
+      check(`kayma yok: ${tag} ${r}`, cls < 0.1, cls.toFixed(4));
+
+      await open(noImg, r, 3500);
+      const ph = await noImg.eval(`(()=>{const B=[...document.querySelectorAll('.cat-img, .pc-img, .prod-img')];
+        return {n:B.length, ph:B.filter(b=>b.querySelector('.img-ph svg')).length, broken:[...document.querySelectorAll('#app img')].filter(i=>i.getClientRects().length&&i.complete&&!i.naturalWidth).length,
+          aria:B.every(b=>{const p=b.querySelector('.img-ph');return !p||p.getAttribute('aria-hidden')==='true'||p.getAttribute('role')==='img'})}})()`);
+      check(`fotoğraf yok: yer tutucu (${tag} ${r})`, ph.n > 0 && ph.ph === ph.n && !ph.broken && ph.aria, JSON.stringify(ph));
+      const b2 = await noImg.eval(boxes);
+      check(`fotoğraf yok: kutu aynı (${tag} ${r})`, b2.length === base.b.length && b2.every((x, i) => Math.abs(x - base.b[i]) <= 1), JSON.stringify({ base: base.b, now: b2 }));
+
+      await open(noFont, r, 3000);
+      const f = await noFont.eval(`({fira:document.fonts.check('1rem "Fira Sans"'), l:${lead}})`);
+      check(`yazı tipi yok: sayfa okunur (${tag} ${r})`, f.fira === false && f.l.h > 0 && Math.abs(f.l.lines - base.l.lines) <= 1, JSON.stringify({ f, base: base.l }));
+    }
+    check(`fotoğraf ve yazı tipi yok: konsol temiz (${tag})`, ![ok, noImg, noFont].some((p) => p.errors.length), JSON.stringify([ok.errors, noImg.errors, noFont.errors]));
+    for (const p of [ok, noImg, noFont]) await p.close();
+  }
+}

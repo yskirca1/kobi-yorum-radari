@@ -56,7 +56,8 @@ export async function launch({ realImages = false } = {}) {
       ws.send(JSON.stringify({ id: i, method, params, sessionId }));
     });
     const browser = {
-      async page({ width = 1280, height = 900, mobile = false, scheme = null } = {}) {
+      // block: bu parçaları içeren istekler başarısız sayılır (ör. ['dsmcdn.com'] fotoğraf gelmiyor, ['fonts.gstatic.com'] yazı tipi gelmiyor)
+      async page({ width = 1280, height = 900, mobile = false, scheme = null, block = [] } = {}) {
         const { browserContextId } = await send('Target.createBrowserContext');
         const { targetId } = await send('Target.createTarget', { url: 'about:blank', browserContextId });
         const { sessionId } = await send('Target.attachToTarget', { targetId, flatten: true });
@@ -68,11 +69,15 @@ export async function launch({ realImages = false } = {}) {
           if (m.method === 'Runtime.consoleAPICalled' && ['error', 'warning', 'warn'].includes(m.params.type)) logs.push(m.params.type + ': ' + m.params.args.map((a) => a.value ?? a.description).join(' '));
           if (m.method === 'Log.entryAdded' && m.params.entry.level === 'error' && !/dsmcdn|fonts\.g/.test(m.params.entry.url || '')) logs.push('log: ' + m.params.entry.text + ' ' + (m.params.entry.url || ''));
           if (m.method === 'Fetch.requestPaused') {
+            const u = m.params.request.url;
+            if (block.some((b) => u.includes(b))) { s('Fetch.failRequest', { requestId: m.params.requestId, errorReason: 'Failed' }).catch(() => {}); return; }
+            if (realImages) { s('Fetch.continueRequest', { requestId: m.params.requestId }).catch(() => {}); return; }
             s('Fetch.fulfillRequest', { requestId: m.params.requestId, responseCode: 200, responseHeaders: [{ name: 'Content-Type', value: 'image/svg+xml' }], body: Buffer.from(SVG).toString('base64') }).catch(() => {});
           }
         });
         await s('Runtime.enable'); await s('Page.enable'); await s('Log.enable');
-        if (!realImages) await s('Fetch.enable', { patterns: [{ urlPattern: '*dsmcdn.com*' }, { urlPattern: '*trendyol.com*' }] });
+        const pats = [...(realImages ? [] : ['*dsmcdn.com*', '*trendyol.com*']), ...block.map((b) => `*${b}*`)];
+        if (pats.length) await s('Fetch.enable', { patterns: pats.map((urlPattern) => ({ urlPattern })) });
         const pg = {
           s, errors, logs,
           async size(w, h, mob = false) {
