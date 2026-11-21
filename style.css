@@ -11,7 +11,7 @@
 :root { --img-dim: none; --font: "Fira Sans", "Fira Sans Fallback", "Segoe UI", system-ui, sans-serif; --r: 12px; --r-sm: 8px; }
 :root, [data-theme="acik"] {
   --color-primary: #1E40AF; --color-primary-hover: #1E3A8A; --color-on-primary: #FFFFFF; --color-secondary: #3B82F6; --color-primary-soft: #DBEAFE;
-  --color-accent: #D97706; --color-accent-hover: #F59E0B; --color-on-accent: #000000; --color-star: #D97706;
+  --color-accent: #D97706; --color-accent-hover: #F59E0B; --color-on-accent: #000000; --color-star: #B45309;
   --color-bg: #F8FAFC; --color-surface: #FFFFFF; --color-surface-muted: #E9EEF6; --color-band: #FFFFFF;
   --color-text: #0F172A; --color-text-2: #334155; --color-text-muted: #475569;
   --color-border: #DBEAFE; --color-border-strong: #7C8BA1; --color-track: #E2E8F0; --color-focus: #1E40AF;
@@ -27,7 +27,7 @@
 }
 [data-theme="krem"] {
   --color-primary: #1E40AF; --color-primary-hover: #1E3A8A; --color-on-primary: #FFFFFF; --color-secondary: #3B82F6; --color-primary-soft: #DFE6F5;
-  --color-accent: #D97706; --color-accent-hover: #F59E0B; --color-on-accent: #000000; --color-star: #B45309;
+  --color-accent: #D97706; --color-accent-hover: #F59E0B; --color-on-accent: #000000; --color-star: #A15C07;
   --color-bg: #F5F0E6; --color-surface: #FFFCF5; --color-surface-muted: #EDE6D8; --color-band: #FFFCF5;
   --color-text: #1C1917; --color-text-2: #3F3A35; --color-text-muted: #57514A;
   --color-border: #E6DCCB; --color-border-strong: #8C8273; --color-track: #E6DCCB; --color-focus: #1E40AF;
@@ -43,7 +43,7 @@
 }
 [data-theme="adacayi"] {
   --color-primary: #1E40AF; --color-primary-hover: #1E3A8A; --color-on-primary: #FFFFFF; --color-secondary: #3B82F6; --color-primary-soft: #DCE5F3;
-  --color-accent: #D97706; --color-accent-hover: #F59E0B; --color-on-accent: #000000; --color-star: #B45309;
+  --color-accent: #D97706; --color-accent-hover: #F59E0B; --color-on-accent: #000000; --color-star: #A15C07;
   --color-bg: #ECF1EC; --color-surface: #FAFCFA; --color-surface-muted: #E1E8E2; --color-band: #FAFCFA;
   --color-text: #142019; --color-text-2: #33433A; --color-text-muted: #4A5950;
   --color-border: #D3DED5; --color-border-strong: #7F9086; --color-track: #D7E1D9; --color-focus: #1E40AF;
@@ -463,7 +463,7 @@ body.drawer-open { overflow: hidden; }
 .ftable tbody tr:last-child th, .ftable tbody tr:last-child td { border-bottom: 0; }
 .ft-sort { font: inherit; color: inherit; background: none; border: 0; padding: 2px 0; cursor: pointer; display: inline-flex; align-items: baseline; gap: 4px; text-align: inherit; }
 .ft-sort:hover { color: var(--ink); }
-.ft-ar { font-size: .8em; opacity: .45; }
+.ft-ar { font-size: max(.8em, 12px); opacity: .45; }
 th[aria-sort] .ft-sort { color: var(--ink); font-weight: 600; }
 th[aria-sort] .ft-ar { opacity: 1; color: var(--brand); }
 .mbar { display: block; width: 72px; height: 4px; margin: 6px 0 0 auto; border-radius: 2px; background: var(--track); overflow: hidden; }
@@ -478,7 +478,7 @@ th[aria-sort] .ft-ar { opacity: 1; color: var(--brand); }
     --color-bg: #ffffff; --color-surface-muted: #f5f7fb; --color-surface: #ffffff; --color-band: #ffffff;
     --color-text: #0f172a; --color-text-2: #334155; --color-text-muted: #475569; --color-border: #dfe4ea; --color-border-strong: #cbd5e1;
     --color-primary: #1E40AF; --color-secondary: #3B82F6; --color-on-primary: #ffffff; --color-primary-soft: #e8eefb; --color-focus: #1E40AF;
-    --color-neg: #c2341f; --color-neg-soft: #fdeeec; --color-neg-bar: #c2341f; --color-on-neg: #ffffff; --color-star: #D97706; --color-track: #e3e8ee;
+    --color-neg: #c2341f; --color-neg-soft: #fdeeec; --color-neg-bar: #c2341f; --color-on-neg: #ffffff; --color-star: #B45309; --color-track: #e3e8ee;
     --color-like: #2f6b2b; --color-like-bar: #4e8a3a; --color-like-soft: #e5eede; --color-bar-n: #8794a7; --color-accent: #D97706; --color-on-accent: #000000;
     --logo-bubble: #1E40AF; --logo-fg: #FFFFFF; --logo-ink: #0F172A; --logo-accent: #1E40AF; --img-bg: #ffffff;
     --shadow-sm: none; --shadow: none; --shadow-lg: none; --shadow-up: none; color-scheme: light;
@@ -642,7 +642,7 @@ th[aria-sort] .ft-ar { opacity: 1; color: var(--brand); }
 .secnav button:hover { color: var(--ink); }
 .secnav button[aria-current] { color: var(--ink); border-bottom-color: var(--brand); }
 .secnav button:focus-visible { outline-offset: -2px; }
-.jump { scroll-margin-top: calc(var(--top-h, 58px) + var(--secnav-h) + 14px); }
+.jump { scroll-margin-top: 6px; }
 .jump:focus { outline: none; }
 .fact-h { font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; }
 .fact-seg { margin: 0; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 16px 48px; }
@@ -778,7 +778,7 @@ th[aria-sort] .ft-ar { opacity: 1; color: var(--brand); }
 .sr-more { font-size: .88rem; }
 .sr-fail { margin-bottom: 20px; }
 
-.konu-box { margin: 0 0 20px; padding: 20px 24px; display: grid; gap: 10px; border: 1px solid var(--line); border-left: 3px solid var(--neg-bar); border-radius: var(--r); background: var(--panel); scroll-margin-top: calc(var(--top-h, 58px) + var(--secnav-h) + 14px); }
+.konu-box { margin: 0 0 20px; padding: 20px 24px; display: grid; gap: 10px; border: 1px solid var(--line); border-left: 3px solid var(--neg-bar); border-radius: var(--r); background: var(--panel); scroll-margin-top: 6px; }
 .konu-box:focus { outline: none; }
 .konu-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
 .konu-box h2 { font-size: 1.3rem; }
@@ -980,7 +980,7 @@ a.go:hover::after, .go-row:hover .go-v::after, .hb.go-row:hover .v::after { colo
 }
 
 /* ürün sayfası: açılan konu kartı */
-.pk-card { grid-column: 1 / -1; border-left: 3px solid var(--neg-bar); scroll-margin-top: calc(var(--top-h, 58px) + 14px); }
+.pk-card { grid-column: 1 / -1; border-left: 3px solid var(--neg-bar); scroll-margin-top: 6px; }
 .pk-card:has(.q.pos), .pk-card.pos { border-left-color: var(--like-bar); }
 .pk-card:focus { outline: none; }
 .pk-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px 16px; flex-wrap: wrap; }
@@ -1175,7 +1175,7 @@ h1.page-name { font-size: 1.3rem; font-weight: 600; letter-spacing: -0.01em; lin
   .hsearch::before { left: 14px; }
   .hsearch button { padding: 0 18px; }
   .grammar { flex-direction: column; gap: 6px; padding: 14px 0 22px; }
-  .sn-n { width: 20px; height: 20px; font-size: .7rem; }
+  .sn-n { width: 20px; height: 20px; font-size: .72rem; }
   .secnav button { gap: 5px; }
   .t3c { padding: 14px 16px; }
 }
@@ -1233,7 +1233,7 @@ details[open] > summary .fold-ic { transform: translateY(2px) rotate(-135deg); }
   .pc-body, .pc-meta { display: contents; }
   .pc-name { grid-area: name; align-self: start; min-height: 0; font-size: .9rem; line-height: 1.3; }
   .pc .stars { grid-area: stars; font-size: .82rem; white-space: nowrap; min-width: 0; }
-  .pc .seg { grid-area: seg; justify-self: end; font-size: .62rem; padding: 1px 7px; white-space: nowrap; }
+  .pc .seg { grid-area: seg; justify-self: end; font-size: .72rem; letter-spacing: .03em; padding: 1px 7px; white-space: nowrap; }
   .pc-meta div { grid-area: dusuk; justify-content: flex-start; gap: 6px; font-size: .82rem; white-space: nowrap; }
   .pc-meta div.stack { grid-area: sik; display: flex; align-items: center; gap: 5px; white-space: normal; }
   .pc-meta dd.neg { padding: 0 7px; }
@@ -1270,14 +1270,14 @@ details[open] > summary .fold-ic { transform: translateY(2px) rotate(-135deg); }
 .m-toc ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .m-toc a { display: inline-flex; align-items: center; min-height: 36px; padding: 6px 14px; border: 1px solid var(--line-2); border-radius: 999px; background: var(--panel); color: var(--brand); font-size: .9rem; font-weight: 500; }
 .m-toc a:hover { border-color: var(--brand); }
-.doc .m-sec { border-top: 1px solid var(--line); padding-top: 4px; scroll-margin-top: calc(var(--top-h, 58px) + 14px); }
+.doc .m-sec { border-top: 1px solid var(--line); padding-top: 4px; scroll-margin-top: 6px; }
 .m-sec:focus { outline: none; }
 .m-sum { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 44px; padding: 6px 0; border-radius: var(--r-sm); }
 .m-sum:hover h2 { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; text-decoration-color: var(--line-2); }
 .m-body { display: grid; gap: 10px; padding: 4px 0 8px; }
 .doc:has(.m-sec) { gap: 20px; }
 @media (max-width: 640px) {
-  .m-toc ul { gap: 8px 6px; }
+  .m-toc ul { gap: 8px; }
   .m-toc a { min-height: 44px; padding: 8px 12px; font-size: .88rem; }
   .doc:has(.m-sec) { gap: 8px; }
   .doc .m-toc { margin-bottom: 12px; }
@@ -1342,3 +1342,38 @@ details[open] > summary .fold-ic { transform: translateY(2px) rotate(-135deg); }
 /* v22 dayanıklılık: fotoğraf gelmezse kutu aynı boyda kalır, içinde nötr ürün simgesi */
 .img-ph svg { width: min(44px, 46%); height: auto; color: var(--muted); fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 .cat-img .img-ph, .pc-img .img-ph, .prod-img .img-ph, .sr-img .img-ph, .ct-img .img-ph { padding: 0; font-size: 0; }
+
+/* v22 kural denetimi (UI UX Pro Max, docs/superpowers/specs/2026-11-21-kural-denetimi.md).
+   Dokunmatik ekranda her hedef en az 44x44 px. Görünür boyutu değiştirmek yerleşimi büyütecekse görünmez dokunma alanı (::before) eklenir;
+   görünür çizgiler, odak halkası ve yerleşim aynı kalır. Düğme, seçim kutusu, süzgeç etiketi, ağırlık seçimi ve çubuk satırlarında gerçek yükseklik 44 px.
+   Yalnızca dokunmatik ekranda (pointer: coarse); fareyle görünüm değişmez. */
+@media (pointer: coarse) {
+  .logo { padding-block: 8px; margin-block: -8px; }
+  a.go, .top-link, .theme-btn, .crumbs a, .pnav a, .reads-all, .linkbtn, .ct-rm, .t3-a, .ext, .ex-chip, .chip, .cat-links a { position: relative; }
+  a.go::before, .top-link::before, .theme-btn::before, .crumbs a::before, .pnav a::before, .reads-all::before, .linkbtn::before, .ct-rm::before, .t3-a::before, .ext::before, .ex-chip::before, .chip::before, .cat-links a::before { content: ""; position: absolute; }
+  a.go::before { inset: -10px; }
+  .top-link::before, .reads-all::before, .ct-rm::before, .crumbs a::before, .pnav a::before { inset: -5px -4px; }
+  .theme-btn::before { inset: -6px -1px; }
+  .linkbtn::before { inset: -6px -4px; }
+  .t3-a::before { inset: -6px -8px; }
+  .ext::before { inset: -13px 0; }
+  /* tek başına duran yazı bağlantıları (geri bağlantısı, not satırı, alıntı etiketi, alıntısız ürün listesi) */
+  .tp-back a, .note a, .tp-noq li > a, .tp-how a, .q figcaption a { position: relative; }
+  .tp-back a::before, .note a::before, .tp-noq li > a:not(.ext)::before, .tp-how a::before, .q figcaption a::before { content: ""; position: absolute; inset: -14px 0; }
+  .ex-chip::before, .chip::before, .cat-links a::before { inset: -5px 0; }
+  .tip::after { inset: -12px; }
+  .btn, .btn.sm, select, .segctl span, .ff-c, .fg label, .hb.go-row { min-height: 44px; }
+  .tools select, .fsort-m select, .ff-c select { min-height: 44px; }
+  .hb.go-row { padding-block: 4px; }
+}
+/* Odak yapışkan başlığın (kategori sayfasında bölüm menüsünün de) altında ya da karşılaştırma çubuğunun arkasında kalmasın: tarayıcı odağı bu payla kaydırır.
+   Bölüme gitme (scrollIntoView) aynı payı kullanır; bölümlerin kendi scroll-margin'i yalnızca 6 px ek boşluk (önceki toplam aynı). */
+html { scroll-padding-top: calc(var(--top-h, 58px) + 8px); scroll-padding-bottom: calc(var(--cmpbar-h, 0px) + 8px); }
+html[data-page="kategori"] { scroll-padding-top: calc(var(--top-h, 58px) + var(--secnav-h) + 8px); }
+/* Uzun metin satırı en fazla yaklaşık 75 harf (masaüstünde Yöntem, notlar ve açıklamalar 90-105 harfe çıkıyordu) */
+.doc p, .doc .ul, .note, .step .note, .fp-note, .fs-note, .step-lead, .answer-sub, .tp-detail, .tp-how, .card > .muted, .pk-fig, .fs-desc, .tp-noq .muted { max-width: 60ch; }
+/* Fareyle de en az 24 px (WCAG 2.5.8): öneri ve kontrol listesi dayanaklarındaki yan yana bağlantılar ile ürün kartındaki şikâyet bağlantısı
+   satır içi dolguyla büyür (satır içi dolgu yerleşimi değiştirmez) */
+.recs .rec-ev a.go, .ck-ev a.go, .pc-meta dd a.go { padding-block: 4px; }
+/* hedefler arası en az 8 px (çip satırları) */
+.alan-f, .ff-alan, .segctl { gap: 8px; }

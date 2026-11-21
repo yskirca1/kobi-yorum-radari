@@ -93,6 +93,7 @@ export default async function ({ browser, base: BASE, check }) {
   await homeAndStars(browser, BASE, check);
   await resilience(browser, BASE, check);
   await copyText(browser, BASE, check);
+  await audit(browser, BASE, check);
 }
 
 // Görünür: kutusu var ve kapalı bir <details> ya da hidden="until-found" içinde değil (checkVisibility içerik görünürlüğüne de bakar)
@@ -318,3 +319,182 @@ async function copyText(browser, BASE, check) {
   await pg.close();
 }
 
+// Görev 9: UI UX Pro Max kural denetiminin ölçülebilen kuralları (docs/superpowers/specs/2026-11-21-kural-denetimi.md).
+const ALL_ROUTES = ['#/', '#/kategori/filtre-kahve', '#/kategori/filtre-kahve/konu/skt', '#/kategori/filtre-kahve/sevilen/lezzet', '#/urun/filtre-kahve/52915799',
+  '#/urun/filtre-kahve/52915799/konu/skt', '#/karsilastir', '#/ara/karaca', '#/firsat', '#/yontem', '#/kategori/yok'];
+// Bilerek 44 px'in altında bırakılanlar (seçici: neden). Denetim tablosunda "bilerek bırakıldı".
+const TOUCH_OK = {
+  'a.pc-name': 'telefonda ürün satırındaki ad (2 satır, 40 px); aynı ürüne giden 64x84 fotoğraf bağlantısı hemen solunda (WCAG 2.5.8 eşdeğer hedef). Satır 140 px altında kalsın diye ad büyütülmedi.',
+};
+// Dokunma alanı: öğenin kutusu, konumlu ::before/::after ile genişletilmiş alanı dahil (ör. "?" düğmesinin görünmez çerçevesi)
+// MIN 24 (fare, WCAG 2.5.8): küçük hedef, merkezine konan 24 px çaplı daire başka bir hedefe ya da başka küçük hedefin dairesine değmiyorsa geçer (aralık istisnası).
+const TOUCH = (MIN = 44) => `(()=>{
+  const SEL='a[href], button, summary, input:not([type=hidden]), select, label[for], label:has(input)';
+  const sel=e=>e.tagName.toLowerCase()+(e.id?'#'+e.id:'')+(typeof e.className==='string'&&e.className.trim()?'.'+e.className.trim().split(/\s+/)[0]:'');
+  const vis=e=>e.getClientRects().length>0&&e.checkVisibility({visibilityProperty:true,opacityProperty:true});
+  const blockOf=e=>{let x=e.parentElement;while(x&&getComputedStyle(x).display.startsWith('inline'))x=x.parentElement;return x};
+  const T=[];
+  for(const e of document.querySelectorAll(SEL)){
+    if(!e.closest('#app, .top')||!vis(e)) continue;
+    if(e.matches('input')&&e.closest('label')) continue;
+    if(e.matches('input')){const r=e.getBoundingClientRect(); if(r.width<=2||r.height<=2) continue;}
+    if(e.closest('[aria-hidden=true]')&&e.tabIndex<0) continue;
+    const r=e.getBoundingClientRect(); let L=r.left,Tp=r.top,R=r.right,B=r.bottom;
+    for(const ps of ['::before','::after']){const c=getComputedStyle(e,ps); if(c.content==='none'||c.position!=='absolute') continue;
+      let cb=e; if(getComputedStyle(e).position==='static'){cb=e.parentElement;while(cb&&getComputedStyle(cb).position==='static')cb=cb.parentElement;} if(!cb) continue;
+      const q=cb.getBoundingClientRect(),n=v=>parseFloat(v)||0;
+      L=Math.min(L,q.left+n(c.left));Tp=Math.min(Tp,q.top+n(c.top));R=Math.max(R,q.right-n(c.right));B=Math.max(B,q.bottom-n(c.bottom));}
+    const small=!(R-L>=${MIN}-.5&&B-Tp>=${MIN}-.5);
+    // metin içindeki satır içi bağlantı (WCAG 2.5.8 istisnası)
+    const inline=e.matches('a')&&getComputedStyle(e).display==='inline'&&(b=>b&&b.textContent.trim().length>e.textContent.trim().length+15)(blockOf(e));
+    T.push({e,r,small:small&&!inline,cx:(r.left+r.right)/2,cy:(r.top+r.bottom)/2});
+  }
+  const dist=(x,y,q)=>Math.hypot(Math.max(q.left-x,0,x-q.right),Math.max(q.top-y,0,y-q.bottom));
+  const out={};
+  for(const t of T){ if(!t.small) continue;
+    if(${MIN}<44){ const ok=T.every(o=>o===t||o.e.contains(t.e)||t.e.contains(o.e)||(dist(t.cx,t.cy,o.r)>=12&&(!o.small||Math.hypot(t.cx-o.cx,t.cy-o.cy)>=24))); if(ok) continue; }
+    const k=sel(t.e); if(!out[k]) out[k]=Math.round(t.r.width)+'x'+Math.round(t.r.height);
+  }
+  return out})()`;
+async function audit(browser, BASE, check) {
+  const pause = (ms) => new Promise((r) => setTimeout(r, ms));
+  const cmp = `(async()=>{const j=await (await fetch('data/filtre-kahve.json')).json();localStorage.setItem('kyr_cmp',JSON.stringify(j.urunler.slice(0,2).map(p=>({cat:'filtre-kahve',id:p.id}))));return true})()`;
+  // 1) dokunma alanı 44 px (telefon), 2) yazı en az 12 px (iki genişlik)
+  const MINTXT = `(()=>{const out={};for(const e of document.querySelectorAll('#app *')){if(!e.getClientRects().length||!e.checkVisibility()) continue;
+    if(![...e.childNodes].some(n=>n.nodeType===3&&n.textContent.trim())) continue; if(e.closest('.sr-only,.print-only')) continue;
+    const f=parseFloat(getComputedStyle(e).fontSize); if(f<11.95){const k=e.tagName.toLowerCase()+(typeof e.className==='string'&&e.className.trim()?'.'+e.className.trim().split(/\\s+/)[0]:''); out[k]=f.toFixed(1);}}return out})()`;
+  const small = {}, small24 = {}, tiny = {};
+  for (const [w, h, mob] of [[375, 812, true], [1280, 900, false]]) {
+    const pg = await browser.page({ width: w, height: h, mobile: mob });
+    await pg.goto(BASE + '#/', 300); await pg.eval(cmp);
+    for (const r of ALL_ROUTES) {
+      await pg.goto('about:blank', 50); await pg.goto(BASE + r, 1500);
+      await pg.eval('document.getAnimations().forEach(a=>a.finish()); true');
+      if (mob) {
+        const t = await pg.eval(TOUCH());
+        for (const [k, v] of Object.entries(t)) if (!TOUCH_OK[k]) (small[r] ||= {})[k] = v;
+        if (r === '#/kategori/filtre-kahve') {
+          await pg.mclick('#f-open', 500);
+          const f = await pg.eval(TOUCH());
+          for (const [k, v] of Object.entries(f)) if (!TOUCH_OK[k] && !(small[r] || {})[k]) (small[r + ' (süzgeç çekmecesi)'] ||= {})[k] = v;
+        }
+      } else {
+        // fareyle: WCAG 2.5.8 en az 24x24 px
+        const t = await pg.eval(TOUCH(24));
+        if (Object.keys(t).length) small24[r] = t;
+      }
+      const m = await pg.eval(MINTXT);
+      if (Object.keys(m).length) tiny[w + ' ' + r] = m;
+    }
+    await pg.close();
+  }
+  check('dokunma: 44 px (telefon, 11 sayfa türü)', !Object.keys(small).length, JSON.stringify(small));
+  check('dokunma: masaüstünde en az 24 px (WCAG 2.5.8)', !Object.keys(small24).length, JSON.stringify(small24));
+  check('yazı: en küçük boyut 12 px (11 sayfa türü, iki genişlik)', !Object.keys(tiny).length, JSON.stringify(tiny));
+
+  // 3) dokunma aralığı: bölüm menüsü, süzgeç çekmecesi, çip satırları; iki ayrı hedefin kutuları arasında en az 8 px
+  const GAP = (box) => `(()=>{const B=[...document.querySelectorAll(${JSON.stringify(box)})];const bad=[];
+    for(const b of B){const T=[...b.querySelectorAll('a[href],button,label,select')].filter(e=>e.getClientRects().length&&e.checkVisibility()&&!e.parentElement.closest('label'));
+      for(let i=0;i<T.length;i++)for(let j=i+1;j<T.length;j++){const a=T[i].getBoundingClientRect(),c=T[j].getBoundingClientRect();
+        if(T[i].contains(T[j])||T[j].contains(T[i])) continue;
+        const gx=Math.max(c.left-a.right,a.left-c.right),gy=Math.max(c.top-a.bottom,a.top-c.bottom);
+        if(Math.max(gx,gy)<7.5) bad.push((T[i].textContent.trim().slice(0,14))+' / '+(T[j].textContent.trim().slice(0,14))+' '+Math.round(Math.max(gx,gy)));}}
+    return bad})()`;
+  const gaps = {};
+  const ph = await browser.page({ width: 375, height: 812, mobile: true });
+  for (const [r, box, open] of [['#/', '.alan-f, .ex', null], ['#/kategori/filtre-kahve?tip=kobi&sirala=cok', '#secnav, #chips', null], ['#/kategori/filtre-kahve', '#filters', '#f-open'], ['#/firsat', '.ff-alan, .segctl, .ff', null], ['#/yontem', '#m-toc', null]]) {
+    await ph.goto('about:blank', 50); await ph.goto(BASE + r, 1500);
+    if (open) await ph.mclick(open, 500);
+    const g = await ph.eval(GAP(box));
+    if (g.length) gaps[r + ' ' + box] = g.slice(0, 8);
+  }
+  await ph.close();
+  check('dokunma: hedefler arası en az 8 px', !Object.keys(gaps).length, JSON.stringify(gaps));
+
+  // 4) odak: Tab ile gezilen her öğede görünür halka (öğenin, kartının ya da yanındaki görünür kutunun outline'ı ya da box-shadow'u)
+  const FOC = `(()=>{const e=document.activeElement; if(!e||e===document.body) return null; if(e.dataset.rrTab) return {again:true}; e.dataset.rrTab='1';
+    const on=x=>{if(!x) return false; const s=getComputedStyle(x); return (s.outlineStyle!=='none'&&parseFloat(s.outlineWidth)>=1)||s.boxShadow!=='none'};
+    const k=e.tagName.toLowerCase()+(e.id?'#'+e.id:'')+(typeof e.className==='string'&&e.className.trim()?'.'+e.className.trim().split(/\\s+/)[0]:'');
+    // gizlenmez: #app içindeki odaklı öğe yapışkan başlığın / bölüm menüsünün altında ya da karşılaştırma çubuğunun arkasında kalmaz
+    let hid=false; if(e.closest('#app')&&!e.closest('#secnav')){const t=document.querySelector('.top'),n=document.getElementById('secnav'),b=document.getElementById('cmpbar');
+      const tb=t?t.getBoundingClientRect().bottom:0, nr=n&&n.getBoundingClientRect(), lim=nr&&nr.top<=tb+1?Math.max(tb,nr.bottom):tb, bot=innerHeight-(b&&!b.hidden?b.offsetHeight:0), r=e.getClientRects()[0]||e.getBoundingClientRect();
+      // bölüm menüsü yalnızca yapışıkken sayılır; öğe bütünüyle görünür alanda (ekrandan uzun kutuda üst kenarı)
+      hid=!(r.top>=lim-1&&(r.bottom<=bot+1||(r.height>bot-lim&&r.top<bot-4)));}
+    return {k, ok: on(e)||on(e.nextElementSibling)||on(e.closest('.cat')), hid}})()`;
+  const nofocus = {}, hidden = {};
+  const dk = await browser.page({ width: 1280, height: 900 });
+  await dk.goto(BASE + '#/', 300); await dk.eval(cmp);
+  for (const r of ['#/', '#/kategori/termos', '#/urun/termos/780345921', '#/firsat']) {
+    await dk.goto('about:blank', 50); await dk.goto(BASE + r, 1500);
+    let n = 0;
+    for (let i = 0; i < 300; i++) {
+      await dk.key('Tab', 'Tab', 9, 15);
+      const f = await dk.eval(FOC);
+      if (!f) continue;
+      if (f.again) break;
+      n++;
+      if (!f.ok) (nofocus[r] ||= new Set()).add(f.k);
+      if (f.hid) (hidden[r] ||= new Set()).add(f.k);
+    }
+    console.log(`  odak: ${r} Tab ile ${n} öğe`);
+    if (n < 5) (nofocus[r] ||= new Set()).add('Tab ile yalnızca ' + n + ' öğe gezildi');
+    // tema menüsü (ok tuşlarıyla açılır)
+    if (r === '#/') { await dk.eval(`document.getElementById('theme').focus(); true`); await dk.key('ArrowDown', 'ArrowDown', 40, 100); const f = await dk.eval(FOC); if (f && !f.again && !f.ok) (nofocus[r] ||= new Set()).add(f.k); await dk.key('Escape', 'Escape', 27, 100); }
+  }
+  await dk.close();
+  const sets = (o) => JSON.stringify(Object.fromEntries(Object.entries(o).map(([k, v]) => [k, [...v]])));
+  check('odak: her etkileşimli ögede görünür', !Object.keys(nofocus).length, sets(nofocus));
+  check('odak: yapışkan başlık ya da karşılaştırma çubuğu odağı örtmez', !Object.keys(hidden).length, sets(hidden));
+
+  // 5) yıldız (★) rengi beş temada zeminine karşı en az 4,5:1 (yazı karakteri olduğu için yazı eşiği; kehribar anlamı korunur)
+  const STAR = `(()=>{const parse=s=>{const m=(s.match(/[\\d.]+/g)||[0,0,0,0]).map(Number);return {r:m[0],g:m[1],b:m[2],a:m.length>3?m[3]:1}};
+    const lum=c=>{const f=v=>{v/=255;return v<=.03928?v/12.92:((v+.055)/1.055)**2.4};return .2126*f(c.r)+.7152*f(c.g)+.0722*f(c.b)};
+    const bg=e=>{for(let x=e;x;x=x.parentElement){const c=parse(getComputedStyle(x).backgroundColor);if(c.a>=1) return c; if(x.classList.contains('band')){const b=parse(getComputedStyle(x,'::before').backgroundColor); if(b.a>=1) return b;}} return parse(getComputedStyle(document.body).backgroundColor)};
+    return [...document.querySelectorAll('.stars .s')].filter(e=>e.getClientRects().length).map(e=>{const a=lum(parse(getComputedStyle(e).color)),b=lum(bg(e));return (Math.max(a,b)+.05)/(Math.min(a,b)+.05)})})()`;
+  const stars = {};
+  const sp = await browser.page({ width: 1280, height: 900 });
+  for (const th of ['acik', 'krem', 'adacayi', 'koyu', 'gece']) {
+    await sp.goto(BASE + '#/', 200); await sp.eval(`localStorage.setItem('rr_theme','${th}'); true`);
+    for (const r of ['#/kategori/termos', '#/urun/termos/780345921']) {
+      await sp.goto('about:blank', 50); await sp.goto(BASE + r, 1300);
+      const v = await sp.eval(STAR);
+      const lo = Math.min(...v);
+      if (!v.length || lo < 4.5) stars[th + ' ' + r] = v.length ? lo.toFixed(2) : 'yıldız yok';
+    }
+  }
+  await sp.close();
+  check('yıldız: kontrast en az 4,5:1 (beş tema)', !Object.keys(stars).length, JSON.stringify(stars));
+
+  // 6) azaltılmış hareket: gezinmeden sonra çalışan tek animasyon sabit varış vurgusu (ARR_MS süresi), başka geçiş ya da animasyon yok
+  const rm = await browser.page({ width: 1280, height: 900 });
+  await rm.s('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] });
+  const motion = {};
+  for (const r of ['#/kategori/filtre-kahve?tip=kobi', '#/yontem/oran', '#/urun/filtre-kahve/52915799/konu/skt']) {
+    await rm.goto('about:blank', 50); await rm.goto(BASE + r, 900);
+    // üzerine gelme ve katlama geçişleri de denensin (fare kartın üstüne gelir; Yöntem'de bir bölüm kapanıp açılır)
+    const c = await rm.eval(`(()=>{const e=document.querySelector('.pc, .hb.go-row');if(!e) return null;e.scrollIntoView({block:'center'});const b=e.getBoundingClientRect();return {x:b.x+b.width/2,y:b.y+b.height/2}})()`);
+    if (c) await rm.s('Input.dispatchMouseEvent', { type: 'mouseMoved', x: c.x, y: c.y });
+    if (r.startsWith('#/yontem')) { await rm.eval(`document.querySelector('.m-sec:not(#y-oran) > summary').click(); true`); }
+    await pause(80);
+    const a = await rm.eval(`document.getAnimations().map(a=>{const k=a.effect&&a.effect.getKeyframes?a.effect.getKeyframes():[];const t=a.effect.getComputedTiming();
+      const same=k.length<2||k.every(x=>x.boxShadow===k[0].boxShadow&&x.outline===k[0].outline);return {id:a.id||a.constructor.name+':'+(a.transitionProperty||a.animationName||''),d:t.duration,same,state:a.playState}})`);
+    const bad = a.filter((x) => x.state === 'running' && !(x.id === 'rr-arrive' && x.same && x.d <= 1800));
+    if (bad.length) motion[r] = bad;
+  }
+  await rm.close();
+  check('hareket: azaltılmış hareket tercihinde yalnızca sabit vurgu', !Object.keys(motion).length, JSON.stringify(motion));
+
+  // 7) imleç: tıklanır her öğe (bağlantı, düğme, katlanır başlık) el imleci gösterir
+  const CUR = `[...document.querySelectorAll('a[href], button, summary')].filter(e=>e.closest('#app, .top')&&e.getClientRects().length&&getComputedStyle(e).cursor!=='pointer').map(e=>e.tagName.toLowerCase()+(typeof e.className==='string'&&e.className.trim()?'.'+e.className.trim().split(/\\s+/)[0]:''))`;
+  const cur = {};
+  const cp = await browser.page({ width: 1280, height: 900 });
+  await cp.goto(BASE + '#/', 300); await cp.eval(cmp);
+  for (const r of ALL_ROUTES) {
+    await cp.goto('about:blank', 50); await cp.goto(BASE + r, 1400);
+    const c = [...new Set(await cp.eval(CUR))];
+    if (c.length) cur[r] = c;
+  }
+  check('imleç: tıklanır ögelerde el imleci', !Object.keys(cur).length, JSON.stringify(cur));
+  check('denetim: konsol temiz', !cp.errors.length && !cp.logs.length, JSON.stringify([cp.errors, cp.logs]));
+  await cp.close();
+}

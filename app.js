@@ -1978,6 +1978,9 @@
       if (el) { openFoldFor(el); el.scrollIntoView(); el.focus({ preventScroll: true }); }
     }
     pendingFocus = null;
+    // Tıklanan bağlantı eski sayfayla birlikte silinince odak kaybolur (body'ye düşer). Klavye ve ekran okuyucu kullanıcısı yeni sayfanın başından devam etsin:
+    // odak ana içeriğe (#app) taşınır, sayfa kaydırılmaz. Odak başka bir yerdeyse (üst çubuk, açılan bölüm) dokunulmaz; ilk açılışta da dokunulmaz.
+    if (opts.nav && !opts.keep && (!document.activeElement || document.activeElement === document.body)) app.focus({ preventScroll: true });
     if (arr) arrive(arr.els);
     if (!opts.keep && curKey) scrollMap[curKey] = scrollY;
     routing = false;
@@ -2037,6 +2040,6 @@
   // İçeriğe geç bağlantısı: hash yönlendirmesini tetiklemeden ana içeriğe odaklan
   document.querySelector('.skip')?.addEventListener('click', (e) => { e.preventDefault(); app.focus(); });
 
-  window.addEventListener('hashchange', () => route());
+  window.addEventListener('hashchange', () => route({ nav: true }));
   route();
 })();

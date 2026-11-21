@@ -60,7 +60,8 @@ export default async function ({ browser, base: BASE, check, out }) {
     await pg.mclick('.hero-cta a', 900); await expectNone('hero CTA → category (whole page)');
     await pg.mclick('.issues li:nth-child(2) a', 900);
     let r = await expectArr('summary complaint row → topic headline', (x) => x.cls.includes('tp-lead'));
-    check(`${tag} focus unchanged (topic view: body)`, r.a.active === 'body', r.a.active);
+    // v22: yeni sayfada odak ana içerikte (#app); vurgu odağı değiştirmez
+    check(`${tag} focus unchanged (topic view: main content)`, r.a.active === 'app', r.a.active);
     await pg.mclick('.tp-table tbody th a.go', 900);
     r = await expectArr('topic table product → product topic card', (x) => x.id === 'p-konu');
     check(`${tag} focus unchanged (p-konu)`, r.a.active === 'p-konu', r.a.active);

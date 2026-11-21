@@ -1,5 +1,5 @@
 // Beş temada, 1280 ve 375 genişlikte, her sayfa türünde kendi görünür yazısı olan her öğenin yazı/zemin kontrastı en az 4,5:1 (eski contrast21.mjs).
-// Tek istisna: süs amaçlı yıldız simgesi (.stars .s) 3:1. Görev 9 yıldız rengine sahip.
+// Yıldız simgesi (.stars .s) de yazı karakteri: Görev 9'dan beri o da 4,5:1 (kehribar anlamı korunarak koyulaştırıldı).
 // v22: ayrıca her temada renk rollerinin (ROLES) çiftleri doğrudan ölçülür.
 //
 // KNOWN_V21: v21 kodunda bugün 4,5:1'in altında kalan, siteye dokunmadan kabul edilen öğe/tema çiftleri. Eşik gevşetilmez, site düzeltilmez.
@@ -26,12 +26,12 @@ for(const e of document.querySelectorAll('#app *, .top *')){
   let bg=bgOf(e); const own2=(()=>{for(let x=e;x;x=x.parentElement){if(parse(getComputedStyle(x).backgroundColor).a>0) return x; if(x.classList&&x.classList.contains('band')) return null;} return null})();
   if(!own2){const bb=bandBg(e); if(bb) bg=bb;}
   const L1=lum(fg),L2=lum(bg),cr=(Math.max(L1,L2)+.05)/(Math.min(L1,L2)+.05);
-  // Yalnızca süs amaçlı yıldız simgesi (.stars .s, yanında puan yazılı) grafik nesnedir: en az 3:1 (WCAG 1.4.11). Başka her şey, adım numaraları dahil, 4,5:1.
-  const need=e.matches('.stars .s')?3:4.5; n++;
+  // Her şey, yıldız simgesi ve adım numaraları dahil, 4,5:1.
+  const need=4.5; n++;
   if(cr<need){const k=(e.className&&typeof e.className==='string'?'.'+e.className.trim().split(/\\s+/).join('.'):e.tagName)+' "'+e.textContent.trim().slice(0,30)+'"';out.set(k,cr.toFixed(2));}
 }
 return {n, low:[...out]}})()`;
-// v22 renk rolleri: her temada anlam adlı değişkenlerin çiftleri. Yazı rolleri 4,5:1, varış vurgusu çizgisi (ana renk %80) 3:1.
+// v22 renk rolleri: her temada anlam adlı değişkenlerin çiftleri. Yazı rolleri ve yıldız 4,5:1, varış vurgusu çizgisi (ana renk %80) 3:1.
 const ROLES = [
   ['--color-primary', '--color-bg', 4.5], ['--color-primary', '--color-surface', 4.5], ['--color-primary', '--color-surface-muted', 4.5],
   ['--color-on-primary', '--color-primary', 4.5], ['--color-on-accent', '--color-accent', 4.5], ['--color-on-accent', '--color-accent-hover', 4.5],
@@ -40,7 +40,7 @@ const ROLES = [
   ['--color-neg', '--color-bg', 4.5], ['--color-neg', '--color-surface', 4.5], ['--color-neg', '--color-neg-soft', 4.5], ['--color-on-neg', '--color-neg', 4.5],
   ['--color-like', '--color-bg', 4.5], ['--color-like', '--color-surface', 4.5], ['--color-like', '--color-like-soft', 4.5],
   ['--hero-ink', '--hero', 4.5], ['--hero-muted', '--hero', 4.5], ['--hero-accent', '--hero', 4.5], ['--foot-ink', '--foot', 4.5], ['--foot-link', '--foot', 4.5],
-  ['--color-star', '--color-bg', 3], ['--color-star', '--color-surface', 3],
+  ['--color-star', '--color-bg', 4.5], ['--color-star', '--color-surface', 4.5],
 ];
 const ROLE_FN = (names) => `(()=>{const o={};for(const v of ${JSON.stringify(names)}){const p=document.createElement('i');p.style.color='var('+v+')';document.body.appendChild(p);o[v]=getComputedStyle(p).color;p.remove();}return o})()`;
 const rgb = (s) => (s.match(/[\d.]+/g) || []).slice(0, 3).map(Number);
