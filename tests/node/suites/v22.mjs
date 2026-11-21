@@ -87,4 +87,73 @@ export default async function ({ browser, base: BASE, check }) {
 
   check('konsol temiz', !pg.errors.length && !pg.logs.length, JSON.stringify([pg.errors, pg.logs]));
   await pg.close();
+
+  await phoneCategory(browser, BASE, check);
+}
+
+// Görünür: kutusu var ve kapalı bir <details> ya da hidden="until-found" içinde değil (checkVisibility içerik görünürlüğüne de bakar)
+const VIS = `(e)=>!!e && e.getClientRects().length>0 && e.checkVisibility()`;
+const until = async (pg, expr, ms = 6000) => { for (let i = 0; i < ms / 100; i++) { if (await pg.eval(expr)) return true; await new Promise((r) => setTimeout(r, 100)); } return false; };
+
+// Görev 4: kategori sayfası telefonda (satır kartlar, ilk 4 ürün, kapalı kontrol listesi, kapalı sevilen listesi)
+async function phoneCategory(browser, BASE, check) {
+  const ph = await browser.page({ width: 375, height: 812, mobile: true });
+  const state = `(()=>{const V=${VIS};const m=document.getElementById('p-more');const rest=m&&document.getElementById(m.getAttribute('aria-controls'));
+    const cards=[...document.querySelectorAll('#pgrid .pc')];const c=cards[0],i=c&&c.querySelector('.pc-img');
+    return {all:cards.length, vis:cards.filter(V).length, h:c?c.getBoundingClientRect().height:0, iw:i?i.getBoundingClientRect().width:0, ih:i?i.getBoundingClientRect().height:0,
+      more:m?m.textContent.trim():null, exp:m?m.getAttribute('aria-expanded'):null, hid:rest?rest.getAttribute('hidden'):null,
+      zero:[...document.querySelectorAll('#app *')].some(e=>V(e)&&!e.children.length&&e.textContent.includes('(0)'))}})()`;
+  await ph.goto(BASE + '#/kategori/filtre-kahve', 1500);
+  let s = await ph.eval(state);
+  check('telefon: ürünler satır kart', s.h > 0 && s.h < 140 && s.iw > 0 && s.iw <= 80, JSON.stringify(s));
+  check('telefon: ilk 4 ürün, kalanı kapalı', s.vis === 4 && s.more === 'Tüm ürünleri göster (13)' && s.exp === 'false', JSON.stringify(s));
+  check('sayfa içi arama: kalan ürünler hidden="until-found"', s.hid === 'until-found', JSON.stringify(s));
+  const sh = await ph.eval('document.documentElement.scrollHeight / 812');
+  console.log(`  ölçüm: #/kategori/filtre-kahve telefonda ${sh.toFixed(1)} ekran (v21: 20,3; hedef en çok 8)`);
+  check('ölçüm: kategori telefonda kısaldı', sh < 20.3 / 2, sh.toFixed(2));
+  const ck = await ph.eval(`(()=>{const d=document.getElementById('ck-fold');return d?{open:d.open,sum:d.querySelector('summary').textContent.replace(/\\s+/g,' ')}:null})()`);
+  check('telefon: kontrol listesi kapalı, sayaç görünür', ck && !ck.open && ck.sum.includes('0 / 11 işaretlendi'), JSON.stringify(ck));
+  const lk = await ph.eval(`(()=>{const V=${VIS};const rows=[...document.querySelectorAll('.liked .hb')];const b=document.getElementById('like-more');return {all:rows.length,vis:rows.filter(V).length,exp:b?b.getAttribute('aria-expanded'):null}})()`);
+  check('telefon: sevilen listede ilk 4 satır', lk.all > 4 ? lk.vis === 4 && lk.exp === 'false' : lk.vis === lk.all, JSON.stringify(lk));
+  await ph.click('#p-more', 300);
+  s = await ph.eval(state);
+  check('telefon: tümünü göster açar', s.vis === 13 && s.exp === 'true' && s.more === 'Daha az göster', JSON.stringify(s));
+  await ph.goto('about:blank', 50); await ph.goto(BASE + '#/kategori/filtre-kahve', 1300);
+  await ph.eval(`(()=>{const m=document.getElementById('p-more');document.getElementById(m.getAttribute('aria-controls')).dispatchEvent(new Event('beforematch'));return true})()`);
+  s = await ph.eval(state);
+  check('sayfa içi arama: beforematch listeyi açar', s.exp === 'true' && s.vis === 13, JSON.stringify(s));
+
+  await ph.goto('about:blank', 50); await ph.goto(BASE + '#/kategori/filtre-kahve?sirala=cok&tip=kobi', 1300);
+  s = await ph.eval(state);
+  check('telefon: süzgeçli adres açık gelir', s.vis === 7 && s.all === 7 && s.more === null, JSON.stringify(s));
+
+  // 4 ya da daha az ürün bırakan ilk süzgeç (veriden hesaplanır)
+  const few = await ph.eval(`(async()=>{const j=await (await fetch('data/kedi-tirmalama.json')).json();const D=[['10-alti',0,.1],['10-20',.1,.2],['20-ustu',.2,1.01]];
+    for(const [k,lo,hi] of D){const n=j.urunler.filter(p=>{const d=(p.yildiz[0]+p.yildiz[1])/p.yazili;return d>=lo&&d<hi}).length; if(n>=1&&n<=4) return {k,n};} return null})()`);
+  if (few) {
+    await ph.goto('about:blank', 50); await ph.goto(BASE + '#/kategori/kedi-tirmalama?dusuk=' + few.k, 1300);
+    s = await ph.eval(state);
+    check('telefon: 4 ve altı üründe düğme yok', s.vis === few.n && s.more === null && !s.zero, JSON.stringify({ few, s }));
+  } else check('telefon: 4 ve altı üründe düğme yok (süzgeç bulunamadı)', false);
+
+  await ph.goto('about:blank', 50); await ph.goto(BASE + '#/kategori/termos', 200);
+  await ph.eval(`localStorage.setItem('rr_ck_termos','["t:isi"]'); true`);
+  await ph.goto('about:blank', 50); await ph.goto(BASE + '#/kategori/termos', 1300);
+  const ck2 = await ph.eval(`(()=>{const d=document.getElementById('ck-fold');return d?{open:d.open,sum:d.querySelector('summary').textContent.replace(/\\s+/g,' ')}:null})()`);
+  check('telefon: işaret varsa açık gelir', ck2 && ck2.open && ck2.sum.includes('1 / 11'), JSON.stringify(ck2));
+  await ph.eval(`localStorage.removeItem('rr_ck_termos'); true`);
+
+  // Varış vurgusu: doğrudan açılan süzgeçli adres; vurgulanan öğe görünür alanda
+  await ph.goto('about:blank', 50); await ph.goto(BASE + '#/kategori/filtre-kahve?tip=kobi', 200);
+  const got = await until(ph, `!!document.querySelector('[data-arriving]')`);
+  const ar = await ph.eval(`[...document.querySelectorAll('[data-arriving]')].map(e=>{const r=e.getBoundingClientRect();return {id:e.id||e.tagName,ok:${VIS}(e)&&r.top>=0&&r.top<innerHeight}})`);
+  check('telefon: varış vurgusu görünür alanda', got && ar.length && ar.every((x) => x.ok), JSON.stringify(ar));
+  check('telefon: konsol temiz', !ph.errors.length && !ph.logs.length, JSON.stringify([ph.errors, ph.logs]));
+  await ph.close();
+
+  const dk = await browser.page({ width: 1280, height: 900 });
+  await dk.goto(BASE + '#/kategori/filtre-kahve', 1500);
+  const d = await dk.eval(`(()=>{const V=${VIS};const lk=[...document.querySelectorAll('.liked .hb')];return {vis:[...document.querySelectorAll('#pgrid .pc')].filter(V).length, more:!!document.getElementById('p-more'), ck:document.getElementById('ck-fold')?.open, like:lk.filter(V).length===lk.length, cols:getComputedStyle(document.getElementById('pgrid')).gridTemplateColumns.split(' ').length}})()`);
+  check('masaüstü: ızgara ve açık liste değişmedi', d.vis === 13 && !d.more && d.ck === true && d.like && d.cols >= 3, JSON.stringify(d));
+  await dk.close();
 }

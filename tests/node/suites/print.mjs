@@ -28,6 +28,13 @@ export default async function ({ browser, base: BASE, check, out }) {
   await pg.close();
 
   const m = await browser.page({ width: 375, height: 812, mobile: true });
+  // Telefonda kapalı gelen bölümler (ürün listesinin kalanı, kontrol listesi) yazdırmada açık
+  await m.goto(BASE + '#/kategori/filtre-kahve', 1500);
+  await m.media('print'); await sleep(200);
+  const box = `(e)=>e.getClientRects().length>0 && e.checkVisibility()`;
+  const pk = await m.eval(`(()=>{const V=${box};return {rows:[...document.querySelectorAll('.ptable tbody tr')].filter(V).length, ck:[...document.querySelectorAll('#sec-kontrol li')].filter(V).length}})()`);
+  check('yazdırma: kapalı bölümler açık basılır', pk.rows === 13 && pk.ck === 11, JSON.stringify(pk));
+  await m.media('');
   await m.goto(BASE + '#/firsat', 1500);
   const fbytes = await m.pdf(out + 'print-firsat-375.pdf');
   check('#/firsat telefon genişliği: PDF üretildi', fbytes > 20000, fbytes);

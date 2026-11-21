@@ -493,11 +493,16 @@
   makeSearch(document.getElementById('search'), document.getElementById('q'), document.getElementById('suggest'), '');
 
   // Yatay çubuklar. Satırda href varsa satırın tamamı bağlantıdır (ad noktalı alt çizgili, değerin yanında ok); cur: vurgulanan satır
-  const hbar = (rows, cls = '', avgKey) => `<div class="hbars">${rows.map((r) => {
+  // fold (telefonda uzun liste): ilk fold.n satır görünür, kalanı hidden="until-found" kutuda ve altında "… (N)" düğmesi
+  const hbar = (rows, cls = '', avgKey, fold) => {
     const max = Math.max(...rows.map((x) => Math.max(x.v, avgKey ? x[avgKey] || 0 : 0)), 0.01);
+    const all = rows.map((r) => {
     const inner = `<span class="hb-t">${esc(r.ad)}</span><span class="tr"><i style="width:${(r.v / max) * 100}%"></i>${avgKey && r[avgKey] != null ? `<s style="left:${(r[avgKey] / max) * 100}%" title="Kategori ortalaması ${pct(r[avgKey])}"></s>` : ''}</span><span class="v">${pct(r.v)}</span>`;
     return r.href ? `<a class="hb go-row ${cls}${r.cur ? ' cur' : ''}" href="${esc(r.href)}"${r.cur ? ' aria-current="true"' : ''}>${inner}</a>` : `<div class="hb ${cls}">${inner}</div>`;
-  }).join('')}</div>`;
+    });
+    if (!fold || rows.length <= fold.n) return `<div class="hbars">${all.join('')}</div>`;
+    return `<div class="hbars">${all.slice(0, fold.n).join('')}<div class="more-rest" id="${fold.id}" hidden="until-found">${all.slice(fold.n).join('')}</div></div>${moreBtn(fold.id, fold.btn, fold.label, rows.length)}`;
+  };
 
   // ---- görünümler ----
   // Kategori kartı (ana sayfa ve arama ortak). Hazır olmayan kategori tıklanamaz, soluk kart olarak görünür.
@@ -674,6 +679,58 @@
   }
   const syncDrawerInert = () => { const a = document.getElementById('filters'); if (a) a.inert = drawerMQ.matches && !a.classList.contains('open'); if (!drawerMQ.matches) closeDrawer(false); };
   drawerMQ.addEventListener('change', syncDrawerInert);
+
+  // ---- v22: telefonda kısalan sayfalar. Uzun listenin ilk satırları görünür, kalanı hidden="until-found" kutuda (sayfa içi arama bulur ve açar);
+  // bölümler <details> ile katlanır. Yazdırmada hepsi açık basılır (CSS'te ve beforeprint ile).
+  const phoneMQ = matchMedia('(max-width: 640px)');
+  const moreBtn = (box, btnId, label, n, open = false, cat = '') => `<button type="button" class="more-btn" id="${btnId}"${cat ? ` data-cat="${esc(cat)}"` : ''} aria-controls="${box}" aria-expanded="${open}" data-l="${esc(`${label} (${n})`)}">${open ? 'Daha az göster' : esc(`${label} (${n})`)}</button>`;
+  const setMore = (btn, open) => {
+    const box = document.getElementById(btn.getAttribute('aria-controls'));
+    if (!box) return;
+    if (open) box.removeAttribute('hidden'); else box.setAttribute('hidden', 'until-found');
+    btn.setAttribute('aria-expanded', String(open));
+    btn.textContent = open ? 'Daha az göster' : btn.dataset.l;
+    // Ürün listesinin açıklığı kategori başına hatırlanır: ürüne gidip geri gelince kaydırma yeri aynı listeye döner
+    if (btn.id === 'p-more' && btn.dataset.cat) pOpen[btn.dataset.cat] = open;
+  };
+  const pOpen = {};
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest && e.target.closest('.more-btn');
+    if (!b) return;
+    const open = b.getAttribute('aria-expanded') !== 'true';
+    setMore(b, open);
+    // Kapatınca düğme ekranda kalsın (liste uzunken kullanıcı yerini kaybetmesin)
+    if (!open) b.scrollIntoView({ block: 'nearest' });
+  });
+  // Sayfa içi arama kapalı kutuda bir şey bulunca tarayıcı kutuyu açar; düğme de "açık" olur
+  document.addEventListener('beforematch', (e) => {
+    const t = e.target;
+    if (!(t instanceof Element) || !t.id) return;
+    const b = document.querySelector(`.more-btn[aria-controls="${CSS.escape(t.id)}"]`);
+    if (b) setMore(b, true); else t.removeAttribute('hidden');
+  }, true);
+  // Bir öğeyi gösterecek her şeyi açar: kendisi ya da üstündeki kapalı <details> ve hidden="until-found" kutular (varış vurgusu, bölüme gitme)
+  function openFoldFor(el) {
+    for (let x = el; x && x !== document.body; x = x.parentElement) {
+      if (x.tagName === 'DETAILS' && !x.open) x.open = true;
+      if (x.getAttribute('hidden') === 'until-found') x.dispatchEvent(new Event('beforematch'));
+    }
+  }
+  let printFold = null;
+  addEventListener('beforeprint', () => {
+    printFold = { d: [...document.querySelectorAll('details:not([open])')], h: [...document.querySelectorAll('[hidden="until-found"]')] };
+    printFold.d.forEach((d) => { d.open = true; });
+    printFold.h.forEach((x) => x.removeAttribute('hidden'));
+  });
+  addEventListener('afterprint', () => {
+    if (!printFold) return;
+    printFold.d.forEach((d) => { if (d.isConnected) d.open = false; });
+    printFold.h.forEach((x) => { if (x.isConnected) x.setAttribute('hidden', 'until-found'); });
+    printFold = null;
+  });
+  // Telefon ile geniş ekran arasında geçişte sayfanın kendi katlama kuralı yeniden uygulanır (ör. kategori ürün listesi)
+  let foldSync = null;
+  phoneMQ.addEventListener('change', () => { if (foldSync) foldSync(); });
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape') return;
     const t = openTip();
@@ -712,12 +769,17 @@
     const items = ckItems(c), on = ckGet(c.id);
     const li = (it) => `<li${on.has(it.k) ? ' data-on=""' : ''}><label><input type="checkbox" data-ck="${esc(it.k)}"${on.has(it.k) ? ' checked' : ''}><span class="ck-prt" aria-hidden="true"></span><span class="ck-t">${esc(it.t)}</span></label>${it.ev || ''}</li>`;
     const g = (k, title, hint) => `<fieldset class="ck-g"><legend>${title}</legend><p class="muted ck-hint">${hint}</p><ul>${items.filter((it) => it.g === k).map(li).join('')}</ul></fieldset>`;
+    // v22: telefonda kapalı gelir (başlıkta ilerleme sayısı); geniş ekranda ve işaret varsa açık
     return `<section class="step ck-card jump" id="sec-kontrol" tabindex="-1" aria-labelledby="ck-t">
-        <div class="step-h"><span class="step-n" aria-hidden="true">5</span><h2 id="ck-t"><span class="sr-only">Adım 5: </span>Giriş kontrol listesi</h2>${icon('kontrol', 'step-ic')}</div>
-        <div class="ck-head"><p class="step-lead">Bu kategorinin en sık şikâyetlerinden ve önerilerinden çıkarıldı. Ürününde ve ilanında hallettiklerini işaretle.</p><p class="ck-prog"><b class="num" id="ck-n"></b> <span id="ck-of"></span></p></div>
+        <details class="ck-fold" id="ck-fold"${!phoneMQ.matches || on.size ? ' open' : ''}>
+        <summary class="ck-sum step-h"><span class="step-n" aria-hidden="true">5</span><h2 id="ck-t"><span class="sr-only">Adım 5: </span>Giriş kontrol listesi</h2>
+          <span class="ck-prog"><b class="num" id="ck-n"></b> <span id="ck-of"></span></span><span class="fold-ic" aria-hidden="true"></span></summary>
+        <div class="ck-body">
+        <p class="step-lead">Bu kategorinin en sık şikâyetlerinden ve önerilerinden çıkarıldı. Ürününde ve ilanında hallettiklerini işaretle.</p>
         <div class="ck-bar" aria-hidden="true"><i id="ck-bar"></i></div>
         <div class="ck-groups">${g('s', 'En sık şikâyetler', 'Ürününde ve ilanında bu sorunu önlediysen işaretle.')}${g('o', 'Öneriler', 'Uyguladığında işaretle.')}</div>
         <p class="ck-foot"><button type="button" class="linkbtn" id="ck-reset">İşaretleri temizle</button><span class="muted" id="ck-store"></span></p>
+        </div></details>
       </section>`;
   }
   function ckSync(c) {
@@ -927,7 +989,7 @@
         <p class="step-lead">Bu kategoriye girecek bir KOBİ için ${c.oneriler.length} öneri. Altında dayandığı şikâyet ya da müşterinin sevdiği konu yazar.</p>
         <ol class="recs">${c.oneriler.map((o) => `<li><b>${esc(o.baslik)}</b><span>${esc(o.metin)}</span>${recEv(c, o)}</li>`).join('')}</ol>
         <p class="note">Öneriler yorumlar okunarak yazıldı; altındaki oranlar dayandıkları konuların bu sayfadaki oranlarıdır. <a href="#/yontem/oneri">Öneriler hangi şikâyete dayanıyor?</a></p>
-        <div class="liked prt-hide"><h3>${icon('sevilen')}Müşteriler neyi seviyor? ${tip('sevilen')}</h3><p class="muted">Trendyol'un ilk gösterdiği yorumlarda en sık geçen olumlu konular. İlanında bunları öne çıkar.</p>${hbar(c.olk.slice(0, 6).map((k) => ({ ad: k.ad, v: k.tum, href: H.konu(c.id, 'sevilen', k.id) })), 'like')}</div>
+        <div class="liked prt-hide"><h3>${icon('sevilen')}Müşteriler neyi seviyor? ${tip('sevilen')}</h3><p class="muted">Trendyol'un ilk gösterdiği yorumlarda en sık geçen olumlu konular. İlanında bunları öne çıkar.</p>${likedBars(c)}</div>
       </section>
       <section class="step jump" id="sec-urun" tabindex="-1" aria-labelledby="urun-t">
       ${stepH(4, 'urun-t', 'Ürünler', 'urun', ' <span class="muted num" id="pcount"></span>')}
@@ -940,7 +1002,7 @@
       <div class="plist">
         <aside class="filters" id="filters" aria-label="Filtreler">${filterPanel(c)}</aside>
         <div class="f-backdrop" id="f-backdrop" hidden></div>
-        <div><div class="chips" id="chips"></div><div class="pgrid" id="pgrid"></div></div>
+        <div><div class="chips" id="chips"></div><div class="pgrid" id="pgrid"></div><div class="pmore-w" id="pmore-w"></div></div>
       </div></section>
       ${printProducts(c)}
       ${checklist(c)}
@@ -965,8 +1027,13 @@
       const f = PSORT[sel.value];
       const list = c.urunler.filter((p) => passes(p, st)).sort(f);
       const cm = getCmp();
-      document.getElementById('pgrid').innerHTML = list.length ? list.map((p) => card(c, p, cm)).join('')
-        : '<div class="empty" style="grid-column:1/-1"><p>Bu filtrelere uyan ürün yok.</p><button type="button" class="btn ghost" data-clear>Filtreleri temizle</button></div>';
+      // v22: telefonda süzgeç ve sıralama yoksa ilk 4 ürün; kalanı "Tüm ürünleri göster (N)" ile (açık bırakıldıysa yeniden çizimde açık kalır)
+      const fold = phoneMQ.matches && !catQ(sel.value, st) && list.length > 4;
+      const wasOpen = !!pOpen[id];
+      const cards = list.map((p) => card(c, p, cm));
+      document.getElementById('pgrid').innerHTML = !list.length ? '<div class="empty" style="grid-column:1/-1"><p>Bu filtrelere uyan ürün yok.</p><button type="button" class="btn ghost" data-clear>Filtreleri temizle</button></div>'
+        : fold ? `${cards.slice(0, 4).join('')}<div class="more-rest p-rest" id="p-rest"${wasOpen ? '' : ' hidden="until-found"'}>${cards.slice(4).join('')}</div>` : cards.join('');
+      document.getElementById('pmore-w').innerHTML = fold ? moreBtn('p-rest', 'p-more', 'Tüm ürünleri göster', list.length, wasOpen, id) : '';
       document.getElementById('pcount').textContent = `(${list.length} / ${c.urunler.length})`;
       const chips = [];
       for (const k of ['segment', 'marka', 'sikayet']) st[k].forEach((v) => chips.push([k, v, k === 'sikayet' ? c.temaMap[v].ad : v]));
@@ -1014,7 +1081,18 @@
       ckSync(c);
     };
     draw();
+    // Telefon ile geniş ekran arasında geçişte ürün listesi yeniden çizilir; geniş ekranda kapalı kalan bölüm açılır
+    foldSync = () => {
+      if (!document.getElementById('pgrid')) return;
+      draw();
+      if (phoneMQ.matches) return;
+      app.querySelectorAll('details.ck-fold:not([open])').forEach((d) => { d.open = true; });
+      app.querySelectorAll('.more-btn[aria-expanded="false"]').forEach((b) => setMore(b, true));
+    };
   }
+  // "Müşteriler neyi seviyor?": telefonda ilk 4 satır, kalanı "Tümünü göster" ile (aynı çubuk ölçeği: en uzun çubuk ilk satır)
+  const likedBars = (c) => hbar(c.olk.slice(0, 6).map((k) => ({ ad: k.ad, v: k.tum, href: H.konu(c.id, 'sevilen', k.id) })), 'like', null,
+    phoneMQ.matches ? { n: 4, id: 'like-rest', btn: 'like-more', label: 'Tümünü göster' } : null);
   // Yazdırma raporu: ekranda gizli (display:none, ekran okuyucu da okumaz), yalnızca baskıda görünür
   const SITE_URL = document.querySelector('meta[property="og:url"]')?.content || '';
   const printProducts = (c) => `
@@ -1083,6 +1161,7 @@
   // sync: hedefi hemen (yönlendirme sırasında, kaydırma kaydından önce) görünür alana getir. Bölüm menüsünde yumuşak kaydırma kendi işini yapar.
   function arrive(els, sync = true) {
     arriveStop();
+    els.forEach((el) => { if (el && el.isConnected) openFoldFor(el); });
     els = els.filter((el) => el && el.isConnected && el.getClientRects().length);
     if (!els.length) return;
     const tok = arrTok;
@@ -1187,7 +1266,7 @@
         <div class="stars"><span class="s" aria-hidden="true">★</span><b class="num">${dec(p.ort)}</b><span class="muted num">(${int(p.yazili)} yorum)</span></div>
         <dl class="pc-meta">
           <div><dt>1-2 yıldız payı</dt><dd class="${negCls(p.dusuk)} num">${pct(p.dusuk, 1)}</dd></div>
-          <div class="stack"><dt>En sık şikâyet</dt><dd${noLow(p) ? ' class="none"' : ''}>${noLow(p) ? esc(noLowShort(p)) : p.sik[0] ? go(H.urun(c.id, p.id, 'konu', p.sik[0].id), esc(p.sik[0].ad), '', `En sık şikâyet: ${p.sik[0].ad}, ${pct(p.sik[0].v)}. Bu üründeki yorumları gör`) : ''}</dd></div>
+          <div class="stack"><dt><span class="pc-l">En sık şikâyet</span>${icon('sikayet', 'pc-ic')}</dt><dd${noLow(p) ? ' class="none"' : ''}>${noLow(p) ? esc(noLowShort(p)) : p.sik[0] ? go(H.urun(c.id, p.id, 'konu', p.sik[0].id), esc(p.sik[0].ad), '', `En sık şikâyet: ${p.sik[0].ad}, ${pct(p.sik[0].v)}. Bu üründeki yorumları gör`) : ''}</dd></div>
         </dl>
         <label class="pc-cmp"><input type="checkbox" data-cmp="${esc(p.id)}" data-cat="${esc(c.id)}" ${inCmp(cm, c.id, p.id) ? 'checked' : ''}>Karşılaştır</label>
       </div>
@@ -1815,6 +1894,7 @@
     const isStale = () => tok !== routeTok;
     routing = true;
     closeDrawer(false);
+    foldSync = null;
     if (barMsg && barMsg.type === 'ask' && !opts.keep) barMsg = null;
     app.onclick = app.onchange = app.oninput = null;
     arriveStop();
@@ -1870,7 +1950,7 @@
     if (arr && arr.focus) pendingFocus = arr.focus;
     if (pendingFocus && fresh && !opts.keep) {
       const el = document.getElementById(pendingFocus);
-      if (el) { el.scrollIntoView(); el.focus({ preventScroll: true }); }
+      if (el) { openFoldFor(el); el.scrollIntoView(); el.focus({ preventScroll: true }); }
     }
     pendingFocus = null;
     if (arr) arrive(arr.els);
