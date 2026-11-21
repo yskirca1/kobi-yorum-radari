@@ -1,6 +1,6 @@
 # Jüri demosu: 2-3 dakikalık akış
 
-Akış yalnızca sitenin kendi bağlantılarıyla yürür; ayrı bir kılavuz ekranı yok. Adresler canlı sitenin köküne göredir: `https://yskirca1.github.io/kobi-yorum-radari/` + aşağıdaki `#/…` kısmı. Her adres doğrudan yapıştırılarak da açılır, geri ve ileri tuşları çalışır. Bir bağlantı sayfanın belirli bir parçasına gidiyorsa (konu başlığındaki oran, tablodaki ürün satırı, konu kartı, süzgeçli liste, Yöntem bölümü) o parça açılınca bir an turkuaz zeminle vurgulanır, sonra kendiliğinden söner.
+Akış yalnızca sitenin kendi bağlantılarıyla yürür; ayrı bir kılavuz ekranı yok. Adresler canlı sitenin köküne göredir: `https://yskirca1.github.io/kobi-yorum-radari/` + aşağıdaki `#/…` kısmı. Her adres doğrudan yapıştırılarak da açılır, geri ve ileri tuşları çalışır. Bir bağlantı sayfanın belirli bir parçasına gidiyorsa (konu başlığındaki oran, tablodaki ürün satırı, konu kartı, süzgeçli liste, Yöntem bölümü) o parça açılınca bir an lacivert zeminle vurgulanır, sonra kendiliğinden söner.
 
 ## Neden filtre kahve?
 
@@ -17,10 +17,10 @@ Filtre kahvede şikâyet oranı %10 ve üstü olan her ürünün o konuda en az 
 
 ## Akış
 
-Ekranların dili (v21): her sayfa tek büyük cümleyle açılır, altında o cümleyi gösteren resim (10 küçük yorum balonu, kaçı dolu) ve tam yüzde durur. Kırmızı şikâyet, yeşil müşterinin sevdiği, turkuaz tıklanır demek; ana sayfada bu bir satırda yazar.
+Ekranların dili (v21, renkler v22): her sayfa tek büyük cümleyle açılır, altında o cümleyi gösteren resim (10 küçük yorum balonu, kaçı dolu) ve tam yüzde durur. Kırmızı şikâyet, yeşil müşterinin sevdiği, lacivert tıklanır demek; ana sayfada bu bir satırda yazar. Kehribar (turuncu-sarı) yalnızca "Ara" düğmesinde, "Örnekle başla" çerçevesinde ve yıldızda.
 
 **1. Ana sayfa** `#/`
-- Göster: koyu bantta büyük arama kutusu ve altında örnek aramalar (termos, Karaca, sızdırıyor, tüylenme). Kategori kartları kategorinin 1 numaralı şikâyetiyle açılır ("Isıyı tutmuyor", 10 balondan 4'ü kırmızı, %40).
+- Göster: lacivert bantta büyük arama kutusu (kehribar "Ara" düğmesi) ve altında örnek aramalar (termos, Karaca, sızdırıyor, tüylenme). Kategori kartlarında solda kategorinin fotoğrafı, yanında 1 numaralı şikâyeti ("Isıyı tutmuyor", 10 balondan 4'ü kırmızı, %40).
 - Tıkla: arama kutusunun altındaki **"Örnekle başla: Filtre kahve"** bağlantısı.
 - Söyle: "Rakip ürünlerin binlerce yorumunu tek tek okuduk; şimdi bir kategoriye bakalım."
 
@@ -36,12 +36,12 @@ Ekranların dili (v21): her sayfa tek büyük cümleyle açılır, altında o c�
 - Söyle: "Bu sorun büyük markaların sorunu. KOBİ'nin en kolay farkı: taze kahve."
 
 **4. Ürün sayfası, aynı konu** `#/urun/filtre-kahve/52915799/konu/skt`
-- Göster: sayfa doğrudan konu kartında açılır: 10 balondan yaklaşık 6'sı kırmızı, bu üründe şikâyet oranı %59, müşterinin kendi cümlesi (2 yıldız: "SON KULLANIM TARİHİNE 2 AY KALAN KAHVEYİ GÖNDERDİĞİNİZ İÇİN TESEKKURLER"). Sayfanın başında hüküm: "Zayıf noktası: Son kullanma tarihi yakın geldi." (%59, kategoride %20).
+- Göster: sayfa doğrudan konu kartında açılır: 10 balondan yaklaşık 6'sı kırmızı, bu üründe şikâyet oranı %59, müşterinin kendi cümlesi (2 yıldız: "SON KULLANIM TARİHİNE 2 AY KALAN KAHVEYİ GÖNDERDİĞİNİZ İÇİN TESEKKURLER"). Sayfanın başında hüküm: "Zayıf noktası: Son kullanma tarihi yakın geldi." (%59, kategoride %20); hükmün altında yazılı yorumların yıldızları tek çubukta (5'ten 1 yıldıza; 1 ve 2 yıldız kırmızı tonda, yüzdeleri altında).
 - Tıkla (isteğe bağlı): **"Bu ürünün bütün yorumları Trendyol'da"** (yeni sekmede açılır).
 - Söyle: "Her rakamın arkasında gerçek yorum var; isterseniz Trendyol'da kendiniz okuyabilirsiniz."
 
 **5. Ne yapmalı?** Tarayıcının geri tuşuyla iki kez geri gel ya da kırıntıdaki "Filtre kahve"ye tıkla, sonra adım menüsünde **"3 Ne yapmalı"**.
-- Göster: 2. öneri "Taze kahve en güçlü kozun", altında "Dayandığı şikâyet: Son kullanma tarihi yakın geldi %20". Önerilerin altında yeşil çubuklarla "Müşteriler neyi seviyor?".
+- Göster: 2. öneri "Taze kahve en güçlü kozun", altında "Dayandığı şikâyet: Son kullanma tarihi yakın geldi %20". Önerilerin altında yeşil çubuklarla "Müşteriler neyi seviyor?" (telefonda ilk 4 satır, kalanı "Tümünü göster (6)").
 - Söyle: "Öneriler şikâyete bağlı; oran tıklanınca aynı kanıta döner."
 
 **6. Kapanış (süre kalırsa)** "2 Kimde var?" adımında cümle: "KOBİ ürünleri daha az 1-2 yıldız alıyor: büyük markada %8,1, KOBİ'de %7,0. En büyük fark Tadı kötü, aroması yok, ekşi şikâyetinde: büyük markada %13, KOBİ'de %44." Altındaki **KOBİ %7,0** rakamına tıkla.
@@ -66,5 +66,5 @@ Ekranların dili (v21): her sayfa tek büyük cümleyle açılır, altında o c�
 ## Hazırlık
 
 - Sunumdan önce siteyi bir kez aç (veri dosyaları önbelleğe girsin) ve temayı "Açık" seç.
-- Telefonda göstereceksen aynı akış çalışır; konu tablosu satır satır kart olarak görünür.
+- Telefonda göstereceksen aynı akış çalışır; konu tablosu satır satır kart olarak görünür. Telefonda sayfalar kısa tutulur: kategori sayfasında ürünler satır kart ve ilk 4'ü görünür ("Tüm ürünleri göster (13)"), 5. adım kontrol listesi kapalı gelir (başlığında "0 / 11 işaretlendi", dokununca açılır); Yöntem'de bölümler kapalı, içindekilerden dokunulan açılır; fırsatta ilk üç kategori kart, kalanı kısa satır (dokununca ayrıntı). 1-3. adımlar ve baştaki cümle her zaman açık.
 - Karşılaştırma çubuğu açıksa "Temizle" ile kapat; ekranın altını kaplamasın.
