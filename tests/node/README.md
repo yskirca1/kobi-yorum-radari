@@ -25,7 +25,8 @@ Her takım `export default async function ({ browser, base, check, out })`; `che
 | `arrive` | Varış vurgusu: hedef, görünür alan, iz bırakmadan kalkma, yerleşim değişmez, odak, azaltılmış hareket, yazdırma, beş tema |
 | `sentences` | Her kategori, ürün ve konu cümlesi, `data/*.json`'dan bağımsız hesapla ve elle yazılmış Türkçe ek tablosuyla birebir |
 | `v21` | Başlık sırası, tekil kimlik, resimli oran = yazılı oran, cevap cümlesi, ana sayfa araması, çekmece, odak halkası, yazdırma, yerleşim kayması, tam sayfa görüntüler |
-| `contrast` | Beş tema x 1280/375 x 10 sayfa türü: görünür yazısı olan her öğe en az 4,5:1 |
+| `contrast` | Beş tema x 1280/375 x 10 sayfa türü: görünür yazısı olan her öğe en az 4,5:1; her temada renk rolü çiftleri (`--color-*`) 4,5:1, yıldız ve varış vurgusu çizgisi 3:1 |
+| `v22` | Yeni kimlik: Açık temada ana renk `#1E40AF`, Fira Sans, "Ara" kehribar, bağlantı lacivert ve gövde yazısı değil, kırmızı/yeşil v21 değerinde, eski tema kayıtları, `?v=22` |
 | `print` | Kategori raporu PDF'i, seçili kontrol listesi maddeleri, `#/firsat` telefonda |
 | `measure` | Sayfa uzunlukları, `out/olcum.json`; kaydeder, başarısız saymaz |
 

@@ -254,8 +254,8 @@
     return `<span class="tipw${inline ? ' inl' : ''}"><button type="button" class="tip" aria-expanded="false" aria-controls="${id}" aria-label="Ne demek: ${esc(term)}"><span aria-hidden="true">?</span></button>`
       + `<span class="tip-box" id="${id}" hidden>${esc(text)} <a href="#/yontem/${a}">Yöntem sayfasında ayrıntı</a></span></span>`;
   };
-  // Sitenin renk dili tek yerde anlatılır (ana sayfa ve Yöntem): kırmızı şikâyet, yeşil müşterinin sevdiği, turkuaz tıklanır / sonraki adım
-  const grammar = () => `<p class="grammar"><span class="sr-only">Renklerin anlamı: </span><span class="gm gm-neg">${icon('sikayet')}<span><b>Kırmızı</b> şikâyet</span></span><span class="gm gm-like">${icon('sevilen')}<span><b>Yeşil</b> müşterinin sevdiği</span></span><span class="gm gm-act">${icon('ok')}<span><b>Turkuaz</b> tıklanır: rakamın hangi yorumlardan geldiğini gösterir</span></span></p>`;
+  // Sitenin renk dili tek yerde anlatılır (ana sayfa ve Yöntem): kırmızı şikâyet, yeşil müşterinin sevdiği, lacivert tıklanır / sonraki adım
+  const grammar = () => `<p class="grammar"><span class="sr-only">Renklerin anlamı: </span><span class="gm gm-neg">${icon('sikayet')}<span><b>Kırmızı</b> şikâyet</span></span><span class="gm gm-like">${icon('sevilen')}<span><b>Yeşil</b> müşterinin sevdiği</span></span><span class="gm gm-act">${icon('ok')}<span><b>Lacivert</b> tıklanır: rakamın hangi yorumlardan geldiğini gösterir</span></span></p>`;
   const gloss = (keys) => `<p class="gloss"><span class="muted">Terimler:</span> ${keys.map((k) => `<span class="gl">${esc(TIPS[k][0][0].toLocaleUpperCase('tr') + TIPS[k][0].slice(1))}${tip(k)}</span>`).join('')}</p>`;
   const setTip = (b, on) => {
     const box = document.getElementById(b.getAttribute('aria-controls'));
@@ -1045,7 +1045,7 @@
   }
 
   // ---- varış vurgusu (v20): site içi bir bağlantı sayfanın belirli bir parçasını gösteriyorsa o parça görünür alana getirilir,
-  // bir an hafif turkuaz zemin ve ince çizgiyle işaretlenir, sonra iz bırakmadan söner. Yalnızca görsel; odak değişmez.
+  // bir an ana renkte (lacivert) hafif zemin ve ince çizgiyle işaretlenir, sonra iz bırakmadan söner. Yalnızca görsel; odak değişmez.
   // Hedef adresten ve (tıklanan bağlantı varsa) geldiği sayfadan ya da bağlantının data-to ipucundan bulunur: arrivalFor.
   // Yerleşimi değiştirmez (yalnızca box-shadow ve outline, Web Animations ile; bitince sınıf ya da stil kalmaz). Azaltılmış hareket: aynı süre sabit, sonra animasyonsuz kalkar.
   const ARR_MS = 1800;
