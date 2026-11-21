@@ -511,7 +511,7 @@
   // Kartın tamamı kategoriye gider; şikâyet oranı rakamı ayrı bağlantı (konu görünümü, kanıt).
   const catCard = (c, d) => c.durum !== 'hazir' ? soonCard(c) : `
           <article class="cat" data-cat="${esc(c.id)}">
-            <div class="cat-head"><div class="cat-img">${c.gorsel ? `<img src="${esc(c.gorsel)}" alt="" width="400" height="600" referrerpolicy="no-referrer" loading="lazy" decoding="async">` : ''}</div>
+            <div class="cat-head"><div class="cat-img">${c.gorsel ? `<img src="${esc(c.gorsel)}" alt="" width="96" height="128" referrerpolicy="no-referrer" loading="lazy" decoding="async">` : ''}</div>
               <div class="cat-name"><small>${esc(c.ust)}</small><h3><a class="cat-a" href="#/kategori/${esc(c.id)}">${esc(c.ad)}</a></h3></div></div>
             ${catTop(d)}
           </article>`;
@@ -1324,6 +1324,13 @@
       </section>`;
   }
 
+  // v22: yıldız dağılımı hükmün içinde tek yığılmış çubuk (5'ten 1 yıldıza) ve altında yüzdeler. 1-2 yıldız kırmızı tonda, 3-5 nötr.
+  const starsBar = (p) => {
+    const S = [5, 4, 3, 2, 1].map((s) => ({ s, v: p.yazili ? p.yildiz[s - 1] / p.yazili : 0 }));
+    return `<div class="stars-w"><p class="stars-cap">Yazılı yorumların yıldızları</p>
+      <div class="stars-bar" role="img" aria-label="Yıldız dağılımı: ${S.map((x) => `${x.s} yıldız ${pct(x.v)}`).join(', ')}">${S.map((x) => `<i class="sb sb-${x.s}" style="width:${x.v * 100}%"></i>`).join('')}</div>
+      <p class="stars-leg num" aria-hidden="true">${S.map((x) => `<span><i class="sb sb-${x.s}"></i>${x.s} yıldız <b>${pct(x.v)}</b></span>`).join('')}</p></div>`;
+  };
   async function product(cid, pid, isStale, kind, kid) {
     const r = regOf(cid);
     if (!r || r.durum !== 'hazir') { notFound('Bu ürün ya da kategori bu sitede yok.'); return; }
@@ -1382,6 +1389,7 @@
             <p class="answer">${V.big}</p>
             <p class="answer-sub">${V.sub}</p>
             ${vsFigs}
+            ${starsBar(p)}
           </div>
           <dl class="pstats">
             <div><dt>"Önerilen" ilk ${n} ortalaması ${tip('onerilen')}</dt><dd class="num">${dec(p.onerilen_ort)}</dd></div>
@@ -1402,7 +1410,6 @@
         <section class="card"><h2>${icon('sevilen', 'h-ic')}Neyi seviyorlar? ${tip('sevilen')}</h2><p class="muted">"Önerilen" sıralamanın ilk ${n} yorumunda geçme oranı.</p>${hbar(sevRows.map((k) => ({ ad: k.ad, v: k.v, href: H.urun(c.id, p.id, 'sevilen', k.id), cur: ft && kind === 'sevilen' && k.id === ft.id })), 'like')}</section>
         <section class="card"><h2>${icon('sikayet', 'h-ic')}Bu ürünün zayıf noktaları</h2><ul class="ul">${p.dikkat.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></section>
         <section class="card"><h2>${icon('oneri', 'h-ic')}Rakip bir KOBİ için ders</h2><ul class="ul">${p.ders.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></section>
-        <section class="card"><h2>Yıldız dağılımı</h2>${hbar([5, 4, 3, 2, 1].map((s) => ({ ad: s + ' yıldız', v: p.yildiz[s - 1] / yt })), 'stars-d')}</section>
         ${ft ? '' : `<section class="card" id="p-alinti"><h2>${icon('kanit', 'h-ic')}Müşterinin kendi sözleriyle ${tip('alinti')}</h2>
           ${p.alinti.length ? `<p class="muted">Okunan yorumlardan saklanan ${p.alinti.length} örnek. Konuya tıklarsan o konunun oranını da görürsün.</p><div class="quotes">${p.alinti.map((a) => `<figure class="q${a.pos ? ' pos' : ''}"><blockquote>"${esc(a.metin)}"</blockquote><figcaption>${a.yildiz} yıldız · ${a.kid ? `<a href="${esc(H.urun(c.id, p.id, a.pos ? 'sevilen' : 'konu', a.kid))}">${esc(a.lab)}</a>` : esc(a.lab)}</figcaption></figure>`).join('')}</div>`
             : '<p class="tp-none">Bu ürün için saklanan örnek yorum yok.</p>'}

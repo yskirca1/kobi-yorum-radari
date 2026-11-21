@@ -90,6 +90,7 @@ export default async function ({ browser, base: BASE, check }) {
 
   await phoneCategory(browser, BASE, check);
   await methodAndFirsat(browser, BASE, check);
+  await homeAndStars(browser, BASE, check);
 }
 
 // Görünür: kutusu var ve kapalı bir <details> ya da hidden="until-found" içinde değil (checkVisibility içerik görünürlüğüne de bakar)
@@ -211,3 +212,36 @@ async function methodAndFirsat(browser, BASE, check) {
   check('yöntem: masaüstünde hepsi açık', all.n > 0 && all.open === all.n, JSON.stringify(all));
   await dk.close();
 }
+
+// Görev 6: ana sayfada görünür fotoğraflar, ürün sayfasında yıldız çubuğu
+async function homeAndStars(browser, BASE, check) {
+  const box = `(()=>{const i=document.querySelector('.cat .cat-img img');const r=i.closest('.cat-img').getBoundingClientRect();return {w:Math.round(r.width),h:Math.round(r.height),fit:getComputedStyle(i).objectFit,aw:i.getAttribute('width'),ah:i.getAttribute('height')}})()`;
+  const res = {};
+  for (const [w, h, mob, W, H] of [[1280, 900, false, 96, 128], [375, 812, true, 72, 96]]) {
+    const pg = await browser.page({ width: w, height: h, mobile: mob });
+    await pg.goto(BASE + '#/', 1500);
+    res[w] = await pg.eval(box);
+    res[w].ok = Math.abs(res[w].w - W) <= 1 && Math.abs(res[w].h - H) <= 1 && res[w].fit === 'contain' && !!res[w].aw && !!res[w].ah;
+    if (w === 1280) {
+      const t = await pg.eval(`document.querySelector('.cat[data-cat="termos"] .cat-h')?.textContent.trim()`);
+      check('ana sayfa: kart başlığı şikâyet', t === 'Isıyı tutmuyor', t);
+    }
+    await pg.close();
+  }
+  check('ana sayfa: fotoğraf kutusu', res[1280].ok && res[375].ok, JSON.stringify(res));
+
+  const pg = await browser.page({ width: 1280, height: 900 });
+  await pg.goto(BASE + '#/urun/termos/780345921', 1500);
+  const sb = await pg.eval(`(async()=>{const j=await (await fetch('data/termos.json')).json();const p=j.urunler.find(u=>u.id==='780345921');
+    const bar=document.querySelector('.stars-bar');if(!bar) return {none:true};
+    const seg=[...bar.children];const sum=seg.reduce((a,e)=>a+e.getBoundingClientRect().width,0);
+    const want=[5,4,3,2,1].map(s=>'%'+(p.yildiz[s-1]/p.yazili*100).toFixed(0));
+    const shown=[...document.querySelectorAll('.stars-leg b')].map(b=>b.textContent.trim());
+    return {n:seg.length, sum, bw:bar.getBoundingClientRect().width, want, shown, inV:!!bar.closest('.verdict'), role:bar.getAttribute('role'), label:bar.getAttribute('aria-label')||'',
+      head:[...document.querySelectorAll('h1,h2,h3,h4')].some(h=>/Yıldız dağılımı/.test(h.textContent))}})()`);
+  check('ürün: yıldız çubuğu', !sb.none && sb.n === 5 && Math.abs(sb.sum - sb.bw) <= 2 && JSON.stringify(sb.want) === JSON.stringify(sb.shown) && sb.inV && !sb.head, JSON.stringify(sb));
+  check('ürün: çubuğun metin karşılığı', sb.role === 'img' && (sb.want || []).every((x) => sb.label.includes(x)), JSON.stringify(sb));
+  check('ana sayfa ve ürün: konsol temiz', !pg.errors.length && !pg.logs.length, JSON.stringify([pg.errors, pg.logs]));
+  await pg.close();
+}
+

@@ -1300,3 +1300,36 @@ details[open] > summary .fold-ic { transform: translateY(2px) rotate(-135deg); }
 @media screen and (min-width: 641px) { .fz-head { display: none !important; } }
 @media print { .fz-head { display: none !important; } }
 .doc .m-body a:not(.btn) { color: var(--brand); text-decoration: underline; text-underline-offset: 2px; }
+
+/* v22 ana sayfa: kategori fotoğrafı kartın solunda dikey kutu (masaüstü 96x128, telefon 72x96), kırpılmaz; başlık yine 1 numaralı şikâyet */
+.cat { grid-template-columns: 96px minmax(0, 1fr); column-gap: 18px; }
+.cat-head { display: contents; }
+.cat-img { grid-column: 1; grid-row: 1 / span 2; align-self: start; width: 96px; height: 128px; aspect-ratio: auto; border-radius: var(--r-sm); }
+.cat-img img { padding: 4px; }
+.cat-name, .cat-top-w { grid-column: 2; }
+/* fotoğraf sütunu yazıyı daralttı: şikâyet başlığına 3 satır yer ayrılır (veri gelince kart boyu değişmez) */
+.cat-h { font-size: 1.22rem; line-height: 1.2; min-height: 3.6em; }
+.cat-fig { min-height: 3.3rem; align-content: flex-start; }
+@media (max-width: 640px) {
+  .cat { grid-template-columns: 72px minmax(0, 1fr); column-gap: 14px; }
+  .cat-img { width: 72px; height: 96px; aspect-ratio: auto; }
+  .cat-img img { padding: 3px; }
+  .cat-h { font-size: 1.12rem; }
+}
+
+/* v22 ürün sayfası: yıldız dağılımı hükmün içinde tek çubuk */
+.stars-w { display: grid; gap: 6px; max-width: 30rem; }
+.stars-cap { font-size: .85rem; color: var(--muted); }
+.stars-bar { display: flex; height: 14px; border-radius: 7px; overflow: hidden; background: var(--track); }
+.stars-bar .sb { display: block; height: 100%; flex: none; }
+.stars-bar .sb + .sb { box-shadow: inset 1px 0 0 var(--panel); }
+.sb-5 { background: var(--bar-n); }
+.sb-4 { background: color-mix(in srgb, var(--bar-n) 65%, var(--track)); }
+.sb-3 { background: color-mix(in srgb, var(--bar-n) 35%, var(--track)); }
+.sb-2 { background: color-mix(in srgb, var(--neg-bar) 55%, var(--track)); }
+.sb-1 { background: var(--neg-bar); }
+.stars-leg { display: flex; flex-wrap: wrap; gap: 2px 14px; font-size: .84rem; color: var(--ink-2); }
+.stars-leg span { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+.stars-leg i.sb { width: 10px; height: 10px; border-radius: 2px; }
+.stars-leg b { font-weight: 600; color: var(--ink); }
+@media print { .stars-bar, .stars-leg i.sb { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
