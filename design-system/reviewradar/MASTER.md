@@ -15,6 +15,7 @@ Kaynak: UI UX Pro Max `--design-system` çıktısı ("b2b analytics dashboard da
 - Gövde yazısı lacivert değil, nötr koyu (`#0F172A` ailesi): lacivert metin lacivert bağlantıyla karışır.
 - Kehribar şikâyet rakamlarının yanında kullanılmaz (kırmızıya yakın düşer).
 - Lacivert çubuk ve rozette kullanılmaz; tıklanır anlamı korunur. Kahraman bandının lacivert zemini bir zemindir, tıklanır işareti değildir; bant içindeki bağlantılar açık mavi (`--hero-accent`).
+- Ana renk, üzerine gelme tonu ve ikincil ton (`--color-secondary`) yalnızca tıklanır öğede ya da bir denetimin seçili / etkin halinde (etkin bölüm, seçili öneri, sıralanan sütun) kullanılır. İlerleme ve ölçü çubukları nötr (`--color-bar-n`), madde imleri `--color-text-muted`. Tek bilinçli istisna renk dili anahtarıdır (`.grammar`): "Lacivert tıklanır" sözcüğü ve oku rengi göstermek için lacivert. `tests/node/suites/v22.mjs` bunu denetler.
 - Bileşenlerde ham renk kodu yok: bileşenler `--brand`, `--cta`, `--ink` gibi takma adları ya da `--color-*` adlarını kullanır.
 
 ## Anlam adları ve takma adlar

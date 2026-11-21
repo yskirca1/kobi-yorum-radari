@@ -147,7 +147,7 @@ p { margin: 0; }
 .hero-band { color: var(--hero-ink); padding-block: 44px 0; margin-bottom: 0; }
 .hero-band::before { background: var(--hero); }
 .hero { display: grid; gap: 20px; max-width: 800px; }
-.eyebrow { font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--brand); }
+.eyebrow { font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); }
 .hero h1 { font-size: clamp(2rem, 1.2rem + 3vw, 3.1rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.08; }
 .lead { font-size: 1.15rem; line-height: 1.55; color: var(--hero-muted); max-width: 40rem; }
 .kpis { margin: 32px 0 0; display: flex; flex-wrap: wrap; gap: 6px 28px; padding: 16px 0 20px; border-top: 1px solid var(--hero-line); }
@@ -310,7 +310,7 @@ p { margin: 0; }
 .pstats .ps-w dd { font-size: 1rem; }
 .tag { justify-self: start; font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .ul { margin: 0; padding-left: 1.1rem; display: grid; gap: 10px; color: var(--ink-2); }
-.ul li::marker { color: var(--brand); }
+.ul li::marker { color: var(--muted); }
 .quotes { display: grid; gap: 12px; }
 .q { margin: 0; border-left: 3px solid var(--neg-bar); padding: 4px 0 4px 16px; display: grid; gap: 4px; color: var(--ink); font-size: 1.02rem; line-height: 1.55; }
 .q.pos { border-left-color: var(--like-bar); }
@@ -462,7 +462,7 @@ body.drawer-open { overflow: hidden; }
 th[aria-sort] .ft-sort { color: var(--ink); font-weight: 600; }
 th[aria-sort] .ft-ar { opacity: 1; color: var(--brand); }
 .mbar { display: block; width: 72px; height: 4px; margin: 6px 0 0 auto; border-radius: 2px; background: var(--track); overflow: hidden; }
-.mbar i { display: block; height: 100%; background: var(--brand-2); border-radius: 2px; }
+.mbar i { display: block; height: 100%; background: var(--bar-n); border-radius: 2px; }
 .mbar.neg i { background: var(--neg-bar); }
 @media (max-width: 640px) { .ftable tbody th { min-width: 7.5rem; width: 7.5rem; padding: 12px 10px; } .ftable thead th:first-child { width: 7.5rem; padding-inline: 10px; } }
 
@@ -487,7 +487,7 @@ th[aria-sort] .ft-ar { opacity: 1; color: var(--brand); }
   .band::before, .phead::after { display: none; }
   .phead { padding-bottom: 12px; margin-bottom: 14px; border-bottom: 1px solid var(--line-2); }
   .chead { padding-top: 0; gap: 4px; }
-  .prt-brand { font-size: 9pt; font-weight: 600; color: var(--brand); letter-spacing: .02em; }
+  .prt-brand { font-size: 9pt; font-weight: 600; color: var(--ink-2); letter-spacing: .02em; }
   h1 { font-size: 20pt; }
   .issues { gap: 10px; }
   .issues .t { font-size: 10.5pt; }
@@ -809,7 +809,7 @@ th[aria-sort] .ft-ar { opacity: 1; color: var(--brand); }
 .ck-prog { font-size: .92rem; color: var(--ink-2); }
 .ck-prog b { font-size: 1.05rem; color: var(--ink); }
 .ck-bar { height: 6px; border-radius: 3px; background: var(--track); overflow: hidden; }
-.ck-bar i { display: block; height: 100%; width: 0; background: var(--brand-2); border-radius: 3px; transition: width .2s; }
+.ck-bar i { display: block; height: 100%; width: 0; background: var(--bar-n); border-radius: 3px; transition: width .2s; }
 .ck-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 16px 28px; }
 .ck-g { border: 0; margin: 0; padding: 0; min-width: 0; display: grid; gap: 6px; align-content: start; }
 .ck-g legend { padding: 0; font-weight: 600; font-size: .98rem; color: var(--ink); }
@@ -1008,6 +1008,7 @@ a.go:hover::after, .go-row:hover .go-v::after, .hb.go-row:hover .v::after { colo
 .ic { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .ic-sikayet { color: var(--neg); }
 .ic-sevilen { color: var(--like); }
+/* .ic-ok yalnızca renk dili anahtarında ("Lacivert tıklanır", rengi göstermek zorunda) ve bağlantı içinde ("Örnekle başla", orada kehribar) durur */
 .ic-ok { color: var(--brand); }
 .h-ic { width: 22px; height: 22px; margin-right: 8px; vertical-align: -4px; color: var(--ink-2); }
 .h-ic.ic-sikayet { color: var(--neg); }
@@ -1139,7 +1140,6 @@ h1.page-name { font-size: 1.3rem; font-weight: 600; letter-spacing: -0.01em; lin
 .t3-s b { font-size: 1.5rem; font-weight: 700; }
 .t3c .mbar { margin: 0; width: 100%; max-width: 12rem; height: 6px; }
 .t3-r { font-size: .95rem; color: var(--ink-2); line-height: 1.5; }
-.mbar i { background: var(--bar-n); }
 .fp-all { display: grid; gap: 4px; padding: 12px 0 14px; font-size: 1.4rem; }
 .fp-all-s { font-size: .92rem; font-weight: 400; letter-spacing: 0; }
 
