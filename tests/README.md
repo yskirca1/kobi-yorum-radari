@@ -1,5 +1,7 @@
 # Testler
 
+> **Güncel kontrol takımı: `tests/node/`** (Node + Edge, kurulum yok): `node tests/node/run.mjs`. Ayrıntı için `tests/node/README.md`. Aşağıdaki Playwright (Python) betikleri v17-v21 dönemine ait olup bakım görmüyor; v22 ve sonrasında kapıyı `tests/node/` tutar.
+
 Playwright (Python) ile yazılmış kontrol betikleri. Yollar depoya göre (`tests/_common.py`); çıktılar (ekran görüntüleri, PDF, json) `tests/out/` altına yazılır.
 
 Kurulum (bir kez): `pip install playwright`. Windows'ta kurulu Edge kullanılır (`channel="msedge"`), ayrıca tarayıcı indirmek gerekmez; başka sistemde `python -m playwright install chromium`.
