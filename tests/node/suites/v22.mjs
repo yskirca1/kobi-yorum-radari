@@ -71,6 +71,20 @@ export default async function ({ browser, base: BASE, check }) {
   }
   check('tema: eski kayıtlar', JSON.stringify(got) === JSON.stringify(want), JSON.stringify(got));
 
+  // Logo: balon ana renkte, dosyalarda eski turkuaz yok, paylaşım görseli yükleniyor
+  await pg.eval(`localStorage.setItem('rr_theme','acik'); true`);
+  await pg.goto('about:blank', 50); await pg.goto(BASE + '#/', 900);
+  const lg = await pg.eval(`(()=>{const p=document.querySelector('a.logo .logo-svg path');const r=document.createElement('i');r.style.color='var(--logo-bubble)';document.body.appendChild(r);const c=getComputedStyle(r).color;r.remove();
+    return {fill:p?getComputedStyle(p).fill:null, tok:c, raw:getComputedStyle(document.documentElement).getPropertyValue('--logo-bubble').trim().toLowerCase()}})()`);
+  check('logo: balon ana renkte', !!lg.fill && lg.fill === lg.tok && lg.raw === '#1e40af', JSON.stringify(lg));
+
+  const svgs = ['favicon.svg', 'logo/reviewradar_ikon.svg', 'logo/reviewradar_logo_acik.svg', 'logo/reviewradar_logo_koyu.svg', 'logo/reviewradar_logo_seffaf.svg'];
+  const found = await pg.eval(`(async()=>{const bad=[];for(const f of ${JSON.stringify(svgs)}){const t=(await (await fetch(f)).text()).toLowerCase();for(const c of ['14b8a6','0d9488','2dd4bf','0d8a7f']) if(t.includes(c)) bad.push(f+':'+c)}return bad})()`);
+  check('logo: dosyalarda turkuaz kalmadı', !found.length, JSON.stringify(found));
+
+  const og = await pg.eval(`(async()=>{const u='logo/reviewradar_logo_acik.png';const r=await fetch(u);const w=await new Promise(res=>{const i=new Image();i.onload=()=>res(i.naturalWidth);i.onerror=()=>res(0);i.src=u+'?t='+Date.now()});return {status:r.status,w}})()`);
+  check('logo: og görseli yükleniyor', og.status === 200 && og.w === 2166, JSON.stringify(og));
+
   check('konsol temiz', !pg.errors.length && !pg.logs.length, JSON.stringify([pg.errors, pg.logs]));
   await pg.close();
 }

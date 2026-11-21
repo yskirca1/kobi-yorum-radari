@@ -24,7 +24,7 @@ Her tema `:root, [data-theme="…"]` üzerinde `--color-*` adlarını tanımlar.
 
 `--brand` → `--color-primary`, `--brand-hover` → `--color-primary-hover`, `--brand-ink` → `--color-on-primary`, `--brand-2` → `--color-secondary`, `--brand-soft` → `--color-primary-soft`, `--cta` → `--color-accent`, `--cta-hover` → `--color-accent-hover`, `--cta-ink` → `--color-on-accent`, `--star` → `--color-star`, `--bg` → `--color-bg`, `--panel` → `--color-surface`, `--subtle` → `--color-surface-muted`, `--band` → `--color-band`, `--ink` → `--color-text`, `--ink-2` → `--color-text-2`, `--muted` → `--color-text-muted`, `--line` → `--color-border`, `--line-2` → `--color-border-strong`, `--track` → `--color-track`, `--focus` → `--color-focus`, `--neg*` → `--color-neg*`, `--like*` → `--color-like*`, `--bar-n` → `--color-bar-n`.
 
-Takma ad bloğu `[data-theme]` taşıyan her öğede yeniden çözülür; tema menüsündeki küçük örnekler bu sayede kendi temalarının rengini gösterir. Bant ve altbilgi renkleri (`--hero*`, `--foot*`) ve logo renkleri (`--logo-*`, Görev 3) tema bloklarında doğrudan durur.
+Takma ad bloğu `[data-theme]` taşıyan her öğede yeniden çözülür; tema menüsündeki küçük örnekler bu sayede kendi temalarının rengini gösterir. Bant ve altbilgi renkleri (`--hero*`, `--foot*`) ve logo renkleri (`--logo-*`, Görev 3) tema bloklarında doğrudan durur. Logo: balon ve "Radar" yazısı = tema ana rengi (`--logo-bubble` = `--logo-accent`); balon içindeki simge `--logo-fg` (açık temalarda `#FFFFFF`, koyu temalarda `#0B1A33`); "Review" yazısı tema yazı rengi (`--logo-ink`). Açık, Krem, Adaçayı: `#1E40AF`, ink `#0F172A` / `#1C1917` / `#142019`. Koyu, Gece mavisi: `#93C5FD`, ink `#E8EAED` / `#E2E8F0`. Yazdırma: `#1E40AF`, simge `#FFFFFF`, ink `#0F172A`.
 
 ## Beş tema
 
